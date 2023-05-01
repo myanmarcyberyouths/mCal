@@ -3,6 +3,8 @@
 This software is a calendar app based on the Myanmar calendar. It includes multiple language features, with the option
 to change to Myanmar, Myanmar Zawgyi, Mon, English, Tai, and S' Karen.
 
+![Myanmar Calendar Demo Image](./exmaples/demo.png)
+
 ## Features
 
 - Multiple language support (Myanmar, Myanmar Zawgyi, Mon, English, Tai, and S' Karen)
