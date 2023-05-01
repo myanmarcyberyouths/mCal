@@ -27,7 +27,7 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "me.aungmyatmoe.myanmar_calendar",
+      "identifier": "me.aungmyatmoe.myanmar-calendar",
       "targets": "all",
       "category": "Utilities",
       "copyright": "Aung Myat Moe"
