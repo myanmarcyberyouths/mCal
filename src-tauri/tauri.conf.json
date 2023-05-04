@@ -6,6 +6,11 @@
     "distDir": "../src",
     "withGlobalTauri": true
   },
+  "package": {
+  "productName": "Myanmar Calendar",
+  "version": "1.0.0"
+}
+
   "tauri": {
     "allowlist": {
       "all": false,
