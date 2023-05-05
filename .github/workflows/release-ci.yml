@@ -47,13 +47,13 @@ jobs:
       - name: Build the ap
         uses: JonasKruckenberg/tauri-build@v1.0.3
         
-      - name: List files in dist directory
-        run: |
-          if [ "${{ matrix.os }}" = "ubuntu-latest" ] || [ "${{ matrix.os }}" = "macOS-latest" ]; then
-            ls
-          else
-            dir
-          fi
+      - name: Unix like list files in dist directory
+        if: ${{matrix.platform == 'ubuntu-latest'}} || ${{matrix.platform == 'macos-latest'}}
+        run: ls
+        
+      - name: Windows like list files in dist directory
+        if: ${{matrix.platform == 'windows-latest'}}
+        run: dir
         
       - name: Publish build artifacts
         if: success()
