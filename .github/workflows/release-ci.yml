@@ -46,16 +46,22 @@ jobs:
 
       - name: Build the ap
         uses: JonasKruckenberg/tauri-build@v1.0.3
-
-    artifacts:
-      paths:
-        - dist/**
         
-         env:
+      - name: Publish build artifacts
+        if: success()
+        uses: actions/upload-artifact@v2
+        with:
+          name: tauri-build-artifacts
+          path: dist/**
+          
+      - name: Create Release
+        if: success()
+        uses: release-drafter/release-drafter@v6.1.5
+        env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tagName: ${{ github.ref_name }} # This only works if your workflow triggers on new tags.
-          releaseName: 'App Name v__VERSION__' # tauri-action replaces \_\_VERSION\_\_ with the app version.
-          releaseBody: 'See the assets to download and install this version.'
-          releaseDraft: true
-          prerelease: false
+            tagName: ${{ github.ref_name }} # This only works if your workflow triggers on new tags.
+            releaseName: 'App Name v__VERSION__' # tauri-action replaces \_\_VERSION\_\_ with the app version.
+            releaseBody: 'See the assets to download and install this version.'
+            releaseDraft: true
+            prerelease: false
