@@ -3,8 +3,8 @@ name: 'publish'
 on:
   push:
     branches:
-      - release
       - main
+     
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
