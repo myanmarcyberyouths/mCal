@@ -47,6 +47,9 @@ jobs:
       - name: Build the ap
         uses: JonasKruckenberg/tauri-build@v1.0.3
         
+      - name: List files in dist directory
+        run: ls dist
+        
       - name: Publish build artifacts
         if: success()
         uses: actions/upload-artifact@v2
