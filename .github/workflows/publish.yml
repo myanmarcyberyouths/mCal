@@ -40,3 +40,7 @@ jobs:
       - uses: JonasKruckenberg/tauri-build@v1
         id: tauri_build
 
+artifacts:
+      paths:
+        - dist/**
+
