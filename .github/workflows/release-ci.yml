@@ -48,7 +48,12 @@ jobs:
         uses: JonasKruckenberg/tauri-build@v1.0.3
         
       - name: List files in dist directory
-        run: ls dist
+        run: |
+          if [ "${{ matrix.os }}" = "ubuntu-latest" ] || [ "${{ matrix.os }}" = "macOS-latest" ]; then
+            ls
+          else
+            dir
+          fi
         
       - name: Publish build artifacts
         if: success()
