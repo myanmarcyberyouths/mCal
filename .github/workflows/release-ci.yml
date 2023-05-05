@@ -47,8 +47,11 @@ jobs:
       - name: Build the ap
         uses: JonasKruckenberg/tauri-build@v1.0.3
 
-
-        env:
+    artifacts:
+      paths:
+        - dist/**
+        
+         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tagName: ${{ github.ref_name }} # This only works if your workflow triggers on new tags.
