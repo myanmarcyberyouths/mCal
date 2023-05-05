@@ -40,6 +40,9 @@ jobs:
       - uses: JonasKruckenberg/tauri-build@v1
         id: tauri_build
         
+      - name: List files in dist directory
+        run: ls dist
+
       - name: Publish build artifacts
         if: success()
         uses: actions/upload-artifact@v2
