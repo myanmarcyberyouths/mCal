@@ -39,8 +39,13 @@ jobs:
 
       - uses: JonasKruckenberg/tauri-build@v1
         id: tauri_build
+        
+      - name: Publish build artifacts
+        if: success()
+        uses: actions/upload-artifact@v2
+        with:
+          name: tauri-build-artifacts
+          path: dist/**
 
-artifacts:
-      paths:
-        - dist/**
+            
 
