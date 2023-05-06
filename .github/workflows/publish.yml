@@ -55,8 +55,8 @@ jobs:
         with:
           name: Upload Artifact
           path: |
-          src-tauri/target/release/bundle
-          src-tauri/target/release/Myanmar Calendar
+            src-tauri/target/release/bundle
+            src-tauri/target/release/Myanmar Calendar
 
 
 
