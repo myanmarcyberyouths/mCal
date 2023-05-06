@@ -51,10 +51,14 @@ jobs:
 
       - name: Publish build artifacts
         if: success()
-        uses: actions/upload-artifact@v2
+        uses:  actions/upload-artifact@v3
         with:
-          name: tauri-build-artifacts
-          path: src-tauri/release/**
+          name: Upload Artifact
+          path: |
+          src-tauri/target/release/bundle
+          src-tauri/target/release/Myanmar Calendar
+
+
 
 
 
