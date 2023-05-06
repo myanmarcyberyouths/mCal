@@ -2,11 +2,25 @@
   "name": "myanmar_calendar",
   "private": true,
   "version": "1.0.0",
-  "type": "module",
   "scripts": {
-    "tauri": "tauri"
+    "dev": "next dev",
+    "build": "next build",
+    "export": "next export",
+    "start": "next start",
+    "tauri": "tauri",
+    "lint": "next lint"
   },
   "devDependencies": {
-    "@tauri-apps/cli": "^1.2.3"
+    "@tauri-apps/cli": "^1.2.3",
+    "@types/node": "20.1.0",
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.23",
+    "tailwindcss": "^3.3.2",
+    "typescript": "5.0.4"
+  },
+  "dependencies": {
+    "next": "^13.4.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }
