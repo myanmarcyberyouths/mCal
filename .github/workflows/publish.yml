@@ -41,7 +41,7 @@ jobs:
         id: tauri_build
 
       - name: Unix like list files in dist directory
-        if: ${{matrix.platform == 'ubuntu-latest'}} || ${{matrix.platform == 'macos-latest'}}
+        if: ${{matrix.platform == 'ubuntu-latest' || matrix.platform == 'macos-latest' }}
         run: ls
 
       - name: Windows like list files in dist directory
