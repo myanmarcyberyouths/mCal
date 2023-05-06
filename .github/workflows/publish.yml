@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-     
+
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -39,11 +39,11 @@ jobs:
 
       - uses: JonasKruckenberg/tauri-build@v1
         id: tauri_build
-        
+
       - name: Unix like list files in dist directory
         if: ${{matrix.platform == 'ubuntu-latest'}} || ${{matrix.platform == 'macos-latest'}}
         run: ls
-        
+
       - name: Windows like list files in dist directory
         if: ${{matrix.platform == 'windows-latest'}}
         run: dir
@@ -54,7 +54,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: tauri-build-artifacts
-          path: dist/**
+          path: src-tauri/release/**
 
-            
+
 
