@@ -1,9 +1,9 @@
 {
   "build": {
-    "beforeDevCommand": "",
-    "beforeBuildCommand": "",
-    "devPath": "../src",
-    "distDir": "../src",
+    "beforeBuildCommand": "npm run build && npm run export",
+    "beforeDevCommand": "npm run dev",
+    "devPath": "http://localhost:3000",
+    "distDir": "../out",
     "withGlobalTauri": true
   },
   "package": {

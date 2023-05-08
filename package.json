@@ -2,11 +2,20 @@
   "name": "myanmar_calendar",
   "private": true,
   "version": "1.0.0",
-  "type": "module",
   "scripts": {
-    "tauri": "tauri"
+    "tauri": "tauri",
+    "dev": "next dev --turbo",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "export": "next export"
   },
   "devDependencies": {
     "@tauri-apps/cli": "^1.2.3"
+  },
+  "dependencies": {
+    "next": "^13.4.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }
