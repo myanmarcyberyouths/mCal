@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Myanmar Calendar</title>
+    <title>Myanmar MyanmarCalendar</title>
     <link rel="stylesheet" href="./styles.css">
     <script type="module" src="/main.js"></script>
     <script src="lib/ceMmDateTime.js"></script>
@@ -106,7 +106,7 @@
             //Select input for calendar type
             str += "<td class='TdContainerType'>\
 			<select  id='calType' class='InpType'  \
-			onchange='DisplayUI(3)' title='Calendar Type'>\
+			onchange='DisplayUI(3)' title='MyanmarCalendar Type'>\
 				<option value='0'  " + ((uis.Type == 0) ? "selected" : "") +
                 ">British </option> \
             <option value='1'  " + ((uis.Type == 1) ? "selected" : "") +
@@ -234,7 +234,7 @@
             str += "<tbody>";
             str += tWeek(); //Weekday header row
 
-            //Calendar days are populated starting from second row
+            //MyanmarCalendar days are populated starting from second row
             r = (MS.w + 6) % 7;
             eml = Math.ceil((eml + r) / 7) * 7;
             var M = new ceMmDateTime(); // end of month
@@ -324,7 +324,7 @@
             var str = "<tfoot> <tr> <td colspan=7 class='TdFootMC'> \
 	<p class='PTdMC'>";
             str += "<a class='AnchorFootMC' href=\
-			'./m.htm'>M&gt;E Calendar </a> ";
+			'./m.htm'>M&gt;E MyanmarCalendar </a> ";
             str += "<a  class='AnchorFootMC'  style='float: right;' href=\
 	 		'./html/more.htm'> About</a>";
             str += "</p></td></tr></tfoot>";

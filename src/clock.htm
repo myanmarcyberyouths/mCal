@@ -2,11 +2,11 @@
 <head>
 <meta http-equiv="refresh" content="1">
 <meta charset="UTF-8">
-<meta name='description' content='Myanmar Calendar'/>
-<meta name='keywords' content='Myanmar, Calendar' />
+<meta name='description' content='Myanmar MyanmarCalendar'/>
+<meta name='keywords' content='Myanmar, MyanmarCalendar' />
 <meta name='author' content='Yan Naing Aye' />
 <meta name="viewport" content="width=device-width">
-<title>Myanmar Calendar</title>
+<title>Myanmar MyanmarCalendar</title>
 <link href="./html/play.css" rel="stylesheet">
 <style type="text/css">
  body {
@@ -16,7 +16,7 @@
 		text-align: left;
 		/* line-height: 1.5; */
     	color: #7ece7e;
-	}	
+	}
 	a {
     text-decoration: none;
     color: #cca6f2;
@@ -32,14 +32,14 @@
 		padding: 10px;
 	}
 	.WD {
-		font-size: 5vw;	
+		font-size: 5vw;
 		text-align: center;
 		color: #7ece7e;
 		padding: 10px;
 	}
 	.MT {
 		font-size: 5vw;
-		font-family: 'Tharlon';		
+		font-family: 'Tharlon';
 		text-align: center;
 		color: #999999;
 		float: left;
@@ -50,7 +50,7 @@
 	}
 	.MD {
 		font-size: 5vw;
-		font-family: 'Tharlon';		
+		font-family: 'Tharlon';
 		text-align: center;
 		color: #cca6f2;
 		padding: 10px;
@@ -94,13 +94,13 @@
 <script src='./javascript/ceMmDateTime.js'></script>
 <script type="text/javascript">
 function cal()
-{	
+{
 	var lang=1;
 	var x=new ceMmTranslate();
 	var str;
 	var t1=0;
 	var t2 = 0;
-	var mdt=new ceMmDateTime();	
+	var mdt=new ceMmDateTime();
 	var nzt = document.getElementById("nzt");
 	str = mdt.ToString("%hh:%nn:%ss %AA");
 	nzt.innerHTML=str;
@@ -109,7 +109,7 @@ function cal()
 	str = mdt.ToString("%y-%Mmm-%dd %Www");
 	nzd.innerHTML=str;
 
-	var mdt2=new ceMmDateTime();	
+	var mdt2=new ceMmDateTime();
 
 	// testing purpose
 	// mdt.SetJD(mdt.jd-7);
@@ -167,7 +167,7 @@ function cal()
 <div id="sb" class='SC'></div>
 <div id="yyz" class='YC'></div>
 <div id="hld" class='HD'></div>
-<script type="text/javascript">	
+<script type="text/javascript">
 	cal();
 </script>
 <!-- </div> -->

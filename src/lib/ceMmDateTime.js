@@ -10,17 +10,17 @@ class ceDateTime {
 constructor(m_jd,m_tz,m_ct = 0,m_SG = 2361222) {
 	// 2361222 - Gregorian start in British calendar (1752/Sep/14)
 	if(m_tz==undefined) this.m_tz=ceDateTime.ltzoh();
-	else this.m_tz = m_tz;// time zone for this particular instance 
+	else this.m_tz = m_tz;// time zone for this particular instance
 	if(m_jd==undefined) this.m_jd=ceDateTime.jdnow();
 	else this.m_jd = m_jd;// julian date in UTC
 	this.m_ct = m_ct; // calendar type [0=British (default), 1=Gregorian, 2=Julian]
 	this.m_SG = m_SG; // Beginning of Gregorian calendar in JDN [default=2361222]
-}    
+}
 //Start of core functions #############################################################
 //-------------------------------------------------------------------------
 //Julian date to Western date
 //Credit4 Gregorian date: http://pmyers.pcug.org.au/General/JulianDates.htm
-//Credit4 Julian Calendar: http://quasar.as.utexas.edu/BillInfo/JulianDatesG.html
+//Credit4 Julian MyanmarCalendar: http://quasar.as.utexas.edu/BillInfo/JulianDatesG.html
 //input: (jd:julian date,
   // ct:calendar type [Optional argument: 0=British (default), 1=Gregorian, 2=Julian]
   // SG: Beginning of Gregorian calendar in JDN [Optional argument: (default=2361222)])
@@ -74,7 +74,7 @@ static w2j(y,m,d,h=12,n=0,s=0,ct=0,SG=2361222) {
 	return jd+ceDateTime.t2d(h,n,s);
 }
 //-------------------------------------------------------------------------
-// convert unix timestamp to jd 
+// convert unix timestamp to jd
 static u2j(ut)
 {
 	//number of seconds from 1970 Jan 1 00:00:00 (UTC)
@@ -93,7 +93,7 @@ static jdnow()
 {
 	var dt=new Date();
 	// the number of milliseconds since 1 January 1970 00:00:00 / 1000
-	var ut=dt.getTime()/1000.0;	
+	var ut=dt.getTime()/1000.0;
 	return ceDateTime.u2j(ut);
 }
 //-------------------------------------------------------------------------
@@ -141,9 +141,9 @@ static ltzoh()
 // %w : Weekday number [0=sat, 1=sun, ..., 6=fri]
 // %zz : time zone (e.g. +08, +06:30)
 static j2s(jd,fs="%Www %y-%mm-%dd %HH:%nn:%ss %zz",tz=0,ct=0,SG=2361222)
-{	
+{
 	jd+=tz/24.0;
-	var dt=ceDateTime.j2w(jd,ct,SG);	
+	var dt=ceDateTime.j2w(jd,ct,SG);
 	var s=Math.floor(dt.s);//shold not take round to make sure s<60
 	var l=Math.floor((dt.s-s)*1000); // not rounding
 	var jdn=Math.floor(jd+0.5);
@@ -204,19 +204,19 @@ static j2s(jd,fs="%Www %y-%mm-%dd %HH:%nn:%ss %zz",tz=0,ct=0,SG=2361222)
 	fstr = "%aa";  re = new RegExp(fstr, 'g');
 	rstr = dt.h<12 ? "am" : "pm"; fm = fm.replace(re,rstr);
 	//--------------------------------------------------------
-	fstr = "%nn"; re = new RegExp(fstr, 'g'); 
+	fstr = "%nn"; re = new RegExp(fstr, 'g');
 	rstr = "00" + dt.n.toString(); rstr = rstr.substr(rstr.length - 2); fm = fm.replace(re,rstr);
 	//--------------------------------------------------------
 	fstr = "%n"; re = new RegExp(fstr, 'g');
 	rstr = dt.n.toString(); fm = fm.replace(re,rstr);
 	//--------------------------------------------------------
-	fstr = "%ss"; re = new RegExp(fstr, 'g'); 
+	fstr = "%ss"; re = new RegExp(fstr, 'g');
 	rstr = "00" + s.toString(); rstr = rstr.substr(rstr.length - 2); fm = fm.replace(re,rstr);
 	//--------------------------------------------------------
 	fstr = "%s"; re = new RegExp(fstr, 'g');
 	rstr = s.toString(); fm = fm.replace(re,rstr);
 	//--------------------------------------------------------
-	fstr = "%lll"; re = new RegExp(fstr, 'g'); 
+	fstr = "%lll"; re = new RegExp(fstr, 'g');
 	rstr = "000" + l.toString(); rstr = rstr.substr(rstr.length - 3); fm = fm.replace(re,rstr);
 	//--------------------------------------------------------
 	fstr = "%l"; re = new RegExp(fstr, 'g');
@@ -265,8 +265,8 @@ static j2s(jd,fs="%Www %y-%mm-%dd %HH:%nn:%ss %zz",tz=0,ct=0,SG=2361222)
 //   [optional argument: 0 - UTC]
 //  ct:calendar type [Optional argument: 0=British (default), 1=Gregorian, 2=Julian]
 //  SG: Beginning of Gregorian calendar in JDN [Optional argument: (default=2361222)])
-// output 
-//  jd: julian date 
+// output
+//  jd: julian date
 //    positive integer: ok
 //    -1 : error
 static s2j(tstr,tz=0,ct=0,SG=2361222)
@@ -275,7 +275,7 @@ static s2j(tstr,tz=0,ct=0,SG=2361222)
     var y=0,m=0,d=0,h=12,n=0,s=0,ls=0;
     var jd=-1;
     str=ceDateTime.GetDigits(tstr);
-    if(str.length==8 || str.length==14 || str.length==17){        
+    if(str.length==8 || str.length==14 || str.length==17){
         pstr=str.substr(0,4); y=parseInt(pstr); //get year
         pstr=str.substr(4,2); m=parseInt(pstr); //get month
 		pstr=str.substr(6,2); d=parseInt(pstr); //get day
@@ -283,12 +283,12 @@ static s2j(tstr,tz=0,ct=0,SG=2361222)
 			pstr=str.substr(8,2); h=parseInt(pstr); //get hour
 			pstr=str.substr(10,2); n=parseInt(pstr); //get minute
 			pstr=str.substr(12,2); s=parseInt(pstr); //get second
-			if(str.length==17){ 
-				pstr=str.substr(14,3); ls=parseInt(pstr); 
-				s+=ls/1000.0; 
+			if(str.length==17){
+				pstr=str.substr(14,3); ls=parseInt(pstr);
+				s+=ls/1000.0;
 			}
 		}
-        jd=ceDateTime.w2j(y,m,d,h,n,s,ct,SG)-tz/24.0;  // convert to UTC      
+        jd=ceDateTime.w2j(y,m,d,h,n,s,ct,SG)-tz/24.0;  // convert to UTC
     }
     return jd;
 }
@@ -405,38 +405,38 @@ get jd() { return this.m_jd;} // julian date
 get jdl() { return (this.m_jd+this.m_tz/24.0);} // julian date for this time zone
 get jdn(){ return Math.round(this.m_jd);} // julian date number
 get jdnl(){ return Math.round(this.m_jd+this.m_tz/24.0);} // julian date number for this time zone
-get y(){ 
+get y(){
 	var dt = ceDateTime.j2w(this.jdl,this.m_ct,this.m_SG);
 	return dt.y;
 } // year
 
-get m(){ 
+get m(){
 	var dt = ceDateTime.j2w(this.jdl,this.m_ct,this.m_SG);
 	return dt.m;
 } // month
 
-get d(){ 
+get d(){
 	var dt = ceDateTime.j2w(this.jdl,this.m_ct,this.m_SG);
 	return dt.d;
 } // day
 
-get h(){ 
+get h(){
 	var dt = ceDateTime.j2w(this.jdl,this.m_ct,this.m_SG);
 	return dt.h;
 } // hour [0-23]
 
-get n(){ 
+get n(){
 	var dt = ceDateTime.j2w(this.jdl,this.m_ct,this.m_SG);
 	return dt.n;
 } // minute
 
-get s(){ 
+get s(){
 	var dt = ceDateTime.j2w(this.jdl,this.m_ct,this.m_SG);
 	var s=Math.floor(dt.s);//shold not take round to make sure s<60
 	return s;
 } // second
 
-get l(){ 
+get l(){
 	var dt = ceDateTime.j2w(this.jdl,this.m_ct,this.m_SG);
 	var s=Math.floor(dt.s);//shold not take round to make sure s<60
 	var l=Math.floor((dt.s-s)*1000); // not rounding
@@ -445,7 +445,7 @@ get l(){
 
 get w(){ return (this.jdnl+2)%7;} // weekday [0=sat, 1=sun, ..., 6=fri]
 get ut(){ return ceDateTime.j2u(this.m_jd);} // unix time
-get tz(){ return this.m_tz;} // time zone 
+get tz(){ return this.m_tz;} // time zone
 get ct(){ return this.m_ct;} // calendar type
 get SG(){ return this.m_SG;} // Beginning of Gregorian calendar in JDN [default=2361222]
 get mlen(){ return ceDateTime.wml(this.y,this.m,this.m_ct,this.m_SG);} // length of this month
@@ -478,7 +478,7 @@ constructor(m_jd,m_tz,m_ct = 0,m_SG = 2361222) {
 // Get Myanmar year constants depending on era
 // Thanks to Myo Zarny and Wunna Ko for earlier Myanmar years data
 // input: my = myanmar year
-// output:  
+// output:
 //  EI = Myanmar calendar era id [1-3] : calculations methods/constants depends on era
 //  WO = watat offset to compensate
 //  NM = number of months to find excess days
@@ -487,9 +487,9 @@ static GetMyConst(my)
 {
 	var EI,WO,NM,EW=0,i; var fme,wte;
 	// The third era (the era after Independence 1312 ME and after)
-	if(my >= 1312){ 
-		EI = 3; WO=-0.5; NM=8;				
-		fme = [[1377,1]]; 		
+	if(my >= 1312){
+		EI = 3; WO=-0.5; NM=8;
+		fme = [[1377,1]];
 		wte = [1344,1345];
 	}
 	// The second era (the era under British colony: 1217 ME - 1311 ME)
@@ -502,21 +502,21 @@ static GetMyConst(my)
 	// Thandeikta (ME 1100 - 1216)
 	else if(my >= 1100){
 		EI = 1.3; WO=-0.85; NM=-1;
-		fme = [[1120,1],[1126,-1],[1150,1],[1172,-1],[1207,1]]; 
+		fme = [[1120,1],[1126,-1],[1150,1],[1172,-1],[1207,1]];
 		wte = [1201,1202];
 	}
 	// Makaranta system 2 (ME 798 - 1099)
 	else if(my >= 798){
 		EI = 1.2; WO=-1.1; NM=-1;
 		fme = [[813,-1],[849,-1],[851,-1],[854,-1],[927,-1],[933,-1],[936,-1],
-		[938,-1],[949,-1],[952,-1],[963,-1],[968,-1],[1039,-1]];	
-		wte=[];	
+		[938,-1],[949,-1],[952,-1],[963,-1],[968,-1],[1039,-1]];
+		wte=[];
 	}
 	// Makaranta system 1 (ME 0 - 797)
 	else {
 		EI = 1.1; WO=-1.1; NM=-1;
 		fme = [[205,1],[246,1],[471,1],[572,-1],[651,1],[653,2],[656,1],[672,1],
-		[729,1], [767,-1]];		
+		[729,1], [767,-1]];
 		wte=[];
 	}
 	i=ceMmDateTime.bSearch2(my,fme); if(i >= 0) WO+=fme[i][1]; // full moon day offset exceptions
@@ -556,7 +556,7 @@ static bSearch1(k,A) {
 // output:  ( watat = intercalary month [1=watat, 0=common]
   //  fm = full moon day of 2nd Waso in jdn_mm (jdn+6.5 for MMT) [only valid when watat=1])
 // dependency: GetMyConst(my)
-static cal_watat(my) {//get data for respective era	
+static cal_watat(my) {//get data for respective era
 	var SY=1577917828.0/4320000.0; //solar year (365.2587565)
 	var LM=1577917828.0/53433336.0; //lunar month (29.53058795)
 	var MO=1954168.050623; //beginning of 0 ME for MMT
@@ -577,7 +577,7 @@ static cal_watat(my) {//get data for respective era
 		watat=(my*7+2)%19; if (watat < 0) watat+=19;
 		watat=Math.floor(watat/12);
 	}
-	watat^=c.EW;//correct watat exceptions	
+	watat^=c.EW;//correct watat exceptions
 	return {fm:fm,watat:watat};
 }
 //-------------------------------------------------------------------------
@@ -604,8 +604,8 @@ static cal_my(my) {
 // output:  (
   // myt =year type [0=common, 1=little watat, 2=big watat],
   // my = year,
-  // mm = month [Tagu=1, Kason=2, Nayon=3, 1st Waso=0, (2nd) Waso=4, Wagaung=5, 
-  //   Tawthalin=6, Thadingyut=7, Tazaungmon=8, Nadaw=9, Pyatho=10, Tabodwe=11, 
+  // mm = month [Tagu=1, Kason=2, Nayon=3, 1st Waso=0, (2nd) Waso=4, Wagaung=5,
+  //   Tawthalin=6, Thadingyut=7, Tazaungmon=8, Nadaw=9, Pyatho=10, Tabodwe=11,
   //   Tabaung=12, Late Tagu=13, Late Kason=14 ],
   // md = day of the month [1 to 30])
 // dependency: cal_my(my)
@@ -630,10 +630,10 @@ static j2m(jdn) {
 //-------------------------------------------------------------------------
 // Get moon phase from day of the month, month, and year type.
 // input: (
-//    md= day of the month [1-30], 
-//    mm = month [Tagu=1, Kason=2, Nayon=3, 1st Waso=0, (2nd) Waso=4, Wagaung=5, 
-//         Tawthalin=6, Thadingyut=7, Tazaungmon=8, Nadaw=9, Pyatho=10, Tabodwe=11,  
-//         Tabaung=12, Late Tagu=13, Late Kason=14 ], 
+//    md= day of the month [1-30],
+//    mm = month [Tagu=1, Kason=2, Nayon=3, 1st Waso=0, (2nd) Waso=4, Wagaung=5,
+//         Tawthalin=6, Thadingyut=7, Tazaungmon=8, Nadaw=9, Pyatho=10, Tabodwe=11,
+//         Tabaung=12, Late Tagu=13, Late Kason=14 ],
 //    myt = year type [0=common, 1=little watat, 2=big watat])
 // output: (mp =moon phase [0=waxing, 1=full moon, 2=waning, 3=new moon])
 static cal_mp(md,mm,myt) {
@@ -643,9 +643,9 @@ static cal_mp(md,mm,myt) {
 //-------------------------------------------------------------------------
 // Get length of month from month, and year type.
 // input: (
-//    mm = month [Tagu=1, Kason=2, Nayon=3, 1st Waso=0, (2nd) Waso=4, Wagaung=5, 
-//         Tawthalin=6, Thadingyut=7, Tazaungmon=8, Nadaw=9, Pyatho=10, Tabodwe=11,  
-//         Tabaung=12, Late Tagu=13, Late Kason=14 ], 
+//    mm = month [Tagu=1, Kason=2, Nayon=3, 1st Waso=0, (2nd) Waso=4, Wagaung=5,
+//         Tawthalin=6, Thadingyut=7, Tazaungmon=8, Nadaw=9, Pyatho=10, Tabodwe=11,
+//         Tabaung=12, Late Tagu=13, Late Kason=14 ],
 //    myt = year type [0=common, 1=little watat, 2=big watat])
 // output: (mml = length of the month [29 or 30 days])
 static cal_mml(mm,myt) {
@@ -669,12 +669,12 @@ static cal_mf(md) {
 }
 //-------------------------------------------------------------------------
 // Get day of month from fortnight day, moon phase, and length of the month
-// input: ( 
-//   mf = fortnight day [1 to 15], 
+// input: (
+//   mf = fortnight day [1 to 15],
 //   mp = moon phase [0=waxing, 1=full moon, 2=waning, 3=new moon]
-//   mm = month [Tagu=1, Kason=2, Nayon=3, 1st Waso=0, (2nd) Waso=4, Wagaung=5, 
-//        Tawthalin=6, Thadingyut=7, Tazaungmon=8, Nadaw=9, Pyatho=10, Tabodwe=11,  
-//        Tabaung=12, Late Tagu=13, Late Kason=14 ], 
+//   mm = month [Tagu=1, Kason=2, Nayon=3, 1st Waso=0, (2nd) Waso=4, Wagaung=5,
+//        Tawthalin=6, Thadingyut=7, Tazaungmon=8, Nadaw=9, Pyatho=10, Tabodwe=11,
+//        Tabaung=12, Late Tagu=13, Late Kason=14 ],
 //   myt = year type [0=common, 1=little watat, 2=big watat])
 // output: ( md = day of the month [1-30])
 static cal_md(mf,mp,mm,myt) {
@@ -686,8 +686,8 @@ static cal_md(mf,mp,mm,myt) {
 // Myanmar date to Julian day number
 // input:  (
 //  my = year,
-//  mm = month [Tagu=1, Kason=2, Nayon=3, 1st Waso=0, (2nd) Waso=4, Wagaung=5, 
-//    Tawthalin=6, Thadingyut=7, Tazaungmon=8, Nadaw=9, Pyatho=10, Tabodwe=11,  
+//  mm = month [Tagu=1, Kason=2, Nayon=3, 1st Waso=0, (2nd) Waso=4, Wagaung=5,
+//    Tawthalin=6, Thadingyut=7, Tazaungmon=8, Nadaw=9, Pyatho=10, Tabodwe=11,
 //    Tabaung=12 , Late Tagu=13, Late Kason=14 ],
 //  md = day of the month [1-30]
 // output: (jd -julian day number)
@@ -696,10 +696,10 @@ static m2j(my,mm,md) {
 	var b,c,dd,myl,mmt;
 	var yo=ceMmDateTime.cal_my(my);//check year
 	mmt=Math.floor(mm/13); mm=mm%13+mmt; // to 1-12 with month type
-	b=Math.floor(yo.myt/2); c=1-Math.floor((yo.myt+1)/2); //if big watat and common year	 
+	b=Math.floor(yo.myt/2); c=1-Math.floor((yo.myt+1)/2); //if big watat and common year
 	mm+=4-Math.floor((mm+15)/16)*4+Math.floor((mm+12)/16);//adjust month
 	dd=md+Math.floor(29.544*mm-29.26)-c*Math.floor((mm+11)/16)*30
-		+b*Math.floor((mm+12)/16);	
+		+b*Math.floor((mm+12)/16);
 	myl=354+(1-c)*30+b; dd+=mmt*myl;//adjust day count with year length
 	return (dd+yo.tg1-1);
 }
@@ -708,8 +708,8 @@ static m2j(my,mm,md) {
 // timezone and calendar type won't be affected (tz and ct remain unchanged)
 // input:  (
 //  my = year,
-//  mm = month [Tagu=1, Kason=2, Nayon=3, 1st Waso=0, (2nd) Waso=4, Wagaung=5, 
-//    Tawthalin=6, Thadingyut=7, Tazaungmon=8, Nadaw=9, Pyatho=10, Tabodwe=11,  
+//  mm = month [Tagu=1, Kason=2, Nayon=3, 1st Waso=0, (2nd) Waso=4, Wagaung=5,
+//    Tawthalin=6, Thadingyut=7, Tazaungmon=8, Nadaw=9, Pyatho=10, Tabodwe=11,
 //    Tabaung=12 , Late Tagu=13, Late Kason=14 ],
 //  md = day of the month [1-30]
 // ... )
@@ -722,10 +722,10 @@ SetMDateTime(my, mm, md, hour = 12, minute = 0, second = 0, tz = 0) {
 //-------------------------------------------------------------------------
 // Get sabbath day and sabbath eve from day of the month, month, and year type.
 // input: (
-//    md= day of the month [1-30], 
-//    mm = month [Tagu=1, Kason=2, Nayon=3, 1st Waso=0, (2nd) Waso=4, Wagaung=5, 
-//         Tawthalin=6, Thadingyut=7, Tazaungmon=8, Nadaw=9, Pyatho=10, Tabodwe=11,  
-//         Tabaung=12, Late Tagu=13, Late Kason=14 ], 
+//    md= day of the month [1-30],
+//    mm = month [Tagu=1, Kason=2, Nayon=3, 1st Waso=0, (2nd) Waso=4, Wagaung=5,
+//         Tawthalin=6, Thadingyut=7, Tazaungmon=8, Nadaw=9, Pyatho=10, Tabodwe=11,
+//         Tabaung=12, Late Tagu=13, Late Kason=14 ],
 //    myt = year type [0=common, 1=little watat, 2=big watat])
 // output: ( [1=sabbath, 2=sabbath eve, 0=else])
 static cal_sabbath(md,mm,myt){
@@ -737,9 +737,9 @@ static cal_sabbath(md,mm,myt){
 //-------------------------------------------------------------------------
 // Get yatyaza from month, and weekday
 // input: (
-//    mm = month [Tagu=1, Kason=2, Nayon=3, 1st Waso=0, (2nd) Waso=4, Wagaung=5, 
-//         Tawthalin=6, Thadingyut=7, Tazaungmon=8, Nadaw=9, Pyatho=10, Tabodwe=11,  
-//         Tabaung=12, Late Tagu=13, Late Kason=14 ], 
+//    mm = month [Tagu=1, Kason=2, Nayon=3, 1st Waso=0, (2nd) Waso=4, Wagaung=5,
+//         Tawthalin=6, Thadingyut=7, Tazaungmon=8, Nadaw=9, Pyatho=10, Tabodwe=11,
+//         Tabaung=12, Late Tagu=13, Late Kason=14 ],
 //    wd= weekday  [0=sat, 1=sun, ..., 6=fri])
 // output: ( [1=yatyaza, 0=else])
 static cal_yatyaza(mm,wd){
@@ -752,23 +752,23 @@ static cal_yatyaza(mm,wd){
 //-------------------------------------------------------------------------
 // Get pyathada from month, and weekday
 // input: (
-//    mm = month [Tagu=1, Kason=2, Nayon=3, 1st Waso=0, (2nd) Waso=4, Wagaung=5, 
-//         Tawthalin=6, Thadingyut=7, Tazaungmon=8, Nadaw=9, Pyatho=10, Tabodwe=11,  
-//         Tabaung=12, Late Tagu=13, Late Kason=14 ], 
+//    mm = month [Tagu=1, Kason=2, Nayon=3, 1st Waso=0, (2nd) Waso=4, Wagaung=5,
+//         Tawthalin=6, Thadingyut=7, Tazaungmon=8, Nadaw=9, Pyatho=10, Tabodwe=11,
+//         Tabaung=12, Late Tagu=13, Late Kason=14 ],
 //    wd= weekday  [0=sat, 1=sun, ..., 6=fri])
 // output: ( [1=pyathada, 2=afternoon pyathada, 0=else])
 static cal_pyathada(mm,wd){
 	//first waso is considered waso
-	var m1=mm%4; var pyathada=0; var wda=[1,3,3,0,2,1,2]; 	
+	var m1=mm%4; var pyathada=0; var wda=[1,3,3,0,2,1,2];
 	if((m1==0)&&(wd==4)) pyathada=2;//afternoon pyathada
 	if(m1==wda[wd]) pyathada=1;
 	return pyathada;
 }
 //-------------------------------------------------------------------------
-// nagahle 
+// nagahle
 // input: (
-//    mm = month [Tagu=1, Kason=2, Nayon=3, 1st Waso=0, (2nd) Waso=4, Wagaung=5, 
-//         Tawthalin=6, Thadingyut=7, Tazaungmon=8, Nadaw=9, Pyatho=10, Tabodwe=11,  
+//    mm = month [Tagu=1, Kason=2, Nayon=3, 1st Waso=0, (2nd) Waso=4, Wagaung=5,
+//         Tawthalin=6, Thadingyut=7, Tazaungmon=8, Nadaw=9, Pyatho=10, Tabodwe=11,
 //         Tabaung=12, Late Tagu=13, Late Kason=14 ])
 // output: ( [0=west, 1=north, 2=east, 3=south])
 static cal_nagahle(mm) {
@@ -776,92 +776,92 @@ static cal_nagahle(mm) {
 	return Math.floor((mm%12)/3);
 }
 //-------------------------------------------------------------------------
-// mahabote 
+// mahabote
 // input: (
 //  my = year,
 //  wd= weekday  [0=sat, 1=sun, ..., 6=fri])
 // output: ( [0=Binga, 1=Atun, 2=Yaza, 3=Adipati, 4= Marana, 5=Thike, 6=Puti])
 static cal_mahabote(my,wd) {return (my-wd)%7;}
 //-------------------------------------------------------------------------
-// nakhat 
+// nakhat
 // input: ( my = year )
 // output: ( [0=Ogre, 1=Elf, 2=Human] )
 static cal_nakhat(my) {return my%3;}
 //-------------------------------------------------------------------------
-// thamanyo 
+// thamanyo
 // input: (
-//    mm = month [Tagu=1, Kason=2, Nayon=3, 1st Waso=0, (2nd) Waso=4, Wagaung=5, 
-//         Tawthalin=6, Thadingyut=7, Tazaungmon=8, Nadaw=9, Pyatho=10, Tabodwe=11,  
-//         Tabaung=12, Late Tagu=13, Late Kason=14 ], 
+//    mm = month [Tagu=1, Kason=2, Nayon=3, 1st Waso=0, (2nd) Waso=4, Wagaung=5,
+//         Tawthalin=6, Thadingyut=7, Tazaungmon=8, Nadaw=9, Pyatho=10, Tabodwe=11,
+//         Tabaung=12, Late Tagu=13, Late Kason=14 ],
 //    wd= weekday  [0=sat, 1=sun, ..., 6=fri])
 // output: ( [1=thamanyo, 0=else])
 static cal_thamanyo(mm,wd) {
 	var mmt=Math.floor(mm/13); mm=mm%13+mmt; // to 1-12 with month type
 	if (mm<=0) mm=4;//first waso is considered waso (looks no need here)
-	var thamanyo=0; 
-	var m1=mm-1-Math.floor(mm/9); 
+	var thamanyo=0;
+	var m1=mm-1-Math.floor(mm/9);
 	var wd1=(m1*2-Math.floor(m1/8))%7;
-	var wd2=(wd+7-wd1)%7; 
+	var wd2=(wd+7-wd1)%7;
 	if(wd2<=1) thamanyo=1;
 	return thamanyo;
 }
 //-------------------------------------------------------------------------
 // Get amyeittasote
 // input: (
-//    md= day of the month [1-30], 
+//    md= day of the month [1-30],
 //    wd= weekday  [0=sat, 1=sun, ..., 6=fri])
 // output: ( [1=amyeittasote, 0=else])
 static cal_amyeittasote(md,wd) {
 	var mf=md-15*Math.floor(md/16);//get fortnight day [0-15]
-	var amyeittasote=0; var wda=[5,8,3,7,2,4,1]; 
+	var amyeittasote=0; var wda=[5,8,3,7,2,4,1];
 	if(mf==wda[wd]) amyeittasote=1;
 	return amyeittasote;
 }
 //-------------------------------------------------------------------------
 // Get warameittugyi
 // input: (
-//    md= day of the month [1-30], 
+//    md= day of the month [1-30],
 //    wd= weekday  [0=sat, 1=sun, ..., 6=fri])
 // output: ( [1=warameittugyi, 0=else])
 static cal_warameittugyi(md,wd) {
 	var mf=md-15*Math.floor(md/16);//get fortnight day [0-15]
-	var warameittugyi=0; var wda=[7,1,4,8,9,6,3]; 
+	var warameittugyi=0; var wda=[7,1,4,8,9,6,3];
 	if(mf==wda[wd]) warameittugyi=1;
 	return warameittugyi;
 }
 //-------------------------------------------------------------------------
 // Get warameittunge
 // input: (
-//    md= day of the month [1-30], 
+//    md= day of the month [1-30],
 //    wd= weekday  [0=sat, 1=sun, ..., 6=fri])
 // output: ( [1=warameittunge, 0=else])
 static cal_warameittunge(md,wd) {
 	var mf=md-15*Math.floor(md/16);//get fortnight day [0-15]
-	var warameittunge=0; var wn=(wd+6)%7; 
+	var warameittunge=0; var wn=(wd+6)%7;
 	if((12-mf)==wn) warameittunge=1;
 	return warameittunge;
 }
 //-------------------------------------------------------------------------
 // Get yatpote
 // input: (
-//    md= day of the month [1-30], 
+//    md= day of the month [1-30],
 //    wd= weekday  [0=sat, 1=sun, ..., 6=fri])
 // output: ( [1=yatpote, 0=else])
 static cal_yatpote(md,wd) {
 	var mf=md-15*Math.floor(md/16);//get fortnight day [0-15]
-	var yatpote=0; var wda=[8,1,4,6,9,8,7]; 
+	var yatpote=0; var wda=[8,1,4,6,9,8,7];
 	if(mf==wda[wd]) yatpote=1;
 	return yatpote;
 }
 //-------------------------------------------------------------------------
 // Get thamaphyu
 // input: (
-//    md= day of the month [1-30], 
+//    md= day of the month [1-30],
 //    wd= weekday  [0=sat, 1=sun, ..., 6=fri])
 // output: ( [1=thamaphyu, 0=else])
 static cal_thamaphyu(md,wd) {
 	var mf=md-15*Math.floor(md/16);//get fortnight day [0-15]
-	var thamaphyu=0; var wda=[1,2,6,6,5,6,7];  
+	var thamaphyu=0; var wda=[1,2,6,6,5,6,7];
 	if(mf==wda[wd]) thamaphyu=1;
 	var wdb=[0,1,0,0,0,3,3]; if(mf==wdb[wd]) thamaphyu=1;
 	if((mf==4) && (wd==5)) thamaphyu=1;
@@ -870,60 +870,60 @@ static cal_thamaphyu(md,wd) {
 //-------------------------------------------------------------------------
 // Get nagapor
 // input: (
-//    md= day of the month [1-30], 
+//    md= day of the month [1-30],
 //    wd= weekday  [0=sat, 1=sun, ..., 6=fri])
 // output: ( [1=nagapor, 0=else])
 static cal_nagapor(md,wd) {
-	var nagapor=0; var wda=[26,21,2,10,18,2,21];  
+	var nagapor=0; var wda=[26,21,2,10,18,2,21];
 	if(md==wda[wd]) nagapor=1;
 	var wdb=[17,19,1,0,9,0,0]; if(md==wdb[wd]) nagapor=1;
 	if(((md==2)&&(wd==1))||(((md==12)||(md==4)||(md==18))&&(wd==2)))nagapor=1;
 	return nagapor;
 }
 //-------------------------------------------------------------------------
-// yatyotema 
+// yatyotema
 // input: (
-//    mm = month [Tagu=1, Kason=2, Nayon=3, 1st Waso=0, (2nd) Waso=4, Wagaung=5, 
-//         Tawthalin=6, Thadingyut=7, Tazaungmon=8, Nadaw=9, Pyatho=10, Tabodwe=11,  
-//         Tabaung=12, Late Tagu=13, Late Kason=14 ], 
+//    mm = month [Tagu=1, Kason=2, Nayon=3, 1st Waso=0, (2nd) Waso=4, Wagaung=5,
+//         Tawthalin=6, Thadingyut=7, Tazaungmon=8, Nadaw=9, Pyatho=10, Tabodwe=11,
+//         Tabaung=12, Late Tagu=13, Late Kason=14 ],
 //    md= day of the month [1-30])
 // output: ( [1=yatyotema, 0=else])
 static cal_yatyotema(mm,md) {
 	var mmt=Math.floor(mm/13); mm=mm%13+mmt; // to 1-12 with month type
 	if (mm<=0) mm=4;//first waso is considered waso
 	var mf=md-15*Math.floor(md/16);//get fortnight day [0-15]
-	var yatyotema=0; var m1=(mm%2)?mm:((mm+9)%12); 
+	var yatyotema=0; var m1=(mm%2)?mm:((mm+9)%12);
 	m1=(m1+4)%12+1; if(mf==m1)yatyotema=1;
 	return yatyotema;
 }
 //-------------------------------------------------------------------------
-// mahayatkyan 
+// mahayatkyan
 // input: (
-//    mm = month [Tagu=1, Kason=2, Nayon=3, 1st Waso=0, (2nd) Waso=4, Wagaung=5, 
-//         Tawthalin=6, Thadingyut=7, Tazaungmon=8, Nadaw=9, Pyatho=10, Tabodwe=11,  
-//         Tabaung=12, Late Tagu=13, Late Kason=14 ], 
+//    mm = month [Tagu=1, Kason=2, Nayon=3, 1st Waso=0, (2nd) Waso=4, Wagaung=5,
+//         Tawthalin=6, Thadingyut=7, Tazaungmon=8, Nadaw=9, Pyatho=10, Tabodwe=11,
+//         Tabaung=12, Late Tagu=13, Late Kason=14 ],
 //    md= day of the month [1-30])
 // output: ( [1=mahayatkyan, 0=else])
 static cal_mahayatkyan(mm,md) {
 	if (mm<=0) mm=4;//first waso is considered waso
 	var mf=md-15*Math.floor(md/16);//get fortnight day [0-15]
-	var mahayatkyan=0; var m1=(Math.floor((mm%12)/2)+4)%6+1; 
+	var mahayatkyan=0; var m1=(Math.floor((mm%12)/2)+4)%6+1;
 	if(mf==m1) mahayatkyan=1;
 	return mahayatkyan;
 }
 //-------------------------------------------------------------------------
-// shanyat 
+// shanyat
 // input: (
-//    mm = month [Tagu=1, Kason=2, Nayon=3, 1st Waso=0, (2nd) Waso=4, Wagaung=5, 
-//         Tawthalin=6, Thadingyut=7, Tazaungmon=8, Nadaw=9, Pyatho=10, Tabodwe=11,  
-//         Tabaung=12, Late Tagu=13, Late Kason=14 ], 
+//    mm = month [Tagu=1, Kason=2, Nayon=3, 1st Waso=0, (2nd) Waso=4, Wagaung=5,
+//         Tawthalin=6, Thadingyut=7, Tazaungmon=8, Nadaw=9, Pyatho=10, Tabodwe=11,
+//         Tabaung=12, Late Tagu=13, Late Kason=14 ],
 //    md= day of the month [1-30])
 // output: ( [1=shanyat, 0=else])
 static cal_shanyat(mm,md) {
 	var mmt=Math.floor(mm/13); mm=mm%13+mmt; // to 1-12 with month type
 	if (mm<=0) mm=4;//first waso is considered waso
 	var mf=md-15*Math.floor(md/16);//get fortnight day [0-15]
-	var shanyat=0; var sya=[8,8,2,2,9,3,3,5,1,4,7,4]; 
+	var shanyat=0; var sya=[8,8,2,2,9,3,3,5,1,4,7,4];
 	if(mf==sya[mm-1]) shanyat=1;
 	return shanyat;
 }
@@ -933,7 +933,7 @@ static cal_shanyat(mm,md) {
 // output: (array of strings)
 static cal_astro(jdn) {
 	jdn=Math.round(jdn);
-	var myt,my,mm,md; var hs=[]; 
+	var myt,my,mm,md; var hs=[];
 	var yo=ceMmDateTime.j2m(jdn);
 	myt=yo.myt; my=yo.my; mm = yo.mm; md=yo.md;
 	var wd=(jdn+2)%7;//week day [0=sat, 1=sun, ..., 6=fri]
@@ -957,7 +957,7 @@ static cal_astro(jdn) {
 // Get holidays
 // input: (jdn=Julian Day Number)
 // output: ( array of strings)
-// Thanks to Ye Lin Kyaw and Aye Nyein for the knowledge about 
+// Thanks to Ye Lin Kyaw and Aye Nyein for the knowledge about
 // the Myanmar calendar and the new year
 static cal_holiday(jdn) {
 	jdn=Math.round(jdn);
@@ -988,7 +988,7 @@ static cal_holiday(jdn) {
 			((jdn>=(atn+2))&&(jdn<=(akn+7))))) {hs.push("Holiday");}
 	}
 	//---------------------------------
-	// holidays on gregorian calendar	
+	// holidays on gregorian calendar
 	if((gy>=2018) && (gm==1) && (gd==1)) {hs.push("New Year's Day");}
 	else if((gy>=1948) && (gm==1) && (gd==4)) {hs.push("Independence Day");}
 	else if((gy>=1947) && (gm==2) && (gd==12)) {hs.push("Union Day");}
@@ -1011,8 +1011,8 @@ static cal_holiday(jdn) {
 	else if((mm==10) && (md==1)) {hs.push("Karen New Year's Day");}
 	else if((mm==12) && (mp==1)) {hs.push("Tabaung Pwe");}
 	//---------------------------------
-	// //other holidays	
-	// var ghEid=[2456513,2456867,2457221,2457576,2457930,2458285,2458640];	
+	// //other holidays
+	// var ghEid=[2456513,2456867,2457221,2457576,2457930,2458285,2458640];
 	// if(ceMmDateTime.bSearch1(jdn,ghEid)>=0) {hs.push("Eid");}
 
 	// // var ghDiwali=[2456599,2456953,2457337,2457691,2458045,2458430,2458784];
@@ -1058,7 +1058,7 @@ static cal_holiday2(jdn) {
 	var go=ceDateTime.j2w(jdn);
 	gy=go.y; gm=go.m; gd=go.d;
 	//---------------------------------
-	// holidays on gregorian calendar	
+	// holidays on gregorian calendar
 	var doe=ceMmDateTime.DoE(gy);
 	if((gy<=2017) && (gm==1) && (gd==1)) {hs.push("New Year's Day");}
 	else if((gy>=1915) && (gm==2) && (gd==13)) {hs.push("G. Aung San BD");}
@@ -1103,11 +1103,11 @@ static cal_holiday2(jdn) {
 //End of checking holidays ####################################################
 
 //-------------------------------------------------------------------------
-// jd to date string in Myanmar calendar 
+// jd to date string in Myanmar calendar
 // input: (jd:julian date,
 //  fs: format string [Optional argument: "&y &M &P &ff"]
 //  tz : time zone offset in hours (Optional, e.g. 8 for GMT +8))
-// output: date string in Myanmar calendar according to fm 
+// output: date string in Myanmar calendar according to fm
 // where formatting strings are as follows
 // &yyyy : Myanmar year [0000-9999, e.g. 1380]
 // &YYYY : Sasana year [0000-9999, e.g. 2562]
@@ -1121,10 +1121,10 @@ static cal_holiday2(jdn) {
 // &ff : fortnight day with zero padding [01-15]
 // &f : fortnight day [1-15]
 static j2ms(jd,fs="&y &M &P &ff",tz=0)
-{	
+{
 	jd+=tz/24.0;
 	var jdn=Math.round(jd);
-	var myt,my,mm,md,mp,mf; 
+	var myt,my,mm,md,mp,mf;
 	var yo=ceMmDateTime.j2m(jdn);
 	myt=yo.myt; my=yo.my; mm = yo.mm; md=yo.md;
 	mp=ceMmDateTime.cal_mp(md,mm,myt);
@@ -1175,24 +1175,24 @@ static j2ms(jd,fs="&y &M &P &ff",tz=0)
 // get properties
 
 // Myanmar year type
-get myt(){ 
+get myt(){
 	var yo=ceMmDateTime.j2m(this.jdnl);
 	return yo.myt;
-} 
+}
 
 // Myanmar year
-get my(){ 
+get my(){
 	var yo=ceMmDateTime.j2m(this.jdnl);
 	return yo.my;
-} 
+}
 
 // Sasana year
-get sy(){ 
+get sy(){
 	return (this.my+1182);
-} 
+}
 
 // Myanmar year name
-get my_name(){ 
+get my_name(){
 	// var yna=["ပုဿနှစ်","မာခနှစ်","ဖ္လကိုန်နှစ်","စယ်နှစ်",
 	// 	"ပိသျက်နှစ်","စိဿနှစ်","အာသတ်နှစ်","သရဝန်နှစ်",
 	// 	"ဘဒြနှစ်","အာသိန်နှစ်","ကြတိုက်နှစ်","မြိက္ကသိုဝ်နှစ်"];
@@ -1200,28 +1200,28 @@ get my_name(){
 		"Visakha","Jyeshtha","Ashadha","Sravana",
 		"Bhadrapaha","Asvini","Krittika","Mrigasiras"];
 	return yna[this.my%12];
-} 
+}
 
 // Myanmar month [1-14]
-// [Tagu=1, Kason=2, Nayon=3, 1st Waso=0, (2nd) Waso=4, Wagaung=5, 
-//  Tawthalin=6, Thadingyut=7, Tazaungmon=8, Nadaw=9, Pyatho=10, Tabodwe=11,  
+// [Tagu=1, Kason=2, Nayon=3, 1st Waso=0, (2nd) Waso=4, Wagaung=5,
+//  Tawthalin=6, Thadingyut=7, Tazaungmon=8, Nadaw=9, Pyatho=10, Tabodwe=11,
 //  Tabaung=12, Late Tagu=13, Late Kason=14 ]
-get mm(){ 
+get mm(){
 	var yo=ceMmDateTime.j2m(this.jdnl);
 	return yo.mm;
-} 
+}
 
 // Myanmar day of the month [1-30]
-get md(){ 
+get md(){
 	var yo=ceMmDateTime.j2m(this.jdnl);
 	return yo.md;
-} 
+}
 
 // Moon phase [0=waxing, 1=full moon, 2=waning, 3=new moon]
-get mp(){ 
+get mp(){
 	var yo=ceMmDateTime.j2m(this.jdnl);
 	return ceMmDateTime.cal_mp(yo.md,yo.mm,yo.myt);
-} 
+}
 
 // Fortnight day [1-15]
 get mf() {
@@ -1297,7 +1297,7 @@ get holidays2() {
 // input: (
 //  fs: format string [Optional argument: "&yyyy &M &P &ff"]
 //  tz : time zone offset in hours (Optional, e.g. 8 for GMT +8))
-// output: date string in Myanmar calendar according to fm 
+// output: date string in Myanmar calendar according to fm
 // where formatting strings are as follows
 // &yyyy : Myanmar year [0000-9999, e.g. 1380]
 // &YYYY : Sasana year [0000-9999, e.g. 2562]
@@ -1331,7 +1331,7 @@ class ceMmTranslate {
 // inputs ( str = string to translate,
 //    toLn = to language number [optional: 1]
 //    fromLn = from language number [optional: 0],)
-// Language number: 0: English, 1: Myanmar (Unicode), 2: Zawgyi, 
+// Language number: 0: English, 1: Myanmar (Unicode), 2: Zawgyi,
 //		3: Mon, 4: Shan, 5: Karen
 T(str,toLn=1,fromLn=0) {
 	var i; var l=this.m_lang.length;
@@ -1344,9 +1344,9 @@ T(str,toLn=1,fromLn=0) {
 }
 //-----------------------------------------------------------------------------
 // Initialize the language catalog with 2 dimensional array
-// Index 0: English, 1: Myanmar (Unicode), 2: Zawgyi, 
+// Index 0: English, 1: Myanmar (Unicode), 2: Zawgyi,
 //		3: Mon, 4: Tai, 5: Karen
-//Credit: 
+//Credit:
 //Mon language translation by 'ITVilla': http://it-villa.blogspot.com/
 //and Proof reading by Mikau Nyan
 //Tai language translation by 'Jao Tai Num'
@@ -1409,7 +1409,7 @@ static Init() {
         ["Teachers'", "ဆရာများ", "ဆရာမ်ား", "ဆရာများ", "ၶူးသွၼ်", "ဆရာများ"],
         ["Holiday", "ရုံးပိတ်ရက်", "႐ုံးပိတ္ရက္", "ရုံးပိတ်ရက်", "ဝၼ်းပိၵ်ႉလုမ်း", "ရုံးပိတ်ရက်"],
         ["Chinese", "တရုတ်", "တ႐ုတ္", "တရုတ်", "ၵူၼ်းၸၢဝ်းၶေ", "တရုတ်"],
-        ["Easter", "ထမြောက်ရာနေ့", "ထေျမာက္ရာေန႔", "ထမြောက်ရာနေ့", "ပၢင်ႇပွႆးၶွပ်ႈၶူပ်ႇၸဝ်ႈၶရိတ်", "ထမြောက်ရာနေ့"], 
+        ["Easter", "ထမြောက်ရာနေ့", "ထေျမာက္ရာေန႔", "ထမြောက်ရာနေ့", "ပၢင်ႇပွႆးၶွပ်ႈၶူပ်ႇၸဝ်ႈၶရိတ်", "ထမြောက်ရာနေ့"],
 		["0","၀","၀","၀","0","၀"],
 		["1","၁","၁","၁","1","၁"],
 		["2","၂","၂","၂","2","၂"],
@@ -1431,7 +1431,7 @@ static Init() {
         ["Sabbath", "ဥပုသ်", "ဥပုသ္", "တ္ၚဲသဳ", "သိၼ်", "အိၣ်ဘှံး"],
         ["Yatyaza", "ရက်ရာဇာ", "ရက္ရာဇာ", "တ္ၚဲရာဇာ", "ဝၼ်းထုၼ်း", "ရက်ရာဇာ"],
         ["Pyathada", "ပြဿဒါး", "ျပႆဒါး", "တ္ၚဲပြာဗ္ဗဒါ", "ဝၼ်းပျၢတ်ႈ", "ပြဿဒါး"],
-        ["Afternoon", "မွန်းလွဲ", "မြန္းလြဲ", "မွန်းလွဲ", "ဝၢႆးဝၼ်း", "မွန်းလွဲ"],        
+        ["Afternoon", "မွန်းလွဲ", "မြန္းလြဲ", "မွန်းလွဲ", "ဝၢႆးဝၼ်း", "မွန်းလွဲ"],
         ["January", "ဇန်နဝါရီ", "ဇန္နဝါရီ", "ဂျာန်နျူအာရဳ", "ၸၼ်ႇဝႃႇရီႇ","ယနူၤအါရံၤ"],
         ["February", "ဖေဖော်ဝါရီ", "ေဖေဖာ္ဝါရီ", "ဝှေဝ်ဗျူအာရဳ", "ၾႅပ်ႉဝႃႇရီႇ","ဖ့ၤဘြူၤအါရံၤ"],
         ["March", "မတ်", "မတ္", "မာတ်ချ်", "မျၢတ်ႉၶျ်","မၢ်ၡး"],
@@ -1442,8 +1442,8 @@ static Init() {
         ["August", "ဩဂုတ်", "ဩဂုတ္", "အဝ်ဂါတ်", "ဢေႃးၵၢတ်ႉ","အီကူး"],
         ["September", "စက်တင်ဘာ", "စက္တင္ဘာ", "သိတ်ထီဗာ", "သႅပ်ႇထႅမ်ႇပႃႇ","စဲးပတ့ဘၢၣ်"],
         ["October", "အောက်တိုဘာ", "ေအာက္တိုဘာ", "အံက်ထဝ်ဗာ", "ဢွၵ်ႇထူဝ်ႇပႃႇ","အီးကထိဘၢၣ်"],
-        ["November", "နိုဝင်ဘာ", "နိုဝင္ဘာ", "နဝ်ဝါမ်ဗာ", "ၼူဝ်ႇဝႅမ်ႇပႃႇ","နိၣ်ဝ့ဘၢၣ်"],		
-        ["December", "ဒီဇင်ဘာ", "ဒီဇင္ဘာ", "ဒီဇြေန်ဗာ", "တီႇသႅမ်ႇပႃႇ","ဒံၣ်စ့ဘၢၣ်"],		
+        ["November", "နိုဝင်ဘာ", "နိုဝင္ဘာ", "နဝ်ဝါမ်ဗာ", "ၼူဝ်ႇဝႅမ်ႇပႃႇ","နိၣ်ဝ့ဘၢၣ်"],
+        ["December", "ဒီဇင်ဘာ", "ဒီဇင္ဘာ", "ဒီဇြေန်ဗာ", "တီႇသႅမ်ႇပႃႇ","ဒံၣ်စ့ဘၢၣ်"],
         ["Tagu", "တန်ခူး", "တန္ခူး", "ဂိတုစဲ", "ႁႃႈ","လါချံ"],
         ["Kason", "ကဆုန်", "ကဆုန္", "ဂိတုပသာ်", "ႁူၵ်း","ဒ့ၣ်ညါ"],
         ["Nayon", "နယုန်", "နယုန္", "ဂိတုဇှေ်", "ၸဵတ်း","လါနွံ"],
@@ -1455,7 +1455,7 @@ static Init() {
         ["Nadaw", "နတ်တော်", "နတ္ေတာ္", "ဂိတုမြေက္ကသဵု", "ၸဵင်","လါပျုၤ"],
         ["Pyatho", "ပြာသို", "ျပာသို", "ဂိတုပှော်", "ၵမ်","သလ့ၤ"],
         ["Tabodwe", "တပို့တွဲ", "တပို႔တြဲ", "ဂိတုမာ်", "သၢမ်","ထ့ကူး"],
-        ["Tabaung", "တပေါင်း", "တေပါင္း", "ဂိတုဖဝ်ရဂိုန်", "သီႇ","သွ့ကီ"],		
+        ["Tabaung", "တပေါင်း", "တေပါင္း", "ဂိတုဖဝ်ရဂိုန်", "သီႇ","သွ့ကီ"],
         ["First", "ပ", "ပ", "ပ", "ပ","၁ "],
         ["Second", "ဒု", "ဒု", "ဒု", "တု","၂ "],
         ["Late", "နှောင်း", "ေႏွာင္း", "နှောင်း", "ဝၢႆး","စဲၤ"],
@@ -1502,7 +1502,7 @@ static Init() {
         ["Mrigasiras", "မြိက္ကသိုဝ်", "ၿမိကၠသိုဝ္", "မြိက္ကသိုဝ်", "မြိက္ကသိုဝ်", "မြိက္ကသိုဝ်"],
         ["Calculator", "တွက်စက်", "တြက္စက္", "တွက်စက်", "သွၼ်", "တွက်စက်"],
 		//[". ","။ ","။ ","။ ","။ ","။ "],
-		//[", ","၊ ","၊ ","၊ ","၊ ","၊ "],	
+		//[", ","၊ ","၊ ","၊ ","၊ ","၊ "],
 	];
 }
 //-----------------------------------------------------------------------------
@@ -1518,7 +1518,7 @@ class ceMmChronicle {
         this.m_rul = ceMmChronicle.InitRulers();
         this.m_dyn = ceMmChronicle.InitDynasties();
 	}
-//-----------------------------------------------------------------------------	
+//-----------------------------------------------------------------------------
 // get chronicle evidence
 chronicle(jdn) {
 	var str=""; var i=this.hSearch(jdn);
@@ -1526,7 +1526,7 @@ chronicle(jdn) {
 	return str;
 }
 //-----------------------------------------------------------------------------
-//Search jd in chronicle 
+//Search jd in chronicle
 //input: (jdn=Julian day number)
 //output: (i= index)
 hSearch(jdn)
@@ -3234,15 +3234,15 @@ static InitChronicle() {
 		"Fortnight Day":10,
 		"Day of the Week":"Friday",
 		"Description":"သင်ကြီးငါယန်သင် ကျောက်စာ။ သိမ်နှင့်ပုထိုးပြု၍ ကျွန်၊ လယ်၊ ယာ၊ နွား၊ စသည့် လှူဒါန်း။ ... သကရစ် (၅၃) ၇ ခု ကြတီုက်နှစ် ကူဆူန်လ္ဆန် ၁၀ ရျာက် သုက္ကြာနိယ္အ်အာ ... ။ မန္တလေးနန်းတွင်းကျောက်စာများ အတွဲ ၁။ ကျောက်တိုင်အမှတ် နံပါတ် ၃။ (ကြတိုက်နှစ်ဆိုပါက ၅၃၈ ဖြစ်သင့်သည်။)"
-	}, 	
-	{ 
-	  "Julian Day Number":2152069, 
-	  "Myanmar Year":541, 
-	  "Myanmar Month":"Tabodwe", 
-	  "Moon Phase":"Waning", 
-	  "Fortnight Day":5, 
-	  "Day of the Week":"Friday", 
-	  "Description":"ကျစွာမင် မိထွေးတော်ကျောင်း ကျောက်စာ။ သကရစ် ၅၄၁ ခု။ မာဃနှစ်။ တပိုဝ်ထွယ်လ္ဆုတ် (၅ ရျ)က်။ ၆ နိယ် သင်ကြီ ငထာသင်... ။ ရှေးဟောင်းမြန်မာကျောက်စာများ-ဒုတိယတွဲ။ စာမျက်နှာ ၅၈။" 
+	},
+	{
+	  "Julian Day Number":2152069,
+	  "Myanmar Year":541,
+	  "Myanmar Month":"Tabodwe",
+	  "Moon Phase":"Waning",
+	  "Fortnight Day":5,
+	  "Day of the Week":"Friday",
+	  "Description":"ကျစွာမင် မိထွေးတော်ကျောင်း ကျောက်စာ။ သကရစ် ၅၄၁ ခု။ မာဃနှစ်။ တပိုဝ်ထွယ်လ္ဆုတ် (၅ ရျ)က်။ ၆ နိယ် သင်ကြီ ငထာသင်... ။ ရှေးဟောင်းမြန်မာကျောက်စာများ-ဒုတိယတွဲ။ စာမျက်နှာ ၅၈။"
 	 },
 	{
 		"Julian Day Number":2152959,
@@ -3315,15 +3315,15 @@ static InitChronicle() {
 		"Fortnight Day":15,
 		"Day of the Week":"Wednesday",
 		"Description":"မောင်းမ စောခင်မိငယ် ကျောက်စာ။ ဓမ္မရာဇိကဘုရား၊ ပုဂံမြို့။ လှူဒါန်း။ သကရစ် ၅၆၈ ခု ပိသျက်နှစ် ကဆုန်လပ္လည် ပုတ္တဟူနိယ် မောင်မ စဝ်ခင်မိငယ် ဖုရှာကိုဝ် ... ။ မန္တလေးနန်းတွင်းကျောက်စာများ အတွဲ ၁။ ကျောက်တိုင်အမှတ် နံပါတ် ၃၇။"
-	}, 	
-	{ 
-	  "Julian Day Number":2162746, 
-	  "Myanmar Year":571, 
-	  "Myanmar Month":"Kason", 
-	  "Moon Phase":"Waxing", 
-	  "Fortnight Day":7, 
-	  "Day of the Week":"Thursday", 
-	  "Description":"မင်းမတ်နဂါပိုရ်မိဖွါးကျောက်စာ။ သကရစ် ၅၇၁ ခု အာသိန်နှစ်၊ ကုဆုန်လ္ဆန် ၇ ရျက် ၅ နိယ်အာ၊ မင်မတ် နဂါပိုရ် မိဖွါ... ။ ရှေးဟောင်းမြန်မာကျောက်စာများ-ဒုတိယတွဲ။ စာမျက်နှာ ၃။  " 
+	},
+	{
+	  "Julian Day Number":2162746,
+	  "Myanmar Year":571,
+	  "Myanmar Month":"Kason",
+	  "Moon Phase":"Waxing",
+	  "Fortnight Day":7,
+	  "Day of the Week":"Thursday",
+	  "Description":"မင်းမတ်နဂါပိုရ်မိဖွါးကျောက်စာ။ သကရစ် ၅၇၁ ခု အာသိန်နှစ်၊ ကုဆုန်လ္ဆန် ၇ ရျက် ၅ နိယ်အာ၊ မင်မတ် နဂါပိုရ် မိဖွါ... ။ ရှေးဟောင်းမြန်မာကျောက်စာများ-ဒုတိယတွဲ။ စာမျက်နှာ ၃။  "
 	 },
 	{
 		"Julian Day Number":2163605,
@@ -3342,33 +3342,33 @@ static InitChronicle() {
 		"Fortnight Day":5,
 		"Day of the Week":"Friday",
 		"Description":"ဖျက္ကသု ကျောက်စာ။ ဖျက္ကသုမင်း။ လယ်၊ မြေ လှူဒါန်း။ သာကရစ် ၅၈၈ ခု ပုဿနှစ် နတ္တဝ်လဆု . ၅ သုကြာနိယ် ... ။ မန္တလေးနန်းတွင်းကျောက်စာများ အတွဲ ၁။ ကျောက်တိုင်အမှတ် နံပါတ် ၂၉။"
-	}, 	 	 	
-	{ 
-	  "Julian Day Number":2170481, 
-	  "Myanmar Year":592, 
-	  "Myanmar Month":"Waso", 
-	  "Moon Phase":"Waxing", 
-	  "Fortnight Day":5, 
-	  "Day of the Week":"Saturday", 
-	  "Description":"မကွေးသူ မုဆိုးမ ကျောက်စာ။ သကရစ် ၅၉၂ ခု ဖ္လကိုန်  မ္လွယ်တာလဆန် ၅ ရျက် စနိယ်နိယ်အာ ... ။ ရှေးဟောင်းမြန်မာကျောက်စာများ-ဒုတိယတွဲ။ စာမျက်နှာ ၁၈။" 
+	},
+	{
+	  "Julian Day Number":2170481,
+	  "Myanmar Year":592,
+	  "Myanmar Month":"Waso",
+	  "Moon Phase":"Waxing",
+	  "Fortnight Day":5,
+	  "Day of the Week":"Saturday",
+	  "Description":"မကွေးသူ မုဆိုးမ ကျောက်စာ။ သကရစ် ၅၉၂ ခု ဖ္လကိုန်  မ္လွယ်တာလဆန် ၅ ရျက် စနိယ်နိယ်အာ ... ။ ရှေးဟောင်းမြန်မာကျောက်စာများ-ဒုတိယတွဲ။ စာမျက်နှာ ၁၈။"
 	 },
-	{ 
-	  "Julian Day Number":2171439, 
-	  "Myanmar Year":594, 
-	  "Myanmar Month":"Tabodwe", 
-	  "Moon Phase":"Waning", 
-	  "Fortnight Day":2, 
-	  "Day of the Week":"Friday", 
-	  "Description":"အမတ်အစလပိဇည်တို့ကျောက်စာ။ သကရစ် ၅၉၄ ခု တပိုဝ်ထွယ် လဆု ၂ င်္ရျ သုကြနိ... ။ ရှေးဟောင်းမြန်မာကျောက်စာများ-ဒုတိယတွဲ။ စာမျက်နှာ ၉။  " 
+	{
+	  "Julian Day Number":2171439,
+	  "Myanmar Year":594,
+	  "Myanmar Month":"Tabodwe",
+	  "Moon Phase":"Waning",
+	  "Fortnight Day":2,
+	  "Day of the Week":"Friday",
+	  "Description":"အမတ်အစလပိဇည်တို့ကျောက်စာ။ သကရစ် ၅၉၄ ခု တပိုဝ်ထွယ် လဆု ၂ င်္ရျ သုကြနိ... ။ ရှေးဟောင်းမြန်မာကျောက်စာများ-ဒုတိယတွဲ။ စာမျက်နှာ ၉။  "
 	 },
-	{ 
-	  "Julian Day Number":2172263, 
-	  "Myanmar Year":597, 
-	  "Myanmar Month":"Kason", 
-	  "Moon Phase":"Full moon", 
-	  "Fortnight Day":15, 
-	  "Day of the Week":"Wednesday", 
-	  "Description":"သူကြွယ်ငါစပါသင် ကျောက်စာ။ သကရစ် ၅၉၇ ခုကုဆုန် လပ္လည္အ် ပုတ္တဟောနိယ္အ် သုကြွယ် ငါစပါသင် ...။ မန္တလေးနန်းတွင်းကျောက်စာရုံ(၂)ရှိကျောက်စာများ။ မန္တလေးမြို့နန်းတွင်းကျောက်စာရုံငယ်။ ကျောက်တိုင်အမှတ် နံပါတ် ၅၈၉(က)။" 
+	{
+	  "Julian Day Number":2172263,
+	  "Myanmar Year":597,
+	  "Myanmar Month":"Kason",
+	  "Moon Phase":"Full moon",
+	  "Fortnight Day":15,
+	  "Day of the Week":"Wednesday",
+	  "Description":"သူကြွယ်ငါစပါသင် ကျောက်စာ။ သကရစ် ၅၉၇ ခုကုဆုန် လပ္လည္အ် ပုတ္တဟောနိယ္အ် သုကြွယ် ငါစပါသင် ...။ မန္တလေးနန်းတွင်းကျောက်စာရုံ(၂)ရှိကျောက်စာများ။ မန္တလေးမြို့နန်းတွင်းကျောက်စာရုံငယ်။ ကျောက်တိုင်အမှတ် နံပါတ် ၅၈၉(က)။"
 	 },
 	{
 		"Julian Day Number":2172725,
@@ -3378,33 +3378,33 @@ static InitChronicle() {
 		"Fortnight Day":7,
 		"Day of the Week":"Wednesday",
 		"Description":"သိရိတရိဘဝနာတိတျပဝရ မဟာ ဓမ္မရာဇာ စေည်ု။ ဘုရားတည်၊ ကျောင်းဆောက်၍၊ လယ်၊ မြေ လှူဒါန်း။ သက္ကရာဇ် ၅၉၈ ကြတိုက်နှစ် တော်သလင်လဆန် ၇ ရက် ဗုဒ္ဓဟုနိယ်၊ သိရိ တရိ ဘဝနာ တိတျ ပဝရ မဟာဓမ္မရာဇာ စေည်ု အမည်တော်ဟိသော ဖုရာဆုတောင်သော ၊ မင်မြတ်သှ် ... ။ မန္တလေးနန်းတွင်းကျောက်စာများ အတွဲ ၁။ ကျောက်တိုင်အမှတ် နံပါတ် ၂၈။"
-	}, 	
-	{ 
-	  "Julian Day Number":2173332, 
-	  "Myanmar Year":600, 
-	  "Myanmar Month":"Tagu", 
-	  "Moon Phase":"Waning", 
-	  "Fortnight Day":5, 
-	  "Day of the Week":"Monday", 
-	  "Description":"မဟာဂေါတမဘုရားကျောက်စာ။ သကရစ် ၆၀၀ ပုဿနှစ် တန်ခူလ္ဆုတ် ၅ ရျက် တနှင်လာနိယ်... ။ ရှေးဟောင်းမြန်မာကျောက်စာများ-ဒုတိယတွဲ။ စာမျက်နှာ ၁။  " 
-	 }, 	
-	{ 
-	  "Julian Day Number":2173680, 
-	  "Myanmar Year":601, 
-	  "Myanmar Month":"Tagu", 
-	  "Moon Phase":"Full moon", 
-	  "Fortnight Day":2, 
-	  "Day of the Week":"Saturday", 
-	  "Description":"အမတ်အစလပိဇည်တို့ကျောက်စာ။ သကရစ် ၆၀၁ ခု။ တန်ထူလပ္လည် စနိယ်နိယ်... ။ ရှေးဟောင်းမြန်မာကျောက်စာများ-ဒုတိယတွဲ။ စာမျက်နှာ ၉။  " 
-	 }, 	
-	{ 
-	  "Julian Day Number":2173699, 
-	  "Myanmar Year":601, 
-	  "Myanmar Month":"Kason", 
-	  "Moon Phase":"Waxing", 
-	  "Fortnight Day":5, 
-	  "Day of the Week":"Thursday", 
-	  "Description":"ငကောင်ရင်သင်ဂူကျောင်းကျောက်စာ။ သက္ကရစ် ၆၀၁ ခု၊ မာခနှစ် ကဆုန်လဆန် ၅ ရျက် ကြာသပတေနိယ် ... ။ ရှေးဟောင်းမြန်မာကျောက်စာများ-ဒုတိယတွဲ။ စာမျက်နှာ ၁၄။  " 
+	},
+	{
+	  "Julian Day Number":2173332,
+	  "Myanmar Year":600,
+	  "Myanmar Month":"Tagu",
+	  "Moon Phase":"Waning",
+	  "Fortnight Day":5,
+	  "Day of the Week":"Monday",
+	  "Description":"မဟာဂေါတမဘုရားကျောက်စာ။ သကရစ် ၆၀၀ ပုဿနှစ် တန်ခူလ္ဆုတ် ၅ ရျက် တနှင်လာနိယ်... ။ ရှေးဟောင်းမြန်မာကျောက်စာများ-ဒုတိယတွဲ။ စာမျက်နှာ ၁။  "
+	 },
+	{
+	  "Julian Day Number":2173680,
+	  "Myanmar Year":601,
+	  "Myanmar Month":"Tagu",
+	  "Moon Phase":"Full moon",
+	  "Fortnight Day":2,
+	  "Day of the Week":"Saturday",
+	  "Description":"အမတ်အစလပိဇည်တို့ကျောက်စာ။ သကရစ် ၆၀၁ ခု။ တန်ထူလပ္လည် စနိယ်နိယ်... ။ ရှေးဟောင်းမြန်မာကျောက်စာများ-ဒုတိယတွဲ။ စာမျက်နှာ ၉။  "
+	 },
+	{
+	  "Julian Day Number":2173699,
+	  "Myanmar Year":601,
+	  "Myanmar Month":"Kason",
+	  "Moon Phase":"Waxing",
+	  "Fortnight Day":5,
+	  "Day of the Week":"Thursday",
+	  "Description":"ငကောင်ရင်သင်ဂူကျောင်းကျောက်စာ။ သက္ကရစ် ၆၀၁ ခု၊ မာခနှစ် ကဆုန်လဆန် ၅ ရျက် ကြာသပတေနိယ် ... ။ ရှေးဟောင်းမြန်မာကျောက်စာများ-ဒုတိယတွဲ။ စာမျက်နှာ ၁၄။  "
 	 },
 	{
 	  "Julian Day Number":2173825,
@@ -3414,51 +3414,51 @@ static InitChronicle() {
 	  "Fortnight Day":13,
 	  "Day of the Week":"Thursday",
 	  "Description":"လေးမျက်နှာဘုရား ကျောက်စာ။ သကရစ် ၆၀၁ မာခနှစ် တ်သလင်လဆန် ၁၃ ရျက် ကြသပတေ ... ။ မန္တလေးနန်းတွင်းကျောက်စာရုံ(၂)ရှိကျောက်စာများ။ မန္တလေးမြို့နန်းတွင်းကျောက်စာရုံငယ်။ ကျောက်တိုင်အမှတ် နံပါတ် ၅၀၂။"
-	 }, 	  	
-	{ 
-	  "Julian Day Number":2173827, 
-	  "Myanmar Year":601, 
-	  "Myanmar Month":"Tawthalin", 
-	  "Moon Phase":"Full moon", 
-	  "Fortnight Day":15, 
-	  "Day of the Week":"Saturday", 
-	  "Description":"သင်လျင်သိရတ်မောင်နှံကျောက်စာ။ သကရစ် ၆၀၁ ။ မာခနှစ် တဝ်သလင်လဆန် ၁၅ ရျက် စနိယ်နိယ္အ်လျှင် ... ။ ရှေးဟောင်းမြန်မာကျောက်စာများ-ဒုတိယတွဲ။ စာမျက်နှာ ၁၀။  " 
-	 },	
-	{ 
-	  "Julian Day Number":2173980, 
-	  "Myanmar Year":601, 
-	  "Myanmar Month":"Tabodwe", 
-	  "Moon Phase":"Waning", 
-	  "Fortnight Day":5, 
-	  "Day of the Week":"Friday", 
-	  "Description":"ရတနာသုံးပါးအားကျွန်လယ်လှူသောကျောက်စာ။ သကရစ် ၆၀၁ ခု မာခါနှစ် တပိုဝ်ထွယ် လဆုတ် ၅ ရျက် သုကြာနိယ်... ။ ရှေးဟောင်းမြန်မာကျောက်စာများ-ဒုတိယတွဲ။ စာမျက်နှာ ၆။  " 
 	 },
-	{ 
-	  "Julian Day Number":2173991, 
-	  "Myanmar Year":601, 
-	  "Myanmar Month":"Tabaung", 
-	  "Moon Phase":"Waxing", 
-	  "Fortnight Day":1, 
-	  "Day of the Week":"Monday", 
-	  "Description":"မင်းမတ်နဂါပိုရ်မိဖွါးကျောက်စာ။ သကရစ် ၆၀၁ ခု မာဃနှစ်၊ တပေါင်လ္ဆန် ၁ ရျက် ၂ နိယ်အာ... ။ ရှေးဟောင်းမြန်မာကျောက်စာများ-ဒုတိယတွဲ။ စာမျက်နှာ ၃။  " 
-	 }, 	
-	{ 
-	  "Julian Day Number":2174151, 
-	  "Myanmar Year":602, 
-	  "Myanmar Month":"Kason", 
-	  "Moon Phase":"Waxing", 
-	  "Fortnight Day":12, 
-	  "Day of the Week":"Monday", 
-	  "Description":"ဖုန်းသည် သင်ကြီး ငါပံသင် ကျောက်စာ။ သကရစ် ၆၀၂ ခု ကုဆုန်လဆန် ၁၂ ရျက် တနှင်္လာနိယ် ... ။ ရှေးဟောင်းမြန်မာကျောက်စာများ-ဒုတိယတွဲ။ စာမျက်နှာ ၁၅။" 
-	 }, 	
-	{ 
-	  "Julian Day Number":2174152, 
-	  "Myanmar Year":602, 
-	  "Myanmar Month":"Waso", 
-	  "Moon Phase":"Waxing", 
-	  "Fortnight Day":13, 
-	  "Day of the Week":"Wednesday", 
-	  "Description":"သူကြွယ် ငစုယ်သင် ဘုရားကြီး ကျောက်စာ။ သကရစ် ၆၀၂ ခု ဖုတ်သနှစ် မ္လွယ်တာလ္ဆန် ၁၃ ရျက် ၄ နိယ် ... ။ ရှေးဟောင်းမြန်မာကျောက်စာများ-ဒုတိယတွဲ။ စာမျက်နှာ ၂၁။" 
+	{
+	  "Julian Day Number":2173827,
+	  "Myanmar Year":601,
+	  "Myanmar Month":"Tawthalin",
+	  "Moon Phase":"Full moon",
+	  "Fortnight Day":15,
+	  "Day of the Week":"Saturday",
+	  "Description":"သင်လျင်သိရတ်မောင်နှံကျောက်စာ။ သကရစ် ၆၀၁ ။ မာခနှစ် တဝ်သလင်လဆန် ၁၅ ရျက် စနိယ်နိယ္အ်လျှင် ... ။ ရှေးဟောင်းမြန်မာကျောက်စာများ-ဒုတိယတွဲ။ စာမျက်နှာ ၁၀။  "
+	 },
+	{
+	  "Julian Day Number":2173980,
+	  "Myanmar Year":601,
+	  "Myanmar Month":"Tabodwe",
+	  "Moon Phase":"Waning",
+	  "Fortnight Day":5,
+	  "Day of the Week":"Friday",
+	  "Description":"ရတနာသုံးပါးအားကျွန်လယ်လှူသောကျောက်စာ။ သကရစ် ၆၀၁ ခု မာခါနှစ် တပိုဝ်ထွယ် လဆုတ် ၅ ရျက် သုကြာနိယ်... ။ ရှေးဟောင်းမြန်မာကျောက်စာများ-ဒုတိယတွဲ။ စာမျက်နှာ ၆။  "
+	 },
+	{
+	  "Julian Day Number":2173991,
+	  "Myanmar Year":601,
+	  "Myanmar Month":"Tabaung",
+	  "Moon Phase":"Waxing",
+	  "Fortnight Day":1,
+	  "Day of the Week":"Monday",
+	  "Description":"မင်းမတ်နဂါပိုရ်မိဖွါးကျောက်စာ။ သကရစ် ၆၀၁ ခု မာဃနှစ်၊ တပေါင်လ္ဆန် ၁ ရျက် ၂ နိယ်အာ... ။ ရှေးဟောင်းမြန်မာကျောက်စာများ-ဒုတိယတွဲ။ စာမျက်နှာ ၃။  "
+	 },
+	{
+	  "Julian Day Number":2174151,
+	  "Myanmar Year":602,
+	  "Myanmar Month":"Kason",
+	  "Moon Phase":"Waxing",
+	  "Fortnight Day":12,
+	  "Day of the Week":"Monday",
+	  "Description":"ဖုန်းသည် သင်ကြီး ငါပံသင် ကျောက်စာ။ သကရစ် ၆၀၂ ခု ကုဆုန်လဆန် ၁၂ ရျက် တနှင်္လာနိယ် ... ။ ရှေးဟောင်းမြန်မာကျောက်စာများ-ဒုတိယတွဲ။ စာမျက်နှာ ၁၅။"
+	 },
+	{
+	  "Julian Day Number":2174152,
+	  "Myanmar Year":602,
+	  "Myanmar Month":"Waso",
+	  "Moon Phase":"Waxing",
+	  "Fortnight Day":13,
+	  "Day of the Week":"Wednesday",
+	  "Description":"သူကြွယ် ငစုယ်သင် ဘုရားကြီး ကျောက်စာ။ သကရစ် ၆၀၂ ခု ဖုတ်သနှစ် မ္လွယ်တာလ္ဆန် ၁၃ ရျက် ၄ နိယ် ... ။ ရှေးဟောင်းမြန်မာကျောက်စာများ-ဒုတိယတွဲ။ စာမျက်နှာ ၂၁။"
 	 },
 	{
 		"Julian Day Number":2174154,
@@ -3468,132 +3468,132 @@ static InitChronicle() {
 		"Fortnight Day":15,
 		"Day of the Week":"Monday",
 		"Description":"ဖုန်မ္လတ်ပုရှာ မယ်တော် ကျောက်စာ။ လှူဒါန်း။ သကရစ် ၆၀၂ ခု ဖ္လကိုန် သံဝစ္ဆိုဝ်ရနှစ် မ္လယ်တာလပ္လည် တန်နှင်လာနိယ် ဖုန်မ္လတ်ပုရှာ မယ်တော်ကာ ... ။ မန္တလေးနန်းတွင်းကျောက်စာများ အတွဲ ၁။ ကျောက်တိုင်အမှတ် နံပါတ် ၂၈။"
-	}, 	 	
-	{ 
-	  "Julian Day Number":2174163, 
-	  "Myanmar Year":602, 
-	  "Myanmar Month":"Waso", 
-	  "Moon Phase":"Waning", 
-	  "Fortnight Day":9, 
-	  "Day of the Week":"Thursday", 
-	  "Description":"မကွေးသူ မုဆိုးမ ကျောက်စာ။ သကရစ် ၆၀၂ ခု  မ္လွယ်တာလဆုတ် ၉ ရျက်ကြသပတိယ်နိယ် ... ။ ရှေးဟောင်းမြန်မာကျောက်စာများ-ဒုတိယတွဲ။ စာမျက်နှာ ၁၉။" 
-	 }, 	
-	{ 
-	  "Julian Day Number":2174272, 
-	  "Myanmar Year":602, 
-	  "Myanmar Month":"Tazaungmon", 
-	  "Moon Phase":"Full moon", 
-	  "Fortnight Day":15, 
-	  "Day of the Week":"Monday", 
-	  "Description":"ငဇဝ်သင် ကျောက်စာ။ သကရစ် ၆၀၂ ခု  ဖလကိုန်နှစ် တန်ဆောင်မှုန် လပ္လည် သတင် တနှင်လာနိယ္အ် ... ။ ရှေးဟောင်းမြန်မာကျောက်စာများ-ဒုတိယတွဲ။ စာမျက်နှာ ၂၀။" 
-	 }, 	
-	{ 
-	  "Julian Day Number":2174410, 
-	  "Myanmar Year":603, 
-	  "Myanmar Month":"Tagu", 
-	  "Moon Phase":"Waxing", 
-	  "Fortnight Day":7, 
-	  "Day of the Week":"Monday", 
-	  "Description":"ဖွားစောခေါ် အမိပုရှာစော ကျောက်စာ။ သကရစ် ၆၀၃ ခု။ တန်ခူလဆန် ၇ ရျက်။ တနှင်လာနိယ် ... ။ ရှေးဟောင်းမြန်မာကျောက်စာများ-ဒုတိယတွဲ။ စာမျက်နှာ ၂၉။" 
+	},
+	{
+	  "Julian Day Number":2174163,
+	  "Myanmar Year":602,
+	  "Myanmar Month":"Waso",
+	  "Moon Phase":"Waning",
+	  "Fortnight Day":9,
+	  "Day of the Week":"Thursday",
+	  "Description":"မကွေးသူ မုဆိုးမ ကျောက်စာ။ သကရစ် ၆၀၂ ခု  မ္လွယ်တာလဆုတ် ၉ ရျက်ကြသပတိယ်နိယ် ... ။ ရှေးဟောင်းမြန်မာကျောက်စာများ-ဒုတိယတွဲ။ စာမျက်နှာ ၁၉။"
 	 },
-	 { 
-	  "Julian Day Number":2174447, 
-	  "Myanmar Year":603, 
-	  "Myanmar Month":"Kason", 
-	  "Moon Phase":"Full moon", 
-	  "Fortnight Day":15, 
-	  "Day of the Week":"Wednesday", 
-	  "Description":"ဖွားစောခေါ် အမိပုရဟားစော ကျောက်စာ။ သကရစ် ၆၀၃ ခု။ စယ်နှစ်။ ကုဆုန်လပ္လည် ဗုဒ္ဓဟူနိယ္အ်နှိုက် ... ။ ရှေးဟောင်းမြန်မာကျောက်စာများ-ဒုတိယတွဲ။ စာမျက်နှာ ၂၄။" 
+	{
+	  "Julian Day Number":2174272,
+	  "Myanmar Year":602,
+	  "Myanmar Month":"Tazaungmon",
+	  "Moon Phase":"Full moon",
+	  "Fortnight Day":15,
+	  "Day of the Week":"Monday",
+	  "Description":"ငဇဝ်သင် ကျောက်စာ။ သကရစ် ၆၀၂ ခု  ဖလကိုန်နှစ် တန်ဆောင်မှုန် လပ္လည် သတင် တနှင်လာနိယ္အ် ... ။ ရှေးဟောင်းမြန်မာကျောက်စာများ-ဒုတိယတွဲ။ စာမျက်နှာ ၂၀။"
 	 },
-	 { 
-	  "Julian Day Number":2174617, 
-	  "Myanmar Year":603, 
-	  "Myanmar Month":"Tazaungmon", 
-	  "Moon Phase":"Waxing", 
-	  "Fortnight Day":8, 
-	  "Day of the Week":"Friday", 
-	  "Description":"သ္ခိင်ဖွားကြီးမြေး စိုးမင်း ကျောက်စာ။ သကရစ် ၆၀၃ ခု စယ်နှစ် တန်ဆောင်မှုန်လ္ဆန် ၈ ရ္ယာက် သုကြာနိယ် ... ။ ရှေးဟောင်းမြန်မာကျောက်စာများ-ဒုတိယတွဲ။ စာမျက်နှာ ၂၇။" 
-	 }, 	 	
-	{ 
-	  "Julian Day Number":2174772, 
-	  "Myanmar Year":604, 
-	  "Myanmar Month":"Tagu", 
-	  "Moon Phase":"Waxing", 
-	  "Fortnight Day":13, 
-	  "Day of the Week":"Thursday", 
-	  "Description":"ရွှေဂူဘုရား ကျောက်စာ။ သကရစ် ၆၀၄ ခု ဗိသျက် သံဝစ္ဆိုဝ်နှစ် တန်ခူလဆန် ၁၃ ရျက် ကြဿပတိယ်နိယ္အ် ... ။ ရှေးဟောင်းမြန်မာကျောက်စာများ-ဒုတိယတွဲ။ စာမျက်နှာ ၅၆။" 
-	 }, 	
-	{ 
-	  "Julian Day Number":2174798, 
-	  "Myanmar Year":604, 
-	  "Myanmar Month":"Kason", 
-	  "Moon Phase":"Waxing", 
-	  "Fortnight Day":10, 
-	  "Day of the Week":"Friday", 
-	  "Description":"ကျစွာမင် မိထွေးတော်ကျောင်း ကျောက်စာ။ သကရစ် ၆၀၄ ခု။ ကဆုန်လ္ဆန် ၁၀ ရျက် သုကြာနိယ်... ။ ရှေးဟောင်းမြန်မာကျောက်စာများ-ဒုတိယတွဲ။ စာမျက်နှာ ၅၉။" 
+	{
+	  "Julian Day Number":2174410,
+	  "Myanmar Year":603,
+	  "Myanmar Month":"Tagu",
+	  "Moon Phase":"Waxing",
+	  "Fortnight Day":7,
+	  "Day of the Week":"Monday",
+	  "Description":"ဖွားစောခေါ် အမိပုရှာစော ကျောက်စာ။ သကရစ် ၆၀၃ ခု။ တန်ခူလဆန် ၇ ရျက်။ တနှင်လာနိယ် ... ။ ရှေးဟောင်းမြန်မာကျောက်စာများ-ဒုတိယတွဲ။ စာမျက်နှာ ၂၉။"
 	 },
-	{ 
-	  "Julian Day Number":2174804, 
-	  "Myanmar Year":604, 
-	  "Myanmar Month":"Kason", 
-	  "Moon Phase":"Full moon", 
-	  "Fortnight Day":15, 
-	  "Day of the Week":"Wednesday", 
-	  "Description":"သံဗျင် အစလဘိရစ် ဒါနပတိ မောင်နှံ ကျောက်စာ။ သကရစ် ၆၀၄ ခု ဖ္လကုန်နှစ် ကုဆုန်လ ပ္လည် ပုတ္တ ဟူနိယ် ... ။ ရှေးဟောင်းမြန်မာကျောက်စာများ-ဒုတိယတွဲ။ စာမျက်နှာ ၃၀။" 
-	 }, 	 	
-	{ 
-	  "Julian Day Number":2174913, 
-	  "Myanmar Year":604, 
-	  "Myanmar Month":"Wagung", 
-	  "Moon Phase":"Waxing", 
-	  "Fortnight Day":6, 
-	  "Day of the Week":"Wednesday", 
-	  "Description":"မြေအတွက် အချင်းများသော ကျောက်စာ။ သကရစ် ၆၀၄ ခု ဗိသျက်နှစ် နံကာလဆန် ၆ ရျက် ပုတ္တဟူနိယ် ... ။ ကျစွာမင် မိထွေးတော်ကျောင်း ကျောက်စာ။ သကရစ် ၆၀၄ ခု နံကာလ္ဆန် ၆ ရျက် ပုတ္တဟူနိယ်အာ... ။ ရှေးဟောင်းမြန်မာကျောက်စာများ-ဒုတိယတွဲ။ စာမျက်နှာ ၅၂၊ ၅၉။" 
-	 }, 	
-	{ 
-	  "Julian Day Number":2174951, 
-	  "Myanmar Year":604, 
-	  "Myanmar Month":"Tawthalin", 
-	  "Moon Phase":"Full moon", 
-	  "Fortnight Day":15, 
-	  "Day of the Week":"Thursday", 
-	  "Description":"သူကြွယ် ငါမြှောက်သင် ကျောက်စာ။ သကရစ် ၆၀၄ ခု ပိသျက် သံမဆ္စိုရာနှာစ် တဝ်သ္လင်လပ္လည် ကြတ္သပတိယ်နိယ် ... ။ ရှေးဟောင်းမြန်မာကျောက်စာများ-ဒုတိယတွဲ။ စာမျက်နှာ ၅၃။" 
-	 }, 	
-	{ 
-	  "Julian Day Number":2175005, 
-	  "Myanmar Year":604, 
-	  "Myanmar Month":"Tazaungmon", 
-	  "Moon Phase":"Waxing", 
-	  "Fortnight Day":10, 
-	  "Day of the Week":"Thursday", 
-	  "Description":"သ္ခိင် ငမည်သင် ဂုဏာတိရိတ် ကျောက်စာ။ သကရစ် ၆၀၄ ခု ဗိသျက်နှစ် တန်ဆောင်မှုန်လဆန် ၁(၀) ရျက် ကြသပတိယ်နိယ္အ် ... ။ ရှေးဟောင်းမြန်မာကျောက်စာများ-ဒုတိယတွဲ။ စာမျက်နှာ ၅၄။" 
+	 {
+	  "Julian Day Number":2174447,
+	  "Myanmar Year":603,
+	  "Myanmar Month":"Kason",
+	  "Moon Phase":"Full moon",
+	  "Fortnight Day":15,
+	  "Day of the Week":"Wednesday",
+	  "Description":"ဖွားစောခေါ် အမိပုရဟားစော ကျောက်စာ။ သကရစ် ၆၀၃ ခု။ စယ်နှစ်။ ကုဆုန်လပ္လည် ဗုဒ္ဓဟူနိယ္အ်နှိုက် ... ။ ရှေးဟောင်းမြန်မာကျောက်စာများ-ဒုတိယတွဲ။ စာမျက်နှာ ၂၄။"
 	 },
-	{ 
-	  "Julian Day Number":2175054, 
-	  "Myanmar Year":604, 
-	  "Myanmar Month":"Nadaw", 
-	  "Moon Phase":"Waning", 
-	  "Fortnight Day":14, 
-	  "Day of the Week":"Thursday", 
-	  "Description":"ညောင်ရံကြီး သမီး ကျောက်စာ။ သကရစ် ၆၀၄ ခု။ ပိသျက်နှစ်။ နတ်တော် လဆုတ် ၁၄ ရျက် သတင် ကြဿတိယ်နိယ္အ် ... ။ ရှေးဟောင်းမြန်မာကျောက်စာများ-ဒုတိယတွဲ။ စာမျက်နှာ ၃၃။" 
-	 }, 	 	
-	{ 
-	  "Julian Day Number":2175057, 
-	  "Myanmar Year":604, 
-	  "Myanmar Month":"Pyatho", 
-	  "Moon Phase":"Waxing", 
-	  "Fortnight Day":3, 
-	  "Day of the Week":"Sunday", 
-	  "Description":"ညောင်ရံကြီး သမီး ကျောက်စာ။ သကရစ် ၆၀၄ ခု။ ပိသျက်နှစ်။ ပ္လသိုဝ်လဆန် ၃ ရျက် တန်နှင်ကုနုယ်နိယ္အ် ... ။ ရှေးဟောင်းမြန်မာကျောက်စာများ-ဒုတိယတွဲ။ စာမျက်နှာ ၃၃။" 
+	 {
+	  "Julian Day Number":2174617,
+	  "Myanmar Year":603,
+	  "Myanmar Month":"Tazaungmon",
+	  "Moon Phase":"Waxing",
+	  "Fortnight Day":8,
+	  "Day of the Week":"Friday",
+	  "Description":"သ္ခိင်ဖွားကြီးမြေး စိုးမင်း ကျောက်စာ။ သကရစ် ၆၀၃ ခု စယ်နှစ် တန်ဆောင်မှုန်လ္ဆန် ၈ ရ္ယာက် သုကြာနိယ် ... ။ ရှေးဟောင်းမြန်မာကျောက်စာများ-ဒုတိယတွဲ။ စာမျက်နှာ ၂၇။"
 	 },
-	{ 
-	  "Julian Day Number":2175600, 
-	  "Myanmar Year":606, 
-	  "Myanmar Month":"Waso", 
-	  "Moon Phase":"Full moon", 
-	  "Fortnight Day":15, 
-	  "Day of the Week":"Monday", 
-	  "Description":"ဖုမ်မသင်ကြံကျောင်းကျောက်စာ။ သကရာဇ် ၆၀၅ ခု အာသိတ်နှစ် (နှစ်အမည်အရ ၆၀၆ ဖြစ်မှ ကိုက်ညီမည်) မ္လယ်တာလ္ဆန် ၁၅ ရျက် ဝါဆိုသတ .... င် တနှင်လာနိယ်လျှင်။ မန္တလေးနန်းတွင်းကျောက်စာရုံ(၂)ရှိကျောက်စာများ။ မန္တလေးမြို့နန်းတွင်းကျောက်စာရုံငယ်။ ကျောက်တိုင်အမှတ် နံပါတ် ၅၅၇။" 
+	{
+	  "Julian Day Number":2174772,
+	  "Myanmar Year":604,
+	  "Myanmar Month":"Tagu",
+	  "Moon Phase":"Waxing",
+	  "Fortnight Day":13,
+	  "Day of the Week":"Thursday",
+	  "Description":"ရွှေဂူဘုရား ကျောက်စာ။ သကရစ် ၆၀၄ ခု ဗိသျက် သံဝစ္ဆိုဝ်နှစ် တန်ခူလဆန် ၁၃ ရျက် ကြဿပတိယ်နိယ္အ် ... ။ ရှေးဟောင်းမြန်မာကျောက်စာများ-ဒုတိယတွဲ။ စာမျက်နှာ ၅၆။"
+	 },
+	{
+	  "Julian Day Number":2174798,
+	  "Myanmar Year":604,
+	  "Myanmar Month":"Kason",
+	  "Moon Phase":"Waxing",
+	  "Fortnight Day":10,
+	  "Day of the Week":"Friday",
+	  "Description":"ကျစွာမင် မိထွေးတော်ကျောင်း ကျောက်စာ။ သကရစ် ၆၀၄ ခု။ ကဆုန်လ္ဆန် ၁၀ ရျက် သုကြာနိယ်... ။ ရှေးဟောင်းမြန်မာကျောက်စာများ-ဒုတိယတွဲ။ စာမျက်နှာ ၅၉။"
+	 },
+	{
+	  "Julian Day Number":2174804,
+	  "Myanmar Year":604,
+	  "Myanmar Month":"Kason",
+	  "Moon Phase":"Full moon",
+	  "Fortnight Day":15,
+	  "Day of the Week":"Wednesday",
+	  "Description":"သံဗျင် အစလဘိရစ် ဒါနပတိ မောင်နှံ ကျောက်စာ။ သကရစ် ၆၀၄ ခု ဖ္လကုန်နှစ် ကုဆုန်လ ပ္လည် ပုတ္တ ဟူနိယ် ... ။ ရှေးဟောင်းမြန်မာကျောက်စာများ-ဒုတိယတွဲ။ စာမျက်နှာ ၃၀။"
+	 },
+	{
+	  "Julian Day Number":2174913,
+	  "Myanmar Year":604,
+	  "Myanmar Month":"Wagung",
+	  "Moon Phase":"Waxing",
+	  "Fortnight Day":6,
+	  "Day of the Week":"Wednesday",
+	  "Description":"မြေအတွက် အချင်းများသော ကျောက်စာ။ သကရစ် ၆၀၄ ခု ဗိသျက်နှစ် နံကာလဆန် ၆ ရျက် ပုတ္တဟူနိယ် ... ။ ကျစွာမင် မိထွေးတော်ကျောင်း ကျောက်စာ။ သကရစ် ၆၀၄ ခု နံကာလ္ဆန် ၆ ရျက် ပုတ္တဟူနိယ်အာ... ။ ရှေးဟောင်းမြန်မာကျောက်စာများ-ဒုတိယတွဲ။ စာမျက်နှာ ၅၂၊ ၅၉။"
+	 },
+	{
+	  "Julian Day Number":2174951,
+	  "Myanmar Year":604,
+	  "Myanmar Month":"Tawthalin",
+	  "Moon Phase":"Full moon",
+	  "Fortnight Day":15,
+	  "Day of the Week":"Thursday",
+	  "Description":"သူကြွယ် ငါမြှောက်သင် ကျောက်စာ။ သကရစ် ၆၀၄ ခု ပိသျက် သံမဆ္စိုရာနှာစ် တဝ်သ္လင်လပ္လည် ကြတ္သပတိယ်နိယ် ... ။ ရှေးဟောင်းမြန်မာကျောက်စာများ-ဒုတိယတွဲ။ စာမျက်နှာ ၅၃။"
+	 },
+	{
+	  "Julian Day Number":2175005,
+	  "Myanmar Year":604,
+	  "Myanmar Month":"Tazaungmon",
+	  "Moon Phase":"Waxing",
+	  "Fortnight Day":10,
+	  "Day of the Week":"Thursday",
+	  "Description":"သ္ခိင် ငမည်သင် ဂုဏာတိရိတ် ကျောက်စာ။ သကရစ် ၆၀၄ ခု ဗိသျက်နှစ် တန်ဆောင်မှုန်လဆန် ၁(၀) ရျက် ကြသပတိယ်နိယ္အ် ... ။ ရှေးဟောင်းမြန်မာကျောက်စာများ-ဒုတိယတွဲ။ စာမျက်နှာ ၅၄။"
+	 },
+	{
+	  "Julian Day Number":2175054,
+	  "Myanmar Year":604,
+	  "Myanmar Month":"Nadaw",
+	  "Moon Phase":"Waning",
+	  "Fortnight Day":14,
+	  "Day of the Week":"Thursday",
+	  "Description":"ညောင်ရံကြီး သမီး ကျောက်စာ။ သကရစ် ၆၀၄ ခု။ ပိသျက်နှစ်။ နတ်တော် လဆုတ် ၁၄ ရျက် သတင် ကြဿတိယ်နိယ္အ် ... ။ ရှေးဟောင်းမြန်မာကျောက်စာများ-ဒုတိယတွဲ။ စာမျက်နှာ ၃၃။"
+	 },
+	{
+	  "Julian Day Number":2175057,
+	  "Myanmar Year":604,
+	  "Myanmar Month":"Pyatho",
+	  "Moon Phase":"Waxing",
+	  "Fortnight Day":3,
+	  "Day of the Week":"Sunday",
+	  "Description":"ညောင်ရံကြီး သမီး ကျောက်စာ။ သကရစ် ၆၀၄ ခု။ ပိသျက်နှစ်။ ပ္လသိုဝ်လဆန် ၃ ရျက် တန်နှင်ကုနုယ်နိယ္အ် ... ။ ရှေးဟောင်းမြန်မာကျောက်စာများ-ဒုတိယတွဲ။ စာမျက်နှာ ၃၃။"
+	 },
+	{
+	  "Julian Day Number":2175600,
+	  "Myanmar Year":606,
+	  "Myanmar Month":"Waso",
+	  "Moon Phase":"Full moon",
+	  "Fortnight Day":15,
+	  "Day of the Week":"Monday",
+	  "Description":"ဖုမ်မသင်ကြံကျောင်းကျောက်စာ။ သကရာဇ် ၆၀၅ ခု အာသိတ်နှစ် (နှစ်အမည်အရ ၆၀၆ ဖြစ်မှ ကိုက်ညီမည်) မ္လယ်တာလ္ဆန် ၁၅ ရျက် ဝါဆိုသတ .... င် တနှင်လာနိယ်လျှင်။ မန္တလေးနန်းတွင်းကျောက်စာရုံ(၂)ရှိကျောက်စာများ။ မန္တလေးမြို့နန်းတွင်းကျောက်စာရုံငယ်။ ကျောက်တိုင်အမှတ် နံပါတ် ၅၅၇။"
 	 },
 	 {
 		 "Julian Day Number":2181040,
@@ -4008,15 +4008,15 @@ static InitChronicle() {
 	  "Fortnight Day":8,
 	  "Day of the Week":"Thursday",
 	  "Description":"မင်းနန်သူကျောင်းကျောက်စာ။ ...ရစ် ၇၁၈ ခု ကြတိုက်နှစ် ကဆုန်လ္ဆန် ၈ ရျက် (၅နေအား) ရတနာသုံမ်ပါ ... ။ မန္တလေးနန်းတွင်းကျောက်စာရုံ(၂)ရှိကျောက်စာများ။ မန္တလေးမြို့နန်းတွင်းကျောက်စာရုံငယ်။ ကျောက်တိုင်အမှတ် နံပါတ် ၅၂၆ (က)။"
-	 }, 	
-	{ 
-	  "Julian Day Number":2216756, 
-	  "Myanmar Year":718, 
-	  "Myanmar Month":"Tabaung", 
-	  "Moon Phase":"Waxing", 
-	  "Fortnight Day":5, 
-	  "Day of the Week":"Monday", 
-	  "Description":"မာရဖင်ရတနာ စည်းခုံဘုရားကျောံစာ။ သကရစ် ၇၁၈ ခု တပေါင်လ္ဆန် ၅ ရျက် ၂လာနေလျှင် ...။ မန္တလေးနန်းတွင်းကျောက်စာရုံ(၂)ရှိကျောက်စာများ။ မန္တလေးမြို့နန်းတွင်းကျောက်စာရုံငယ်။ ကျောက်တိုင်အမှတ် နံပါတ် ၅၉၃။" 
+	 },
+	{
+	  "Julian Day Number":2216756,
+	  "Myanmar Year":718,
+	  "Myanmar Month":"Tabaung",
+	  "Moon Phase":"Waxing",
+	  "Fortnight Day":5,
+	  "Day of the Week":"Monday",
+	  "Description":"မာရဖင်ရတနာ စည်းခုံဘုရားကျောံစာ။ သကရစ် ၇၁၈ ခု တပေါင်လ္ဆန် ၅ ရျက် ၂လာနေလျှင် ...။ မန္တလေးနန်းတွင်းကျောက်စာရုံ(၂)ရှိကျောက်စာများ။ မန္တလေးမြို့နန်းတွင်းကျောက်စာရုံငယ်။ ကျောက်တိုင်အမှတ် နံပါတ် ၅၉၃။"
 	 },
 	{
 	  "Julian Day Number":2216924,
@@ -4116,24 +4116,24 @@ static InitChronicle() {
 	  "Fortnight Day":8,
 	  "Day of the Week":"Wednesday",
 	  "Description":"ပုခြည်သူကြီး ကျောက်စာ။ ... ရစ် ၇၅၇၊ နယုန်လ္ဆန် ၈ ရျက် ၄ နေ ပုခြည်သူကြီ... ။  မန္တလေးနန်းတွင်းကျောက်စာရုံ (၂) ရှိကျောက်စာများ။ မန္တလေးမြို့၊ နန်းတွင်းကျောက်စာရုံငယ်။ ကျောက်တိုင်အမှတ် နံပါတ် ၄၇၀။"
-	 }, 	 	
-	{ 
-	  "Julian Day Number":2231097, 
-	  "Myanmar Year":758, 
-	  "Myanmar Month":"Nayon", 
-	  "Moon Phase":"Waning", 
-	  "Fortnight Day":9, 
-	  "Day of the Week":"Wednesday", 
-	  "Description":"မာရဖင်ရတနာ စည်းခုံဘုရားကျောံစာ။ သက္ကရစ် ၇၅၈ ခု နံမျုန် လ္ဆုတ် ၉ ရျက် ပုတ်တဟူနေလျှင် ...။ မန္တလေးနန်းတွင်းကျောက်စာရုံ(၂)ရှိကျောက်စာများ။ မန္တလေးမြို့နန်းတွင်းကျောက်စာရုံငယ်။ ကျောက်တိုင်အမှတ် နံပါတ် ၅၉၃။" 
 	 },
-	{ 
-	  "Julian Day Number":2233185, 
-	  "Myanmar Year":763, 
-	  "Myanmar Month":"Tabaung", 
-	  "Moon Phase":"Full moon", 
-	  "Fortnight Day":15, 
-	  "Day of the Week":"Thursday", 
-	  "Description":"ပျူကန်မင်းမတ်သရေလင်မယားကျောင်းကျောံစာ။ ... ၇၆၃ ခု၊ အာသိုတ်နှစ် (နှစ်အမည်သရဝန်နှစ်ဖြစ်မှကိုက်ညီမည်) တပေါင်လပ္လည် ကြာ ...။ မန္တလေးနန်းတွင်းကျောက်စာရုံ(၂)ရှိကျောက်စာများ။ မန္တလေးမြို့နန်းတွင်းကျောက်စာရုံငယ်။ ကျောက်တိုင်အမှတ် နံပါတ် ၅၇၈။" 
+	{
+	  "Julian Day Number":2231097,
+	  "Myanmar Year":758,
+	  "Myanmar Month":"Nayon",
+	  "Moon Phase":"Waning",
+	  "Fortnight Day":9,
+	  "Day of the Week":"Wednesday",
+	  "Description":"မာရဖင်ရတနာ စည်းခုံဘုရားကျောံစာ။ သက္ကရစ် ၇၅၈ ခု နံမျုန် လ္ဆုတ် ၉ ရျက် ပုတ်တဟူနေလျှင် ...။ မန္တလေးနန်းတွင်းကျောက်စာရုံ(၂)ရှိကျောက်စာများ။ မန္တလေးမြို့နန်းတွင်းကျောက်စာရုံငယ်။ ကျောက်တိုင်အမှတ် နံပါတ် ၅၉၃။"
+	 },
+	{
+	  "Julian Day Number":2233185,
+	  "Myanmar Year":763,
+	  "Myanmar Month":"Tabaung",
+	  "Moon Phase":"Full moon",
+	  "Fortnight Day":15,
+	  "Day of the Week":"Thursday",
+	  "Description":"ပျူကန်မင်းမတ်သရေလင်မယားကျောင်းကျောံစာ။ ... ၇၆၃ ခု၊ အာသိုတ်နှစ် (နှစ်အမည်သရဝန်နှစ်ဖြစ်မှကိုက်ညီမည်) တပေါင်လပ္လည် ကြာ ...။ မန္တလေးနန်းတွင်းကျောက်စာရုံ(၂)ရှိကျောက်စာများ။ မန္တလေးမြို့နန်းတွင်းကျောက်စာရုံငယ်။ ကျောက်တိုင်အမှတ် နံပါတ် ၅၇၈။"
 	 },
 	{
 		"Julian Day Number":2234932,
@@ -4251,15 +4251,15 @@ static InitChronicle() {
 		"Fortnight Day":9,
 		"Day of the Week":"Thursday",
 		"Description":"Coronation of Narapati II of Ava."
-	}, 	
-	{ 
-	  "Julian Day Number":2270840, 
-	  "Myanmar Year":867, 
-	  "Myanmar Month":"Tagu", 
-	  "Moon Phase":"Waning", 
-	  "Fortnight Day":3, 
-	  "Day of the Week":"Tuesday", 
-	  "Description":"သက္ကရာဇ် ၈၆၇ တန်ခုလဆုတ် သုံရက် အင်ကာနေ၊ နက်သတ်သုံလုံ။ မန္တလေးနန်းတွင်းကျောက်စာရုံ(၂)ရှိကျောက်စာများ။ မန္တလေးမြို့နန်းတွင်းကျောက်စာရုံငယ်။ ကျောက်တိုင်အမှတ် နံပါတ် ၅၇၃။" 
+	},
+	{
+	  "Julian Day Number":2270840,
+	  "Myanmar Year":867,
+	  "Myanmar Month":"Tagu",
+	  "Moon Phase":"Waning",
+	  "Fortnight Day":3,
+	  "Day of the Week":"Tuesday",
+	  "Description":"သက္ကရာဇ် ၈၆၇ တန်ခုလဆုတ် သုံရက် အင်ကာနေ၊ နက်သတ်သုံလုံ။ မန္တလေးနန်းတွင်းကျောက်စာရုံ(၂)ရှိကျောက်စာများ။ မန္တလေးမြို့နန်းတွင်းကျောက်စာရုံငယ်။ ကျောက်တိုင်အမှတ် နံပါတ် ၅၇၃။"
 	 },
 	{
 		"Julian Day Number":2272876,
@@ -5540,7 +5540,7 @@ static InitChronicle() {
 		"Description":"Atula Sanda Dewi becomes chief queen."
 	}
 	];
-}	
+}
 // End of chronicle #####################################################
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 } //ceMmChronicle

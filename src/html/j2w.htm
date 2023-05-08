@@ -64,8 +64,8 @@
 <script src='../javascript/ceMmDateTime.js'></script>
 <script type="text/javascript">
 var emName=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-function jd2DateTime(jd,t) { 
-	var a=ceMmDateTime.j2w(jd,t); 
+function jd2DateTime(jd,t) {
+	var a=ceMmDateTime.j2w(jd,t);
 	return a.y.toString()+"-"+emName[a.m-1]+"-"+("0"+a.d).slice(-2)+" "+
 		("0"+a.h).slice(-2)+":"+("0"+a.n).slice(-2)+":"+
 		("0"+Math.round(a.s)).slice(-2)+" UTC";
@@ -73,7 +73,7 @@ function jd2DateTime(jd,t) {
 //-------------------------------------------------------------------------
 function cal()
 {
-	var te = document.getElementById("calType"); var ct=te.value; 
+	var te = document.getElementById("calType"); var ct=te.value;
 	var jde = document.getElementById("jd"); var j=Number(jde.value); jde.value=j;
 	var oce = document.getElementById("oc"); oce.innerHTML=jd2DateTime(j,ct);
 }
@@ -89,12 +89,12 @@ function cal()
 <td><input type="number" id="jd"  value="2456591" onchange='cal()'></td>
 </tr>
 <tr>
-<td>Calendar type </td>
+<td>MyanmarCalendar type </td>
 <td>
 <select  id='calType' onchange='cal()' >
-	<option value='0'  selected>British </option> 
-	<option value='1'>Gregorian </option> 
-	<option value='2'>Julian </option> 
+	<option value='0'  selected>British </option>
+	<option value='1'>Gregorian </option>
+	<option value='2'>Julian </option>
 </select>
 </td>
 </tr>
@@ -106,7 +106,7 @@ function cal()
 	<a href='http://cool-emerald.blogspot.com'>Cool Emerald</a>
 </div>
 <script type="text/javascript">
-	var jde = document.getElementById("jd"); 
+	var jde = document.getElementById("jd");
 	jde.value=ceMmDateTime.jdnow();
 	cal();
 </script>
