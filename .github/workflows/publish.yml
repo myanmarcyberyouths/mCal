@@ -48,6 +48,8 @@ jobs:
         if: ${{matrix.platform == 'windows-latest'}}
         run: dir
 
+      - name: install packages
+        run: npm install
 
       - name: Publish build artifacts
         if: success()
