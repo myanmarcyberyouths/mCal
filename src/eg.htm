@@ -1,11 +1,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name='description' content='Myanmar Calendar'/>
+<meta name='description' content='Myanmar MyanmarCalendar'/>
 <meta name='keywords' content='Julian Date, Converter' />
 <meta name='author' content='Yan Naing Aye' />
 <meta name="viewport" content="width=device-width">
-<title>Myanmar Calendar</title>
+<title>Myanmar MyanmarCalendar</title>
 <link href="./html/play.css" rel="stylesheet">
 <style type="text/css">
  body {
@@ -15,7 +15,7 @@
 		text-align: left;
 		line-height: 1.5;
     color: #7ece7e;
-	}	
+	}
 	a {
     text-decoration: none;
     color: #cca6f2;
@@ -111,14 +111,14 @@ function cal()
 	var ye = document.getElementById("y"); var yn=Number(ye.value); ye.value=yn;
 	var me = document.getElementById("m"); var mn=Number(me.value); me.value=mn;
 	var de = document.getElementById("d"); var dn=Number(de.value); de.value=dn;
-	var jde = document.getElementById("jd");	
+	var jde = document.getElementById("jd");
 	var le = document.getElementById("langN"); var lang=le.value;
 
-	var mdt=new ceMmDateTime();	
+	var mdt=new ceMmDateTime();
 	mdt.SetDateTime(yn,mn,dn,12,0,0,mdt.tz,ct);
 	var str="<p class='GC'>"+mdt.ToMString()+"<p/>";
 	str+="<p class='GC'>"+mdt.ToString("%W")+"<p/>";
-	str+="<p class='GC'>Sasana Year "+mdt.sy+"<p/>";	
+	str+="<p class='GC'>Sasana Year "+mdt.sy+"<p/>";
 	var sa=mdt.holidays;
 	str+="<p class='HC'>"+sa.join("<br/>")+"<p/>";
 	var t=mdt.sabbath; str+="<p class='SC'>"+t+"<p/>";
@@ -148,15 +148,15 @@ function cal()
 <td>
 	<!--input type="number" id="m"  min="1" max="12"  value="10" onchange="cal()" style="width:80px;"-->
 	<select  id="m" onchange="cal()" style="width:90px;" >
-			<option value='1'>Jan </option> 
-			<option value='2'>Feb </option> 
-			<option value='3'>Mar </option> 
+			<option value='1'>Jan </option>
+			<option value='2'>Feb </option>
+			<option value='3'>Mar </option>
 			<option value='4'>Apr </option>
-			<option value='5'>May </option> 
+			<option value='5'>May </option>
 			<option value='6'>Jun </option>
-			<option value='7'>Jul </option> 
+			<option value='7'>Jul </option>
 			<option value='8'>Aug </option>
-			<option value='9'>Sep </option> 
+			<option value='9'>Sep </option>
 			<option value='10'>Oct </option>
 			<option value='11'>Nov </option>
 			<option value='12'>Dec </option>
@@ -165,15 +165,15 @@ function cal()
 <td>
 	<!--input type="number" id="d"  min="1" max="31"  value="25" onchange="cal()" style="width:80px;"-->
 	<select  id="d" onchange="cal()" style="width:80px;" >
-			<option value='1'>1 </option> 
-			<option value='2'>2 </option> 
-			<option value='3'>3 </option> 
+			<option value='1'>1 </option>
+			<option value='2'>2 </option>
+			<option value='3'>3 </option>
 			<option value='4'>4 </option>
-			<option value='5'>5 </option> 
+			<option value='5'>5 </option>
 			<option value='6'>6 </option>
-			<option value='7'>7 </option> 
+			<option value='7'>7 </option>
 			<option value='8'>8 </option>
-			<option value='9'>9 </option> 
+			<option value='9'>9 </option>
 			<option value='10'>10 </option>
 			<option value='11'>11 </option>
 			<option value='12'>12 </option>
@@ -207,17 +207,17 @@ function cal()
 <table><tr>
 	<td>
 	<select  id='calType' onchange='cal()' style="width:100px;" >
-		<option value='0'  selected>British </option> 
-		<option value='1'>Gregorian </option> 
-		<option value='2'>Julian </option> 
+		<option value='0'  selected>British </option>
+		<option value='1'>Gregorian </option>
+		<option value='2'>Julian </option>
 	</select>
 	</td>
 	<td>
 			<select  id='langN' onchange='cal()' style="width:100px;" >
-				<option value='0'>English </option> 
-				<option value='1'  selected>Myanmar </option> 
-				<option value='2'>Zawgyi </option> 
-				<option value='3'>Mon </option> 
+				<option value='0'>English </option>
+				<option value='1'  selected>Myanmar </option>
+				<option value='2'>Zawgyi </option>
+				<option value='3'>Mon </option>
 			</select>
 			</td>
 </tr></table>

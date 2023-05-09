@@ -199,7 +199,7 @@ body {
     -webkit-appearance: none; /* Safari and Chrome */
 }
 
-/* Table for Myanmar Calendar*/
+/* Table for Myanmar MyanmarCalendar*/
 .TableMC {
     border: 1px solid #333333;
     margin: 0px;
@@ -209,7 +209,7 @@ body {
     width: 100%;
 }
 
-/* Table header row for Myanmar Calendar*/
+/* Table header row for Myanmar MyanmarCalendar*/
 .ThMC {
     vertical-align: top;
     padding: 0px;
@@ -217,7 +217,7 @@ body {
     background-color: #444444;
 }
 
-/* Paragraph for table header row for Myanmar Calendar*/
+/* Paragraph for table header row for Myanmar MyanmarCalendar*/
 .PThMC {
     text-align: left;
     color: #CCCCCC;
@@ -226,7 +226,7 @@ body {
     font-size: 16px;
 }
 
-/* Table footer row for Myanmar Calendar*/
+/* Table footer row for Myanmar MyanmarCalendar*/
 .TdFootMC {
     text-align: left;
     vertical-align: top;
@@ -251,13 +251,13 @@ body {
     margin: 0px;
 }
 
-/* Paragraph for table cell for Myanmar Calendar*/
+/* Paragraph for table cell for Myanmar MyanmarCalendar*/
 .PTdMC {
     color: #999999;
     font-size: 14px;
 }
 
-/* Anchor for table foot for Myanmar Calendar*/
+/* Anchor for table foot for Myanmar MyanmarCalendar*/
 .AnchorFootMC {
     text-decoration: none;
     color: #cca6f2;
@@ -265,13 +265,13 @@ body {
     padding: 0 10px;
 }
 
-/* Anchor for Myanmar Calendar*/
+/* Anchor for Myanmar MyanmarCalendar*/
 .AnchorMC {
     text-decoration: none;
     color: #cca6f2;
 }
 
-/* Table cell for Myanmar Calendar*/
+/* Table cell for Myanmar MyanmarCalendar*/
 .TdMC {
     text-align: left;
     vertical-align: top;
