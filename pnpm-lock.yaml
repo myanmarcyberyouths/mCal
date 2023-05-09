@@ -7,6 +7,9 @@ dependencies:
   '@heroicons/react':
     specifier: ^2.0.17
     version: 2.0.17(react@18.2.0)
+  burma-calendar:
+    specifier: ^1.0.1
+    version: 1.0.1
   date-fns:
     specifier: ^2.30.0
     version: 2.30.0
@@ -383,6 +386,10 @@ packages:
       node-releases: 2.0.10
       update-browserslist-db: 1.0.11(browserslist@4.21.5)
     dev: true
+
+  /burma-calendar@1.0.1:
+    resolution: {integrity: sha512-fdli2cmCbX5Jz0U6GF+4+krJxfkK4uaJn6KI5NEC/qHudYXVEen/uprTGQ9hM7TJufsjjgOGFU6TRJP0Z8VY5w==}
+    dev: false
 
   /busboy@1.6.0:
     resolution: {integrity: sha512-8SFQbg/0hQ9xy3UNTB0YEnsNBbWfhf7RtnzpL7TkBiTBRfrQ9Fxcnz7VJsleJpyp6rVLvXiuORqjlHi5q+PYuA==}
