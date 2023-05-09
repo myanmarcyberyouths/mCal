@@ -25,7 +25,13 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 16
-          run: npm install next --global
+          run: npm install -g pnpm
+      
+      - name: Install pnpm
+        run: npm install -g pnpm
+        
+      - name: install frontend dependencies
+        run: pnpm install 
 
       - name: install Rust stable
         uses: actions-rs/toolchain@v1
