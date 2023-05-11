@@ -25,10 +25,7 @@ import {englishToMyanmarDate} from "burma-calendar";
 import {engToMyanmarNumber} from "../utils/engToMyanmarNumber";
 import {zonedTimeToUtc} from "date-fns-tz";
 import FullMoonIcon from "../assets/icons/FullMoonIcon";
-
-function classNames(...classes: string[]) {
-    return classes.filter(Boolean).join(" ");
-}
+import {classNames} from "../utils/classNames";
 
 const colStartClasses = [
     "",
@@ -71,7 +68,7 @@ export default function MyanmarCalendar() {
         <div className="lg:flex lg:h-full lg:flex-col">
             <header className="flex items-center justify-between border-b border-gray-200 px-6 py-4 lg:flex-none">
                 <h1 className="text-base font-semibold leading-6 text-gray-900">
-                    <time dateTime="2022-01">
+                    <time dateTime={format(firstDayCurrentMonth, "yyyy-MM-dd")}>
                         {format(firstDayCurrentMonth, "MMMM yyyy")}
                     </time>
                     <div className="font-normal text-sm">
@@ -201,111 +198,111 @@ export default function MyanmarCalendar() {
                     {/*        Add event*/}
                     {/*    </button>*/}
                     {/*</div>*/}
-                    {/*<Menu as="div" className="relative ml-6 md:hidden">*/}
-                    {/*    <Menu.Button*/}
-                    {/*        className="-mx-2 flex items-center rounded-full border border-transparent p-2 text-gray-400 hover:text-gray-500">*/}
-                    {/*        <span className="sr-only">Open menu</span>*/}
-                    {/*        <EllipsisHorizontalIcon className="h-5 w-5" aria-hidden="true"/>*/}
-                    {/*    </Menu.Button>*/}
+                    <Menu as="div" className="relative ml-6 md:hidden">
+                        <Menu.Button
+                            className="-mx-2 flex items-center rounded-full border border-transparent p-2 text-gray-400 hover:text-gray-500">
+                            <span className="sr-only">Open menu</span>
+                            <EllipsisHorizontalIcon className="h-5 w-5" aria-hidden="true"/>
+                        </Menu.Button>
 
-                    {/*    <Transition*/}
-                    {/*        as={Fragment}*/}
-                    {/*        enter="transition ease-out duration-100"*/}
-                    {/*        enterFrom="transform opacity-0 scale-95"*/}
-                    {/*        enterTo="transform opacity-100 scale-100"*/}
-                    {/*        leave="transition ease-in duration-75"*/}
-                    {/*        leaveFrom="transform opacity-100 scale-100"*/}
-                    {/*        leaveTo="transform opacity-0 scale-95"*/}
-                    {/*    >*/}
-                    {/*        <Menu.Items*/}
-                    {/*            className="absolute right-0 z-10 mt-3 w-36 origin-top-right divide-y divide-gray-100 overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">*/}
-                    {/*            <div className="py-1">*/}
-                    {/*                <Menu.Item>*/}
-                    {/*                    {({active}) => (*/}
-                    {/*                        <a*/}
-                    {/*                            href="#"*/}
-                    {/*                            className={classNames(*/}
-                    {/*                                active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',*/}
-                    {/*                                'block px-4 py-2 text-sm'*/}
-                    {/*                            )}*/}
-                    {/*                        >*/}
-                    {/*                            Create event*/}
-                    {/*                        </a>*/}
-                    {/*                    )}*/}
-                    {/*                </Menu.Item>*/}
-                    {/*            </div>*/}
-                    {/*            <div className="py-1">*/}
-                    {/*                <Menu.Item>*/}
-                    {/*                    {({active}) => (*/}
-                    {/*                        <a*/}
-                    {/*                            href="#"*/}
-                    {/*                            className={classNames(*/}
-                    {/*                                active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',*/}
-                    {/*                                'block px-4 py-2 text-sm'*/}
-                    {/*                            )}*/}
-                    {/*                        >*/}
-                    {/*                            Go to today*/}
-                    {/*                        </a>*/}
-                    {/*                    )}*/}
-                    {/*                </Menu.Item>*/}
-                    {/*            </div>*/}
-                    {/*            <div className="py-1">*/}
-                    {/*                <Menu.Item>*/}
-                    {/*                    {({active}) => (*/}
-                    {/*                        <a*/}
-                    {/*                            href="#"*/}
-                    {/*                            className={classNames(*/}
-                    {/*                                active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',*/}
-                    {/*                                'block px-4 py-2 text-sm'*/}
-                    {/*                            )}*/}
-                    {/*                        >*/}
-                    {/*                            Day view*/}
-                    {/*                        </a>*/}
-                    {/*                    )}*/}
-                    {/*                </Menu.Item>*/}
-                    {/*                <Menu.Item>*/}
-                    {/*                    {({active}) => (*/}
-                    {/*                        <a*/}
-                    {/*                            href="#"*/}
-                    {/*                            className={classNames(*/}
-                    {/*                                active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',*/}
-                    {/*                                'block px-4 py-2 text-sm'*/}
-                    {/*                            )}*/}
-                    {/*                        >*/}
-                    {/*                            Week view*/}
-                    {/*                        </a>*/}
-                    {/*                    )}*/}
-                    {/*                </Menu.Item>*/}
-                    {/*                <Menu.Item>*/}
-                    {/*                    {({active}) => (*/}
-                    {/*                        <a*/}
-                    {/*                            href="#"*/}
-                    {/*                            className={classNames(*/}
-                    {/*                                active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',*/}
-                    {/*                                'block px-4 py-2 text-sm'*/}
-                    {/*                            )}*/}
-                    {/*                        >*/}
-                    {/*                            Month view*/}
-                    {/*                        </a>*/}
-                    {/*                    )}*/}
-                    {/*                </Menu.Item>*/}
-                    {/*                <Menu.Item>*/}
-                    {/*                    {({active}) => (*/}
-                    {/*                        <a*/}
-                    {/*                            href="#"*/}
-                    {/*                            className={classNames(*/}
-                    {/*                                active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',*/}
-                    {/*                                'block px-4 py-2 text-sm'*/}
-                    {/*                            )}*/}
-                    {/*                        >*/}
-                    {/*                            Year view*/}
-                    {/*                        </a>*/}
-                    {/*                    )}*/}
-                    {/*                </Menu.Item>*/}
-                    {/*            </div>*/}
-                    {/*        </Menu.Items>*/}
-                    {/*    </Transition>*/}
-                    {/*</Menu>*/}
+                        <Transition
+                            as={Fragment}
+                            enter="transition ease-out duration-100"
+                            enterFrom="transform opacity-0 scale-95"
+                            enterTo="transform opacity-100 scale-100"
+                            leave="transition ease-in duration-75"
+                            leaveFrom="transform opacity-100 scale-100"
+                            leaveTo="transform opacity-0 scale-95"
+                        >
+                            <Menu.Items
+                                className="absolute right-0 z-10 mt-3 w-36 origin-top-right divide-y divide-gray-100 overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                                {/*<div className="py-1">*/}
+                                {/*    <Menu.Item>*/}
+                                {/*        {({active}) => (*/}
+                                {/*            <a*/}
+                                {/*                href="#"*/}
+                                {/*                className={classNames(*/}
+                                {/*                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',*/}
+                                {/*                    'block px-4 py-2 text-sm'*/}
+                                {/*                )}*/}
+                                {/*            >*/}
+                                {/*                Create event*/}
+                                {/*            </a>*/}
+                                {/*        )}*/}
+                                {/*    </Menu.Item>*/}
+                                {/*</div>*/}
+                                <div className="py-1">
+                                    <Menu.Item>
+                                        {({active}) => (
+                                            <button
+                                                className={classNames(
+                                                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                                                    'block px-4 py-2 text-sm'
+                                                )}
+                                                onClick={() => setCurrentMonth(format(today, "MMM-yyyy"))}
+                                            >
+                                                Go to today
+                                            </button>
+                                        )}
+                                    </Menu.Item>
+                                </div>
+                                {/*<div className="py-1">*/}
+                                {/*    <Menu.Item>*/}
+                                {/*        {({active}) => (*/}
+                                {/*            <a*/}
+                                {/*                href="#"*/}
+                                {/*                className={classNames(*/}
+                                {/*                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',*/}
+                                {/*                    'block px-4 py-2 text-sm'*/}
+                                {/*                )}*/}
+                                {/*            >*/}
+                                {/*                Day view*/}
+                                {/*            </a>*/}
+                                {/*        )}*/}
+                                {/*    </Menu.Item>*/}
+                                {/*    <Menu.Item>*/}
+                                {/*        {({active}) => (*/}
+                                {/*            <a*/}
+                                {/*                href="#"*/}
+                                {/*                className={classNames(*/}
+                                {/*                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',*/}
+                                {/*                    'block px-4 py-2 text-sm'*/}
+                                {/*                )}*/}
+                                {/*            >*/}
+                                {/*                Week view*/}
+                                {/*            </a>*/}
+                                {/*        )}*/}
+                                {/*    </Menu.Item>*/}
+                                {/*    <Menu.Item>*/}
+                                {/*        {({active}) => (*/}
+                                {/*            <a*/}
+                                {/*                href="#"*/}
+                                {/*                className={classNames(*/}
+                                {/*                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',*/}
+                                {/*                    'block px-4 py-2 text-sm'*/}
+                                {/*                )}*/}
+                                {/*            >*/}
+                                {/*                Month view*/}
+                                {/*            </a>*/}
+                                {/*        )}*/}
+                                {/*    </Menu.Item>*/}
+                                {/*    <Menu.Item>*/}
+                                {/*        {({active}) => (*/}
+                                {/*            <a*/}
+                                {/*                href="#"*/}
+                                {/*                className={classNames(*/}
+                                {/*                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',*/}
+                                {/*                    'block px-4 py-2 text-sm'*/}
+                                {/*                )}*/}
+                                {/*            >*/}
+                                {/*                Year view*/}
+                                {/*            </a>*/}
+                                {/*        )}*/}
+                                {/*    </Menu.Item>*/}
+                                {/*</div>*/}
+                            </Menu.Items>
+                        </Transition>
+                    </Menu>
                 </div>
             </header>
 
@@ -375,43 +372,29 @@ export default function MyanmarCalendar() {
                         ))}
                     </div>
 
-                    {/*  <div className="isolate grid w-full grid-cols-7 grid-rows-6 gap-px lg:hidden">*/}
-                    {/*      {days.map((day) => (*/}
-                    {/*          <button*/}
-                    {/*              key={day.date}*/}
-                    {/*              type="button"*/}
-                    {/*              className={classNames(*/}
-                    {/*                  day.isCurrentMonth ? 'bg-white' : 'bg-gray-50',*/}
-                    {/*                  (day.isSelected || day.isToday) && 'font-semibold',*/}
-                    {/*                  day.isSelected && 'text-white',*/}
-                    {/*                  !day.isSelected && day.isToday && 'text-indigo-600',*/}
-                    {/*                  !day.isSelected && day.isCurrentMonth && !day.isToday && 'text-gray-900',*/}
-                    {/*                  !day.isSelected && !day.isCurrentMonth && !day.isToday && 'text-gray-500',*/}
-                    {/*                  'flex h-14 flex-col px-3 py-2 hover:bg-gray-100 focus:z-10'*/}
-                    {/*              )}*/}
-                    {/*          >*/}
-                    {/*              <time*/}
-                    {/*                  dateTime={day.date}*/}
-                    {/*                  className={classNames(*/}
-                    {/*                      day.isSelected && 'flex h-6 w-6 items-center justify-center rounded-full',*/}
-                    {/*                      day.isSelected && day.isToday && 'bg-indigo-600',*/}
-                    {/*                      day.isSelected && !day.isToday && 'bg-gray-900',*/}
-                    {/*                      'ml-auto'*/}
-                    {/*                  )}*/}
-                    {/*              >*/}
-                    {/*                  {day.date.split('-').pop().replace(/^0/, '')}*/}
-                    {/*              </time>*/}
-                    {/*              <span className="sr-only">{day.events.length} events</span>*/}
-                    {/*              {day.events.length > 0 && (*/}
-                    {/*                  <span className="-mx-0.5 mt-auto flex flex-wrap-reverse">*/}
-                    {/*  {day.events.map((event) => (*/}
-                    {/*      <span key={event.id} className="mx-0.5 mb-1 h-1.5 w-1.5 rounded-full bg-gray-400"/>*/}
-                    {/*  ))}*/}
-                    {/*</span>*/}
-                    {/*              )}*/}
-                    {/*          </button>*/}
-                    {/*      ))}*/}
-                    {/*  </div>*/}
+                    <div className="isolate grid w-full grid-cols-7 grid-rows-5 gap-px lg:hidden">
+                        {days.map((day) => (
+                            <button
+                                key={day.toString()}
+                                type="button"
+                                className={classNames(
+                                    isSameMonth(day, firstDayCurrentMonth) ? 'bg-white' : 'bg-gray-50',
+                                    isToday(day) && 'font-semibold',
+                                    isToday(day) && 'text-indigo-600',
+                                    'flex h-14 flex-col px-3 py-2 hover:bg-gray-100 focus:z-10'
+                                )}
+                            >
+                                <time
+                                    dateTime={format(day, "yyyy-MM-dd")}
+                                    className={classNames(
+                                        'ml-auto'
+                                    )}
+                                >
+                                    {format(day, "d")}
+                                </time>
+                            </button>
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>
