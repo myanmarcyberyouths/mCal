@@ -8,7 +8,7 @@ to change to Myanmar, Myanmar Zawgyi, Mon, English, Tai, and S' Karen.
 ## Features
 
 - Multiple language support (Myanmar, Myanmar Zawgyi, Mon, English, Tai, and S' Karen)
-- Three types of calendars (British, Gregorian, and Julia)
+- Two types of calendars (Gregorianand Myanmar)
 - Displays Myanmar Month, Day, and Year
 - Cross-platform support (MacOS, Linux, and Windows)
 - Easy-to-use interface, similar to Google Calendar and macOS Calendar
@@ -37,8 +37,6 @@ details.
 ## Contact
 
 If you have any questions or feedback about the Myanmar Calendar software, please open issue
-at [here](https://github.com/amm834/myanmar_calendar/issues).
+at [here](https://github.com/cybermm/myanmar_calendar/issues).
 
-## Credit
 
-[Myanmar Calendar](https://github.com/yan9a/mmcal)
