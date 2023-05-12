@@ -16,6 +16,16 @@ jobs:
       fail-fast: false
       matrix:
         platform: [macos-latest, ubuntu-latest, windows-latest]
+        include:
+          - os: ubuntu-latest
+            folder: linux
+            extension: .tar.gz
+          - os: macos-latest
+            folder: macos
+            extension: .zip
+          - os: windows-latest
+            folder: windows
+            extension: .zip
 
     runs-on: ${{ matrix.platform }}
     steps:
