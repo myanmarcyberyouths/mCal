@@ -54,14 +54,24 @@ jobs:
       - name: Windows like list files in dist directory
         if: ${{matrix.platform == 'windows-latest'}}
         run: dir
+      - name: Move artifacts to folder
+        run: mv dist/* artifacts/
 
-
-      - name: Publish build artifacts
+      - name: Compress artifacts
+        run: |
+          if [[ "${{ matrix.os }}" == "ubuntu-latest" || "${{ matrix.os }}" == "macos-latest" ]]; then
+            tar -zcvf "${{ matrix.folder }}.tar.gz" artifacts/
+          else
+            zip -r "${{ matrix.folder }}.zip" artifacts/
+          fi
+            
+      - name: Publish artifacts
         if: success()
-        uses:  actions/upload-artifact@v3
+        uses: actions/upload-artifact@v2
         with:
-          name: Upload Artifact
+          name: ${{ matrix.folder }}-artifacts
           path: |
+            artifacts/
             src-tauri/target/release/bundle
             src-tauri/target/release/Myanmar Calendar
 
