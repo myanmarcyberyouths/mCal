@@ -1,0 +1,41 @@
+name: Artifact Grab
+on:
+  workflow_run:
+    workflows: ["publish.yml"]
+    types:
+      - completed
+      
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+  
+jobs:
+  build-binaries:
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: [macos-latest, ubuntu-latest, windows-latest]
+
+    runs-on: ${{ matrix.platform }}  
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Creating directory
+        run: mkdir artifacts
+      
+      - name: Download Artifact
+        uses: actions/download-artifact@v2
+        with:
+            name: my-artifact
+            path: artifacts
+      - name: artifacts check
+        run: |
+          if [ "${{ matrix.platform }}" == 'ubuntu-latest' ] || [ "${{ matrix.platform }}" == 'macos-latest' ]; then
+             ls
+          elif [ "${{ matrix.platform }}" == 'windows-latest' ]; then
+            dir
+          else
+            echo "Unsupported platform: ${{ matrix.platform }}"
+          exit 1
+          fi
+
