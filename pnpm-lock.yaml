@@ -8,8 +8,8 @@ dependencies:
     specifier: ^2.0.17
     version: 2.0.17(react@18.2.0)
   burma-calendar:
-    specifier: ^1.0.1
-    version: 1.0.1
+    specifier: ^1.2.0
+    version: 1.2.0
   date-fns:
     specifier: ^2.30.0
     version: 2.30.0
@@ -699,8 +699,8 @@ packages:
       run-applescript: 5.0.0
     dev: true
 
-  /burma-calendar@1.0.1:
-    resolution: {integrity: sha512-fdli2cmCbX5Jz0U6GF+4+krJxfkK4uaJn6KI5NEC/qHudYXVEen/uprTGQ9hM7TJufsjjgOGFU6TRJP0Z8VY5w==}
+  /burma-calendar@1.2.0:
+    resolution: {integrity: sha512-zb1/fzbrQZScTBSTTdUYS740dzKifUrVx0MD5uOq7qFW0iizDukJXh7mP4Hk+buTgC9roQqlyTRNDA3WAIXLYg==}
     dev: false
 
   /busboy@1.6.0:

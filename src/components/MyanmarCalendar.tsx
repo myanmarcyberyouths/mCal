@@ -1,31 +1,23 @@
-import {Fragment, useEffect, useState} from "react";
-import {
-    ChevronDownIcon,
-    ChevronLeftIcon,
-    ChevronRightIcon,
-    ClockIcon,
-    EllipsisHorizontalIcon, MoonIcon,
-} from "@heroicons/react/20/solid";
+import {Fragment, useState} from "react";
+import {ChevronLeftIcon, ChevronRightIcon, EllipsisHorizontalIcon,} from "@heroicons/react/20/solid";
 import {Menu, Transition} from "@headlessui/react";
 import {
     add,
-    addDays,
     eachDayOfInterval,
     endOfMonth,
-    endOfWeek,
     format,
-    getDay,
     isSameMonth,
     isToday,
     parse,
     startOfToday,
     startOfWeek,
 } from "date-fns";
-import {englishToMyanmarDate} from "burma-calendar";
+import {englishToMyanmarDate, i18n} from "burma-calendar";
 import {engToMyanmarNumber} from "../utils/engToMyanmarNumber";
 import {zonedTimeToUtc} from "date-fns-tz";
 import FullMoonIcon from "../assets/icons/FullMoonIcon";
 import {classNames} from "../utils/classNames";
+import LanguageMenu, {Language} from "./LanguageMenu";
 
 const colStartClasses = [
     "",
@@ -42,6 +34,7 @@ export default function MyanmarCalendar() {
     let [selectedDay, setSelectedDay] = useState(today);
     let [currentMonth, setCurrentMonth] = useState(format(today, "MMM-yyyy"));
     let firstDayCurrentMonth = parse(currentMonth, "MMM-yyyy", new Date());
+    const [language, setLanguage] = useState<Language>("myanmar");
 
     let days = eachDayOfInterval({
         start: startOfWeek(firstDayCurrentMonth),
@@ -73,12 +66,10 @@ export default function MyanmarCalendar() {
                     </time>
                     <div className="font-normal text-sm">
                         {englishToMyanmarDate(firstDayCurrentMonth).year} ခုနှစ်{" "}
-                        {englishToMyanmarDate(firstDayCurrentMonth).month}
+                        {i18n(englishToMyanmarDate(firstDayCurrentMonth).month, "myanmar", language as any)}
                         {" - "}
-                        {
-                            englishToMyanmarDate(add(firstDayCurrentMonth, {months: 1}))
-                                .month
-                        }
+                        {i18n(englishToMyanmarDate(add(firstDayCurrentMonth, {months: 1}))
+                            .month, "myanmar", language as any)}
                     </div>
                 </h1>
                 <div className="flex items-center">
@@ -198,6 +189,14 @@ export default function MyanmarCalendar() {
                     {/*        Add event*/}
                     {/*    </button>*/}
                     {/*</div>*/}
+
+                    <div className="hidden md:ml-4 md:flex md:items-center">
+                        <LanguageMenu
+                            selectedLanguage={language}
+                            onLanguageChange={language => setLanguage(language)}
+                        />
+                    </div>
+
                     <Menu as="div" className="relative ml-6 md:hidden">
                         <Menu.Button
                             className="-mx-2 flex items-center rounded-full border border-transparent p-2 text-gray-400 hover:text-gray-500">
@@ -347,11 +346,11 @@ export default function MyanmarCalendar() {
                                 )}
                             >
                                 <div className="absolute top-3 left-3 text-sm">
-                                    {engToMyanmarNumber(englishToMyanmarDate(day).date)}
+                                    {i18n(engToMyanmarNumber(englishToMyanmarDate(day).date),"myanmar",language as any)}
                                 </div>
 
                                 <div className="absolute top-3 right-3 text-xs font-light">
-                                    <div>{englishToMyanmarDate(day).moonPhase}</div>
+                                    <div>{i18n(englishToMyanmarDate(day).moonPhase,"myanmar",language as any)}</div>
                                     <div className="mt-2">{englishToMyanmarDate(day).moonPhase === "လပြည့်" &&
                                         <FullMoonIcon className="ml-3.5 w-6 h-6"/>}</div>
                                 </div>
