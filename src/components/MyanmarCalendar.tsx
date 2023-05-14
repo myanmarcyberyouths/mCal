@@ -65,7 +65,10 @@ export default function MyanmarCalendar() {
                         {format(firstDayCurrentMonth, "MMMM yyyy")}
                     </time>
                     <div className="font-normal text-sm">
-                        {englishToMyanmarDate(firstDayCurrentMonth).year} ခုနှစ်{" "}
+                        {i18n("Myanmar Year", "english", language as any)}{" "}
+                        {i18n(engToMyanmarNumber(englishToMyanmarDate(firstDayCurrentMonth).year), "myanmar", language as any)}
+                        {" "}
+                        {i18n("Ku", "english", language as any)}{" "}
                         {i18n(englishToMyanmarDate(firstDayCurrentMonth).month, "myanmar", language as any)}
                         {" - "}
                         {i18n(englishToMyanmarDate(add(firstDayCurrentMonth, {months: 1}))
@@ -346,11 +349,11 @@ export default function MyanmarCalendar() {
                                 )}
                             >
                                 <div className="absolute top-3 left-3 text-sm">
-                                    {i18n(engToMyanmarNumber(englishToMyanmarDate(day).date),"myanmar",language as any)}
+                                    {i18n(engToMyanmarNumber(englishToMyanmarDate(day).date), "myanmar", language as any)}
                                 </div>
 
                                 <div className="absolute top-3 right-3 text-xs font-light">
-                                    <div>{i18n(englishToMyanmarDate(day).moonPhase,"myanmar",language as any)}</div>
+                                    <div>{i18n(englishToMyanmarDate(day).moonPhase, "myanmar", language as any)}</div>
                                     <div className="mt-2">{englishToMyanmarDate(day).moonPhase === "လပြည့်" &&
                                         <FullMoonIcon className="ml-3.5 w-6 h-6"/>}</div>
                                 </div>
