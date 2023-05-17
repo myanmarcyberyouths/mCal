@@ -29,7 +29,11 @@ jobs:
     runs-on: ${{ matrix.platform }}
     steps:
       - uses: actions/checkout@v2
-
+      - name: Build and Generate Dist
+        run: |
+            npm install
+            npm build
+            
       - name: setup node
         uses: actions/setup-node@v2
         with:
