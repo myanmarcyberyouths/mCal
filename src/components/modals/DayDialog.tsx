@@ -1,12 +1,18 @@
 import React, {Fragment} from 'react';
 import {Dialog, Transition} from "@headlessui/react";
+import {format} from "date-fns";
 
 interface DayDialogProps {
     isOpen: boolean
     onClose: () => void;
+    selectedDay: Date;
 }
 
-const DayDialog = ({isOpen, onClose}: DayDialogProps) => {
+const DayDialog = ({
+                       isOpen,
+                       onClose,
+                       selectedDay,
+}: DayDialogProps) => {
     return (
         <Transition appear show={isOpen} as={Fragment}>
             <Dialog as="div" className="relative z-10" onClose={onClose}>
@@ -39,11 +45,11 @@ const DayDialog = ({isOpen, onClose}: DayDialogProps) => {
                                     as="h3"
                                     className="text-lg font-medium leading-6 text-gray-900"
                                 >
-                                    May 18, 2003
+                                    {format(selectedDay, "MMMM do")}
                                 </Dialog.Title>
                                 <div className="mt-2">
                                     <p className="text-sm text-gray-500">
-                                        Today is that day.
+                                        Today is my birthday! 🥰
                                     </p>
                                 </div>
 

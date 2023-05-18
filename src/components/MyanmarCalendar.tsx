@@ -77,7 +77,11 @@ export default function MyanmarCalendar() {
 
     return (
         <>
-            <DayDialog isOpen={isOpen} onClose={closeModal}/>,
+            <DayDialog
+                isOpen={isOpen}
+                onClose={closeModal}
+                selectedDay={selectedDay}
+            />,
 
             <div className="lg:flex lg:h-full lg:flex-col">
                 <header className="flex items-center justify-between border-b border-gray-200 px-6 py-4 lg:flex-none">
@@ -367,7 +371,10 @@ export default function MyanmarCalendar() {
                                         "relative px-3  py-[4.9rem]"
                                         // dayIdx === 0 ? colStartClasses[getDay(day)] : '',
                                     )}
-                                    onClick={openModal}
+                                    onClick={() => {
+                                        openModal()
+                                        setSelectedDay(day)
+                                    }}
                                 >
                                     <div className="absolute top-3 left-3 text-sm">
                                         {i18n(engToMyanmarNumber(englishToMyanmarDate(day).date), "myanmar", language as any)}
