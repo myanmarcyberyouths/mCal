@@ -1,4 +1,4 @@
-import {Fragment, useState} from "react";
+import {Fragment, useEffect, useState} from "react";
 import {ChevronLeftIcon, ChevronRightIcon, EllipsisHorizontalIcon,} from "@heroicons/react/20/solid";
 import {Menu, Transition} from "@headlessui/react";
 import {
@@ -46,6 +46,14 @@ export default function MyanmarCalendar() {
     if (days.length > 35) {
         days = days.slice(0, 35);
     }
+
+    function onToday(){
+         setCurrentMonth(format(today, "MMM-yyyy"))
+    }
+
+    useEffect(() => {
+            onToday()
+    },[onToday])
 
     function previousMonth() {
         let firstDayNextMonth = add(firstDayCurrentMonth, {months: -1});
