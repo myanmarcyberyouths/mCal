@@ -53,7 +53,7 @@ export default function MyanmarCalendar() {
 
     useEffect(() => {
             onToday()
-    },[onToday])
+    },[])
 
     function previousMonth() {
         let firstDayNextMonth = add(firstDayCurrentMonth, {months: -1});
