@@ -1,17 +1,29 @@
 # Myanmar Calendar
-
-This software is a calendar app based on the Myanmar calendar. It includes multiple language features, with the option
-to change to Myanmar, Myanmar Zawgyi, Mon, English, Tai, and S' Karen.
+**Myanmar Calendar** is a feature-rich calendar app that seamlessly combines the functionality of Gregorian and Myanmar calendars, catering to users who follow both systems. It supports multiple languages, including Myanmar, Mon, English, Tai, and Karen, ensuring a user-friendly experience for individuals from diverse linguistic backgrounds.
 
 ![Myanmar Calendar Demo Image](./exmaples/preview.png)
 
 ## Features
 
-- Multiple language support (Myanmar, Myanmar Zawgyi, Mon, English, Tai, and S' Karen)
-- Two types of calendars (Gregorianand Myanmar)
-- Displays Myanmar Month, Day, and Year
-- Cross-platform support (MacOS, Linux, and Windows)
+- Support Gregorian and Myanmar Calendar
+- Support multiple languages
+    - Myanmar
+    - Mon
+    - English
+    - Tai
+    - Karen
+- Displays Myanmar Day, Month, Year and Moon phase
 - Easy-to-use interface, similar to Google Calendar and macOS Calendar
+- SupportCross-platform
+    - MacOS
+    - Windows
+    - Linux (Debian based distros)
+
+## Screenshots
+
+### Day Detail View
+
+![Myanmar Calendar Demo Image](./exmaples/day_detail_view.png)
 
 ## Getting Started
 
