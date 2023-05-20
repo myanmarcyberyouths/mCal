@@ -381,9 +381,14 @@ export default function MyanmarCalendar() {
                                     </div>
 
                                     <div className="absolute top-3 right-3 text-xs font-light">
-                                        <div>{i18n(englishToMyanmarDate(day).moonPhase, "myanmar", language as any)}</div>
-                                        <div className="mt-2">{englishToMyanmarDate(day).moonPhase === "လပြည့်" &&
-                                            <FullMoonIcon className="ml-3.5 w-6 h-6"/>}</div>
+                                        <div>
+                                            {englishToMyanmarDate(day).moonPhase === "လပြည့်" &&
+                                                (<>
+                                                    <div
+                                                        className="mb-2">{i18n(englishToMyanmarDate(day).moonPhase, "myanmar", language as any)}</div>
+                                                    <FullMoonIcon className="ml-3.5 w-6 h-6"/>
+                                                </>)}
+                                        </div>
                                     </div>
 
                                     <div className="absolute bottom-3 right-3 text-sm">
