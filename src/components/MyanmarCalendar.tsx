@@ -31,23 +31,25 @@ const colStartClasses = [
 ];
 
 export default function MyanmarCalendar() {
-    let today = zonedTimeToUtc(startOfToday(), "Asia/Yangon");
+    let [today,setToday] = useState(zonedTimeToUtc(startOfToday(), "Asia/Yangon"));
     let [selectedDay, setSelectedDay] = useState(today);
     let [currentMonth, setCurrentMonth] = useState(format(today, "MMM-yyyy"));
     let firstDayCurrentMonth = parse(currentMonth, "MMM-yyyy", new Date());
     const [language, setLanguage] = useState<Language>("myanmar");
 
-    let days = eachDayOfInterval({
+    let [days, setDays] = useState(eachDayOfInterval({
         start: startOfWeek(firstDayCurrentMonth),
         end: add(endOfMonth(firstDayCurrentMonth), {
             days: 10,
         }),
-    });
+    }))
 
-    if (days.length > 35) {
-        days = days.slice(0, 35);
-    }
-
+    useEffect(() => {
+        if (days.length > 35) {
+            const formattedDay =   days.map(day => zonedTimeToUtc(day, 'Asia/Yangon'))
+            setDays(formattedDay.slice(0, 35))
+        }
+    }, [])
 
     useEffect(() => {
         setCurrentMonth(format(today, "MMM-yyyy"))
