@@ -49,7 +49,7 @@ export default function MyanmarCalendar() {
             const formattedDay =   days.map(day => zonedTimeToUtc(day, 'Asia/Yangon'))
             setDays(formattedDay.slice(0, 35))
         }
-    }, [])
+    }, [days])
 
     useEffect(() => {
         setCurrentMonth(format(today, "MMM-yyyy"))

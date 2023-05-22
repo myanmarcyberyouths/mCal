@@ -24,6 +24,6 @@ export const useKeyDown = ({
         return () => {
             document.removeEventListener("keydown", keyDownHandler);
         };
-    }, []);
+    }, [onArrowLeftClick,onArrowRightClick]);
 
 }
