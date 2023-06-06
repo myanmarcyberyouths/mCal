@@ -1,0 +1,11 @@
+node_modules
+*.log
+dist
+.cache
+playground
+
+.idea
+.vscode
+
+package-lock.json
+yarn.lock
