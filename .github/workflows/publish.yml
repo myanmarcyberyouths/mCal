@@ -1,4 +1,4 @@
-name: 'publish'
+name: 'Publish Myanmar Calendar'
 
 on:
   push:
@@ -67,5 +67,4 @@ jobs:
         with:
           name: Upload Artifact
           path: |
-            src-tauri/target/release/bundle
-            src-tauri/target/release/Myanmar Calendar
+            bundle/**/*
