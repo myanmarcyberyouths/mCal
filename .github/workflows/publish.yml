@@ -17,19 +17,26 @@ jobs:
     runs-on: ${{ matrix.platform }}
 
     steps:
-      - uses: actions/checkout@v2
-
-      - name: setup node
-        uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
         with:
-          node-version: 16
-          run: npm install -g pnpm
+          fetch-depth: 2
 
-      - name: Install pnpm
-        run: npm install -g pnpm
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 8.6.2
 
-      - name: install frontend dependencies
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'pnpm'
+
+      - name: Install dependencies
         run: pnpm install
+
+      - name: Build
+        run: pnpm run build
 
       - name: install Rust stable
         uses: actions-rs/toolchain@v1
