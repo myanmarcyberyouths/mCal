@@ -6,8 +6,7 @@
     "tauri": "tauri",
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "next start"
   },
   "devDependencies": {
     "@tauri-apps/cli": "^1.4.0",
