@@ -18,7 +18,8 @@
     "eslint-config-next": "13.4.1",
     "postcss": "^8.4.23",
     "tailwindcss": "^3.3.2",
-    "typescript": "^5.0.4"
+    "typescript": "^5.0.4",
+    "burma-calendar": "workspace:*"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.14",
