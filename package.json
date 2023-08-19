@@ -1,7 +1,7 @@
 {
   "name": "calendar_app",
   "version": "1.0.0",
-  "description": "",
+  "description": "The Myanmar Calendar App",
   "main": "index.js",
   "workspaces": [
     "apps/*",
@@ -13,5 +13,8 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "turbo": "^1.10.12"
+  }
 }
