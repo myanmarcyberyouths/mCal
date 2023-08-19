@@ -7,11 +7,11 @@
 
 - Support Gregorian and Myanmar Calendar
 - Support multiple languages
-    - Myanmar
     - Mon
-    - English
     - Tai
     - Karen
+    - Burmese
+    - English
 - Displays Myanmar Day, Month, Year and Moon phase
 - Easy-to-use interface, similar to Google Calendar and macOS Calendar
 - SupportCross-platform
@@ -19,7 +19,7 @@
     - Windows
     - Linux (Debian based distros)
 
-## Screenshots
+## Demo
 
 ### Day Detail View
 
@@ -27,7 +27,7 @@
 
 ## Getting Started
 
-To get started with the Myanmar Calendar software, simply download the software for your operating system (MacOS, Linux,
+To get started with the Myanmar Calendar software, simply download the software for your operating system (macOS, Linux,
 or Windows) from our website or GitHub page. Once downloaded, double-click on the app to launch it.
 
 ## Usage

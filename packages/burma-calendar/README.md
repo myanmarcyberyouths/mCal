@@ -2,6 +2,18 @@
 
 Convert Gregorian date to the Myanmar date including current Myanmar date,moon phase and so on.
 
+# Features
+
+- [x] Myanmar date
+- [x] Moon phase
+- [x] i18n Support
+
+# Installation
+
+```bash
+npm install burma-calendar
+```
+
 # Usage
 
 ```ts
