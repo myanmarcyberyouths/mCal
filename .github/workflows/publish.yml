@@ -67,4 +67,4 @@ jobs:
         with:
           name: Upload Artifact
           path: |
-            bundle/**/*
+            ./apps/myanmar_calendar/src-tauri/target/release/bundle
