@@ -48,7 +48,6 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y libgtk-3-dev webkit2gtk-4.0 libappindicator3-dev librsvg2-dev patchelf
-        working-directory: ./apps/myanmar_calendar
 
       - uses: JonasKruckenberg/tauri-build@v1
         id: tauri_build
@@ -56,17 +55,21 @@ jobs:
       - name: Unix like list files in dist directory
         if: ${{matrix.platform == 'ubuntu-latest' || matrix.platform == 'macos-latest' }}
         run: ls
-        working-directory: ./apps/myanmar_calendar
 
       - name: Windows like list files in dist directory
         if: ${{matrix.platform == 'windows-latest'}}
         run: dir
-        working-directory: .\apps\myanmar_calendar
 
 
       - name: Publish build artifacts
         if: success()
         uses: actions/upload-artifact@v3
+        run: |
+          echo "Uploading artifacts..."
+          echo "Platform: ${{ matrix.platform }}"
+          echo "Artifact: ${{ steps.tauri_build.outputs.artifact }}"
+          echo "Path: ${{ steps.tauri_build.outputs.path }}"
+          pwd
         with:
           name: Upload Artifact
           path: |
