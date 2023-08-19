@@ -15,6 +15,9 @@ jobs:
         platform: [macos-latest, ubuntu-latest, windows-latest]
 
     runs-on: ${{ matrix.platform }}
+    defaults:
+        run:
+            working-directory: ./apps/myanmar_calendar
     steps:
       - uses: actions/checkout@v2
 
@@ -61,8 +64,3 @@ jobs:
           path: |
             src-tauri/target/release/bundle
             src-tauri/target/release/Myanmar Calendar
-
-
-
-
-
