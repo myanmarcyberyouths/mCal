@@ -21,6 +21,12 @@ jobs:
         with:
           fetch-depth: 2
 
+      - uses: szenius/set-timezone@v1.2
+        with:
+          timezoneLinux: "Asia/Yangon"
+          timezoneMac: "Asia/Yangon"
+          timezoneWindows: "Myanmar Standard Time"
+
       - name: Setup pnpm
         uses: pnpm/action-setup@v2.0.1
         with:

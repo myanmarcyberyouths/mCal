@@ -14,7 +14,7 @@ import {
 } from "date-fns";
 import {englishToMyanmarDate, i18n} from "burma-calendar";
 import {engToMyanmarNumber} from "../utils/engToMyanmarNumber";
-import {zonedTimeToUtc} from "date-fns-tz";
+import {utcToZonedTime, zonedTimeToUtc} from "date-fns-tz";
 import FullMoonIcon from "../assets/icons/FullMoonIcon";
 import {classNames} from "../utils/classNames";
 import LanguageMenu, {Language} from "./LanguageMenu";
@@ -31,22 +31,22 @@ const colStartClasses = [
 ];
 
 export default function MyanmarCalendar() {
-    let [today,setToday] = useState(zonedTimeToUtc(startOfToday(), "Asia/Yangon"));
+    let [today, setToday] = useState(utcToZonedTime(startOfToday(), "Asia/Yangon"));
     let [selectedDay, setSelectedDay] = useState(today);
     let [currentMonth, setCurrentMonth] = useState(format(today, "MMM-yyyy"));
     let firstDayCurrentMonth = parse(currentMonth, "MMM-yyyy", new Date());
     const [language, setLanguage] = useState<Language>("myanmar");
 
     let [days, setDays] = useState(eachDayOfInterval({
-        start: startOfWeek(firstDayCurrentMonth),
-        end: add(endOfMonth(firstDayCurrentMonth), {
+        start: zonedTimeToUtc(startOfWeek(firstDayCurrentMonth), 'US/Pacific'),
+        end: zonedTimeToUtc(add(endOfMonth(firstDayCurrentMonth), {
             days: 10,
-        }),
+        }), 'Asia/Yangon'),
     }))
 
     useEffect(() => {
         if (days.length > 35) {
-            const formattedDay =   days.map(day => zonedTimeToUtc(day, 'Asia/Yangon'))
+            const formattedDay = days.map(day => zonedTimeToUtc(day, 'Asia/Yangon'))
             setDays(formattedDay.slice(0, 35))
         }
     }, [days])

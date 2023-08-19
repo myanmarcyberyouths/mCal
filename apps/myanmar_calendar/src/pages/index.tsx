@@ -1,10 +1,10 @@
 import React from 'react';
 import MyanmarCalendar from "../components/MyanmarCalendar";
 
-const Index = () => {
+const Home = () => {
     return (
         <MyanmarCalendar/>
     );
 };
 
-export default Index;
+export default Home;
