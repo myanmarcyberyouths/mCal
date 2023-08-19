@@ -64,12 +64,6 @@ jobs:
       - name: Publish build artifacts
         if: success()
         uses: actions/upload-artifact@v3
-        run: |
-          echo "Uploading artifacts..."
-          echo "Platform: ${{ matrix.platform }}"
-          echo "Artifact: ${{ steps.tauri_build.outputs.artifact }}"
-          echo "Path: ${{ steps.tauri_build.outputs.path }}"
-          pwd
         with:
           name: Upload Artifact
           path: |
