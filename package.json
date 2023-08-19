@@ -4,8 +4,8 @@
   "description": "The Myanmar Calendar App",
   "main": "index.js",
   "workspaces": [
-    "apps/*",
-    "packages/*"
+    "packages/*",
+    "apps/*"
   ],
   "scripts": {
     "build": "turbo run build",
