@@ -38,7 +38,7 @@ export default function MyanmarCalendar() {
     const [language, setLanguage] = useState<Language>("myanmar");
 
     let [days, setDays] = useState(eachDayOfInterval({
-        start: zonedTimeToUtc(startOfWeek(firstDayCurrentMonth), 'US/Pacific'),
+        start: zonedTimeToUtc(startOfWeek(firstDayCurrentMonth), 'Asia/Yangon'),
         end: zonedTimeToUtc(add(endOfMonth(firstDayCurrentMonth), {
             days: 10,
         }), 'Asia/Yangon'),
@@ -396,7 +396,7 @@ export default function MyanmarCalendar() {
                                     <div className="absolute bottom-3 right-3 text-sm">
                                         <time
                                             className={
-                                                isToday(day) && isSameMonth(day, firstDayCurrentMonth)
+                                                isToday(utcToZonedTime(day,"Asia/Yangon")) && isSameMonth(day, firstDayCurrentMonth)
                                                     ? "flex h-6 w-6 items-center justify-center rounded-full bg-indigo-600 font-semibold text-white"
                                                     : undefined
                                             }
