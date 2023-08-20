@@ -30,30 +30,37 @@ const colStartClasses = [
     "col-start-7",
 ];
 
+
+export function getLocalTime(date: Date) {
+    return utcToZonedTime(
+        new Date(date),
+        "Asia/Yangon"
+    );
+}
+
+
 export default function MyanmarCalendar() {
-    let [today, setToday] = useState(utcToZonedTime(startOfToday(), "Asia/Yangon"));
+    let today = startOfToday();
     let [selectedDay, setSelectedDay] = useState(today);
     let [currentMonth, setCurrentMonth] = useState(format(today, "MMM-yyyy"));
     let firstDayCurrentMonth = parse(currentMonth, "MMM-yyyy", new Date());
     const [language, setLanguage] = useState<Language>("myanmar");
 
-    let [days, setDays] = useState(eachDayOfInterval({
-        start: zonedTimeToUtc(startOfWeek(firstDayCurrentMonth), 'Asia/Yangon'),
-        end: zonedTimeToUtc(add(endOfMonth(firstDayCurrentMonth), {
+    let days = eachDayOfInterval({
+        start: startOfWeek(firstDayCurrentMonth),
+        end: add(endOfMonth(firstDayCurrentMonth), {
             days: 10,
-        }), 'Asia/Yangon'),
-    }))
+        }),
+    });
 
-    useEffect(() => {
-        if (days.length > 35) {
-            const formattedDay = days.map(day => zonedTimeToUtc(day, 'Asia/Yangon'))
-            setDays(formattedDay.slice(0, 35))
-        }
-    }, [days])
+    if (days.length > 35) {
+        days = days.slice(0, 35);
+    }
+
 
     useEffect(() => {
         setCurrentMonth(format(today, "MMM-yyyy"))
-    }, [today])
+    }, [])
 
     function previousMonth() {
         let firstDayNextMonth = add(firstDayCurrentMonth, {months: -1});
@@ -396,7 +403,7 @@ export default function MyanmarCalendar() {
                                     <div className="absolute bottom-3 right-3 text-sm">
                                         <time
                                             className={
-                                                isToday(utcToZonedTime(day,"Asia/Yangon")) && isSameMonth(day, firstDayCurrentMonth)
+                                                isToday(getLocalTime(day)) && isSameMonth(getLocalTime(day), getLocalTime(firstDayCurrentMonth))
                                                     ? "flex h-6 w-6 items-center justify-center rounded-full bg-indigo-600 font-semibold text-white"
                                                     : undefined
                                             }
@@ -427,7 +434,7 @@ export default function MyanmarCalendar() {
                                             'ml-auto'
                                         )}
                                     >
-                                        {format(day, "d")}
+                                        {format(getLocalTime(day), "d")}
                                     </time>
                                 </button>
                             ))}
