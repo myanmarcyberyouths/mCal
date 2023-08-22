@@ -59,10 +59,16 @@ export default function MyanmarCalendar() {
 
 
     useEffect(() => {
+        // get timezone
+        let timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        console.log("Timezone", timezone);
+    }, []);
+
+    useEffect(() => {
         // revalidate every 1 minute
         const interval = setInterval(() => {
             setCurrentMonth(format(today, "MMM-yyyy"))
-            console.log(format(today, "MMM-yyyy"))
+            console.log(format(today, "dd-MMM-yyyy"))
         });
 
         return () => clearInterval(interval);
