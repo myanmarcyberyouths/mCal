@@ -25,6 +25,18 @@ import {
     ContextMenuItem, ContextMenuShortcut,
     ContextMenuTrigger,
 } from "@/components/ui/context-menu"
+import {
+    Command,
+    CommandDialog,
+    CommandEmpty,
+    CommandGroup,
+    CommandInput,
+    CommandItem,
+    CommandList,
+    CommandSeparator,
+    CommandShortcut,
+} from "@/components/ui/command"
+import {CalendarIcon, EnvelopeClosedIcon, FaceIcon, GearIcon, PersonIcon, RocketIcon} from "@radix-ui/react-icons";
 
 
 const colStartClasses = [
@@ -204,7 +216,7 @@ export default function MyanmarCalendar() {
                         <div
                             className="hidden w-full lg:grid lg:grid-cols-7 lg:grid-rows-5 lg:gap-px lg:text-lg lg:font-light">
                             {days.map((day, dayIdx) => (
-                                <ContextMenu>
+                                <ContextMenu key={day.toString()}>
                                     <ContextMenuTrigger>
 
                                         <div
