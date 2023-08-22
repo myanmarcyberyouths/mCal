@@ -12,13 +12,20 @@ import {
     startOfWeek,
 } from "date-fns";
 import {englishToMyanmarDate, i18n} from "burma-calendar";
-import {engToMyanmarNumber} from "../utils/engToMyanmarNumber";
+import {engToMyanmarNumber} from "@/utils/engToMyanmarNumber";
 import FullMoonIcon from "../assets/icons/FullMoonIcon";
-import {classNames} from "../utils/classNames";
+import {classNames} from "@/utils/classNames";
 import LanguageMenu, {Language} from "./LanguageMenu";
 import DayDialog from "./modals/DayDialog";
-import {getLocalTime} from "../utils/helpers";
+import {getLocalTime} from "@/utils/helpers";
 import useKeyPress from "../hooks/useKeyPress";
+import {
+    ContextMenu,
+    ContextMenuContent,
+    ContextMenuItem, ContextMenuShortcut,
+    ContextMenuTrigger,
+} from "@/components/ui/context-menu"
+
 
 const colStartClasses = [
     "",
@@ -93,7 +100,6 @@ export default function MyanmarCalendar() {
                 onClose={closeModal}
                 selectedDay={selectedDay}
             />
-
             <div className="lg:flex lg:h-full lg:flex-col">
                 <header className="flex items-center justify-between border-b border-gray-200 px-6 py-4 lg:flex-none">
                     <h1 className="text-base font-semibold leading-6 text-gray-900">
@@ -198,60 +204,67 @@ export default function MyanmarCalendar() {
                         <div
                             className="hidden w-full lg:grid lg:grid-cols-7 lg:grid-rows-5 lg:gap-px lg:text-lg lg:font-light">
                             {days.map((day, dayIdx) => (
-                                <div
-                                    key={day.toString()}
-                                    className={classNames(
-                                        isSameMonth(day, firstDayCurrentMonth)
-                                            ? "bg-white"
-                                            : "bg-gray-50 text-gray-500",
-                                        "relative px-3  py-[4.9rem]"
-                                        // dayIdx === 0 ? colStartClasses[getDay(day)] : '',
-                                    )}
-                                    onClick={() => {
-                                        openModal()
-                                        setSelectedDay(day)
-                                    }}
-                                >
-                                    <div className="absolute top-3 left-3 text-sm">
-                                        {i18n(engToMyanmarNumber(englishToMyanmarDate(day).date), "myanmar", language as any)}
-                                    </div>
+                                <ContextMenu>
+                                    <ContextMenuTrigger>
 
-                                    {/*
-                                    လါ၁ ှဲၤ
-                                    လါပှဲၤ
-                                    */}
+                                        <div
+                                            key={day.toString()}
+                                            className={classNames(
+                                                isSameMonth(day, firstDayCurrentMonth)
+                                                    ? "bg-white"
+                                                    : "bg-gray-50 text-gray-500",
+                                                "relative px-3  py-[4.9rem]"
+                                                // dayIdx === 0 ? colStartClasses[getDay(day)] : '',
+                                            )}
+                                            onClick={() => {
+                                                openModal()
+                                                setSelectedDay(day)
+                                            }}>
+                                            <div className="absolute top-3 left-3 text-sm">
+                                                {i18n(engToMyanmarNumber(englishToMyanmarDate(day).date), "myanmar", language as any)}
+                                            </div>
 
-                                    <div className="absolute top-3 right-3 text-xs font-light">
-                                        <div>
-                                            {englishToMyanmarDate(day).moonPhase === "လပြည့်" &&
-                                                (<>
-                                                    <div
-                                                        className="mb-2">
-                                                        {
-                                                            language !== "karen" ?
-                                                                i18n(englishToMyanmarDate(day).moonPhase, "myanmar", language as any)
-                                                                :
-                                                                i18n(englishToMyanmarDate(day).moonPhase, "myanmar", language as any) === "လါ၁ ှဲၤ" && "လါပှဲၤ"
-                                                        }
-                                                    </div>
-                                                    <FullMoonIcon className="ml-3.5 w-6 h-6"/>
-                                                </>)}
+                                            <div className="absolute top-3 right-3 text-xs font-light">
+                                                <div>
+                                                    {englishToMyanmarDate(day).moonPhase === "လပြည့်" &&
+                                                        (<>
+                                                            <div
+                                                                className="mb-2">
+                                                                {
+                                                                    language !== "karen" ?
+                                                                        i18n(englishToMyanmarDate(day).moonPhase, "myanmar", language as any)
+                                                                        :
+                                                                        i18n(englishToMyanmarDate(day).moonPhase, "myanmar", language as any) === "လါ၁ ှဲၤ" && "လါပှဲၤ"
+                                                                }
+                                                            </div>
+                                                            <FullMoonIcon className="ml-3.5 w-6 h-6"/>
+                                                        </>)}
+                                                </div>
+                                            </div>
+
+                                            <div className="absolute bottom-3 right-3 text-sm">
+                                                <time
+                                                    className={
+                                                        isToday(getLocalTime(day)) && isSameMonth(getLocalTime(day), getLocalTime(firstDayCurrentMonth))
+                                                            ? "flex h-6 w-6 items-center justify-center rounded-full bg-indigo-600 font-semibold text-white"
+                                                            : undefined
+                                                    }
+                                                    dateTime={format(day, "yyyy-MM-dd")}
+                                                >
+                                                    {format(day, "d")}
+                                                </time>
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div className="absolute bottom-3 right-3 text-sm">
-                                        <time
-                                            className={
-                                                isToday(getLocalTime(day)) && isSameMonth(getLocalTime(day), getLocalTime(firstDayCurrentMonth))
-                                                    ? "flex h-6 w-6 items-center justify-center rounded-full bg-indigo-600 font-semibold text-white"
-                                                    : undefined
-                                            }
-                                            dateTime={format(day, "yyyy-MM-dd")}
-                                        >
-                                            {format(day, "d")}
-                                        </time>
-                                    </div>
-                                </div>
+                                        <ContextMenuContent className="w-48">
+                                            <ContextMenuItem inset>
+                                                Back
+                                                <ContextMenuShortcut>⌘[</ContextMenuShortcut>
+                                            </ContextMenuItem>
+                                        </ContextMenuContent>
+
+                                    </ContextMenuTrigger>
+                                </ContextMenu>
                             ))}
                         </div>
 
