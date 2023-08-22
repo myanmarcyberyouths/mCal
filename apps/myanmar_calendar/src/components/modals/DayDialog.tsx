@@ -43,12 +43,6 @@ const DayDialog = ({
                         >
                             <Dialog.Panel
                                 className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
-                                {/*<Dialog.Title*/}
-                                {/*    as="h3"*/}
-                                {/*    className="text-lg font-medium leading-6 text-gray-900"*/}
-                                {/*>*/}
-                                {/*    {format(selectedDay, "MMMM do")}*/}
-                                {/*</Dialog.Title>*/}
                                 <div className="relative mt-2">
                                     <div
                                         className="bg-indigo-500 flex flex-col text-sm text-gray-50 md:py-32 rounded-3xl">
