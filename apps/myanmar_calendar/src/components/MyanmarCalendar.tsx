@@ -19,6 +19,7 @@ import {classNames} from "../utils/classNames";
 import LanguageMenu, {Language} from "./LanguageMenu";
 import DayDialog from "./modals/DayDialog";
 import {getLocalTime} from "../utils/helpers";
+import useKeyPress from "../hooks/useKeyPress";
 
 const colStartClasses = [
     "",
@@ -79,6 +80,11 @@ export default function MyanmarCalendar() {
         setIsOpenDayDialog(false)
     }
 
+
+    useKeyPress("ArrowLeft", () => nextMonth())
+    useKeyPress("ArrowRight", () => previousMonth())
+    useKeyPress("ArrowUp", () => previousMonth())
+    useKeyPress("ArrowDown", () => nextMonth())
     return (
         <>
             <DayDialog
