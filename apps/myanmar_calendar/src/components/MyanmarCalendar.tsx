@@ -81,10 +81,13 @@ export default function MyanmarCalendar() {
     }
 
 
+    //  listen for key presses
     useKeyPress("ArrowLeft", () => nextMonth())
     useKeyPress("ArrowRight", () => previousMonth())
     useKeyPress("ArrowUp", () => previousMonth())
     useKeyPress("ArrowDown", () => nextMonth())
+
+
     return (
         <>
             <DayDialog
@@ -396,12 +399,24 @@ export default function MyanmarCalendar() {
                                         {i18n(engToMyanmarNumber(englishToMyanmarDate(day).date), "myanmar", language as any)}
                                     </div>
 
+                                    {/*
+                                    လါ၁ ှဲၤ
+                                    လါပှဲၤ
+                                    */}
+
                                     <div className="absolute top-3 right-3 text-xs font-light">
                                         <div>
                                             {englishToMyanmarDate(day).moonPhase === "လပြည့်" &&
                                                 (<>
                                                     <div
-                                                        className="mb-2">{i18n(englishToMyanmarDate(day).moonPhase, "myanmar", language as any)}</div>
+                                                        className="mb-2">
+                                                        {
+                                                            language !== "karen" ?
+                                                                i18n(englishToMyanmarDate(day).moonPhase, "myanmar", language as any)
+                                                                :
+                                                                i18n(englishToMyanmarDate(day).moonPhase, "myanmar", language as any) === "လါ၁ ှဲၤ" && "လါပှဲၤ"
+                                                        }
+                                                    </div>
                                                     <FullMoonIcon className="ml-3.5 w-6 h-6"/>
                                                 </>)}
                                         </div>
