@@ -80,8 +80,8 @@ export default function MyanmarCalendar() {
 
 
     //  listen for key presses
-    useKeyPress("ArrowLeft", () => nextMonth())
-    useKeyPress("ArrowRight", () => previousMonth())
+    useKeyPress("ArrowLeft", () => previousMonth())
+    useKeyPress("ArrowRight", () => nextMonth())
     useKeyPress("ArrowUp", () => previousMonth())
     useKeyPress("ArrowDown", () => nextMonth())
 
