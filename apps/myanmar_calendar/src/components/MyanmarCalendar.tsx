@@ -49,7 +49,6 @@ export default function MyanmarCalendar() {
         days = days.slice(0, 35);
     }
 
-
     useEffect(() => {
         // revalidate every 1 minute
         const interval = setInterval(() => {
@@ -70,20 +69,20 @@ export default function MyanmarCalendar() {
     }
 
 
-    let [isOpen, setIsOpen] = useState(false)
-    function closeModal() {
-        setIsOpen(false)
-    }
+    let [isOpenDayDialog, setIsOpenDayDialog] = useState(false)
 
     function openModal() {
-        setIsOpen(true)
+        setIsOpenDayDialog(true)
     }
 
+    function closeModal() {
+        setIsOpenDayDialog(false)
+    }
 
     return (
         <>
             <DayDialog
-                isOpen={isOpen}
+                isOpen={isOpenDayDialog}
                 onClose={closeModal}
                 selectedDay={selectedDay}
             />
@@ -95,14 +94,20 @@ export default function MyanmarCalendar() {
                             {format(firstDayCurrentMonth, "MMMM yyyy")}
                         </time>
                         <div className="font-normal text-sm">
-                            {i18n("Myanmar Year", "english", language as any)}{" "}
+                            {i18n("Myanmar Year", "english", language as any)}
+                            {" "}
                             {i18n(engToMyanmarNumber(englishToMyanmarDate(firstDayCurrentMonth).year), "myanmar", language as any)}
                             {" "}
                             {i18n("Ku", "english", language as any)}{" "}
                             {i18n(englishToMyanmarDate(firstDayCurrentMonth).month, "myanmar", language as any)}
                             {" - "}
-                            {i18n(englishToMyanmarDate(add(firstDayCurrentMonth, {months: 1}))
-                                .month, "myanmar", language as any)}
+                            {
+                                i18n(englishToMyanmarDate(
+                                        add(firstDayCurrentMonth, {months: 1})).month,
+                                    "myanmar",
+                                    language as any
+                                )
+                            }
                         </div>
                     </h1>
                     <div className="flex items-center">
