@@ -14,11 +14,11 @@ import {
 } from "date-fns";
 import {englishToMyanmarDate, i18n} from "burma-calendar";
 import {engToMyanmarNumber} from "../utils/engToMyanmarNumber";
-import {utcToZonedTime, zonedTimeToUtc} from "date-fns-tz";
 import FullMoonIcon from "../assets/icons/FullMoonIcon";
 import {classNames} from "../utils/classNames";
 import LanguageMenu, {Language} from "./LanguageMenu";
 import DayDialog from "./modals/DayDialog";
+import {getLocalTime} from "../utils/helpers";
 
 const colStartClasses = [
     "",
@@ -29,14 +29,6 @@ const colStartClasses = [
     "col-start-6",
     "col-start-7",
 ];
-
-
-export function getLocalTime(date: Date) {
-    return utcToZonedTime(
-        new Date(date),
-        "Asia/Yangon"
-    );
-}
 
 
 export default function MyanmarCalendar() {
@@ -59,20 +51,13 @@ export default function MyanmarCalendar() {
 
 
     useEffect(() => {
-        // get timezone
-        let timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-        console.log("Timezone", timezone);
-    }, []);
-
-    useEffect(() => {
         // revalidate every 1 minute
         const interval = setInterval(() => {
             setCurrentMonth(format(today, "MMM-yyyy"))
-            console.log(format(today, "dd-MMM-yyyy"))
         });
 
         return () => clearInterval(interval);
-    }, [])
+    }, [today])
 
     function previousMonth() {
         let firstDayNextMonth = add(firstDayCurrentMonth, {months: -1});
@@ -86,7 +71,6 @@ export default function MyanmarCalendar() {
 
 
     let [isOpen, setIsOpen] = useState(false)
-
     function closeModal() {
         setIsOpen(false)
     }
