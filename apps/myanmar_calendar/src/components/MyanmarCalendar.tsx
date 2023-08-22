@@ -59,7 +59,13 @@ export default function MyanmarCalendar() {
 
 
     useEffect(() => {
-        setCurrentMonth(format(today, "MMM-yyyy"))
+        // revalidate every 1 minute
+        const interval = setInterval(() => {
+            setCurrentMonth(format(today, "MMM-yyyy"))
+            console.log(format(today, "MMM-yyyy"))
+        });
+
+        return () => clearInterval(interval);
     }, [])
 
     function previousMonth() {
@@ -90,7 +96,7 @@ export default function MyanmarCalendar() {
                 isOpen={isOpen}
                 onClose={closeModal}
                 selectedDay={selectedDay}
-            />,
+            />
 
             <div className="lg:flex lg:h-full lg:flex-col">
                 <header className="flex items-center justify-between border-b border-gray-200 px-6 py-4 lg:flex-none">
@@ -416,7 +422,7 @@ export default function MyanmarCalendar() {
                             ))}
                         </div>
 
-                        <div className="isolate grid w-full grid-cols-7 grid-rows-5 gap-px lg:hidden">
+                        <div className="isolate grid w-full  grid-cols-7 grid-rows-5 gap-px lg:hidden">
                             {days.map((day) => (
                                 <button
                                     key={day.toString()}
