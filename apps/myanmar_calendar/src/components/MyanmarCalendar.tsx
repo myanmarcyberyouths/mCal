@@ -53,7 +53,7 @@ export default function MyanmarCalendar() {
         // revalidate every 1 minute
         const interval = setInterval(() => {
             setCurrentMonth(format(today, "MMM-yyyy"))
-        });
+        }, 60 * 60 * 60); // 1 hour
 
         return () => clearInterval(interval);
     }, [today])
