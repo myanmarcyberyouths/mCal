@@ -22,21 +22,10 @@ import useKeyPress from "../hooks/useKeyPress";
 import {
     ContextMenu,
     ContextMenuContent,
-    ContextMenuItem, ContextMenuShortcut,
+    ContextMenuItem,
+    ContextMenuShortcut,
     ContextMenuTrigger,
 } from "@/components/ui/context-menu"
-import {
-    Command,
-    CommandDialog,
-    CommandEmpty,
-    CommandGroup,
-    CommandInput,
-    CommandItem,
-    CommandList,
-    CommandSeparator,
-    CommandShortcut,
-} from "@/components/ui/command"
-import {CalendarIcon, EnvelopeClosedIcon, FaceIcon, GearIcon, PersonIcon, RocketIcon} from "@radix-ui/react-icons";
 
 
 const colStartClasses = [
