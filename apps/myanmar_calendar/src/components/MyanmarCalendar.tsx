@@ -97,6 +97,10 @@ export default function MyanmarCalendar() {
         setIsOpenDayDialog(false)
     }
 
+    useEffect(() => {
+        nextMonth()
+        setCurrentMonth(format(today, "MMM-yyyy"));
+    }, []);
 
     //  listen for key presses
     useKeyPress("ArrowLeft", () => previousMonth())
