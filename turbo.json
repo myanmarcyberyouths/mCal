@@ -1,9 +1,10 @@
 {
-  "$schema": "https://turbo.build/schema.json",
+  "$schema": "https://turbz¥o.build/schema.json",
   "pipeline": {
     "build": {
       "dependsOn": [
-        "^build"
+        "^build",
+        "^out"
       ],
       "outputs": [
         ".next/**",
