@@ -88,10 +88,10 @@ export default function MyanmarCalendar() {
 
     useEffect(() => {
         nextMonth()
-        setCurrentMonth(format(today, "MMM-yyyy"));
+        setCurrentMonth(format(startOfToday(), "MMM-yyyy"));
     }, []);
 
-    //  listen for key presses
+
     useKeyPress("ArrowLeft", () => previousMonth())
     useKeyPress("ArrowRight", () => nextMonth())
     useKeyPress("ArrowUp", () => previousMonth())
