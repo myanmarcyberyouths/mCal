@@ -1,4 +1,3 @@
-'use client'
 import React, {Fragment, useEffect, useState} from "react";
 import {ChevronLeftIcon, ChevronRightIcon,} from "@heroicons/react/20/solid";
 import {
@@ -48,8 +47,8 @@ export default function MyanmarCalendar() {
     const [language, setLanguage] = useState<Language>("myanmar");
 
     let days = eachDayOfInterval({
-        start: startOfWeek(firstDayCurrentMonth),
-        end: add(endOfMonth(firstDayCurrentMonth), {
+        start: startOfWeek(getLocalTime(firstDayCurrentMonth)),
+        end: add(endOfMonth(getLocalTime(firstDayCurrentMonth)), {
             days: 10,
         }),
     });
@@ -61,7 +60,7 @@ export default function MyanmarCalendar() {
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentMonth(format(today, "MMM-yyyy"))
-        }, 60 * 60 * 60); // 1 hour
+        }, 60 * 60); // 1 hour
 
         return () => clearInterval(interval);
     }, [today])
@@ -86,12 +85,6 @@ export default function MyanmarCalendar() {
     function closeModal() {
         setIsOpenDayDialog(false)
     }
-
-    useEffect(() => {
-        nextMonth()
-        setCurrentMonth(format(startOfToday(), "MMM-yyyy"));
-    }, []);
-
 
     useKeyPress("ArrowLeft", () => previousMonth())
     useKeyPress("ArrowRight", () => nextMonth())
