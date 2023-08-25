@@ -4,11 +4,8 @@ export default function Document() {
     return (
         <Html>
             <meta name="viewport" content="width=device-width, initial-scale=1"/>
-            <title>Myanmar Calendar -Myanmar Calendar is a feature-rich calendar app that seamlessly combines the
-                functionality of Gregorian and Myanmar calendars, catering to users who follow both systems. It supports
-                multiple languages, including Myanmar, Mon, English, Tai, and Karen, ensuring a user-friendly experience
-                for individuals from diverse linguistic backgrounds.</title>
-            <meta name="title" content="Myanmar Calendar "/>
+            <title>Myanmar Calendar - {"Myanmar's"} first digital calendar</title>
+            <meta name="title" content="Myanmar Calendar - Myanmar's first digital calendar "/>
             <meta name="description"
                   content="Myanmar Calendar is a feature-rich calendar app that seamlessly combines the functionality of Gregorian and Myanmar calendars, catering to users who follow both systems. It supports multiple languages, including Myanmar, Mon, English, Tai, and Karen, ensuring a user-friendly experience for individuals from diverse linguistic backgrounds."/>
             <meta name="keywords" content="myanmar-calendar, caleadar, burma calendar, burmese calendar"/>
@@ -18,7 +15,6 @@ export default function Document() {
             <meta name="revisit-after" content="1 days"/>
             <meta name="author" content="Aung Myat Moe"/>
             <meta content="width=device-width, initial-scale=1" name="viewport"/>
-            <meta name="description" content="Aung Myat Moe - Software Engineer, Founder and Open Source Enthusiast"/>
             <meta name="robots" content="all"/>
             <Head/>
             <body>
