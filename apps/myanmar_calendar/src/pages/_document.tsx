@@ -4,7 +4,7 @@ export default function Document() {
     return (
         <Html>
             <meta name="viewport" content="width=device-width, initial-scale=1"/>
-            <title>Myanmar Calendar - {"Myanmar's"} first digital calendar</title>
+            <title>Myanmar Calendar - First digital calendar of Myanmar</title>
             <meta name="title" content="Myanmar Calendar - Myanmar's first digital calendar "/>
             <meta name="description"
                   content="Myanmar Calendar is a feature-rich calendar app that seamlessly combines the functionality of Gregorian and Myanmar calendars, catering to users who follow both systems. It supports multiple languages, including Myanmar, Mon, English, Tai, and Karen, ensuring a user-friendly experience for individuals from diverse linguistic backgrounds."/>

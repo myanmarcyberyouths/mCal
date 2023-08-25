@@ -5,7 +5,7 @@ import {
     add,
     eachDayOfInterval,
     endOfMonth,
-    format,
+    format, getDay,
     isSameMonth,
     isToday,
     parse,
@@ -219,8 +219,8 @@ export default function MyanmarCalendar() {
                                                 isSameMonth(day, firstDayCurrentMonth)
                                                     ? "bg-white"
                                                     : "bg-gray-50 text-gray-500",
-                                                "relative px-3  py-[4.9rem]"
-                                                // dayIdx === 0 ? colStartClasses[getDay(day)] : '',
+                                                "relative px-3  py-[4.9rem]",
+                                                dayIdx === 0 ? colStartClasses[getDay(day)] : '',
                                             )}
                                             onClick={() => {
                                                 openModal()
