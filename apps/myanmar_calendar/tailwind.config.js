@@ -1,12 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
-  content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
-	],
+  content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
   theme: {
     container: {
       center: true,
@@ -51,6 +46,17 @@ module.exports = {
           foreground: "hsl(var(--card-foreground))",
         },
       },
+      spacing: {
+        "nav-h": "4rem",
+        "sidebar-w": "17rem",
+        "input-sm": "2rem",
+        "input-md": "2.5rem",
+        "input-lg": "3rem",
+      },
+      // layoutDimensions: {
+      // },
+      // inputHeight: {
+      // },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
@@ -73,4 +79,4 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-}
+};

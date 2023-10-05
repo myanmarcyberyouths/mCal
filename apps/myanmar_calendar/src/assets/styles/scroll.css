@@ -1,0 +1,73 @@
+* {
+  /* outline: 1px solid violet; */
+}
+
+html {
+  overflow-x: hidden;
+}
+
+.__scrollbar-sm {
+  scrollbar-width: thin;
+  /* overflow-x: hidden; */
+  overflow-y: scroll;
+  overflow: overlay;
+  position: relative;
+}
+.__scrollbar-sm::-webkit-scrollbar {
+  /* width: 0.4rem; */
+  width: 6.5px;
+  /* height: 0.5rem; */
+  height: 8px;
+}
+.__scrollbar-sm::-webkit-scrollbar-thumb {
+  border-radius: 1.2rem;
+  background-color: #afafaf;
+}
+.__scrollbar-sm::-webkit-scrollbar-thumb:hover {
+  background-color: #9a9a9a;
+}
+
+/* SCROLLBAR 2 */
+.__scrollbar-md {
+  scrollbar-width: thin;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  overflow: overlay;
+}
+.__scrollbar-md::-webkit-scrollbar {
+  /* width: 0.5rem; */
+  /* height: 0.55rem; */
+  width: 8px;
+  height: 10px;
+}
+.__scrollbar-md::-webkit-scrollbar-thumb {
+  border-radius: 1.2rem;
+  background-color: #b8b8b8;
+}
+.__scrollbar-md::-webkit-scrollbar-thumb:hover {
+  background-color: #a7a7a7;
+}
+
+.__scrollbar-lg {
+  scrollbar-width: thin;
+  /* overflow-x: hidden; */
+  overflow-y: scroll;
+  overflow: overlay;
+  position: relative;
+}
+.__scrollbar-lg::-webkit-scrollbar {
+  width: 0.55rem;
+  height: 0.57rem;
+}
+.__scrollbar-lg::-webkit-scrollbar-thumb {
+  border-radius: 1.2rem;
+  background-color: #b8b8b8;
+}
+.__scrollbar-lg::-webkit-scrollbar-thumb:hover {
+  background-color: #a7a7a7;
+}
+
+/* .swiper-wrapper {
+  display: flex;
+  flex-direction: row-reverse;
+} */
