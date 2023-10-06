@@ -43,17 +43,21 @@ const DayDialog = ({ isOpen, onClose, selectedDay }: DayDialogProps) => {
               leaveTo="opacity-0 scale-95">
               <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                 <div className="relative mt-2">
-                  <div className="bg-indigo-500 flex flex-col text-sm text-gray-50 md:py-32 rounded-3xl">
-                    <p className="absolute top-0 right-0 px-4 pt-4 font-semibold text-lg">{format(selectedDay, "d MMMM yyyy")}</p>
-                    <div className="place-self-center flex gap-y-6 flex-col items-center justify-center">
-                      <p className="text-5xl">{engToMyanmarNumber(englishToMyanmarDate(selectedDay.toDateString()).date)}</p>
-                      <div className="flex gap-x-1 mt-1 text-lg">
-                        <p>{englishToMyanmarDate(selectedDay.toDateString()).month}</p>
-                        <p>{englishToMyanmarDate(selectedDay.toDateString()).moonPhase}</p>
+                  {selectedDay ? (
+                    <div className="bg-indigo-500 flex flex-col text-sm text-gray-50 md:py-32 rounded-3xl">
+                      <p className="absolute top-0 right-0 px-4 pt-4 font-semibold text-lg">{format(selectedDay, "d MMMM yyyy")}</p>
+                      <div className="place-self-center flex gap-y-6 flex-col items-center justify-center">
+                        <p className="text-5xl">{engToMyanmarNumber(englishToMyanmarDate(selectedDay.toDateString()).date)}</p>
+                        <div className="flex gap-x-1 mt-1 text-lg">
+                          <p>{englishToMyanmarDate(selectedDay.toDateString()).month}</p>
+                          <p>{englishToMyanmarDate(selectedDay.toDateString()).moonPhase}</p>
+                        </div>
+                        <p className="-mt-3 text-sm">{engToMyanmarNumber(englishToMyanmarDate(selectedDay.toDateString()).year)}</p>
                       </div>
-                      <p className="-mt-3 text-sm">{engToMyanmarNumber(englishToMyanmarDate(selectedDay.toDateString()).year)}</p>
                     </div>
-                  </div>
+                  ) : (
+                    <div></div>
+                  )}
                 </div>
               </Dialog.Panel>
             </Transition.Child>

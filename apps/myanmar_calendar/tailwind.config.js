@@ -53,10 +53,24 @@ module.exports = {
         "input-md": "2.5rem",
         "input-lg": "3rem",
       },
-      // layoutDimensions: {
-      // },
-      // inputHeight: {
-      // },
+      screens: {
+        sm: "440px",
+        sm1: "540px",
+        sm2: "640px",
+        md: "768px",
+        md1: "800px",
+        md2: "920px",
+        md3: "980px",
+        lg: "1024px",
+        lg1: "1064px",
+        lg2: "1165px",
+        lg3: "1220px",
+        xl: "1280px",
+        xl1: "1380px",
+        xl2: "1450px",
+        xl3: "1536px",
+      },
+
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",

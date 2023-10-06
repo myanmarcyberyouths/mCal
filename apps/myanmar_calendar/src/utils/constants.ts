@@ -1,13 +1,13 @@
 export const LANGUAGES = {
-  myanmar: {
-    label: "myanmar",
-    tagColor: "",
-    index: 1,
-  },
   english: {
     label: "english",
     tagColor: "",
     index: 0,
+  },
+  myanmar: {
+    label: "myanmar",
+    tagColor: "",
+    index: 1,
   },
   mon: {
     label: "mon",
@@ -24,11 +24,11 @@ export const LANGUAGES = {
     tagColor: "",
     index: 5,
   },
-  kachin: {
-    label: "kachin",
-    tagColor: "",
-    index: 6,
-  },
+  // kachin: {
+  //   label: "kachin",
+  //   tagColor: "",
+  //   index: 6,
+  // },
 } as const;
 
 export const WEEK_DAYS = {

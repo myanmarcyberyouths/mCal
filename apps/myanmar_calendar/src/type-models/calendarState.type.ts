@@ -13,6 +13,11 @@ export enum LANGUAGE_ENUM {
   KACHIN = "kachin",
 }
 
+export type CellPreferanceT = {
+  moonPhase: boolean;
+  astro: boolean;
+};
+
 export interface ActiveDateFrameT {
   t: string;
   d: number;

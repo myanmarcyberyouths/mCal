@@ -8,10 +8,10 @@ html {
 
 .__scrollbar-sm {
   scrollbar-width: thin;
-  /* overflow-x: hidden; */
   overflow-y: scroll;
+  overflow-x: hidden;
   overflow: overlay;
-  position: relative;
+  /* position: relative; */
 }
 .__scrollbar-sm::-webkit-scrollbar {
   /* width: 0.4rem; */

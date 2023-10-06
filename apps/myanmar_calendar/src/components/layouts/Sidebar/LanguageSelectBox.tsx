@@ -1,11 +1,22 @@
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/selectBoxes/PrimarySelect";
+import { RootState } from "@/store";
+import { setCalendarLanguage } from "@/store/calendarState";
+import { LANGUAGE_ENUM } from "@/type-models/calendarState.type";
 import { LANGUAGES } from "@/utils/constants";
 import { BiChevronDown } from "react-icons/bi";
 import { HiLanguage } from "react-icons/hi2";
+import { useDispatch, useSelector } from "react-redux";
 
-function LanguageSelectBox() {
+interface LanguageSelectBoxInterface {
+  value: LANGUAGE_ENUM;
+  onChange: (value: LANGUAGE_ENUM) => void;
+}
+
+function LanguageSelectBox({ value, onChange }: LanguageSelectBoxInterface) {
   return (
-    <Select value={"english"}>
+    <Select
+      value={value}
+      onValueChange={onChange}>
       <SelectTrigger
         config={{
           size: "lg",
@@ -13,10 +24,10 @@ function LanguageSelectBox() {
         className="h-input-md">
         <span className="flex gap-2 w-full items-center">
           <HiLanguage
-            size={21}
+            size={18}
             className="text-gray-500"
           />
-          <SelectValue />
+          <SelectValue placeholder={value} />
         </span>
         <BiChevronDown
           size={27}
@@ -38,3 +49,19 @@ function LanguageSelectBox() {
 }
 
 export default LanguageSelectBox;
+
+export function CalendarLanguageSelectBox() {
+  const dispatch = useDispatch();
+  const calendarLanguage = useSelector((state: RootState) => state.calendarState.calendarLanguage);
+
+  console.log(calendarLanguage);
+  return (
+    <LanguageSelectBox
+      value={calendarLanguage}
+      onChange={(value) => dispatch(setCalendarLanguage(value))}
+    />
+  );
+}
+// export function SystemLanguageSelectBox() {
+//   return <LanguageSelectBox  />;
+// }

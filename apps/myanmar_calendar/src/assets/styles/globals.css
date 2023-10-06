@@ -69,6 +69,7 @@
 @layer base {
   * {
     font-size: 15.5px;
+    /* outline: 1px solid violet; */
     @apply border-border;
   }
   body {
