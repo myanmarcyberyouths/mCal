@@ -11,7 +11,7 @@ function useSetupCalendarState() {
 
   useEffect(() => {
     dispatch(setActiveDate(today.toISOString()));
-  }, [today]);
+  }, [dispatch, today]);
 }
 
 export default useSetupCalendarState;
