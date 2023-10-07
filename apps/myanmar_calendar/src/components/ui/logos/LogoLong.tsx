@@ -7,7 +7,7 @@ function LogoLong() {
       {/* Logo placeholder */}
       <BsCalendar2Check
         size={32}
-        className="text-yellow-500"
+        className="text-red-400"
       />
       <h1 className="text-[1.8rem] text-gray-500">Calendar</h1>
     </div>

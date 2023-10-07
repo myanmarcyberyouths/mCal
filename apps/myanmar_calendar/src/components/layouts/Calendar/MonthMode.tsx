@@ -4,11 +4,12 @@ import { getLocalTime } from "@/utils/helpers";
 import { eachDayOfInterval, endOfMonth, endOfWeek, startOfMonth, startOfWeek } from "date-fns";
 import React from "react";
 import { useSelector } from "react-redux";
-import DayCell from "./Cells/DayCell";
+import MonthCell from "./Cells/MonthCell";
 import { cn } from "@/lib/utils";
 
 function MonthMode() {
-  const { activeDate, calendarLanguage } = useSelector((state: RootState) => state.calendarState);
+  const calendarState = useSelector((state: RootState) => state.calendarState);
+  const { activeDate, calendarLanguage, ...rest } = calendarState;
 
   const activeDateObj = new Date(activeDate);
   let days = eachDayOfInterval({
@@ -33,10 +34,10 @@ function MonthMode() {
       {/* min-h-[41rem] */}
       <div className="w-full h-[calc(100%-2.25rem)]  grid grid-cols-7 grid-flow-row-dense">
         {days.map((day, dayIdx) => (
-          <DayCell
+          <MonthCell
             key={day.toString()}
             day={day}
-            language={calendarLanguage}
+            calendarState={calendarState}
           />
         ))}
       </div>

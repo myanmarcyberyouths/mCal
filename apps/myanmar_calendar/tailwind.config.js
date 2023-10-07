@@ -54,18 +54,18 @@ module.exports = {
         "input-lg": "3rem",
       },
       screens: {
-        sm: "440px",
+        sm: "440px", // ts default
         sm1: "540px",
         sm2: "640px",
-        md: "768px",
+        md: "768px", // ts default
         md1: "800px",
         md2: "920px",
         md3: "980px",
-        lg: "1024px",
+        lg: "1024px", // ts default
         lg1: "1064px",
         lg2: "1165px",
         lg3: "1220px",
-        xl: "1280px",
+        xl: "1280px", // ts default
         xl1: "1380px",
         xl2: "1450px",
         xl3: "1536px",

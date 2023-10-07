@@ -44,7 +44,7 @@ const SelectContent = React.forwardRef<React.ElementRef<typeof SelectPrimitive.C
         position={position}
         align={align}
         {...props}>
-        <ScrollArea className="w-full max-h-[17rem] p-[0.2rem]">
+        <ScrollArea className="w-full h-[50vh] max-h-[17rem] p-[0.2rem]">
           <SelectPrimitive.Viewport>{children}</SelectPrimitive.Viewport>
         </ScrollArea>
       </SelectPrimitive.Content>

@@ -24,6 +24,26 @@ export const LANGUAGES = {
     tagColor: "",
     index: 5,
   },
+  sdf: {
+    label: "karen",
+    tagColor: "",
+    index: 5,
+  },
+  kadfasren: {
+    label: "karen",
+    tagColor: "",
+    index: 5,
+  },
+  kadfsdren: {
+    label: "karen",
+    tagColor: "",
+    index: 5,
+  },
+  kafdsfren: {
+    label: "karen",
+    tagColor: "",
+    index: 5,
+  },
   // kachin: {
   //   label: "kachin",
   //   tagColor: "",

@@ -18,9 +18,9 @@ export type CellPreferanceT = {
   astro: boolean;
 };
 
-export interface ActiveDateFrameT {
+export type ActiveDateFrameT = {
   t: string;
   d: number;
   m: number;
   y: number;
-}
+};

@@ -75,4 +75,12 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  button {
+    outline: none;
+  }
+
+  li {
+    list-style: none;
+  }
 }
