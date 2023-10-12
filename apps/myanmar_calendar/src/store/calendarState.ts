@@ -7,7 +7,7 @@ export interface CalendarStateInterface {
   activeDate: string;
   calendarLanguage: LANGUAGE_ENUM;
   monthCellProps: CellPreferanceT;
-  calendarEvents: Record<string, boolean>;
+  eventCalendars: Record<string, boolean>;
 }
 
 const initialState: CalendarStateInterface = {
@@ -18,12 +18,14 @@ const initialState: CalendarStateInterface = {
     moonPhase: true,
     astro: true,
   },
-  calendarEvents: {
+  eventCalendars: {
     publicHolidays: true,
     myanmar: true,
+    international: true,
     mon: true,
     shan: true,
     karen: true,
+    kachin: true,
   },
 };
 export const calendarSlice = createSlice({
@@ -51,12 +53,12 @@ export const calendarSlice = createSlice({
       // };
     },
 
-    updateCalendarEvents: (state, { payload }: PayloadAction<{ event: string; value: boolean }>) => {
-      state.calendarEvents[payload.event] = payload.value;
+    updateEventCalendars: (state, { payload }: PayloadAction<{ event: string; value: boolean }>) => {
+      state.eventCalendars[payload.event] = payload.value;
     },
   },
 });
 
-export const { setCalendarMode, setActiveDate, updateActiveDate, setCalendarLanguage, updateMonthCellPropsState, updateCalendarEvents } = calendarSlice.actions;
+export const { setCalendarMode, setActiveDate, updateActiveDate, setCalendarLanguage, updateMonthCellPropsState, updateEventCalendars } = calendarSlice.actions;
 
 export default calendarSlice.reducer;

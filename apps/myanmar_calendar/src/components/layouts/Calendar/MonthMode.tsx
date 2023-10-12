@@ -18,7 +18,7 @@ function MonthMode() {
   });
 
   return (
-    <>
+    <div className="h-full">
       <div className="grid grid-cols-7 sticky top-0 h-[2.25rem]  border-gray-300 bg-white">
         {Object.values(WEEK_DAYS).map((weekday) => (
           <span
@@ -32,7 +32,7 @@ function MonthMode() {
         ))}
       </div>
       {/* min-h-[41rem] */}
-      <div className="w-full h-[calc(100%-2.25rem)]  grid grid-cols-7 grid-flow-row-dense">
+      <div className="w-full h-[calc(100%-2.25rem)]  grid grid-cols-[repeat(7,minmax(auto,1fr))] grid-flow-row-dense">
         {days.map((day, dayIdx) => (
           <MonthCell
             key={day.toString()}
@@ -41,7 +41,7 @@ function MonthMode() {
           />
         ))}
       </div>
-    </>
+    </div>
   );
 }
 

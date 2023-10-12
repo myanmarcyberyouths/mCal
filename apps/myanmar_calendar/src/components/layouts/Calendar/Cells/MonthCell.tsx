@@ -5,7 +5,7 @@ import { LANGUAGE_ENUM } from "@/type-models/calendarState.type";
 import { engToMyanmarNumber } from "@/utils/engToMyanmarNumber";
 import { getLocalTime } from "@/utils/helpers";
 import { englishToMyanmarDate, i18n } from "burma-calendar";
-import { format, isSameMonth, isThisMonth, isToday } from "date-fns";
+import { format, isSameMonth, isSameWeek, isToday, lastDayOfMonth } from "date-fns";
 import React from "react";
 import { useDispatch } from "react-redux";
 
@@ -17,16 +17,23 @@ interface MonthCellT {
 function MonthCell({ day, calendarState }: MonthCellT) {
   const { calendarLanguage, activeDate, monthCellProps } = calendarState;
   const dispatch = useDispatch();
-  const dayIsToday = isToday(getLocalTime(day));
-  const dayIncludeInActiveMonth = isSameMonth(day, new Date(activeDate));
+  let activeDateObj = new Date(activeDate);
+  const dayIsToday = isToday(day);
+  const dayIncludeInActiveMonth = isSameMonth(day, activeDateObj);
+  const dayIsInEndWeek = isSameWeek(lastDayOfMonth(activeDateObj), day);
 
   const mmDate = i18n(engToMyanmarNumber(englishToMyanmarDate(day).date), "myanmar", "myanmar" as any);
   const myanmar_calendar = englishToMyanmarDate(day);
   const moonAlign = myanmar_calendar.moonPhase === "လပြည့်" || myanmar_calendar.moonPhase === "လကွယ်";
 
+  // console.log(myanmar_calendar.thingyan);
+
   return (
     <div
-      className={`border-b border-r flex flex-col items-stretch border-gray-300 p-2 py-[0.25rem] pb-[0.3rem] min-h-[8.5rem] hover:bg-gray-50`}
+      className={cn(
+        "border-b border-r flex flex-col items-stretch border-gray-300 p-2 py-[0.25rem] pb-[0.3rem]  min-h-[8.5rem] hover:bg-gray-50",
+        dayIsInEndWeek ? "min-h-[8.65rem] pb-[0.45rem]" : ""
+      )}
       onClick={() => {
         dispatch(setDayDialongTargetDay(day.toISOString()));
       }}>
@@ -47,7 +54,7 @@ function MonthCell({ day, calendarState }: MonthCellT) {
           )}
         </time>
         {/* ASTRO */}
-        <div className={cn("flex flex-1 self-stretch min-w-[1.5rem] justify-end items-center gap-1 transition-all duration-200", monthCellProps.astro ? "opacity-100" : "opacity-0")}>
+        <div className={cn("flex flex-1 self-stretch min-w-[1.5rem] justify-end items-center gap-1 transition-all", monthCellProps.astro ? "opacity-100" : "opacity-0")}>
           {/* long text on large screen */}
           <span className={`hidden md3:inline text-[0.65rem] whitespace-nowrap ${myanmar_calendar.pyathada ? "text-red-500" : "text-blue-500"}`}>
             {myanmar_calendar.pyathada || myanmar_calendar.yatyaza}
@@ -62,9 +69,13 @@ function MonthCell({ day, calendarState }: MonthCellT) {
 
       {/* ------ CELL BOTTOM ------- */}
       <div className="flex justify-between items-center h-[1.1rem]">
-        <div></div>
+        <ul>
+          <li>
+            <p></p>
+          </li>
+        </ul>
         {/* MOON PHASE */}
-        <div className={cn("flex gap-1 items-center transition-all duration-200", monthCellProps.moonPhase ? "opacity-100" : "opacity-0")}>
+        <div className={cn("flex gap-1 items-center transition-all", monthCellProps.moonPhase ? "opacity-100" : "opacity-0")}>
           {(mmDate == "၁" || moonAlign) && (
             <span className="hidden md2:inline text-[0.68rem] leading-[1.3rem] text-gray-600 whitespace-nowrap overflow-x-hidden">
               {myanmar_calendar.month}

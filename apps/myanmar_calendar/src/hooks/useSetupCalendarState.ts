@@ -5,7 +5,7 @@ import { setActiveDate } from "@/store/calendarState";
 import { getLocalTime } from "@/utils/helpers";
 
 function useSetupCalendarState() {
-  let today = getLocalTime();
+  let today = getLocalTime(new Date());
 
   const dispatch = useDispatch();
 

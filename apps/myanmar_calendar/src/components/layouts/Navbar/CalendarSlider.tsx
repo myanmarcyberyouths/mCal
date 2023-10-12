@@ -3,15 +3,18 @@ import { RootState } from "@/store";
 import { setActiveDate, updateActiveDate } from "@/store/calendarState";
 import { CALENDAR_MODE_ENUM } from "@/type-models/calendarState.type";
 import { getLocalTime } from "@/utils/helpers";
-import { isSameDay } from "date-fns";
+import { isSameDay, isToday } from "date-fns";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 
 function CalendarSlider() {
   const dispatch = useDispatch();
-  const { calendarMode, activeDate } = useSelector((state: RootState) => state.calendarState);
+  const calendarMode = useSelector((state: RootState) => state.calendarState.calendarMode);
+  const activeDate = useSelector((state: RootState) => state.calendarState.activeDate);
 
-  const slideCalendar = (direction: "next" | "prev") => {
+  let activeDateIsToday = isToday(new Date(activeDate));
+
+  const handleCalendarSlide = (direction: "next" | "prev") => {
     const slideValue = direction === "next" ? 1 : -1;
 
     if (calendarMode === CALENDAR_MODE_ENUM.WEEK) {
@@ -25,19 +28,19 @@ function CalendarSlider() {
     }
   };
 
-  useKeyPress("ArrowLeft", () => slideCalendar("prev"));
-  useKeyPress("ArrowRight", () => slideCalendar("next"));
+  useKeyPress("ArrowLeft", () => handleCalendarSlide("prev"));
+  useKeyPress("ArrowRight", () => handleCalendarSlide("next"));
 
   return (
     <div className="h-[2.5rem] flex-shrink-0 flex items-stretch overflow-hidden rounded-md border border-gray-300">
       <button
         className="flex justify-center items-center aspect-square hover:bg-gray-100 active:bg-gray-200 text-gray-600 "
-        onClick={() => slideCalendar("prev")}>
+        onClick={() => handleCalendarSlide("prev")}>
         <BiChevronLeft size={24} />
       </button>
       <button
         className={`flex items-center justify-center border-r border-l border-gray-300 hover:bg-gray-100  font-semibold w-[6rem] active:bg-gray-200 ${
-          isSameDay(getLocalTime(), new Date(activeDate)) ? "text-red-500 hover:text-red-500 " : "text-gray-700 hover:text-gray-800  "
+          activeDateIsToday ? "text-red-500 hover:text-red-500 " : "text-gray-700 hover:text-gray-800  "
         }`}
         onClick={() => {
           dispatch(setActiveDate(getLocalTime().toISOString()));
@@ -47,7 +50,7 @@ function CalendarSlider() {
       </button>
       <button
         className="flex justify-center items-center aspect-square hover:bg-gray-100 active:bg-gray-200 text-gray-600"
-        onClick={() => slideCalendar("next")}>
+        onClick={() => handleCalendarSlide("next")}>
         <BiChevronRight size={24} />
       </button>
     </div>
