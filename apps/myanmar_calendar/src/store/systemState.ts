@@ -4,14 +4,12 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 interface SystemStateInterface {
   sidebarOpen: boolean;
   darkModeOn: boolean;
-  enterMobileMode: boolean;
   systemLanguage: LANGUAGE_ENUM;
 }
 
 const initialState: SystemStateInterface = {
-  sidebarOpen: false,
+  sidebarOpen: true,
   darkModeOn: false,
-  enterMobileMode: false,
   systemLanguage: LANGUAGE_ENUM.ENGLISH,
 };
 
@@ -20,17 +18,14 @@ export const systemSlice = createSlice({
   initialState,
   reducers: {
     setSidebarOpenState: (state, { payload }: PayloadAction<boolean | undefined>) => {
-      state.sidebarOpen = payload === undefined ? !state.sidebarOpen : payload;
+      state.sidebarOpen = payload || !state.sidebarOpen;
     },
     setSystemLanguage: (state, { payload }: PayloadAction<LANGUAGE_ENUM>) => {
       state.systemLanguage = payload;
     },
-    setEnterMobileMode: (state, { payload }: PayloadAction<boolean>) => {
-      state.enterMobileMode = payload;
-    },
   },
 });
 
-export const { setSidebarOpenState, setSystemLanguage, setEnterMobileMode } = systemSlice.actions;
+export const { setSidebarOpenState, setSystemLanguage } = systemSlice.actions;
 
 export default systemSlice.reducer;
