@@ -2,16 +2,20 @@ import { RootState } from "@/store";
 import { WEEK_DAYS } from "@/utils/constants";
 import { getLocalTime } from "@/utils/helpers";
 import { eachDayOfInterval, endOfMonth, endOfWeek, startOfMonth, startOfWeek } from "date-fns";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import MonthCell from "./Cells/MonthCell";
+import MonthCell from "./MonthCell";
 import { cn } from "@/lib/utils";
 
 function MonthMode() {
   const calendarState = useSelector((state: RootState) => state.calendarState);
   const { activeDate, calendarLanguage, ...rest } = calendarState;
+  const [activeDateObj, setActiveDateObj] = useState<Date>();
 
-  const activeDateObj = new Date(activeDate);
+  useEffect(() => {
+    setActiveDateObj(new Date(activeDate));
+  }, [activeDate]);
+
   let days = eachDayOfInterval({
     start: startOfWeek(startOfMonth(getLocalTime(activeDateObj))),
     end: endOfWeek(endOfMonth(getLocalTime(activeDateObj))),
@@ -32,7 +36,7 @@ function MonthMode() {
         ))}
       </div>
       {/* min-h-[41rem] */}
-      <div className="w-full h-[calc(100%-2.25rem)]  grid grid-cols-7 grid-flow-row-dense">
+      <div className="w-full h-[calc(100%-2.25rem)]  grid grid-cols-[repeat(7,minmax(auto,1fr))] grid-flow-row-dense">
         {days.map((day, dayIdx) => (
           <MonthCell
             key={day.toString()}

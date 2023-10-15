@@ -72,8 +72,12 @@
     /* outline: 1px solid violet; */
     @apply border-border;
   }
+  html {
+    overflow: hidden;
+  }
   body {
     @apply bg-background text-foreground;
+    overflow: hidden;
   }
 
   button {

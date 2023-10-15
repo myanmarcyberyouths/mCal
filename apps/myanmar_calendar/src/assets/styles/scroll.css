@@ -30,7 +30,7 @@ html {
 /* SCROLLBAR 2 */
 .__scrollbar-md {
   scrollbar-width: thin;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
   overflow-y: scroll;
   overflow: overlay;
 }
