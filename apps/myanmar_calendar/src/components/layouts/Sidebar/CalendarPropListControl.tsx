@@ -1,16 +1,16 @@
 import { CheckList, CheckListItem } from "@/components/ui/lists/CheckList";
 import { RootState } from "@/store";
-import { updateMonthCellPropsState } from "@/store/calendarState";
+import { updateCalendarPreferanceState } from "@/store/calendarState";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 function CalendarPropListControl() {
   const dispatch = useDispatch();
-  const monthCellProps = useSelector((state: RootState) => state.calendarState.monthCellProps);
+  const calendarPreferance = useSelector((state: RootState) => state.calendarState.preferance);
 
   const handleCheck = (event: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(
-      updateMonthCellPropsState({
+      updateCalendarPreferanceState({
         cellProp: event.target.name,
         value: event.target.checked,
       })
@@ -19,12 +19,12 @@ function CalendarPropListControl() {
 
   return (
     <CheckList title="SHOW">
-      {Object.keys(monthCellProps).map((propKey) => (
+      {Object.keys(calendarPreferance).map((propKey) => (
         <CheckListItem
           key={propKey}
           name={propKey}
           id={"show_" + propKey}
-          checked={monthCellProps[propKey]}
+          checked={calendarPreferance[propKey]}
           onChange={handleCheck}
         />
       ))}

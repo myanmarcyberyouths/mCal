@@ -1,6 +1,6 @@
 import React from "react";
 import * as SelectPrimitive from "@radix-ui/react-select";
-import { ScrollArea } from "../areas/ScrollArea";
+import { ScrollArea, ScrollBar, ScrollViewport } from "../areas/ScrollArea";
 import { cn } from "@/lib/utils";
 import { BsCheckLg } from "react-icons/bs";
 
@@ -45,7 +45,10 @@ const SelectContent = React.forwardRef<React.ElementRef<typeof SelectPrimitive.C
         align={align}
         {...props}>
         <ScrollArea className="w-full h-fit p-[0.2rem]">
-          <SelectPrimitive.Viewport>{children}</SelectPrimitive.Viewport>
+          <ScrollViewport className="max-h-[17rem] w-full rounded-sm">
+            <SelectPrimitive.Viewport>{children}</SelectPrimitive.Viewport>
+            <ScrollBar />
+          </ScrollViewport>
         </ScrollArea>
       </SelectPrimitive.Content>
     </SelectPrimitive.Portal>

@@ -77,3 +77,21 @@ export const EVENT_CALENDARS = {
     tagColor: "#9e69af",
   },
 } as const;
+
+export const MIN_WIDTHS = {
+  sm: 440, // ts default
+  sm1: 540,
+  sm2: 640,
+  md: 768, // ts default
+  md1: 800,
+  md2: 920,
+  md3: 980,
+  lg: 1024, // ts default
+  lg1: 1064,
+  lg2: 1165,
+  lg3: 1220,
+  xl: 1280, // ts default
+  xl1: 1380,
+  xl2: 1450,
+  xl3: 1536,
+};

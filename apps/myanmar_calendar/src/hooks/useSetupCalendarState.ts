@@ -9,6 +9,7 @@ function useSetupCalendarState() {
 
   const dispatch = useDispatch();
 
+  // let dayUpdateInterval
   useEffect(() => {
     dispatch(setActiveDate(today.toISOString()));
   }, [dispatch, today]);

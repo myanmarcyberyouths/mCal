@@ -2,23 +2,27 @@ import { RootState } from "@/store";
 import { WEEK_DAYS } from "@/utils/constants";
 import { getLocalTime } from "@/utils/helpers";
 import { eachDayOfInterval, endOfMonth, endOfWeek, startOfMonth, startOfWeek } from "date-fns";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import MonthCell from "./Cells/MonthCell";
+import MonthCell from "./MonthCell";
 import { cn } from "@/lib/utils";
 
 function MonthMode() {
   const calendarState = useSelector((state: RootState) => state.calendarState);
   const { activeDate, calendarLanguage, ...rest } = calendarState;
+  const [activeDateObj, setActiveDateObj] = useState<Date>();
 
-  const activeDateObj = new Date(activeDate);
+  useEffect(() => {
+    setActiveDateObj(new Date(activeDate));
+  }, [activeDate]);
+
   let days = eachDayOfInterval({
     start: startOfWeek(startOfMonth(getLocalTime(activeDateObj))),
     end: endOfWeek(endOfMonth(getLocalTime(activeDateObj))),
   });
 
   return (
-    <div className="h-full">
+    <>
       <div className="grid grid-cols-7 sticky top-0 h-[2.25rem]  border-gray-300 bg-white">
         {Object.values(WEEK_DAYS).map((weekday) => (
           <span
@@ -41,7 +45,7 @@ function MonthMode() {
           />
         ))}
       </div>
-    </div>
+    </>
   );
 }
 
