@@ -6,26 +6,24 @@ export interface CalendarStateInterface {
   calendarMode: CALENDAR_MODE_ENUM;
   activeDate: string;
   calendarLanguage: LANGUAGE_ENUM;
-  preferance: CellPreferanceT;
-  eventCalendars: Record<string, boolean>;
+  monthCellProps: CellPreferanceT;
+  calendarEvents: Record<string, boolean>;
 }
 
 const initialState: CalendarStateInterface = {
   calendarMode: CALENDAR_MODE_ENUM.MONTH,
   activeDate: new Date().toISOString(),
-  calendarLanguage: LANGUAGE_ENUM.MYANMAR,
-  preferance: {
+  calendarLanguage: LANGUAGE_ENUM.ENGLISH,
+  monthCellProps: {
     moonPhase: true,
     astro: true,
   },
-  eventCalendars: {
+  calendarEvents: {
     publicHolidays: true,
     myanmar: true,
-    international: true,
     mon: true,
     shan: true,
     karen: true,
-    kachin: true,
   },
 };
 export const calendarSlice = createSlice({
@@ -45,20 +43,20 @@ export const calendarSlice = createSlice({
       state.calendarLanguage = action.payload;
     },
 
-    updateCalendarPreferanceState: (state, { payload }: PayloadAction<{ cellProp: string; value: boolean }>) => {
-      state.preferance[payload.cellProp] = payload.value;
+    updateMonthCellPropsState: (state, { payload }: PayloadAction<{ cellProp: string; value: boolean }>) => {
+      state.monthCellProps[payload.cellProp] = payload.value;
       // state.monthCellProps = {
       //   ...state.monthCellProps,
       //   ...payload,
       // };
     },
 
-    updateEventCalendars: (state, { payload }: PayloadAction<{ event: string; value: boolean }>) => {
-      state.eventCalendars[payload.event] = payload.value;
+    updateCalendarEvents: (state, { payload }: PayloadAction<{ event: string; value: boolean }>) => {
+      state.calendarEvents[payload.event] = payload.value;
     },
   },
 });
 
-export const { setCalendarMode, setActiveDate, updateActiveDate, setCalendarLanguage, updateCalendarPreferanceState, updateEventCalendars } = calendarSlice.actions;
+export const { setCalendarMode, setActiveDate, updateActiveDate, setCalendarLanguage, updateMonthCellPropsState, updateCalendarEvents } = calendarSlice.actions;
 
 export default calendarSlice.reducer;

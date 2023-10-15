@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback } from "react";
 import { cn } from "@/lib/utils";
 import { CalendarLanguageSelectBox } from "./LanguageSelectBox";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,15 +8,13 @@ import SidebarToggleBtn from "@/components/ui/buttons/SidebarToggleBtn";
 import { BsArrowLeftShort } from "react-icons/bs";
 import useOnClickOutside from "@/hooks/useOnClickOutside";
 import { setSidebarOpenState } from "@/store/systemState";
-import CalendarPropListControl from "./CalendarPropListControl";
-import EventCalendarListControl from "./EventCalendarListControl";
-import useWindowResize from "@/hooks/useWindowResize";
-import { MIN_WIDTHS } from "@/utils/constants";
+import useWindowSize from "@/hooks/useWindowSize";
+import { CalendarEventList, PreferanceList } from "./CheckboxSection";
 
 function Sidebar() {
   const dispatch = useDispatch();
   const sidebarOpen = useSelector((state: RootState) => state.systemState.sidebarOpen);
-  // const [hideSidebar, setHi]
+  // const { windowWidth } = useWindowSize();
 
   const sidebarRef = useOnClickOutside(() => {
     if (window.innerWidth >= 1280 || !sidebarOpen) return;
@@ -37,16 +35,16 @@ function Sidebar() {
           <BsArrowLeftShort size={30} />
         </SidebarToggleBtn>
       </div>
-      {/* w-[calc(theme(spacing.sidebar-w)-2.5rem)] */}
-      <div className="space-y-6 w-sidebar-w flex-shrink-0 py-3 pt-4 h-[calc(100%-theme(spacing.nav-h))] xl:h-full px-5 __scrollbar-sm">
+      <div className="space-y-7 w-[calc(theme(spacing.sidebar-w)-2.5rem)] flex-shrink-0 py-3 pt-4 h-full  __scrollbar-sm">
         <div className="">
           <p className="text-[0.8rem] font-semibold text-gray-600 mb-[0.4rem]">CALENDAR LANGUAGE</p>
           <CalendarLanguageSelectBox />
+          {/* => SystemLanguageSelectBox */}
+          {/* => DateJumper */}
+          {/* => EthnicEventsToggles */}
         </div>
-        {/* => SystemLanguageSelectBox */}
-        {/* => DateJumper */}
-        <CalendarPropListControl />
-        {/* <EventCalendarListControl /> */}
+        <PreferanceList />
+        {/* <CalendarEventList /> */}
       </div>
     </section>
   );

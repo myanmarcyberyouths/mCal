@@ -9,7 +9,7 @@ import LanguageMenu, { Language } from "./LanguageMenu";
 import DayDialog from "./modals/DayDialog";
 import { getLocalTime } from "@/utils/helpers";
 import useKeyPress from "../hooks/useKeyPress";
-import { ContextMenu, ContextMenuContent, ContextMenuItem, ContextMenuShortcut, ContextMenuTrigger } from "@/components/ui/menus/context-menu";
+import { ContextMenu, ContextMenuContent, ContextMenuItem, ContextMenuShortcut, ContextMenuTrigger } from "@/components/ui/context-menu";
 
 const colStartClasses = ["", "col-start-2", "col-start-3", "col-start-4", "col-start-5", "col-start-6", "col-start-7"];
 

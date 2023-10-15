@@ -1,5 +1,6 @@
 import { utcToZonedTime } from "date-fns-tz";
 
 export function getLocalTime(date?: Date) {
-  return utcToZonedTime(date ? new Date(date) : new Date(), "Asia/Rangoon");
+  date = date || new Date();
+  return utcToZonedTime(new Date(date), "Asia/Rangoon");
 }
