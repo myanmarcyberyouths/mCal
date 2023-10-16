@@ -26,11 +26,13 @@ function useScrollEvent(
       console.log(offsetHeight, scrollHeight);
       callBacks?.untilOverflow();
     }
-  }, [scrollRef, customCallback, callBacks?.untilOverflow]);
+  }, [scrollRef, customCallback, callBacks]);
 
   let scrollTimeout = useRef<any>();
 
   useEffect(() => {
+    let scrollRefCurrent = scrollRef.current;
+
     const scrollHandler = () => {
       const { offsetHeight, scrollHeight, scrollTop } = scrollRef.current as HTMLDivElement;
       // console.log(offsetHeight, scrollHeight, scrollTop);
@@ -69,9 +71,9 @@ function useScrollEvent(
     scrollRef.current?.addEventListener("scroll", scrollHandler);
 
     return () => {
-      scrollRef.current?.removeEventListener("scroll", scrollHandler);
+      scrollRefCurrent.removeEventListener("scroll", scrollHandler);
     };
-  }, [customCallback, scrollRef, callBacks?.reachedBottom, callBacks?.reachedTop]);
+  }, [customCallback, scrollRef, callBacks]);
 
   return scrollRef;
 }

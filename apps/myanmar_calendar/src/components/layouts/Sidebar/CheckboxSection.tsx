@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { FaCheck } from "react-icons/fa";
 import { HiCheck } from "react-icons/hi2";
 import { IoMdCheckmark } from "react-icons/io";
-import { updateCalendarEvents, updateCalendarPreferanceState } from "@/store/calendarState";
+import { updateEventCalendars, updateCalendarPreferanceState } from "@/store/calendarState";
 
 interface CheckboxSectionInterface {
   title: string;
@@ -49,7 +49,7 @@ export default CheckboxSection;
 
 export function PreferanceList() {
   const dispatch = useDispatch();
-  const monthCellProps = useSelector((state: RootState) => state.calendarState.monthCellProps);
+  const monthCellProps = useSelector((state: RootState) => state.calendarState.preferance);
 
   const handleCheck = ({ checked, name }: { checked: boolean; name: string }) => {
     dispatch(
@@ -71,11 +71,11 @@ export function PreferanceList() {
 
 export function CalendarEventList() {
   const dispatch = useDispatch();
-  const calendarEvents = useSelector((state: RootState) => state.calendarState.calendarEvents);
+  const calendarEvents = useSelector((state: RootState) => state.calendarState.preferance);
 
   const handleCheck = ({ checked, name }: { checked: boolean; name: string }) => {
     dispatch(
-      updateCalendarEvents({
+      updateEventCalendars({
         event: name,
         value: checked,
       })

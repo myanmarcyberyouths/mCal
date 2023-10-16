@@ -34,6 +34,7 @@ const SelectValue = React.forwardRef<React.ElementRef<typeof SelectPrimitive.Val
     {...props}
   />
 ));
+SelectValue.displayName = SelectPrimitive.Value.displayName;
 
 const SelectContent = React.forwardRef<React.ElementRef<typeof SelectPrimitive.Content>, React.ComponentPropsWithoutRef<typeof SelectPrimitive.Content>>(
   ({ className, children, position = "popper", align = "start", ...props }, ref) => (

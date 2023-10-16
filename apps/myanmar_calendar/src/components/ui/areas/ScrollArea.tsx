@@ -19,13 +19,14 @@ const ScrollArea = React.forwardRef<React.ElementRef<typeof ScrollAreaPrimitive.
 );
 ScrollArea.displayName = ScrollAreaPrimitive.Root.displayName;
 
-const ScrollViewport = React.forwardRef<React.ElementRef<typeof ScrollAreaPrimitive.Viewport>, React.ComponentPropsWithoutRef<typeof ScrollAreaPrimitive.Viewport>>(({ children, ...props }, ref) => (
-  <ScrollAreaPrimitive.Viewport
-    ref={ref}
-    {...props}>
-    {children}
-  </ScrollAreaPrimitive.Viewport>
-));
+// const ScrollViewport = React.forwardRef<React.ElementRef<typeof ScrollAreaPrimitive.Viewport>, React.ComponentPropsWithoutRef<typeof ScrollAreaPrimitive.Viewport>>(({ children, ...props }, ref) => (
+//   <ScrollAreaPrimitive.Viewport
+//     ref={ref}
+//     {...props}>
+//     {children}
+//   </ScrollAreaPrimitive.Viewport>
+// ));
+const ScrollViewport = ScrollAreaPrimitive.Viewport;
 
 const ScrollBar = React.forwardRef<
   React.ElementRef<typeof ScrollAreaPrimitive.ScrollAreaScrollbar>,
