@@ -1,20 +1,30 @@
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/selectBoxes/PrimarySelect";
 import { RootState } from "@/store";
 import { setCalendarMode } from "@/store/calendarState";
-import { CALENDAR_MODE } from "@/utils/constants";
-import React, { useState } from "react";
+import { CALENDAR_MODE_ENUM } from "@/type-models/calendarState.type";
+import { CALENDAR_MODE, MIN_WIDTHS } from "@/utils/constants";
+import React, { useCallback, useEffect, useState } from "react";
 import { BiCaretDown } from "react-icons/bi";
 import { FaCalendarAlt } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 
 function CalendarModeSelectBox() {
   const dispatch = useDispatch();
+  const enterMobileMode = useSelector((state: RootState) => state.systemState.enterMobileMode);
   const calendarMode = useSelector((state: RootState) => state.calendarState.calendarMode);
 
-  const selectHandler = (value) => {
-    dispatch(setCalendarMode(value));
-  };
+  const selectHandler = useCallback(
+    (value: CALENDAR_MODE_ENUM) => {
+      dispatch(setCalendarMode(value));
+    },
+    [dispatch]
+  );
 
+  useEffect(() => {
+    if (enterMobileMode) selectHandler(CALENDAR_MODE_ENUM.YEAR);
+  }, [enterMobileMode, selectHandler]);
+
+  if (enterMobileMode) return <></>;
   return (
     <Select
       value={calendarMode}
