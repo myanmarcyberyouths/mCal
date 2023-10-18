@@ -7,7 +7,7 @@ export interface CalendarStateInterface {
   activeDate: string;
   calendarLanguage: LANGUAGE_ENUM;
   preferance: CellPreferanceT;
-  eventCalendars: Record<string, boolean>;
+  eventCalendars: Record<string, { checked: boolean; tagColor: string }>;
 }
 
 const initialState: CalendarStateInterface = {
@@ -16,16 +16,21 @@ const initialState: CalendarStateInterface = {
   calendarLanguage: LANGUAGE_ENUM.MYANMAR,
   preferance: {
     moonPhase: true,
-    astro: true,
+    astroEvent: true,
   },
   eventCalendars: {
-    publicHolidays: true,
-    myanmar: true,
-    international: true,
-    mon: true,
-    shan: true,
-    karen: true,
-    kachin: true,
+    myanmarEvents: {
+      checked: true,
+      tagColor: "#8b5cf6",
+    },
+    publicHolidays: {
+      checked: true,
+      tagColor: "#059669",
+    },
+    international: {
+      checked: true,
+      tagColor: "#0ea5e9",
+    },
   },
 };
 export const calendarSlice = createSlice({
@@ -47,14 +52,10 @@ export const calendarSlice = createSlice({
 
     updateCalendarPreferanceState: (state, { payload }: PayloadAction<{ cellProp: string; value: boolean }>) => {
       state.preferance[payload.cellProp] = payload.value;
-      // state.monthCellProps = {
-      //   ...state.monthCellProps,
-      //   ...payload,
-      // };
     },
 
     updateEventCalendars: (state, { payload }: PayloadAction<{ event: string; value: boolean }>) => {
-      state.eventCalendars[payload.event] = payload.value;
+      state.eventCalendars[payload.event].checked = payload.value;
     },
   },
 });

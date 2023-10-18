@@ -9,9 +9,7 @@ import { BsArrowLeftShort } from "react-icons/bs";
 import useOnClickOutside from "@/hooks/useOnClickOutside";
 import { setSidebarOpenState } from "@/store/systemState";
 import CalendarPropListControl from "./CalendarPropListControl";
-import EventCalendarListControl from "./EventCalendarListControl";
-import useWindowResize from "@/hooks/useWindowResize";
-import { MIN_WIDTHS } from "@/utils/constants";
+import EventCalendarList from "./EventCalendarList";
 
 function Sidebar() {
   const dispatch = useDispatch();
@@ -46,7 +44,7 @@ function Sidebar() {
         {/* => SystemLanguageSelectBox */}
         {/* => DateJumper */}
         <CalendarPropListControl />
-        {/* <EventCalendarListControl /> */}
+        <EventCalendarList />
       </div>
     </section>
   );

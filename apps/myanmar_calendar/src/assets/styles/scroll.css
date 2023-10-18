@@ -6,6 +6,25 @@ html {
   overflow-x: hidden;
 }
 
+.__scrollbar-xs {
+  scrollbar-width: thin;
+  scrollbar-width: none;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  overflow: overlay;
+}
+.__scrollbar-xs::-webkit-scrollbar {
+  width: 3px;
+  height: 3.5px;
+}
+.__scrollbar-xs::-webkit-scrollbar-thumb {
+  border-radius: 1.2rem;
+  background-color: #bfbfbf;
+}
+.__scrollbar-xs::-webkit-scrollbar-thumb:hover {
+  background-color: #a8a8a8;
+}
+
 .__scrollbar-sm {
   scrollbar-width: thin;
   overflow-y: scroll;
@@ -42,10 +61,10 @@ html {
 }
 .__scrollbar-md::-webkit-scrollbar-thumb {
   border-radius: 1.2rem;
-  background-color: #b8b8b8;
+  background-color: #c8c8c8;
 }
 .__scrollbar-md::-webkit-scrollbar-thumb:hover {
-  background-color: #a7a7a7;
+  background-color: #b0b0b0;
 }
 
 .__scrollbar-lg {

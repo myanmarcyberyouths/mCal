@@ -22,17 +22,17 @@ function WeekColumn({ day, calendarState }: WeekColumnPropsI) {
           {myanmar_calendar.moonPhase} <span className="text-sm mb-[0.1rem] ml-1">{mmDate}</span>
         </span>
       </div> */}
-      {/* <div className="p-2">
+      <div className="p-2">
         {preferance.astro && (myanmar_calendar.pyathada || myanmar_calendar.yatyaza) && (
           <span
             className={cn(
-              "h-[2.5rem] bg-gray-100 w-full px-2 flex items-center justify-center text-[0.825rem] font-semibold rounded-md",
+              "h-[2.3rem] bg-gray-100 w-full px-2 flex items-center justify-center text-[0.825rem] font-semibold rounded-md",
               myanmar_calendar.pyathada ? "text-red-400 bg-red-50" : "text-blue-500 bg-blue-50"
             )}>
             {myanmar_calendar.pyathada || myanmar_calendar.yatyaza}
           </span>
         )}
-      </div> */}
+      </div>
     </div>
   );
 }
