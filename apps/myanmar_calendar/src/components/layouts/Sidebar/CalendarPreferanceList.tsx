@@ -4,7 +4,7 @@ import { updateCalendarPreferanceState } from "@/store/calendarState";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-function CalendarPropListControl() {
+function CalendarPreferanceList() {
   const dispatch = useDispatch();
   const calendarPreferance = useSelector((state: RootState) => state.calendarState.preferance);
 
@@ -32,4 +32,4 @@ function CalendarPropListControl() {
   );
 }
 
-export default CalendarPropListControl;
+export default CalendarPreferanceList;

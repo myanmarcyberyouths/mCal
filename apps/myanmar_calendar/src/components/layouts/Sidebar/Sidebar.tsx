@@ -8,7 +8,7 @@ import SidebarToggleBtn from "@/components/ui/buttons/SidebarToggleBtn";
 import { BsArrowLeftShort } from "react-icons/bs";
 import useOnClickOutside from "@/hooks/useOnClickOutside";
 import { setSidebarOpenState } from "@/store/systemState";
-import CalendarPropListControl from "./CalendarPropListControl";
+import CalendarPreferanceList from "./CalendarPreferanceList";
 import EventCalendarList from "./EventCalendarList";
 
 function Sidebar() {
@@ -43,7 +43,7 @@ function Sidebar() {
         </div>
         {/* => SystemLanguageSelectBox */}
         {/* => DateJumper */}
-        <CalendarPropListControl />
+        <CalendarPreferanceList />
         <EventCalendarList />
       </div>
     </section>
