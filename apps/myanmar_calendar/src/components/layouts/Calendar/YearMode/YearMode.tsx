@@ -6,7 +6,7 @@ import { RootState } from "@/store";
 
 function YearMode() {
   const { activeDate } = useSelector((state: RootState) => state.calendarState);
-  const [activeDateObj, setActiveDateObj] = useState<Date>(new Date());
+  const [activeDateObj, setActiveDateObj] = useState<Date>(new Date(activeDate));
   useEffect(() => {
     setActiveDateObj(new Date(activeDate));
   }, [activeDate]);

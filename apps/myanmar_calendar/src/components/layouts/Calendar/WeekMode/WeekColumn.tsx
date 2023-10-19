@@ -23,7 +23,7 @@ function WeekColumn({ day, calendarState }: WeekColumnPropsI) {
         </span>
       </div> */}
       <div className="p-2">
-        {preferance.astro && (myanmar_calendar.pyathada || myanmar_calendar.yatyaza) && (
+        {preferance.astroEvent && (myanmar_calendar.pyathada || myanmar_calendar.yatyaza) && (
           <span
             className={cn(
               "h-[2.3rem] bg-gray-100 w-full px-2 flex items-center justify-center text-[0.825rem] font-semibold rounded-md",
