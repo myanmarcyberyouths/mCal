@@ -26,7 +26,7 @@ function ActiveDateIndicator() {
           dateTime={format(activeDateObj, "yyyy-MM-dd")}
           className="text-[1.1rem] text-gray-700">
           {i18n("Myanmar Year", "english", calendarLanguage as any)} {i18n(engToMyanmarNumber(englishToMyanmarDate(firstDayCurrentMonth).year), "myanmar", calendarLanguage as any)}{" "}
-          {i18n("Ku", "english", calendarLanguage as any)}
+          {i18n("Ku", "english", calendarLanguage as any)}{" "}
           {calendarMode !== CALENDAR_MODE_ENUM.YEAR && (
             <>
               {i18n(englishToMyanmarDate(firstDayCurrentMonth).month, "myanmar", calendarLanguage as any)}

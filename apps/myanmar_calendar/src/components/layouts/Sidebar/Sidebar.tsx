@@ -8,10 +8,8 @@ import SidebarToggleBtn from "@/components/ui/buttons/SidebarToggleBtn";
 import { BsArrowLeftShort } from "react-icons/bs";
 import useOnClickOutside from "@/hooks/useOnClickOutside";
 import { setSidebarOpenState } from "@/store/systemState";
-import CalendarPropListControl from "./CalendarPropListControl";
-import EventCalendarListControl from "./EventCalendarListControl";
-import useWindowResize from "@/hooks/useWindowResize";
-import { MIN_WIDTHS } from "@/utils/constants";
+import CalendarPreferanceList from "./CalendarPreferanceList";
+import EventCalendarList from "./EventCalendarList";
 
 function Sidebar() {
   const dispatch = useDispatch();
@@ -45,8 +43,8 @@ function Sidebar() {
         </div>
         {/* => SystemLanguageSelectBox */}
         {/* => DateJumper */}
-        <CalendarPropListControl />
-        {/* <EventCalendarListControl /> */}
+        <CalendarPreferanceList />
+        <EventCalendarList />
       </div>
     </section>
   );

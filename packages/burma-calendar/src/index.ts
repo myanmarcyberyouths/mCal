@@ -1,1 +1,1 @@
-export {englishToMyanmarDate, i18n} from "./lib";
+export { englishToMyanmarDate, i18n } from "./lib";

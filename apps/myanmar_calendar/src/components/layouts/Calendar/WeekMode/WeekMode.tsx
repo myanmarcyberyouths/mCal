@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CommingSoonBanner from "../CommingSoonBanner";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store";
@@ -13,10 +13,13 @@ import WeekColumnHead from "./WeekColumnHead";
 function WeekMode() {
   const dispatch = useDispatch();
   const calendarState = useSelector((state: RootState) => state.calendarState);
+  const { activeDate } = calendarState;
+
+  const activeDateObj = new Date(activeDate);
 
   const days = eachDayOfInterval({
-    start: startOfWeek(new Date(calendarState.activeDate)),
-    end: endOfWeek(new Date(calendarState.activeDate)),
+    start: startOfWeek(activeDateObj),
+    end: endOfWeek(activeDateObj),
   });
 
   // Scroll Events Handling

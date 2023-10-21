@@ -47,18 +47,39 @@ export const LANGUAGES = {
   // },
 } as const;
 
+export const MIN_WIDTHS = {
+  sm: 440, // ts default
+  sm1: 540,
+  sm2: 640,
+  md: 768, // ts default
+  md1: 800,
+  md2: 920,
+  md3: 980,
+  lg: 1024, // ts default
+  lg1: 1064,
+  lg2: 1165,
+  lg3: 1220,
+  xl: 1280, // ts default
+  xl1: 1380,
+  xl2: 1450,
+  xl3: 1536,
+};
+
 export const EVENT_CALENDARS = {
+  myanmarEvents: {
+    label: "mon",
+    // tagColor: "#d97706", // indigo
+    tagColor: "#8b5cf6",
+  },
   publicHolidays: {
     label: "public holidays",
-    tagColor: "#7cb342",
-  },
-  myanmar: {
-    label: "mon",
-    tagColor: "#f4511e",
+    tagColor: "#059669", //green
+    // tagColor: "#f43f5e", //rose
   },
   international: {
     label: "mon",
-    tagColor: "#039be5",
+    tagColor: "#0ea5e9",
+    // tagColor: "#039be5",
   },
   mon: {
     label: "mon",
@@ -77,21 +98,3 @@ export const EVENT_CALENDARS = {
     tagColor: "#9e69af",
   },
 } as const;
-
-export const MIN_WIDTHS = {
-  sm: 440, // ts default
-  sm1: 540,
-  sm2: 640,
-  md: 768, // ts default
-  md1: 800,
-  md2: 920,
-  md3: 980,
-  lg: 1024, // ts default
-  lg1: 1064,
-  lg2: 1165,
-  lg3: 1220,
-  xl: 1280, // ts default
-  xl1: 1380,
-  xl2: 1450,
-  xl3: 1536,
-};

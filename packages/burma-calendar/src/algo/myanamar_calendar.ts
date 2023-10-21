@@ -654,12 +654,24 @@ export function engToMm(year, month, date) {
     nagahle: "",
     mahabote: "",
     nakhat: "",
-    thingyan: {},
+    thingyan: "",
     original: {},
   };
   let j = w2j(year, month, date); //get julian day number
   let M = j2m(j);
-  mmDate.thingyan = သင်္ကြန်ချိတ်တွက်ရန်(M.my + 1);
+  let my_for_သင်္ကြန်ချိတ်တွက်ရန် = j2m(w2j(year, 1, 1)).my;
+
+  let thingyan = သင်္ကြန်ချိတ်တွက်ရန်(my_for_သင်္ကြန်ချိတ်တွက်ရန် + 1);
+  Object.keys(thingyan).forEach((thingyanDay) => {
+    if (thingyanDay === "သင်္ကြန်အကြတ်နေ့") {
+      thingyan[thingyanDay].forEach((akyat) => {
+        if (year === akyat.y && month === akyat.m && date === akyat.d) mmDate.thingyan = thingyanDay;
+      });
+    } else {
+      if (year === thingyan[thingyanDay].y && month === thingyan[thingyanDay].m && date === thingyan[thingyanDay].d) mmDate.thingyan = thingyanDay;
+    }
+  });
+
   mmDate.year = M.my; //myNumbers(M.my, "my");
   mmDate.month = monthsMM[M.mm];
   mmDate.moonPhase = mpDefinations[M.mp];

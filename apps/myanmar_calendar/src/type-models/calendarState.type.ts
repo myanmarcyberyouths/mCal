@@ -15,7 +15,7 @@ export enum LANGUAGE_ENUM {
 
 export type CellPreferanceT = {
   moonPhase: boolean;
-  astro: boolean;
+  astroEvent: boolean;
 };
 
 export type ActiveDateFrameT = {
@@ -23,4 +23,14 @@ export type ActiveDateFrameT = {
   d: number;
   m: number;
   y: number;
+};
+
+export type EventCalendarsT = {
+  publicHolidays: boolean;
+  myanmarEvents: boolean;
+  international: boolean;
+  mon: boolean;
+  shan: boolean;
+  karen: boolean;
+  kachin: boolean;
 };

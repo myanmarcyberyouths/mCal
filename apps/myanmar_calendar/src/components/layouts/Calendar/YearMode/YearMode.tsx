@@ -6,10 +6,7 @@ import { RootState } from "@/store";
 
 function YearMode() {
   const { activeDate } = useSelector((state: RootState) => state.calendarState);
-  const [activeDateObj, setActiveDateObj] = useState<Date>(new Date());
-  useEffect(() => {
-    setActiveDateObj(new Date(activeDate));
-  }, [activeDate]);
+  let activeDateObj = new Date(activeDate);
 
   const months = eachMonthOfInterval({
     start: startOfYear(activeDateObj),

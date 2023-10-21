@@ -37,7 +37,7 @@ export function CheckListItem({ tagColor, ...props }: React.DetailedHTMLProps<Re
             className="absolute text-white "
           />
         </div>
-        <span className="text-[0.925rem] first-letter:capitalize tracking-[0.03rem] font-normal text-gray-600">{camelToSentenceCase(props.name)}</span>
+        <span className="text-[0.925rem] first-letter:capitalize  font-normal text-gray-600 whitespace-nowrap">{camelToSentenceCase(props.name)}</span>
       </label>
     </li>
   );

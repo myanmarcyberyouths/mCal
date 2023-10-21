@@ -9,12 +9,8 @@ import { cn } from "@/lib/utils";
 
 function MonthMode() {
   const calendarState = useSelector((state: RootState) => state.calendarState);
-  const { activeDate, calendarLanguage, ...rest } = calendarState;
-  const [activeDateObj, setActiveDateObj] = useState<Date>();
-
-  useEffect(() => {
-    setActiveDateObj(new Date(activeDate));
-  }, [activeDate]);
+  const { activeDate } = calendarState;
+  let activeDateObj = new Date(activeDate);
 
   let days = eachDayOfInterval({
     start: startOfWeek(startOfMonth(getLocalTime(activeDateObj))),
@@ -36,7 +32,8 @@ function MonthMode() {
         ))}
       </div>
       {/* min-h-[41rem] */}
-      <div className="w-full h-[calc(100%-2.25rem)]  grid grid-cols-[repeat(7,minmax(auto,1fr))] grid-flow-row-dense">
+      {/* grid-rows-[repeat(auto-fill,minmax(1fr,auto))] */}
+      <div className="w-full h-[calc(100%-2.25rem)]  grid grid-cols-[repeat(7,minmax(auto,1fr))] grid-flow-row auto-rows-[1fr]">
         {days.map((day, dayIdx) => (
           <MonthCell
             key={day.toString()}
