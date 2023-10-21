@@ -30,14 +30,11 @@ const INTERNATIONNAL = {
 };
 
 export default function international(engDate: Date) {
-  let events: string[] = [];
-
-  // const month_day = format(engDate, "MMM dd");
-  events.push(...eventDateReader(engDate, INTERNATIONNAL));
+  const events: string[] = eventDateReader(engDate, INTERNATIONNAL);
 
   let easterDate = calculateEasterDate(new Date(engDate).getFullYear());
 
-  const isEasterDay = isSameDay(easterDate, engDate);
+  const isEasterDay = isSameDay(engDate, easterDate);
   const isGoodFriday = isSameDay(add(easterDate, { days: -2 }), engDate);
 
   isEasterDay && events.push("အီစတာပွဲတော်နေ့");

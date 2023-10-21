@@ -15,9 +15,7 @@ const PUBLIC_HOLIDAYS = {
 };
 
 export default function public_holidays(engDate: Date, myanmarDate) {
-  let events: string[] = [];
-
-  events.push(...eventDateReader(engDate, PUBLIC_HOLIDAYS));
+  const events: string[] = eventDateReader(engDate, PUBLIC_HOLIDAYS);
 
   // Thingyan holiday
   if (myanmarDate.thingyan) events.push("နှစ်သစ်ကူးရုံးပိတ်ရက်");

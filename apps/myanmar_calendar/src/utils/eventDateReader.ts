@@ -1,6 +1,6 @@
 import { format, getDate, getWeekOfMonth } from "date-fns";
 
-export function eventDateReader(date: Date, datedEvents: Record<string, string>) {
+export function eventDateReader(date: Date, eventObj: Record<string, string>) {
   let events: string[] = [];
 
   const day = format(date, "MMM dd yyyy");
@@ -11,13 +11,13 @@ export function eventDateReader(date: Date, datedEvents: Record<string, string>)
   const weekdayMonthly = format(date, "ccc") + " " + getWeekOfMonth(date);
   const weekdayWeekly = format(date, "ccc");
 
-  datedEvents[day] && events.push(datedEvents[day]);
-  datedEvents[weekday] && events.push(datedEvents[day]);
-  datedEvents[dayAnnually] && events.push(datedEvents[dayAnnually]);
-  datedEvents[weekdayAnnually] && events.push(datedEvents[weekdayAnnually]);
-  datedEvents[dayMonthly] && events.push(datedEvents[dayMonthly]);
-  datedEvents[weekdayMonthly] && events.push(datedEvents[weekdayMonthly]);
-  datedEvents[weekdayWeekly] && events.push(datedEvents[weekdayWeekly]);
+  eventObj[day] && events.push(eventObj[day]);
+  eventObj[weekday] && events.push(eventObj[day]);
+  eventObj[dayAnnually] && events.push(eventObj[dayAnnually]);
+  eventObj[weekdayAnnually] && events.push(eventObj[weekdayAnnually]);
+  eventObj[dayMonthly] && events.push(eventObj[dayMonthly]);
+  eventObj[weekdayMonthly] && events.push(eventObj[weekdayMonthly]);
+  eventObj[weekdayWeekly] && events.push(eventObj[weekdayWeekly]);
 
   return events;
 }
