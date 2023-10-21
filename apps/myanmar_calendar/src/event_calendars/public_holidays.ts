@@ -1,3 +1,4 @@
+import { eventDateReader } from "@/utils/eventDateReader";
 import { format } from "date-fns";
 
 const PUBLIC_HOLIDAYS = {
@@ -16,10 +17,7 @@ const PUBLIC_HOLIDAYS = {
 export default function public_holidays(engDate: Date, myanmarDate) {
   let events: string[] = [];
 
-  const month_day = format(engDate, "MMM dd");
-
-  // Eng calendar based events
-  PUBLIC_HOLIDAYS[month_day] && events.push(PUBLIC_HOLIDAYS[month_day]);
+  events.push(...eventDateReader(engDate, PUBLIC_HOLIDAYS));
 
   // Thingyan holiday
   if (myanmarDate.thingyan) events.push("နှစ်သစ်ကူးရုံးပိတ်ရက်");

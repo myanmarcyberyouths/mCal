@@ -9,12 +9,8 @@ import { cn } from "@/lib/utils";
 
 function MonthMode() {
   const calendarState = useSelector((state: RootState) => state.calendarState);
-  const { activeDate, calendarLanguage, ...rest } = calendarState;
-  const [activeDateObj, setActiveDateObj] = useState<Date>(new Date(activeDate));
-
-  useEffect(() => {
-    setActiveDateObj(new Date(activeDate));
-  }, [activeDate]);
+  const { activeDate } = calendarState;
+  let activeDateObj = new Date(activeDate);
 
   let days = eachDayOfInterval({
     start: startOfWeek(startOfMonth(getLocalTime(activeDateObj))),

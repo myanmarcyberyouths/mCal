@@ -14,11 +14,8 @@ function WeekMode() {
   const dispatch = useDispatch();
   const calendarState = useSelector((state: RootState) => state.calendarState);
   const { activeDate } = calendarState;
-  const [activeDateObj, setActiveDateObj] = useState(new Date(activeDate));
 
-  useEffect(() => {
-    setActiveDateObj(new Date(activeDate));
-  }, [activeDate]);
+  const activeDateObj = new Date(activeDate);
 
   const days = eachDayOfInterval({
     start: startOfWeek(activeDateObj),

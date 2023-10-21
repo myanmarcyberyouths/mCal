@@ -1,4 +1,5 @@
 import { calculateEasterDate } from "@/utils/calculateEasterDate";
+import { eventDateReader } from "@/utils/eventDateReader";
 import { add, format, isSameDay } from "date-fns";
 
 const INTERNATIONNAL = {
@@ -31,9 +32,8 @@ const INTERNATIONNAL = {
 export default function international(engDate: Date) {
   let events: string[] = [];
 
-  const month_day = format(engDate, "MMM dd");
-
-  INTERNATIONNAL[month_day] && events.push(INTERNATIONNAL[month_day]);
+  // const month_day = format(engDate, "MMM dd");
+  events.push(...eventDateReader(engDate, INTERNATIONNAL));
 
   let easterDate = calculateEasterDate(new Date(engDate).getFullYear());
 

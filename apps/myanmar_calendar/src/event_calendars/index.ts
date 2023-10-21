@@ -12,13 +12,15 @@ const calendars: Record<string, (engDate: Date, myanmarDate?: any) => string[]> 
 export default function event_calendars(date: Date, checkedCalendars: string[]) {
   const myanmarDate = englishToMyanmarDate(date);
 
-  let events: { event: string[]; eventType: string }[] = [];
+  let eventRoot: { events: string[]; eventType: string }[] = [];
 
   checkedCalendars.forEach((calendar) => {
-    let event = calendars[calendar] && calendars[calendar](date, myanmarDate);
+    let events = calendars[calendar] && calendars[calendar](date, myanmarDate);
 
-    events.push({ event, eventType: calendar });
+    if (!events) return;
+
+    eventRoot.push({ events, eventType: calendar });
   });
 
-  return events;
+  return eventRoot;
 }

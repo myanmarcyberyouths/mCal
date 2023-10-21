@@ -5,6 +5,7 @@ import { CalendarStateInterface } from "@/store/calendarState";
 import { setDayDialongTargetDay } from "@/store/modelControlState";
 import { brightenColor } from "@/utils/brightenColor";
 import { engToMyanmarNumber } from "@/utils/engToMyanmarNumber";
+import { modifyColorOpacity } from "@/utils/modifyColorOpacity";
 import { englishToMyanmarDate, i18n } from "burma-calendar";
 import { format, isSameMonth, isSameWeek, isToday, lastDayOfMonth } from "date-fns";
 import React, { useEffect, useState } from "react";
@@ -90,13 +91,14 @@ function MonthCell({ day, calendarState }: MonthCellT) {
         <ul className=" space-y-[0.15rem] ">
           {checkedEvents.map((eventCalendar) => (
             <>
-              {eventCalendar.event.map((event) => (
+              {eventCalendar.events.map((event) => (
                 // h-[1.25rem]
                 <li
                   key={event}
                   className="rounded-sm flex items-start py-[0.335rem]   px-1 gap-1 bg-gray-100"
                   style={{
-                    backgroundColor: brightenColor(eventCalendars[eventCalendar.eventType].tagColor, 85),
+                    backgroundColor: modifyColorOpacity(eventCalendars[eventCalendar.eventType].tagColor, 0.15),
+                    // backgroundColor: brightenColor(eventCalendars[eventCalendar.eventType].tagColor, 85),
                   }}>
                   <span
                     className="inline-block w-[0.35rem] h-[0.35rem] rounded-full bg-gray-500 mt-[0.15rem] flex-shrink-0"
