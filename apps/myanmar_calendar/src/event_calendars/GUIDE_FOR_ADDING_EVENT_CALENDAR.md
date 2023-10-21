@@ -1,11 +1,11 @@
 # Adding Event Calendar
 
-Adding an event calendar to this application is simple. This guide will walk you through each step.
+Adding an event calendar to this application is a straightforward process. This guide will walk you through each step.
 
 ## 1. State Configuration
 
-- Open `apps/myanmar_calendar/src/store/calendarState.ts` file.
-- Add configuration object to `eventCalendars` object in `initialState` (**Key name must be in camel case**).
+- Open the `apps/myanmar_calendar/src/store/calendarState.ts` file.
+- Add a configuration object to the `eventCalendars` object within the `initialState` (**The key name must be in camel case**).
 
   Example:
 
@@ -21,10 +21,10 @@ Adding an event calendar to this application is simple. This guide will walk you
 
 ## 2. Constructing event calendar object
 
-_Only for events, formatted based on Western calendar dates._
+_Only for events formatted based on Western calendar dates._
 
 - Create a new file in `apps/myanmar_calendar/src/event_calendars` directory.
-- Construct an object, containing key-value pairs of date(key) and event name(value).
+- Construct an object containing key-value pairs of date(key) and event name(value).
 - Keys must be in following formats:
   > - `"Jan 05 2024"` - January 5 2024 (no repeat)
   > - `"Jan Mon 1 2024"` - First Monday of January 2024 (no repeat)
@@ -50,10 +50,10 @@ const YOUR_CALENDAR = {
 
 My approach here is, we will transform the date into each of the formats listed [above](#2-constructing-event-calendar-object). Then read using the formatted dates from the event object.
 
-1. Lets create a function that accept engDate & mmDate(optional).
-2. Import `eventDateReader` function from `apps/myanmar_calendar/src/utils/eventDateReader.ts.
-3. Pass engDate and event object you created to `eventDateReader` function. The function will return an array of events.
-4. You can also manually add events which are not formatable based on English calendar.
+1. Lets create a function that accept `engDate` & `mmDate`(optional).
+2. Import the `eventDateReader` function from `apps/myanmar_calendar/src/utils/eventDateReader.ts.
+3. Pass `engDate` and the event object you created to `eventDateReader` function. The function will return an array of events.
+4. You can also manually add events which are not formatable based on Western calendar.
    Example:
 
 ```js
@@ -74,7 +74,7 @@ export default function your_calendar(engDate: Date) {
 
 ## 4. Binding the calendar to root function
 
-- Open `apps/myanmar_calendar/src/event_calendars/index.ts` file.
-- Import the constructed [calendar function](#3-creating-event-reader-function) and asign it to `calendars` object (**key name must match with the key name used to configure in React state `calendarState.ts`** - [See State Configuration](#1-state-configuration)).
+- Open the `apps/myanmar_calendar/src/event_calendars/index.ts` file.
+- Import the constructed [calendar function](#3-creating-event-reader-function) and asign it to `calendars` object. Ensure that the key name matches the one used to configure in the React state `calendarState.ts` as explained in [Step 1](#1-state-configuration)..
 
-You are all set!
+You are now all set!
