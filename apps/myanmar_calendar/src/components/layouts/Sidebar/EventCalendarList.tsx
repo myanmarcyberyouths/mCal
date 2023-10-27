@@ -8,13 +8,10 @@ function EventCalendarList() {
   const dispatch = useDispatch();
   const eventCalendars = useSelector((state: RootState) => state.calendarState.eventCalendars);
 
-  const handleCheck = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(event.target.checked);
-    console.log(event.target.name);
-
+  const handleCheck = (event: React.ChangeEvent<HTMLInputElement>, keyName: string) => {
     dispatch(
       updateEventCalendars({
-        event: event.target.name,
+        event: keyName,
         value: event.target.checked,
       })
     );
@@ -25,10 +22,10 @@ function EventCalendarList() {
       {Object.keys(eventCalendars).map((propKey) => (
         <CheckListItem
           key={propKey}
-          name={propKey}
+          name={eventCalendars[propKey].name}
           id={"show_" + propKey}
           checked={eventCalendars[propKey].checked}
-          onChange={handleCheck}
+          onChange={(e) => handleCheck(e, propKey)}
           tagColor={eventCalendars[propKey].tagColor}
         />
       ))}

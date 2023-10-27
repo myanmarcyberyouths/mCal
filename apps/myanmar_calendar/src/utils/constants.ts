@@ -98,3 +98,23 @@ export const EVENT_CALENDARS = {
     tagColor: "#9e69af",
   },
 } as const;
+
+export const ASTRO_EVENT_LIST = [
+  "sabbath",
+  "pyathada",
+  "yatyaza",
+  "thamanyo",
+  "sabbatheve",
+  "amyeittasote",
+  "warameittugyi",
+  "warameittunge",
+  "yatpote",
+  "thamaphyu",
+  "nagapor",
+  "yatyotema",
+  "mahayatkyan",
+  "shanyat",
+  "mahabote",
+  "nakhat",
+  "nagahle",
+];

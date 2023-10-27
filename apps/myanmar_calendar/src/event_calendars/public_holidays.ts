@@ -3,7 +3,6 @@ import { format } from "date-fns";
 
 const PUBLIC_HOLIDAYS = {
   "Jan 01": "နိုင်ငံတကာနှစ်သစ်ကူးနေ့",
-  "Jan 1st Sun": "First sunday of Jan",
   "Jan 04": "လွတ်လပ်ရေးနေ့",
   "Feb 12": "ပြည်‌ထောင်စုနေ့",
   "Mar 02": "တောင်သူလယ်သမားနေ့",

@@ -68,13 +68,21 @@
 
 @layer base {
   * {
-    font-size: 15.5px;
     /* outline: 1px solid violet; */
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     @apply border-border;
   }
+
   html {
+    font-size: 15.5px;
     overflow: hidden;
   }
+  @media (max-width: 639px) {
+    html {
+      font-size: 16px;
+    }
+  }
+
   body {
     @apply bg-background text-foreground;
     overflow: hidden;

@@ -40,10 +40,10 @@ html {
 }
 .__scrollbar-sm::-webkit-scrollbar-thumb {
   border-radius: 1.2rem;
-  background-color: #afafaf;
+  background-color: #cacaca;
 }
 .__scrollbar-sm::-webkit-scrollbar-thumb:hover {
-  background-color: #9a9a9a;
+  background-color: #a0a0a0;
 }
 
 /* SCROLLBAR 2 */

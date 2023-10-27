@@ -6,10 +6,11 @@ import { engToMyanmarNumber } from "@/utils/engToMyanmarNumber";
 import FullMoonIcon from "../assets/icons/FullMoonIcon";
 import { classNames } from "@/utils/classNames";
 import LanguageMenu, { Language } from "./LanguageMenu";
-import DayDialog from "./modals/DayDialog";
+// import DayDialog from "./modals/DayDialog(Depre)";
 import { getLocalTime } from "@/utils/helpers";
 import useKeyPress from "../hooks/useKeyPress";
 import { ContextMenu, ContextMenuContent, ContextMenuItem, ContextMenuShortcut, ContextMenuTrigger } from "@/components/ui/menus/context-menu";
+import RenderDayDialog2 from "./modals/DayDialog/RenderDayDialog";
 
 const colStartClasses = ["", "col-start-2", "col-start-3", "col-start-4", "col-start-5", "col-start-6", "col-start-7"];
 
@@ -66,11 +67,6 @@ export default function MyanmarCalendar() {
 
   return (
     <>
-      <DayDialog
-        isOpen={isOpenDayDialog}
-        onClose={closeModal}
-        selectedDay={selectedDay}
-      />
       <div className="lg:flex lg:h-full lg:flex-col">
         <header className="flex items-center justify-between border-b border-gray-200 px-6 py-4 lg:flex-none">
           <h1 className="text-base font-semibold leading-6 text-gray-900">

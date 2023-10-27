@@ -18,19 +18,4 @@ export type CellPreferanceT = {
   astroEvent: boolean;
 };
 
-export type ActiveDateFrameT = {
-  t: string;
-  d: number;
-  m: number;
-  y: number;
-};
-
-export type EventCalendarsT = {
-  publicHolidays: boolean;
-  myanmarEvents: boolean;
-  international: boolean;
-  mon: boolean;
-  shan: boolean;
-  karen: boolean;
-  kachin: boolean;
-};
+export type EventCalendarItem = Record<string, { name: string; checked: boolean; tagColor: string }>;
