@@ -11,6 +11,8 @@ export function eventDateReader(date: Date, eventObj: Record<string, string>) {
   const weekdayMonthly = format(date, "ccc") + " " + getWeekOfMonth(date);
   const weekdayWeekly = format(date, "ccc");
 
+  // console.log(weekday, dayAnnually, weekdayAnnually, dayMonthly, weekdayMonthly, weekdayWeekly);
+
   eventObj[day] && events.push(eventObj[day]);
   eventObj[weekday] && events.push(eventObj[day]);
   eventObj[dayAnnually] && events.push(eventObj[dayAnnually]);

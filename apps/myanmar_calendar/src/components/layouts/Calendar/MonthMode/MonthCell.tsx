@@ -8,7 +8,7 @@ import { engToMyanmarNumber } from "@/utils/engToMyanmarNumber";
 import { modifyColorOpacity } from "@/utils/modifyColorOpacity";
 import { englishToMyanmarDate, i18n } from "burma-calendar";
 import { format, isSameMonth, isSameWeek, isToday, lastDayOfMonth } from "date-fns";
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 
 interface MonthCellT {
@@ -19,7 +19,7 @@ interface MonthCellT {
 function MonthCell({ day, calendarState }: MonthCellT) {
   const dispatch = useDispatch();
   const { calendarLanguage, activeDate, preferance, eventCalendars } = calendarState;
-  const [dayIsToday, setDayIsToday] = useState(false);
+  const [dayIsToday, setDayIsToday] = useState(isToday(day));
 
   let activeDateObj = new Date(activeDate);
 
@@ -30,8 +30,13 @@ function MonthCell({ day, calendarState }: MonthCellT) {
   const myanmarDate = englishToMyanmarDate(day);
   const moonAlign = myanmarDate.moonPhase === "လပြည့်" || myanmarDate.moonPhase === "လကွယ်";
 
+  const dayUpdateIntervalRef = useRef<any>();
   React.useEffect(() => {
-    setDayIsToday(isToday(day));
+    dayUpdateIntervalRef.current = setInterval(() => {
+      setDayIsToday(isToday(day));
+    }, 1000 * 60 * 60 * 24);
+
+    return () => clearInterval(dayUpdateIntervalRef.current);
   }, [day]);
 
   // Eg; event_calendars(day, ["international", "publicHolidays"])
@@ -90,7 +95,7 @@ function MonthCell({ day, calendarState }: MonthCellT) {
       <div className="flex-1 __scrollbar-xs">
         <ul className=" space-y-[0.15rem] ">
           {checkedEvents.map((eventCalendar) => (
-            <>
+            <Fragment key={eventCalendar.eventType}>
               {eventCalendar.events.map((event) => (
                 // h-[1.25rem]
                 <li
@@ -114,7 +119,7 @@ function MonthCell({ day, calendarState }: MonthCellT) {
                   </span>
                 </li>
               ))}
-            </>
+            </Fragment>
           ))}
         </ul>
       </div>

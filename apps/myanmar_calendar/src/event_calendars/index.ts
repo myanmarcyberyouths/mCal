@@ -10,7 +10,7 @@ const calendars: Record<string, (engDate: Date, myanmarDate?: any) => string[]> 
 };
 
 export default function event_calendars(date: Date, checkedCalendars: string[]) {
-  const myanmarDate = englishToMyanmarDate(date);
+  let myanmarDate = englishToMyanmarDate(date);
 
   let eventRoot: { events: string[]; eventType: string }[] = [];
 

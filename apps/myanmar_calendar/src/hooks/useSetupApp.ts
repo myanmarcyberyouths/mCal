@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import useWindowResize from "./useWindowResize";
 import { MIN_WIDTHS } from "@/utils/constants";
 import { useDispatch } from "react-redux";
@@ -10,12 +10,10 @@ function useSetupApp() {
   // Browser Resize Handler, Responsive purpose
   useWindowResize(
     useCallback(() => {
-      if (window.innerWidth < MIN_WIDTHS.sm2) {
-        dispatch(setEnterMobileMode(true));
-      }
-
       if (window.innerWidth >= MIN_WIDTHS.sm2) {
         dispatch(setEnterMobileMode(false));
+      } else {
+        dispatch(setEnterMobileMode(true));
       }
 
       if (window.innerWidth < MIN_WIDTHS.xl) {

@@ -41,7 +41,7 @@ const SelectContent = React.forwardRef<React.ElementRef<typeof SelectPrimitive.C
     <SelectPrimitive.Portal>
       <SelectPrimitive.Content
         ref={ref}
-        className={cn("bg-white rounded-md border border-gray-200 mt-1 shadow-lg z-[2]", className)}
+        className={cn("bg-white rounded-md border border-gray-200 mt-1 shadow-lg z-[10]", className)}
         position={position}
         align={align}
         {...props}>

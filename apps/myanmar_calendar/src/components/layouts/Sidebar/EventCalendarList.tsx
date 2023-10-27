@@ -25,7 +25,7 @@ function EventCalendarList() {
       {Object.keys(eventCalendars).map((propKey) => (
         <CheckListItem
           key={propKey}
-          name={propKey}
+          name={eventCalendars[propKey].name}
           id={"show_" + propKey}
           checked={eventCalendars[propKey].checked}
           onChange={handleCheck}

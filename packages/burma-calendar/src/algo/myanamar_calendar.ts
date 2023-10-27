@@ -679,7 +679,7 @@ export function engToMm(year, month, date) {
   mmDate.day = weekDay[M.wd];
 
   mmDate.astro = astro(M.mm, M.mml, M.md, M.wd, M.my);
-  if (mmDate.astro.sabbath == 1) mmDate.sabbath = "ဉပုဒ်နေ့";
+  if (mmDate.astro.sabbath == 1) mmDate.sabbath = "ဥပုဒ်နေ့";
   if (mmDate.astro.sabbatheve == 1) mmDate.sabbatheve = "အဖိတ်နေ့";
   if (mmDate.astro.yatyaza == 1) mmDate.yatyaza = "ရက်ရာဇာ";
   if (mmDate.astro.pyathada == 1) mmDate.pyathada = "ပြဿဒါး";

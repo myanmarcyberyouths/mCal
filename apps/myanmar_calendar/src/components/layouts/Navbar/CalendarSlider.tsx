@@ -34,8 +34,10 @@ function CalendarSlider() {
     setActiveDateIsThisMonth(isThisMonth(new Date(activeDate)));
   }, [activeDate]);
 
-  useKeyPress("ArrowLeft", () => handleCalendarSlide("prev"));
-  useKeyPress("ArrowRight", () => handleCalendarSlide("next"));
+  const dayDialogTargetDay = useSelector((state: RootState) => state.modelControlState.dayDialogTargetDay);
+
+  useKeyPress("ArrowLeft", () => handleCalendarSlide("prev"), !!dayDialogTargetDay);
+  useKeyPress("ArrowRight", () => handleCalendarSlide("next"), !!dayDialogTargetDay);
 
   return (
     <div className="h-[2.5rem] flex-shrink-0 flex items-stretch overflow-hidden rounded-md border border-gray-300">

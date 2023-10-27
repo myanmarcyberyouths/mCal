@@ -1,4 +1,4 @@
-import { ActiveDateFrameT, CALENDAR_MODE_ENUM, CellPreferanceT, LANGUAGE_ENUM } from "@/type-models/calendarState.type";
+import { CALENDAR_MODE_ENUM, CellPreferanceT, EventCalendarItem, LANGUAGE_ENUM } from "@/type-models/calendarState.type";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Duration, add } from "date-fns";
 
@@ -7,7 +7,8 @@ export interface CalendarStateInterface {
   activeDate: string;
   calendarLanguage: LANGUAGE_ENUM;
   preferance: CellPreferanceT;
-  eventCalendars: Record<string, { checked: boolean; tagColor: string }>;
+  eventCalendars: EventCalendarItem;
+  userCalendars: EventCalendarItem;
 }
 
 const initialState: CalendarStateInterface = {
@@ -20,14 +21,34 @@ const initialState: CalendarStateInterface = {
   },
   eventCalendars: {
     myanmarEvents: {
+      name: "Myanmar events",
       checked: true,
       tagColor: "#8b5cf6",
     },
     publicHolidays: {
+      name: "Public holidays",
       checked: true,
       tagColor: "#059669",
     },
     international: {
+      name: "International",
+      checked: true,
+      tagColor: "#0ea5e9",
+    },
+  },
+  userCalendars: {
+    myanmarEvents: {
+      name: "Myanmar events",
+      checked: true,
+      tagColor: "#8b5cf6",
+    },
+    publicHolidays: {
+      name: "Public holidays",
+      checked: true,
+      tagColor: "#059669",
+    },
+    international: {
+      name: "International",
       checked: true,
       tagColor: "#0ea5e9",
     },
@@ -54,8 +75,17 @@ export const calendarSlice = createSlice({
       state.preferance[payload.cellProp] = payload.value;
     },
 
+    setEventCalendars: (state, { payload }: PayloadAction<EventCalendarItem>) => {
+      state.eventCalendars = payload;
+    },
     updateEventCalendars: (state, { payload }: PayloadAction<{ event: string; value: boolean }>) => {
       state.eventCalendars[payload.event].checked = payload.value;
+    },
+    setUserCalendars: (state, { payload }: PayloadAction<EventCalendarItem>) => {
+      state.userCalendars = payload;
+    },
+    updateUserCalendars: (state, { payload }: PayloadAction<{ event: string; value: boolean }>) => {
+      state.userCalendars[payload.event].checked = payload.value;
     },
   },
 });
