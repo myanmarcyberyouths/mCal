@@ -1,8 +1,10 @@
-@import url("./styles/scroll.css");
+@import "./styles/fonts.css";
+@import "./styles/scroll.css";
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 
 @layer base {
     :root {
