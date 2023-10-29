@@ -8,7 +8,7 @@ import CalendarSlider from "./CalendarSlider";
 import CalendarModeSelectBox from "./CalendarModeSelectBox";
 import ActiveDateIndicator from "./ActiveDateIndicator";
 import SidebarToggleBtn from "@/components/ui/buttons/SidebarToggleBtn";
-import LogoLong from "@/components/ui/logos/LogoLong";
+import AppLogo from "@/components/ui/logos/AppLogo";
 
 function Navbar() {
   return (
@@ -18,7 +18,7 @@ function Navbar() {
           <IoMdMenu size={28} />
         </SidebarToggleBtn>
         <div className="hidden lg2:block">
-          <LogoLong />
+          <AppLogo />
         </div>
       </div>
       <div className="h-full flex-1 flex items-center justify-between px-3">

@@ -4,15 +4,16 @@
   "version": "1.0.0",
   "scripts": {
     "tauri": "tauri",
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "vite dev",
+    "build": "vite build",
+    "start": "vite start",
     "lint": "next lint"
   },
   "devDependencies": {
     "@tauri-apps/cli": "^1.4.0",
     "@types/node": "20.1.1",
     "@types/react": "^18.2.6",
+    "@types/react-dom": "^18.2.14",
     "autoprefixer": "^10.4.14",
     "burma-calendar": "workspace:*",
     "eslint": "8.40.0",
@@ -33,6 +34,7 @@
     "@radix-ui/react-switch": "^1.0.3",
     "@reduxjs/toolkit": "^1.9.6",
     "@vercel/analytics": "^1.0.1",
+    "@vitejs/plugin-react": "^4.1.0",
     "burma-calendar": "workspace:*",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
@@ -45,6 +47,7 @@
     "react-icons": "^4.11.0",
     "react-redux": "^8.1.3",
     "tailwind-merge": "^1.14.0",
-    "tailwindcss-animate": "^1.0.6"
+    "tailwindcss-animate": "^1.0.6",
+    "vite": "^4.5.0"
   }
 }
