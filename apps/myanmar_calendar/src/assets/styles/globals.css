@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -70,7 +72,9 @@
   * {
     /* outline: 1px solid violet; */
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
     @apply border-border;
+    /* font-family: "Roboto", Helvetica, Arial, sans-serif; */
   }
 
   html {
@@ -89,7 +93,16 @@
   }
 
   button {
-    outline: none;
+    outline: none !important;
+  }
+  /* 
+  button:focus,
+  button:focus-within,
+  button:focus-visible {
+    outline: 1px solid #444 !important;
+  } */
+  border-2 {
+    border: 1px sollid #444;
   }
 
   li {

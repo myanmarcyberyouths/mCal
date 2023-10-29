@@ -65,40 +65,6 @@ export const MIN_WIDTHS = {
   xl3: 1536,
 };
 
-export const EVENT_CALENDARS = {
-  myanmarEvents: {
-    label: "mon",
-    // tagColor: "#d97706", // indigo
-    tagColor: "#8b5cf6",
-  },
-  publicHolidays: {
-    label: "public holidays",
-    tagColor: "#059669", //green
-    // tagColor: "#f43f5e", //rose
-  },
-  international: {
-    label: "mon",
-    tagColor: "#0ea5e9",
-    // tagColor: "#039be5",
-  },
-  mon: {
-    label: "mon",
-    tagColor: "#f6bf26",
-  },
-  shan: {
-    label: "shan",
-    tagColor: "#d81b60",
-  },
-  karen: {
-    label: "karen",
-    tagColor: "#007b83",
-  },
-  kachin: {
-    label: "kachin",
-    tagColor: "#9e69af",
-  },
-} as const;
-
 export const ASTRO_EVENT_LIST = [
   "sabbath",
   "pyathada",

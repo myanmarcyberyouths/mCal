@@ -1,4 +1,4 @@
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/selectBoxes/PrimarySelect";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/selectBoxes/Select";
 import { RootState } from "@/store";
 import { setCalendarLanguage } from "@/store/calendarState";
 import { LANGUAGE_ENUM } from "@/type-models/calendarState.type";

@@ -18,17 +18,19 @@ function MonthMode() {
   });
 
   return (
-    <>
+    <div
+      aria-label="Calendar month view"
+      className="h-full">
       <div className="grid grid-cols-7 sticky top-0 h-[2.25rem]  border-gray-300 bg-white">
         {Object.values(WEEK_DAYS).map((weekday) => (
-          <span
+          <div
             key={weekday.short}
             className={cn(
               "flex justify-center items-stretch border-r border-gray-300 h-full capitalize font-semibold text-[0.9rem] px-2 py-[0.35rem] pb-[0.25rem]",
               weekday.short === "sun" || weekday.short === "sat" ? "text-red-500" : "text-gray-500"
             )}>
             <span className=" flex justify-center items-center rounded-md  bg-gray-100 w-full h-full">{weekday.short}</span>
-          </span>
+          </div>
         ))}
       </div>
       {/* min-h-[41rem] */}
@@ -42,7 +44,7 @@ function MonthMode() {
           />
         ))}
       </div>
-    </>
+    </div>
   );
 }
 

@@ -40,7 +40,7 @@ function CalendarSlider() {
   useKeyPress("ArrowRight", () => handleCalendarSlide("next"), !!dayDialogTargetDay);
 
   return (
-    <div className="h-[2.5rem] flex-shrink-0 flex items-stretch overflow-hidden rounded-md border border-gray-300">
+    <div className="h-[2.5rem] flex-shrink-0 flex items-stretch overflow-hidden rounded-sm border border-gray-300">
       <button
         className="flex justify-center items-center aspect-square hover:bg-gray-100 active:bg-gray-200 text-gray-600 "
         onClick={() => handleCalendarSlide("prev")}>

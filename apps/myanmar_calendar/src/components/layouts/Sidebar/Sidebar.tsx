@@ -11,6 +11,7 @@ import { setSidebarOpenState } from "@/store/systemState";
 import CalendarPreferanceList from "./CalendarPreferanceList";
 import EventCalendarList from "./EventCalendarList";
 import ModelBackdrop from "@/components/ui/backdrops/ModelBackdrop";
+import UserCalendarList from "./UserCalendarList";
 
 function Sidebar() {
   const dispatch = useDispatch();
@@ -48,6 +49,7 @@ function Sidebar() {
           {/* => DateJumper */}
           <CalendarPreferanceList />
           <EventCalendarList />
+          <UserCalendarList />
         </div>
       </section>
       {enterMobileMode && (

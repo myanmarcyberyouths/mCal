@@ -32,6 +32,7 @@
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-switch": "^1.0.3",
     "@reduxjs/toolkit": "^1.9.6",
+    "@tailwindcss/typography": "^0.5.10",
     "@vercel/analytics": "^1.0.1",
     "burma-calendar": "workspace:*",
     "class-variance-authority": "^0.7.0",

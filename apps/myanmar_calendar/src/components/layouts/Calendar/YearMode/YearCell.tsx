@@ -61,7 +61,7 @@ function YearCell({ month }: { month: Date }) {
                 className={cn(
                   "flex justify-center items-center rounded-full text-sm sm1:text-xs   font-semibold w-[1.65rem] h-[1.65rem] cursor-pointer mx-auto",
                   dayBelongInMonth ? "text-gray-600  hover:text-gray-800 hover:bg-gray-300" : " text-gray-300 hover:bg-gray-100",
-                  dayIsToday ? "bg-red-500 hover:bg-red-600 text-white hover:text-white" : ""
+                  dayIsToday && dayBelongInMonth ? "bg-red-500 hover:bg-red-600 text-white hover:text-white" : ""
                 )}
                 onClick={() => {
                   dispatch(setDayDialongTargetDay(day.toISOString()));

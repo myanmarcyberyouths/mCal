@@ -77,6 +77,9 @@ module.exports = {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      boxShadow: {
+        model: "0 10px 18px 3px rgba(100,100,100,.14), 0 9px 16px 8px rgba(100,100,100,.07), 0 11px 15px -7px rgba(100,100,100,.2)",
+      },
       keyframes: {
         "accordion-down": {
           from: { height: 0 },
@@ -91,7 +94,8 @@ module.exports = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      plugins: [require("@tailwindcss/typography")],
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
 };

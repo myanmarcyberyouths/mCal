@@ -18,4 +18,6 @@ export type CellPreferanceT = {
   astroEvent: boolean;
 };
 
-export type EventCalendarItem = Record<string, { name: string; checked: boolean; tagColor: string }>;
+export type EventCalendarItem = { id: string; name: string; description: string; tagColor: string; checked: boolean; showOnList: boolean };
+
+export type UserCalendarItem = { id: string; name: string; description: string; tagColor: string; checked: boolean; showOnList: boolean };

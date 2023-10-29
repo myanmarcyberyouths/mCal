@@ -1,22 +1,29 @@
 import { Switch } from "@/components/ui/buttons/SwitchButton";
 import { CheckList, CheckListItem } from "@/components/ui/lists/CheckList";
 import { RootState } from "@/store";
-import { updateCalendarPreferanceState } from "@/store/calendarState";
+import { updateCalendarShowState } from "@/store/calendarState";
+import { LOCAL_STORAGE_KEYS } from "@/type-models/utils.type";
+import { setLocalStorage } from "@/utils/helpers";
 import { camelToSentenceCase } from "@/utils/stringHelpers";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 function CalendarPreferanceList() {
   const dispatch = useDispatch();
-  const calendarPreferance = useSelector((state: RootState) => state.calendarState.preferance);
+  const calendarPreferance = useSelector((state: RootState) => state.calendarState.show);
 
   const handleCheck = (checked, name) => {
     dispatch(
-      updateCalendarPreferanceState({
+      updateCalendarShowState({
         cellProp: name,
         value: checked,
       })
     );
+
+    setLocalStorage(LOCAL_STORAGE_KEYS.calendarShow, {
+      ...calendarPreferance,
+      [name]: checked,
+    });
   };
 
   return (
