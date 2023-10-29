@@ -22,6 +22,7 @@ import {useDispatch, useSelector} from "react-redux";
 function YearCell({month}: { month: Date }) {
     // let monthName = month.toLocaleString("en-US", { month: "long" });
 
+
     const enterMobileMode = useSelector((state: RootState) => state.systemState.enterMobileMode);
     const dispatch = useDispatch();
     const endOfTheMonth = endOfMonth(month);
