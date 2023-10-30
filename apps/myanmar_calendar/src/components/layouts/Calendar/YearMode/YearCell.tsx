@@ -53,15 +53,15 @@ function YearCell({ month }: { month: Date }) {
         <div className="grid grid-cols-7 grid-flow-row-dense gap-x-[0.5rem] gap-y-2 sm1:gap-y-[0.35rem]">
           {days.splice(0, 42).map((day) => {
             const dayIsToday = isToday(day);
-            const dayBelongInMonth = isSameMonth(day, month);
+            const isDayInCurrentMonth = isSameMonth(day, month);
             return (
               <time
                 key={day.toString()}
                 dateTime={format(day, "yyyy-MM-dd")}
                 className={cn(
                   "flex justify-center items-center rounded-full text-sm sm1:text-xs   font-semibold w-[1.65rem] h-[1.65rem] cursor-pointer mx-auto",
-                  dayBelongInMonth ? "text-gray-600  hover:text-gray-800 hover:bg-gray-300" : " text-gray-300 hover:bg-gray-100",
-                  dayIsToday && dayBelongInMonth ? "bg-red-500 hover:bg-red-600 text-white hover:text-white" : ""
+                  isDayInCurrentMonth ? "text-gray-600  hover:text-gray-800 hover:bg-gray-300" : " text-gray-300 hover:bg-gray-100",
+                  dayIsToday && isDayInCurrentMonth ? "bg-red-500 hover:bg-red-600 text-white hover:text-white" : ""
                 )}
                 onClick={() => {
                   dispatch(setDayDialongTargetDay(day.toISOString()));

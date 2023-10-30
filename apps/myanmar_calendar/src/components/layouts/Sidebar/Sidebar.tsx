@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 import { CalendarLanguageSelectBox } from "./LanguageSelectBox";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store";
-import LogoLong from "@/components/ui/logos/LogoLong";
+import AppLogo from "@/components/ui/logos/AppLogo";
 import SidebarToggleBtn from "@/components/ui/buttons/SidebarToggleBtn";
 import { BsArrowLeftShort } from "react-icons/bs";
 import useOnClickOutside from "@/hooks/useOnClickOutside";
@@ -34,7 +34,7 @@ function Sidebar() {
           !enterMobileMode && `${sidebarOpen ? "w-[19rem] xl:w-sidebar-w" : "w-0"}`
         )}>
         <div className="xl:hidden h-nav-h w-[90%] xl:w-[16rem] flex justify-between items-center flex-shrink-0 pl-1">
-          <LogoLong />
+          <AppLogo />
           <SidebarToggleBtn>
             <BsArrowLeftShort size={30} />
           </SidebarToggleBtn>

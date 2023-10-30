@@ -3,6 +3,7 @@
   "version": "1.2.1",
   "description": "Convert Gregorian date to the Myanmar date including current Myanmar date,moon phase and so on.",
   "main": "dist/index.js",
+  "module": "dist/index.mjs",
   "types": "src/index.ts",
   "packageManager": "pnpm@8.4.0",
   "files": [

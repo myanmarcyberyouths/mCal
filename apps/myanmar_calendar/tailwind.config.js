@@ -47,9 +47,8 @@ module.exports = {
         },
       },
       spacing: {
-        "nav-h": "4.3rem",
+        "nav-h": "4rem",
         "sidebar-w": "17rem",
-        // "sidebar-w-mobile": "17rem",
         "input-sm": "2rem",
         "input-md": "2.5rem",
         "input-lg": "3rem",

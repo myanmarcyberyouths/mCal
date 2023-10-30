@@ -16,6 +16,7 @@ const calendar_modes = {
 function Calendar() {
   const calendarMode = useSelector((state: RootState) => state.calendarState.calendarMode);
   // const sidebarOpen = useSelector((state: RootState) => state.systemState.sidebarOpen);
+  // const sidebarOpen = useSelector((state: RootState) => state.systemState.sidebarOpen);
 
   return (
     <section
