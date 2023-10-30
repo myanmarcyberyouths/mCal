@@ -17,14 +17,14 @@ function WeekColumnHead({ day, scrollReachedTop }: { day: Date; scrollReachedTop
       key={day.toString()}
       className={cn("group/weekHeader flex flex-col items-center justify-between border-b border-gray-300  last:mr-1", !scrollReachedTop && " border-b-gray-100")}>
       <div className="flex flex-col items-center pt-2 gap-[0.1rem]">
-        <div className={cn("font-semibold text-gray-500 text-sm", isWeekend(day) && "text-red-500")}>{format(day, "iii")}</div>
+        <div className={cn("font-medium text-gray-500 text-sm", isWeekend(day) && "text-red-500")}>{format(day, "iii")}</div>
         <time
           onClick={() => {
             dispatch(setDayDialongTargetDay(day.toISOString()));
           }}
           dateTime={format(day, "yyyy-MM-dd")}
           className={cn(
-            " text-[1.3rem] font-semibold text-gray-500 flex items-center justify-center rounded-full w-[1.9rem] h-[1.9rem] cursor-pointer",
+            " text-[1.15rem] font-semibold text-gray-500 flex items-center justify-center rounded-full w-[1.9rem] h-[1.9rem] cursor-pointer",
             dayIsToday ? "bg-red-500 hover:bg-red-600 active:bg-red-700 text-white" : " hover:bg-gray-200 active:bg-gray-300 hover:text-gray-600 "
           )}>
           {format(day, "d")}

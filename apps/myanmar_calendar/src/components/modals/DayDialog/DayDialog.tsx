@@ -161,7 +161,7 @@ const DayDialog = ({ onClose, selectedDay }: DayDialogProps) => {
                     return (
                       <span
                         key={event}
-                        className="flex-shrink-0 p-2 pb-[0.35rem] pt-[0.175rem] border border-rose-300 text-[0.95rem] sm2:text-sm text-rose-600 rounded-sm">
+                        className="flex-shrink-0 p-2 pb-[0.285rem] pt-[0.19rem] border border-rose-300 text-[0.95rem] sm2:text-sm text-rose-600 rounded-sm">
                         {readEvent}
                       </span>
                     );

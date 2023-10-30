@@ -32,7 +32,7 @@ function YearCell({ month }: { month: Date }) {
       <div className="w-full px-[0.4rem] sm1:px-0 sm1:w-auto h-full sm2:h-auto">
         <a
           className={cn(
-            "pl-3 sm1:pl-2 py-1 block text-[1.1rem] sm1:text-[0.925rem] font-semibold sm2:hover:bg-gray-100  rounded-md sm2:cursor-pointer sm2:hover:underline mb-2 sm1:mb-[0.1rem]  text-red-500 sm1:text-gray-600 sm1:hover:text-gray-700  decoration-gray-500"
+            "pl-3 sm1:pl-2 py-1 block text-[1.05rem] sm1:text-[0.925rem] font-medium sm2:hover:bg-gray-100  rounded-md sm2:cursor-pointer sm2:hover:underline mb-2 sm1:mb-[0.1rem]  text-red-500 sm1:text-gray-600 sm1:hover:text-gray-700  decoration-gray-500"
           )}
           onClick={(e) => {
             e.preventDefault();
@@ -45,7 +45,7 @@ function YearCell({ month }: { month: Date }) {
           {Object.values(WEEK_DAYS).map((weekDay) => (
             <span
               key={weekDay.short}
-              className=" capitalize text-red-400 text-[0.9rem] sm1:text-[0.85rem] font-semibold text-center w-[1.75rem] h-[1.75rem] mx-auto">
+              className=" capitalize text-red-400 text-[0.9rem] sm1:text-[0.85rem] sm2:font-medium text-center w-[1.75rem] h-[1.75rem] mx-auto">
               {weekDay.long[0]}
             </span>
           ))}
@@ -59,7 +59,7 @@ function YearCell({ month }: { month: Date }) {
                 key={day.toString()}
                 dateTime={format(day, "yyyy-MM-dd")}
                 className={cn(
-                  "flex justify-center items-center rounded-full text-sm sm1:text-xs   font-semibold w-[1.65rem] h-[1.65rem] cursor-pointer mx-auto",
+                  "flex justify-center items-center rounded-full text-sm sm1:text-xs font-semibold sm2:font-medium w-[1.65rem] h-[1.65rem] cursor-pointer mx-auto",
                   isDayInCurrentMonth ? "text-gray-600  hover:text-gray-800 hover:bg-gray-300" : " text-gray-300 hover:bg-gray-100",
                   dayIsToday && isDayInCurrentMonth ? "bg-red-500 hover:bg-red-600 text-white hover:text-white" : ""
                 )}
