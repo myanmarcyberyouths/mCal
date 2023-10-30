@@ -22,7 +22,7 @@ Adding an event calendar to this application is a straightforward process. This 
 
 ## 2. Constructing event calendar object
 
-- Within `EVENTS` object, construct an object (key name must match with the calendar id [above](#1-configuration))
+- Within `EVENTS` object, construct an object (key name must be the calendar id [see above](#1-configuration))
 - For `gregorianBased` events, keys must be in following formats:
 
   > - `"Jan 05 2024"` - January 5 2024 (no repeat)
