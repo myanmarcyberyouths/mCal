@@ -14,8 +14,8 @@ function UserCalendarList() {
   const handleCheck = (event: React.ChangeEvent<HTMLInputElement>, keyName: string) => {
     dispatch(
       updateUserCalendars({
-        event: keyName,
-        value: event.target.checked,
+        id: keyName,
+        checked: event.target.checked,
       })
     );
   };

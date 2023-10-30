@@ -29,10 +29,12 @@ export const EVENT_CALENDARS: EventCalendarItem[] = [
   },
 ];
 
+export type CustomEventFnT = { (date: Date): string | string[] }[];
+
 type EventObjectT = {
   gregorianBased: Record<string, string> | null;
   mmBased: Record<string, string> | null;
-  others: { (date: Date): string }[] | null;
+  custom: CustomEventFnT | null;
 };
 
 type EventsT = Record<string, EventObjectT>;
@@ -53,7 +55,7 @@ export const EVENTS: EventsT = {
       သင်္ကြန်အတက်နေ့: "သင်္ကြန်အတက်နေ့",
       နှစ်ဆန်းတစ်ရက်နေ့: "နှစ်ဆန်းတစ်ရက်နေ့",
     },
-    others: null,
+    custom: [],
   },
 
   "2": {
@@ -78,7 +80,7 @@ export const EVENTS: EventsT = {
       သင်္ကြန်အတက်နေ့: "နှစ်သစ်ကူးရုံးပိတ်ရက်",
       နှစ်ဆန်းတစ်ရက်နေ့: "နှစ်သစ်ကူးရုံးပိတ်ရက်",
     },
-    others: null,
+    custom: [],
   },
 
   "3": {
@@ -97,15 +99,16 @@ export const EVENTS: EventsT = {
       "Dec 31": "နှစ်သစ်ကူးအကြိုနေ့",
     },
     mmBased: null,
-    others: [
+    custom: [
       (date: Date) => {
-        const easterDate = calculateEasterDate(new Date(date).getFullYear());
-        if (isSameDay(date, easterDate)) return "အီစတာပွဲတော်နေ့";
-      },
-      (date: Date) => {
+        const events: string[] = [];
         const easterDate = calculateEasterDate(new Date(date).getFullYear());
         const isGoodFriday = isSameDay(add(easterDate, { days: -2 }), date);
-        if (isGoodFriday) return "သောကြာနေ့ကြီး";
+
+        if (isSameDay(date, easterDate)) events.push("အီစတာပွဲတော်နေ့");
+        if (isGoodFriday) events.push("သောကြာနေ့ကြီး");
+
+        return events;
       },
     ],
   },

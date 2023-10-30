@@ -9,6 +9,8 @@ export const USER_CALENDARS = [
     name: "Birthdays",
     description: "",
     tagColor: "#ff00ff",
+    createdAt: "",
+    updatedAt: "",
     events: {
       gregorianBased: {
         "Jan 01": "New Year",

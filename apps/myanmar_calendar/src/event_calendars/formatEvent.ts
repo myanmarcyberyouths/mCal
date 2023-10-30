@@ -1,19 +1,19 @@
 import { EventCalendarItem } from "@/type-models/calendarState.type";
 import { format, getDate, getWeekOfMonth } from "date-fns";
-import { EVENTS } from "./event_calendars";
+import { EVENTS, CustomEventFnT } from "./event_calendars";
 import { englishToMyanmarDate } from "burma-calendar";
 
-export function formatEvent(date: Date, eventCalendars: EventCalendarItem[]) {
+export function getDayEvents(date: Date, eventCalendars: EventCalendarItem[]) {
   return eventCalendars.map((calendar) => {
     const currentEvent = EVENTS[calendar.id];
 
     const gregorianEvents = readGregorianEvents(date, currentEvent?.gregorianBased);
     const mmEvents = readMmEvents(date, currentEvent?.mmBased);
-    const otherEvents = readOthersEvents(date, currentEvent?.others);
+    const customEvents = readCustomEvents(date, currentEvent?.custom);
 
     return {
       ...calendar,
-      events: [...gregorianEvents, ...mmEvents, ...otherEvents],
+      events: [...gregorianEvents, ...mmEvents, ...customEvents],
     };
   });
 }
@@ -60,12 +60,14 @@ function readMmEvents(date: Date, eventObj?: Record<string, string>) {
   return events;
 }
 
-function readOthersEvents(date: Date, eventFns?: { (date: Date): string }[]) {
+function readCustomEvents(date: Date, eventFns?: CustomEventFnT) {
   if (!eventFns) return [];
 
-  return eventFns.reduce((prev, eventFn) => {
-    const event = eventFn(date);
-    if (event) prev.push[event];
-    return prev;
-  }, []);
+  return eventFns
+    .reduce((prev, eventFn) => {
+      const event = eventFn(date);
+      if (event) prev.push(event);
+      return prev;
+    }, [])
+    .flat();
 }

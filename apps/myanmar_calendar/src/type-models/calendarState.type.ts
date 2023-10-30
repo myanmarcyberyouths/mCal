@@ -18,6 +18,28 @@ export type CellPreferanceT = {
   astroEvent: boolean;
 };
 
-export type EventCalendarItem = { id: string; name: string; description: string; tagColor: string; checked: boolean; showOnList: boolean };
+export type EventCalendarItem = {
+  id: string;
+  name: string;
+  description: string;
+  tagColor: string;
+  checked: boolean;
+  showOnList: boolean;
+};
 
-export type UserCalendarItem = { id: string; name: string; description: string; tagColor: string; checked: boolean; showOnList: boolean };
+export type UserCalendarItem = {
+  id: string;
+  name: string;
+  description: string;
+  tagColor: string;
+  checked: boolean;
+  showOnList: boolean;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type UserCalendarEvent = {
+  gregorianBased: Record<string, string> | null;
+  mmBased: Record<string, string> | null;
+  others: { (date: Date): string }[] | null;
+};

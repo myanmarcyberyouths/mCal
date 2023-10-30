@@ -1,5 +1,5 @@
 import { ScrollArea, ScrollBar, ScrollViewport } from "@/components/ui/areas/ScrollArea";
-import { formatEvent } from "@/event_calendars/formatEvent";
+import { getDayEvents } from "@/event_calendars/formatEvent";
 import { cn } from "@/lib/utils";
 import { CalendarStateInterface } from "@/store/calendarState";
 import { setDayDialongTargetDay } from "@/store/modelControlState";
@@ -38,7 +38,7 @@ function MonthCell({ day, calendarState }: MonthCellT) {
     return () => clearInterval(dayUpdateIntervalRef.current);
   }, [day]);
 
-  const checkedEvents = formatEvent(
+  const checkedEvents = getDayEvents(
     day,
     eventCalendars.filter((calendar) => calendar.checked === true)
   );
@@ -62,7 +62,7 @@ function MonthCell({ day, calendarState }: MonthCellT) {
         </time>
         <time
           className={cn(
-            "flex justify-center items-center font-semibold text-[1.12rem]  h-[1.6rem] leading-7",
+            "flex justify-center items-center font-semibold text-[1.075rem]  h-[1.6rem] leading-7",
             dayBelongsInActiveMonth ? "text-gray-600" : "text-gray-300",
             dayIsToday ? "text-gray-50 bg-red-500" : " ",
             format(day, "d") == "1" ? "rounded-md px-[0.35rem]" : "rounded-full w-[1.6rem]"
@@ -70,7 +70,7 @@ function MonthCell({ day, calendarState }: MonthCellT) {
           dateTime={format(day, "yyyy-MM-dd")}>
           {format(day, "d")}{" "}
           {format(day, "d") == "1" && (
-            <span className={cn("text-[1.12rem] ml-[0.3rem]", dayBelongsInActiveMonth ? "text-gray-600" : "text-gray-300", dayIsToday ? "text-gray-100" : "")}>{format(day, "MMM")}</span>
+            <span className={cn("text-[1.075rem] ml-[0.3rem]", dayBelongsInActiveMonth ? "text-gray-600" : "text-gray-300", dayIsToday ? "text-gray-100" : "")}>{format(day, "MMM")}</span>
           )}
         </time>
         {/* ASTRO */}

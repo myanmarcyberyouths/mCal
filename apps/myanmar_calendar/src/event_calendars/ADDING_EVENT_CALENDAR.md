@@ -5,7 +5,7 @@ Adding an event calendar to this application is a straightforward process. This 
 ## 1. Configuration
 
 - Open the `apps/myanmar_calendar/src/event_calendars/event_calendars.ts` file.
-- Add a calendar object to the `EVENT_CALENDARS` object (Please asign incremented id from last calendar)
+- Add a new calendar object to the `EVENT_CALENDARS` array. Be sure to assign an incremented `id` based on the last added calendar.
   Example:
 
 ```js
@@ -22,7 +22,7 @@ Adding an event calendar to this application is a straightforward process. This 
 
 ## 2. Constructing event calendar object
 
-- Within `EVENTS` object, construct an object (key name must be the calendar id [see above](#1-configuration))
+- Within the `EVENTS` object, you will construct an object. The object's key name must be the `id` as defined in the [configuration](#1-configuration).
 - For `gregorianBased` events, keys must be in following formats:
 
   > - `"Jan 05 2024"` - January 5 2024 (no repeat)
@@ -39,7 +39,7 @@ Adding an event calendar to this application is a straightforward process. This 
   > - `တပေါင်းလဆန်း 1` - Waxing day 1 of Thabaung
   > - `သင်္ကြန်အကြိုနေ့` - သင်္ကြန်အကြိုနေ့
 
-- For events which are simply not formattable with Gregorian or Myanmar calendar, you can add event calculator function inside `others` array. The function must accept a date parameter and return a string.
+- For events that cannot be formatted with either the Gregorian or Myanmar calendar, you can include event calculator functions inside the `custom` array. These functions must accept a date parameter and return either a single string or an array of strings to represent the event.
 
 Example:
 
@@ -56,8 +56,9 @@ const EVENTS = {
       တပေါင်းလပြည့်: "တပေါင်းပွဲတော်",
       ကဆုန်လပြည့်: "‌‌ညောင်ရေသွန်းပွဲတော်",
       ဝါဆိုလပြည့်: "ဓမ္မစကြာနေ့",
+      သင်္ကြန်အကြိုနေ့: "သင်္ကြန်အကြိုနေ့",
     },
-    others: [
+    custom: [
       (date: Date) => {
         const easterDate = calculateEasterDate(new Date(date).getFullYear());
         if (isSameDay(date, easterDate)) return "အီစတာပွဲတော်နေ့";

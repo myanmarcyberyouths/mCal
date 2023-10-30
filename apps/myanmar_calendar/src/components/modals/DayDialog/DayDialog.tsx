@@ -16,7 +16,7 @@ import { PiCaretDownBold } from "react-icons/pi";
 import { GrDown } from "react-icons/gr";
 import useKeyPress from "@/hooks/useKeyPress";
 import { modifyColorOpacity } from "@/utils/styleHelpers";
-import { formatEvent } from "@/event_calendars/formatEvent";
+import { getDayEvents } from "@/event_calendars/formatEvent";
 
 interface DayDialogProps {
   onClose: () => void;
@@ -30,7 +30,7 @@ const DayDialog = ({ onClose, selectedDay }: DayDialogProps) => {
   const enterMobileMode = useSelector((state: RootState) => state.systemState.enterMobileMode);
   let dayIsToday = isToday(selectedDay);
 
-  const checkedEvents = formatEvent(
+  const checkedEvents = getDayEvents(
     selectedDay,
     eventCalendars.filter((calendar) => calendar.checked === true)
   );
@@ -197,7 +197,7 @@ const DayDialog = ({ onClose, selectedDay }: DayDialogProps) => {
           {/* ------ Footer ------ */}
           <div className=" h-[3.5rem] sm2:h-[3.75rem] border-t flex items-center px-3">
             <Button
-              // disabled
+              disabled
               onClick={() => {
                 onClose();
                 dispatch(setNewEventDialongTargetDay(selectedDay.toISOString()));
