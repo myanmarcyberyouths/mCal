@@ -11,6 +11,9 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ["GeistSans", "sans-serif"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -96,5 +99,5 @@ module.exports = {
       // plugins: [require("@tailwindcss/typography")],
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-animate")],
 };

@@ -11,12 +11,14 @@ Adding an event calendar to this application is a straightforward process. This 
 ```js
   const EVENT_CALENDARS: [
     // ...existing calendars,
+   {
     id: "4",
     name: "Your calendar",
     description: "",
     tagColor: "#8b5cf6",
     checked: true,
-    showOnList: true,
+    showOnList: true
+    }
   ]
 ```
 
@@ -45,7 +47,7 @@ Example:
 
 ```js
 const EVENTS = {
-  calendarId: {
+  4: {
     gregorianBased: {
       "Jan 01": "နိုင်ငံတကာနှစ်သစ်ကူးနေ့",
       "Jan Sun 1": "First Sunday of Jan",
