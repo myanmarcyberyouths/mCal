@@ -26,10 +26,10 @@ function MonthMode() {
           <div
             key={weekday.short}
             className={cn(
-              "flex justify-center items-stretch border-r border-gray-300 h-full capitalize font-semibold text-[0.9rem] px-2 py-[0.35rem] pb-[0.25rem]",
+              "flex justify-center items-stretch border-r border-gray-300 h-full capitalize font-medium text-[0.85rem] px-2 py-[0.35rem] pb-[0.25rem]",
               weekday.short === "sun" || weekday.short === "sat" ? "text-red-500" : "text-gray-500"
             )}>
-            <span className=" flex justify-center items-center rounded-md  bg-gray-100 w-full h-full">{weekday.short}</span>
+            <span className=" flex justify-center items-center rounded-md bg-gray-100 w-full h-full">{weekday.short}</span>
           </div>
         ))}
       </div>

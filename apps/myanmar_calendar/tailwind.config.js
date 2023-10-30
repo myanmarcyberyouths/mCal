@@ -50,7 +50,7 @@ module.exports = {
         },
       },
       spacing: {
-        "nav-h": "4rem",
+        "nav-h": "4.2rem",
         "sidebar-w": "17rem",
         "input-sm": "2rem",
         "input-md": "2.5rem",

@@ -33,7 +33,7 @@ function CalendarPreferanceList() {
           <label
             htmlFor={"show_" + propKey}
             className="flex justify-between items-center h-[2.5rem] sm2:h-[2rem] rounded-[0.25rem] cursor-pointer hover:bg-gray-100 px-2 pl-3">
-            <span className="text-[1.1rem] sm2:text-[0.9rem] first-letter:capitalize  font-normal text-gray-700 whitespace-nowrap">{camelToSentenceCase(propKey)}</span>
+            <span className="text-[1.1rem] sm2:text-[0.875rem] first-letter:capitalize font-normal text-gray-700 whitespace-nowrap">{camelToSentenceCase(propKey)}</span>
             <Switch
               id={"show_" + propKey}
               checked={calendarPreferance[propKey]}

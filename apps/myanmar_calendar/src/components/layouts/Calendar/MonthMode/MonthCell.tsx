@@ -57,12 +57,12 @@ function MonthCell({ day, calendarState }: MonthCellT) {
       <div className=" flex justify-between items-start">
         <time
           dateTime={format(day, "yyyy-MM-dd")}
-          className={cn("flex justify-start -mt-[0.05rem] text-gray-500 flex-1 text-[0.975rem] leading-5", dayBelongsInActiveMonth ? "text-gray-500" : "text-gray-300")}>
+          className={cn("flex justify-start -mt-[0.05rem] text-gray-500 flex-1 text-[0.85rem] leading-5", dayBelongsInActiveMonth ? "text-gray-500" : "text-gray-300")}>
           {mmDate}
         </time>
         <time
           className={cn(
-            "flex justify-center items-center font-semibold text-[1.075rem]  h-[1.6rem] leading-7",
+            "flex justify-center items-center font-medium text-[1rem]  h-[1.6rem] leading-7",
             dayBelongsInActiveMonth ? "text-gray-600" : "text-gray-300",
             dayIsToday ? "text-gray-50 bg-red-500" : " ",
             format(day, "d") == "1" ? "rounded-md px-[0.35rem]" : "rounded-full w-[1.6rem]"
@@ -70,7 +70,7 @@ function MonthCell({ day, calendarState }: MonthCellT) {
           dateTime={format(day, "yyyy-MM-dd")}>
           {format(day, "d")}{" "}
           {format(day, "d") == "1" && (
-            <span className={cn("text-[1.075rem] ml-[0.3rem]", dayBelongsInActiveMonth ? "text-gray-600" : "text-gray-300", dayIsToday ? "text-gray-100" : "")}>{format(day, "MMM")}</span>
+            <span className={cn("text-[1rem] ml-[0.3rem]", dayBelongsInActiveMonth ? "text-gray-600" : "text-gray-300", dayIsToday ? "text-gray-100" : "")}>{format(day, "MMM")}</span>
           )}
         </time>
         {/* ASTRO */}
@@ -107,7 +107,7 @@ function MonthCell({ day, calendarState }: MonthCellT) {
                       backgroundColor: eventCalendar.tagColor,
                     }}></span>
                   <span
-                    className="text-[0.7rem] text-gray-600 -mt-[0.1rem] font-semibold leading-[0.7rem]"
+                    className="text-[0.7rem] text-gray-600 -mt-[0.025rem] font-semibold leading-[0.7rem]"
                     style={{
                       color: eventCalendar.tagColor,
                     }}>

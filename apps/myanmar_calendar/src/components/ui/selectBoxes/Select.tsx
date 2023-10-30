@@ -75,7 +75,7 @@ const SelectItem = React.forwardRef<
   <SelectPrimitive.Item
     ref={ref}
     className={cn(
-      "flex items-center h-[2.2rem] rounded cursor-pointer hover:bg-gray-100 focus:bg-gray-100 active:bg-gray-100 px-2 capitalize outline-0 data-[state=checked]:bg-gray-200 w-full text-gray-700",
+      "flex items-center h-[2.2rem] rounded cursor-pointer hover:bg-gray-100 focus:bg-gray-100 active:bg-gray-100 px-2 capitalize outline-0 data-[state=checked]:bg-gray-200 w-full text-[0.9rem] text-gray-600",
       showIndicator ? "pl-8" : "pl-2",
       className
     )}
