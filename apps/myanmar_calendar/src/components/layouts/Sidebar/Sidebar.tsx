@@ -49,7 +49,7 @@ function Sidebar() {
           {/* => DateJumper */}
           <CalendarPreferanceList />
           <EventCalendarList />
-          <UserCalendarList />
+          {/* <UserCalendarList /> */}
         </div>
       </section>
       {enterMobileMode && (

@@ -43,19 +43,19 @@ function EventCalendarList() {
           tagColor={tagColor}
         />
       ))}
-      <div className="mt-1">
+      {/* <div className="mt-1">
         <CheckListAddButton className="gap-0">
-          {/* <BiDotsHorizontalRounded
+          More
+        </CheckListAddButton>
+      </div> */}
+      {/* <BiDotsHorizontalRounded
             size={16}
             className="mt-2"
           /> */}
-          More
-          {/* <CgChevronRight
+      {/* <CgChevronRight
             size={17}
             className="mt-[0.125rem]"
           /> */}
-        </CheckListAddButton>
-      </div>
     </CheckList>
   );
 }

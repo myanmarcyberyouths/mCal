@@ -57,7 +57,7 @@ function MonthCell({ day, calendarState }: MonthCellT) {
       <div className=" flex justify-between items-start">
         <time
           dateTime={format(day, "yyyy-MM-dd")}
-          className={cn("flex justify-start -mt-[0.05rem] text-gray-500 flex-1 text-[0.85rem] leading-5", dayBelongsInActiveMonth ? "text-gray-500" : "text-gray-300")}>
+          className={cn("flex justify-start -mt-[0.05rem] text-gray-500 flex-1 text-[0.875rem] leading-5", dayBelongsInActiveMonth ? "text-gray-500" : "text-gray-300")}>
           {mmDate}
         </time>
         <time
@@ -69,9 +69,9 @@ function MonthCell({ day, calendarState }: MonthCellT) {
           )}
           dateTime={format(day, "yyyy-MM-dd")}>
           {format(day, "d")}{" "}
-          {format(day, "d") == "1" && (
+          {/* {format(day, "d") == "1" && (
             <span className={cn("text-[1.025rem] ml-[0.3rem]", dayBelongsInActiveMonth ? "text-gray-600" : "text-gray-300", dayIsToday ? "text-gray-100" : "")}>{format(day, "MMM")}</span>
-          )}
+          )} */}
         </time>
         {/* ASTRO */}
         <div className={cn("flex flex-1 self-stretch min-w-[1.5rem] justify-end items-center gap-1 transition-all", show.astroEvent ? "opacity-100" : "opacity-0")}>

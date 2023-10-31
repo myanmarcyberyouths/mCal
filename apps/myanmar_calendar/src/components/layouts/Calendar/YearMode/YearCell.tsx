@@ -45,7 +45,7 @@ function YearCell({ month }: { month: Date }) {
           {Object.values(WEEK_DAYS).map((weekDay) => (
             <span
               key={weekDay.short}
-              className=" capitalize text-red-400 text-[0.9rem] sm1:text-[0.85rem] sm2:font-medium text-center w-[1.75rem] h-[1.75rem] mx-auto">
+              className=" capitalize text-red-400 text-[0.9rem] sm1:text-[0.85rem] font-medium text-center w-[1.75rem] h-[1.75rem] mx-auto">
               {weekDay.long[0]}
             </span>
           ))}
