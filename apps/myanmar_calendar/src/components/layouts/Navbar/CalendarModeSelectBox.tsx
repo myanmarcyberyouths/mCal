@@ -1,4 +1,4 @@
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/selectBoxes/PrimarySelect";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/selectBoxes/Select";
 import { RootState } from "@/store";
 import { setCalendarMode } from "@/store/calendarState";
 import { CALENDAR_MODE_ENUM } from "@/type-models/calendarState.type";
@@ -29,10 +29,10 @@ function CalendarModeSelectBox() {
     <Select
       value={calendarMode}
       onValueChange={selectHandler}>
-      <SelectTrigger className="h-input-md w-fit px-4">
+      <SelectTrigger className="h-input-md rounded-md w-fit px-4">
         <span className="flex items-center gap-3 -ml-[0.35rem] -mr-[0.6rem]">
           <FaCalendarAlt className="text-gray-400" />
-          <span className="capitalize font-semibold text-gray-700">{CALENDAR_MODE[calendarMode]}</span>
+          <span className="capitalize text-[0.95rem] font-medium  text-gray-600">{CALENDAR_MODE[calendarMode]}</span>
           <BiCaretDown className="text-gray-500" />
         </span>
       </SelectTrigger>

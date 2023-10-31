@@ -6,6 +6,8 @@ const useKeyPress = (key: Key, callback: () => void, disabled = false) => {
   useEffect(() => {
     if (disabled) return;
     const onKeyDown = (event: KeyboardEvent) => {
+      // event.preventDefault();
+      event.stopPropagation();
       if (event.key === key) callback();
     };
     window.addEventListener("keydown", onKeyDown);

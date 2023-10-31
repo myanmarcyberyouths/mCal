@@ -47,7 +47,7 @@ function CalendarSlider() {
         <BiChevronLeft size={24} />
       </button>
       <button
-        className={`flex items-center justify-center border-r border-l border-gray-300 hover:bg-gray-100  font-semibold w-[6rem] active:bg-gray-200 ${
+        className={`flex items-center justify-center border-r border-l border-gray-300 hover:bg-gray-100 text-[0.95rem]  font-medium w-[6rem] active:bg-gray-200 ${
           activeDateIsThisMonth ? "text-red-500 hover:text-red-500 " : "text-gray-700 hover:text-gray-800  "
         }`}
         onClick={() => {

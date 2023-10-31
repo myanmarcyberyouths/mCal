@@ -8,15 +8,15 @@ import { setNewEventDialongTargetDay, updateDayDialongTargetDay } from "@/store/
 import { format, isToday } from "date-fns";
 import { englishToMyanmarDate } from "burma-calendar";
 import { engToMyanmarNumber } from "@/utils/engToMyanmarNumber";
-import event_calendars from "@/event_calendars";
 import { RootState } from "@/store";
-import { modifyColorOpacity } from "@/utils/modifyColorOpacity";
 import { ASTRO_EVENT_LIST } from "@/utils/constants";
 import { cn } from "@/lib/utils";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 import { PiCaretDownBold } from "react-icons/pi";
 import { GrDown } from "react-icons/gr";
 import useKeyPress from "@/hooks/useKeyPress";
+import { modifyColorOpacity } from "@/utils/styleHelpers";
+import { getDayEvents } from "@/event_calendars/formatEvent";
 
 interface DayDialogProps {
   onClose: () => void;
@@ -26,15 +26,13 @@ interface DayDialogProps {
 const DayDialog = ({ onClose, selectedDay }: DayDialogProps) => {
   const dispatch = useDispatch();
   const mmDate = englishToMyanmarDate(selectedDay);
-  const eventCalendars = useSelector((state: RootState) => state.calendarState.eventCalendars);
+  const { eventCalendars, show } = useSelector((state: RootState) => state.calendarState);
   const enterMobileMode = useSelector((state: RootState) => state.systemState.enterMobileMode);
   let dayIsToday = isToday(selectedDay);
 
-  const checkedEvents = event_calendars(
+  const checkedEvents = getDayEvents(
     selectedDay,
-    Object.keys(eventCalendars).filter((calendar) => {
-      if (eventCalendars[calendar].checked === true) return calendar;
-    })
+    eventCalendars.filter((calendar) => calendar.checked === true)
   );
 
   const hasEvents = checkedEvents.reduce((prev, eventCalendar) => {
@@ -66,12 +64,7 @@ const DayDialog = ({ onClose, selectedDay }: DayDialogProps) => {
         leaveTo={`${enterMobileMode ? "translate-y-[100%]" : "opacity-0  translate-y-5"}`}
         enter={`ease-out ${enterMobileMode ? "duration-200" : " duration-200"}`}
         leave={`ease-in ${enterMobileMode ? "duration-200" : " duration-150"}`}>
-        <Dialog.Panel
-          className="fixed inset-0 mx-auto mt-auto sm2:my-auto w-full sm2:max-w-[27rem] h-[calc(100%-5rem)] sm2:h-[96%] sm2:max-h-[33rem] transform overflow-hidden rounded-tr-2xl rounded-tl-2xl sm2:rounded-[0.5rem] bg-white text-left align-middle shadow-lg transition-all flex flex-col sm2:border  sm2:border-gray-200"
-          style={{
-            // boxShadow: "0px 3px 10px 0px rgba(100,100,100,0.25)",
-            boxShadow: "0 10px 18px 3px rgba(100,100,100,.14), 0 9px 16px 8px rgba(100,100,100,.07), 0 11px 15px -7px rgba(100,100,100,.2)",
-          }}>
+        <Dialog.Panel className="fixed inset-0 mx-auto mt-auto sm2:my-auto w-full sm2:max-w-[27rem] h-[calc(100%-5rem)] sm2:h-[90%] sm2:max-h-[33rem] transform overflow-hidden rounded-tr-2xl rounded-tl-2xl sm2:rounded-[0.5rem] bg-white text-left align-middle transition-all flex flex-col sm2:border  sm2:border-gray-200 shadow-model">
           {/* ------ Header ------ */}
           <div className="h-[3.25rem] sm2:h-[3rem] flex items-center justify-between px-5 sm2:px-3 bg-gray-50 border-b">
             <div className="flex items-center gap-1">
@@ -113,20 +106,20 @@ const DayDialog = ({ onClose, selectedDay }: DayDialogProps) => {
           </div>
 
           {/* ------ Body ------ */}
-          <div className="flex-1 __scrollbar-sm px-5 pr-4 pb-2 mr-[0.15rem] my-[0.1rem]">
+          <div className="flex-1 __scrollbar-xs px-5 pr-4 pb-2 mr-[0.15rem] my-[0.1rem]">
             {/* Western date */}
             <div className="flex justify-between items-center">
               <time
                 dateTime={format(selectedDay, "yyyy-MM-dd")}
                 className="flex items-center gap-2 h-[2.5rem]">
                 <span className="text-[1.25rem] text-gray-500">{format(selectedDay, "iii,")}</span>
-                <span className="text-[1.25rem] text-rose-500">{format(selectedDay, "d ")}</span>
+                <span className="text-[1.25rem] font-semibold text-rose-500">{format(selectedDay, "d ")}</span>
                 <span className="text-[1.25rem] text-gray-500 ">{format(selectedDay, "MMMM yyyy")}</span>
               </time>
-              {dayIsToday && <span className=" text-[0.85rem]  text-green-600 border border-green-300 rounded-md px-[0.35rem] py-[0.15rem]">Today</span>}
+              {dayIsToday && <span className=" text-[0.85rem]  text-green-600 border border-green-400 rounded-md px-[0.35rem] py-[0.15rem]">Today</span>}
             </div>
             {/* MM Date */}
-            <div className="flex justify-between px-1">
+            <div className="flex justify-between px-3">
               <time
                 dateTime={format(selectedDay, "yyyy-MM-dd")}
                 className=" text-gray-700 flex flex-col">
@@ -142,7 +135,7 @@ const DayDialog = ({ onClose, selectedDay }: DayDialogProps) => {
                 </span>
               </time>
               {/* Moon */}
-              <div className="pr-2">
+              <div className="pr-1">
                 <div
                   className={cn(
                     "mt-[1.65rem] w-[2.5rem] h-[2.5rem] rounded-full  bg-none",
@@ -155,38 +148,40 @@ const DayDialog = ({ onClose, selectedDay }: DayDialogProps) => {
               </div>
             </div>
             {/* Astrology Events */}
-            <div className="mt-5">
-              <div className="flex gap-[0.35rem] flex-wrap">
-                {ASTRO_EVENT_LIST.map((event) => {
-                  let readEvent = mmDate[event];
-                  if (!readEvent) return null;
-                  if (event == "nakhat") readEvent = readEvent + "နက္ခတ်";
-                  if (event == "mahabote") readEvent = readEvent + "ဖွား";
-                  if (event == "nagahle") readEvent = "နဂါးခေါင်း " + readEvent + "သို့လှည့်";
+            {show.astroEvent && (
+              <div className="mt-5">
+                <div className="flex gap-[0.35rem] flex-wrap">
+                  {ASTRO_EVENT_LIST.map((event) => {
+                    let readEvent = mmDate[event];
+                    if (!readEvent) return null;
+                    if (event == "nakhat") readEvent = readEvent + "နက္ခတ်";
+                    if (event == "mahabote") readEvent = readEvent + "ဖွား";
+                    if (event == "nagahle") readEvent = "နဂါးခေါင်း " + readEvent + "သို့လှည့်";
 
-                  return (
-                    <span
-                      key={event}
-                      className="flex-shrink-0 p-2 pb-[0.35rem] pt-[0.175rem] border border-rose-300 text-[0.95rem] sm2:text-sm text-rose-600 rounded-sm">
-                      {readEvent}
-                    </span>
-                  );
-                })}
+                    return (
+                      <span
+                        key={event}
+                        className="flex-shrink-0 p-2 pb-[0.285rem] pt-[0.19rem] border border-rose-300 text-[0.95rem] sm2:text-sm text-rose-600 rounded-sm">
+                        {readEvent}
+                      </span>
+                    );
+                  })}
+                </div>
               </div>
-            </div>
+            )}
             <div className="py-2 mt-5 border-t border-gray-200">
               <h5 className="font-semibold text-[1.1rem] text-gray-500">Events</h5>
               <ul className="mt-2 space-y-[0.25rem]">
                 {checkedEvents.map((eventCalendar) => {
                   return (
-                    <Fragment key={eventCalendar.eventType}>
+                    <Fragment key={eventCalendar.id}>
                       {eventCalendar.events.map((event) => (
                         <li
                           key={event}
                           className="flex items-center rounded-md h-[2rem] px-2 font-semibold text-[0.9rem]"
                           style={{
-                            backgroundColor: modifyColorOpacity(eventCalendars[eventCalendar.eventType].tagColor, 0.15),
-                            color: eventCalendars[eventCalendar.eventType].tagColor,
+                            backgroundColor: modifyColorOpacity(eventCalendar.tagColor, 0.15),
+                            color: eventCalendar.tagColor,
                           }}>
                           {event}
                         </li>

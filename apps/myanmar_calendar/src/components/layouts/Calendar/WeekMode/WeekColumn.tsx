@@ -10,7 +10,7 @@ interface WeekColumnPropsI {
 }
 
 function WeekColumn({ day, calendarState }: WeekColumnPropsI) {
-  const { preferance } = calendarState;
+  const { show } = calendarState;
   const myanmar_calendar = englishToMyanmarDate(day);
   const mmDate = i18n(engToMyanmarNumber(myanmar_calendar.date), "myanmar", "myanmar" as any);
 
@@ -23,7 +23,7 @@ function WeekColumn({ day, calendarState }: WeekColumnPropsI) {
         </span>
       </div> */}
       <div className="p-2">
-        {preferance.astroEvent && (myanmar_calendar.pyathada || myanmar_calendar.yatyaza) && (
+        {show.astroEvent && (myanmar_calendar.pyathada || myanmar_calendar.yatyaza) && (
           <span
             className={cn(
               "h-[2.3rem] bg-gray-100 w-full px-2 flex items-center justify-center text-[0.825rem] font-semibold rounded-md",

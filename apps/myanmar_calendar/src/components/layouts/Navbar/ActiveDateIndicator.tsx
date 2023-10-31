@@ -17,7 +17,7 @@ function ActiveDateIndicator() {
     <div className="flex items-center gap-7">
       <h2 className="flex items-center gap-3">
         <time
-          className="hidden sm2:inline-block text-2xl text-gray-700"
+          className="hidden sm2:inline-block text-[1.5rem] text-gray-600"
           dateTime={format(activeDateObj, "yyyy-MM-dd")}>
           {format(activeDateObj, `${calendarMode === CALENDAR_MODE_ENUM.YEAR ? "yyyy" : "MMMM yyyy"}`)}
         </time>

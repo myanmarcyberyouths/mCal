@@ -11,6 +11,7 @@ import { setSidebarOpenState } from "@/store/systemState";
 import CalendarPreferanceList from "./CalendarPreferanceList";
 import EventCalendarList from "./EventCalendarList";
 import ModelBackdrop from "@/components/ui/backdrops/ModelBackdrop";
+import UserCalendarList from "./UserCalendarList";
 
 function Sidebar() {
   const dispatch = useDispatch();
@@ -41,13 +42,14 @@ function Sidebar() {
         {/* w-[calc(theme(spacing.sidebar-w)-2.5rem)] */}
         <div className="space-y-6 w-full min-w-[19rem] xl:min-w-[theme(spacing.sidebar-w)] xl:w-sidebar-w flex-shrink-0 py-3 pt-4 h-[calc(100%-theme(spacing.nav-h))] xl:h-full px-5 __scrollbar-sm">
           <div className="">
-            <p className="text-[0.8rem] font-semibold text-gray-600 mb-[0.4rem]">CALENDAR LANGUAGE</p>
+            <p className="text-[0.75rem] font-medium text-gray-500 mb-[0.4rem]">CALENDAR LANGUAGE</p>
             <CalendarLanguageSelectBox />
           </div>
           {/* => SystemLanguageSelectBox */}
           {/* => DateJumper */}
           <CalendarPreferanceList />
           <EventCalendarList />
+          {/* <UserCalendarList /> */}
         </div>
       </section>
       {enterMobileMode && (

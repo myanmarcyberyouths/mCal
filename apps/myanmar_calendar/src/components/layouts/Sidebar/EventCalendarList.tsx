@@ -1,34 +1,61 @@
-import { CheckList, CheckListItem } from "@/components/ui/lists/CheckList";
+import { CheckList, CheckListAddButton, CheckListItem } from "@/components/ui/lists/CheckList";
 import { RootState } from "@/store";
 import { updateEventCalendars } from "@/store/calendarState";
+import { LOCAL_STORAGE_KEYS } from "@/type-models/utils.type";
+import { setLocalStorage } from "@/utils/helpers";
 import React from "react";
+import { BiDotsHorizontalRounded } from "react-icons/bi";
+import { GoChevronRight } from "react-icons/go";
+import { HiMiniChevronRight } from "react-icons/hi2";
+import { CgChevronRight } from "react-icons/cg";
 import { useDispatch, useSelector } from "react-redux";
 
 function EventCalendarList() {
   const dispatch = useDispatch();
   const eventCalendars = useSelector((state: RootState) => state.calendarState.eventCalendars);
 
-  const handleCheck = (event: React.ChangeEvent<HTMLInputElement>, keyName: string) => {
+  const handleCheck = (checked, id: string) => {
     dispatch(
       updateEventCalendars({
-        event: keyName,
-        value: event.target.checked,
+        id,
+        checked,
+      })
+    );
+
+    setLocalStorage(
+      LOCAL_STORAGE_KEYS.eventCalendars,
+      eventCalendars.map((calendar) => {
+        if (calendar.id === id) return { ...calendar, checked };
+        return calendar;
       })
     );
   };
 
   return (
     <CheckList title="EVENT CALENDARS">
-      {Object.keys(eventCalendars).map((propKey) => (
+      {eventCalendars.map(({ id, name, checked, tagColor }) => (
         <CheckListItem
-          key={propKey}
-          name={eventCalendars[propKey].name}
-          id={"show_" + propKey}
-          checked={eventCalendars[propKey].checked}
-          onChange={(e) => handleCheck(e, propKey)}
-          tagColor={eventCalendars[propKey].tagColor}
+          key={id}
+          name={name}
+          id={id + name}
+          checked={checked}
+          onChange={(e) => handleCheck(e.target.checked, id)}
+          tagColor={tagColor}
         />
       ))}
+      {/* <div className="mt-1">
+        <CheckListAddButton className="gap-0">
+          More
+        </CheckListAddButton>
+      </div> */}
+      {/* <BiDotsHorizontalRounded
+            size={16}
+            className="mt-2"
+          /> */}
+      {/* <CgChevronRight
+            size={17}
+            className="mt-[0.125rem]"
+          /> */}
     </CheckList>
   );
 }
