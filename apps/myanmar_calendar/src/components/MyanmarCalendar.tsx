@@ -68,8 +68,8 @@ export default function MyanmarCalendar() {
   return (
     <>
       <div className="lg:flex lg:h-full lg:flex-col">
-        <header className="flex items-center justify-between border-b border-cgray-200 px-6 py-4 lg:flex-none">
-          <h1 className="text-base font-semibold leading-6 text-cgray-900">
+        <header className="flex items-center justify-between border-b border-gray-200 px-6 py-4 lg:flex-none">
+          <h1 className="text-base font-semibold leading-6 text-gray-900">
             <time dateTime={format(firstDayCurrentMonth, "yyyy-MM-dd")}>{format(firstDayCurrentMonth, "MMMM yyyy")}</time>
             <div className="font-normal text-sm">
               {i18n("Myanmar Year", "english", language as any)} {i18n(engToMyanmarNumber(englishToMyanmarDate(firstDayCurrentMonth).year), "myanmar", language as any)}{" "}
@@ -79,14 +79,14 @@ export default function MyanmarCalendar() {
             </div>
           </h1>
           <div className="flex items-center">
-            <div className="relative flex items-center rounded-md bg-cgray-0 shadow-sm md:items-stretch">
+            <div className="relative flex items-center rounded-md bg-gray-0 shadow-sm md:items-stretch">
               <div
-                className="pointer-events-none absolute inset-0 rounded-md ring-1 ring-inset ring-cgray-300"
+                className="pointer-events-none absolute inset-0 rounded-md ring-1 ring-inset ring-gray-300"
                 aria-hidden="true"
               />
               <button
                 type="button"
-                className="flex items-center justify-center rounded-l-md py-2 pl-3 pr-4 text-cgray-400 hover:text-cgray-500 focus:relative md:w-9 md:px-2 md:hover:bg-cgray-50 md:hover:ring-1"
+                className="flex items-center justify-center rounded-l-md py-2 pl-3 pr-4 text-gray-400 hover:text-gray-500 focus:relative md:w-9 md:px-2 md:hover:bg-gray-50 md:hover:ring-1"
                 onClick={previousMonth}>
                 <span className="sr-only">Previous month</span>
                 <ChevronLeftIcon
@@ -96,14 +96,14 @@ export default function MyanmarCalendar() {
               </button>
               <button
                 type="button"
-                className="hidden px-3.5 text-sm font-semibold text-cgray-900 hover:bg-cgray-50 focus:relative md:block md:hover:bg-cgray-50 md:hover:ring-1"
+                className="hidden px-3.5 text-sm font-semibold text-gray-900 hover:bg-gray-50 focus:relative md:block md:hover:bg-gray-50 md:hover:ring-1"
                 onClick={() => setCurrentMonth(format(today, "MMM-yyyy"))}>
                 Today
               </button>
-              <span className="relative -mx-px h-5 w-px bg-cgray-300 md:hidden" />
+              <span className="relative -mx-px h-5 w-px bg-gray-300 md:hidden" />
               <button
                 type="button"
-                className="flex items-center justify-center rounded-r-md py-2 pl-4 pr-3 text-cgray-400 hover:text-cgray-500 focus:relative md:w-9 md:px-2  md:hover:bg-cgray-50 md:hover:ring-1"
+                className="flex items-center justify-center rounded-r-md py-2 pl-4 pr-3 text-gray-400 hover:text-gray-500 focus:relative md:w-9 md:px-2  md:hover:bg-gray-50 md:hover:ring-1"
                 onClick={nextMonth}>
                 <span className="sr-only">Next month</span>
                 <ChevronRightIcon
@@ -131,30 +131,30 @@ export default function MyanmarCalendar() {
         </header>
 
         <div className="shadow ring-1 ring-black ring-opacity-5 lg:flex lg:flex-auto lg:flex-col">
-          <div className="grid grid-cols-7 gap-px border-b border-cgray-300 bg-cgray-200 text-center text-xs font-semibold leading-6 text-cgray-700 lg:flex-none">
-            <div className="bg-cgray-0 py-2 text-red-500">
+          <div className="grid grid-cols-7 gap-px border-b border-gray-300 bg-gray-200 text-center text-xs font-semibold leading-6 text-gray-700 lg:flex-none">
+            <div className="bg-gray-0 py-2 text-red-500">
               S<span className="sr-only sm:not-sr-only">un</span>
             </div>
-            <div className="bg-cgray-0 py-2">
+            <div className="bg-gray-0 py-2">
               M<span className="sr-only sm:not-sr-only">on</span>
             </div>
-            <div className="bg-cgray-0 py-2">
+            <div className="bg-gray-0 py-2">
               T<span className="sr-only sm:not-sr-only">ue</span>
             </div>
-            <div className="bg-cgray-0 py-2">
+            <div className="bg-gray-0 py-2">
               W<span className="sr-only sm:not-sr-only">ed</span>
             </div>
-            <div className="bg-cgray-0 py-2">
+            <div className="bg-gray-0 py-2">
               T<span className="sr-only sm:not-sr-only">hu</span>
             </div>
-            <div className="bg-cgray-0 py-2">
+            <div className="bg-gray-0 py-2">
               F<span className="sr-only sm:not-sr-only">ri</span>
             </div>
-            <div className="bg-cgray-0 py-2 text-red-500">
+            <div className="bg-gray-0 py-2 text-red-500">
               S<span className="sr-only sm:not-sr-only">at</span>
             </div>
           </div>
-          <div className="flex bg-cgray-200 text-xs leading-6 text-cgray-700 lg:flex-auto">
+          <div className="flex bg-gray-200 text-xs leading-6 text-gray-700 lg:flex-auto">
             <div className="hidden w-full lg:grid lg:grid-cols-7 lg:grid-rows-5 lg:gap-px lg:text-lg lg:font-light">
               {days.map((day, dayIdx) => (
                 <ContextMenu key={day.toString()}>
@@ -162,7 +162,7 @@ export default function MyanmarCalendar() {
                     <div
                       key={day.toString()}
                       className={classNames(
-                        isSameMonth(day, firstDayCurrentMonth) ? "bg-cgray-0" : "bg-cgray-50 text-cgray-500",
+                        isSameMonth(day, firstDayCurrentMonth) ? "bg-gray-0" : "bg-gray-50 text-gray-500",
                         "relative px-3  py-[4.9rem]",
                         dayIdx === 0 ? colStartClasses[getDay(day)] : ""
                       )}
@@ -191,7 +191,7 @@ export default function MyanmarCalendar() {
                         <time
                           className={
                             isToday(getLocalTime(day)) && isSameMonth(getLocalTime(day), getLocalTime(firstDayCurrentMonth))
-                              ? "flex h-6 w-6 items-center justify-center rounded-full bg-indigo-600 font-semibold text-cgray-0"
+                              ? "flex h-6 w-6 items-center justify-center rounded-full bg-indigo-600 font-semibold text-gray-0"
                               : undefined
                           }
                           dateTime={format(day, "yyyy-MM-dd")}>
@@ -217,10 +217,10 @@ export default function MyanmarCalendar() {
                   key={day.toString()}
                   type="button"
                   className={classNames(
-                    isSameMonth(day, firstDayCurrentMonth) ? "bg-cgray-0" : "bg-cgray-50",
+                    isSameMonth(day, firstDayCurrentMonth) ? "bg-gray-0" : "bg-gray-50",
                     isToday(day) && "font-semibold",
                     isToday(day) && "text-indigo-600",
-                    "flex h-24 flex-col px-3 py-2 hover:bg-cgray-100 focus:z-10"
+                    "flex h-24 flex-col px-3 py-2 hover:bg-gray-100 focus:z-10"
                   )}>
                   <time
                     dateTime={format(day, "yyyy-MM-dd")}

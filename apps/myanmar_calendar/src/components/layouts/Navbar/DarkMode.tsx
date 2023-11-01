@@ -38,7 +38,7 @@ export function ThemeToggle({ darkMode, setDarkMode }) {
   };
 
   return (
-    <div className="p-[0.5rem] rounded-md hover:bg-cgray-50 cursor-pointer" onClick={toggleTheme}>
+    <div className="p-[0.5rem] rounded-md hover:bg-gray-50 cursor-pointer" onClick={toggleTheme}>
       {darkMode ? <BiMoon /> : <BiSun />}
     </div>
   );

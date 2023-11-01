@@ -31,24 +31,24 @@ function NewEventDialog({ isOpen, onClose, selectedDay }: AddEventDialogProps) {
           enter="ease-out duration-250"
           leave="ease-in duration-200">
           <Dialog.Panel
-            className="fixed inset-0 mx-2 ml-auto my-auto w-[27rem] h-[97%] transform overflow-hidden rounded-lg bg-cgray-0 text-left align-middle shadow-lg transition-all flex flex-col border  border-cgray-200 "
+            className="fixed inset-0 mx-2 ml-auto my-auto w-[27rem] h-[97%] transform overflow-hidden rounded-lg bg-gray-0 text-left align-middle shadow-lg transition-all flex flex-col border  border-gray-200 "
             style={{
-              boxShadow: "0 14px 18px 3px hsl(--cgray-50), 0 9px 16px 8px hsl(--cgray-100), 0 11px 15px -7px hsl(--cgray-100)",
+              boxShadow: "0 14px 18px 3px hsl(--gray-50), 0 9px 16px 8px hsl(--gray-100), 0 11px 15px -7px hsl(--gray-100)",
             }}>
-            <div className="h-[3rem]  flex items-center justify-between px-3 bg-cgray-50 border-b">
+            <div className="h-[3rem]  flex items-center justify-between px-3 bg-gray-50 border-b">
               <button
                 onClick={() => {
                   onClose();
                 }}>
                 <HiOutlineArrowSmallRight
                   size={21}
-                  className="text-cgray-600 hover:text-rose-500"
+                  className="text-gray-600 hover:text-rose-500"
                 />
               </button>
             </div>
             <div className="px-3">
               <time className="flex items-center gap-2 h-[3rem]">
-                <span className="text-[1.3rem] text-cgray-500">{format(selectedDay, "iii, d MMMM")}</span>
+                <span className="text-[1.3rem] text-gray-500">{format(selectedDay, "iii, d MMMM")}</span>
                 <span className="text-[1.3rem] text-rose-500 ">{selectedDay.getFullYear()}</span>
               </time>
             </div>

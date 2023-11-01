@@ -13,7 +13,7 @@ import DarkMode from "./DarkMode";
 
 function Navbar() {
   return (
-    <header className={`h-nav-h w-full border-b border-cgray-300 flex items-stretch`}>
+    <header className={`h-nav-h w-full bg-gray-0 border-b border-gray-200 flex items-stretch`}>
       <div className="flex-shrink-0 flex items-center gap-6 pl-3 w-[2.75rem] sm2:w-[4rem] lg2:w-[17rem]">
         <SidebarToggleBtn>
           <IoMdMenu size={28} />

@@ -15,26 +15,26 @@ function WeekColumnHead({ day, scrollReachedTop }: { day: Date; scrollReachedTop
   return (
     <div
       key={day.toString()}
-      className={cn("group/weekHeader flex flex-col items-center justify-between border-b border-cgray-300  last:mr-1", !scrollReachedTop && " border-b-cgray-100")}>
+      className={cn("group/weekHeader flex flex-col items-center justify-between border-b border-gray-300  last:mr-1", !scrollReachedTop && " border-b-gray-100")}>
       <div className="flex flex-col items-center pt-2 gap-[0.1rem]">
-        <div className={cn("font-medium text-cgray-400 text-sm", isWeekend(day) && "text-red-500")}>{format(day, "iii")}</div>
+        <div className={cn("font-medium text-gray-450 text-sm", isWeekend(day) && "text-red-500")}>{format(day, "iii")}</div>
         <time
           onClick={() => {
             dispatch(setDayDialongTargetDay(day.toISOString()));
           }}
           dateTime={format(day, "yyyy-MM-dd")}
           className={cn(
-            " text-[1.15rem] font-semibold text-cgray-400 flex items-center justify-center rounded-full w-[1.9rem] h-[1.9rem] cursor-pointer",
-            dayIsToday ? "bg-red-500 hover:bg-red-600 active:bg-red-700 text-gray-50" : " hover:bg-cgray-200 active:bg-cgray-300 hover:text-cgray-600 "
+            " text-[1.15rem] font-semibold text-gray-450 flex items-center justify-center rounded-full w-[1.9rem] h-[1.9rem] cursor-pointer",
+            dayIsToday ? "bg-red-500 hover:bg-red-600 active:bg-red-700 text-gray-50" : " hover:bg-gray-200 active:bg-gray-300 hover:text-gray-600 "
           )}>
           {format(day, "d")}
         </time>
       </div>
-      <div className=" justify-self-end border-r group-last/weekHeader:border-r-0 border-cgray-300 w-full ">
+      <div className=" justify-self-end border-r group-last/weekHeader:border-r-0 border-gray-200 w-full ">
         <div className="p-1 px-[0.35rem] pb-[0.3rem]">
           <time
             dateTime={format(day, "yyyy-MM-dd")}
-            className="h-[2rem] w-full px-2 flex items-center justify-center text-[0.825rem] bg-cgray-50 text-cgray-400 font-semibold rounded-md hover:text-cgray-500">
+            className="h-[2rem] w-full px-2 flex items-center justify-center text-[0.825rem] bg-gray-50 text-gray-450 font-semibold rounded-md hover:text-gray-500">
             <span className="text-[0.825rem] font-semibold ">
               {myanmar_calendar.month}
               {myanmar_calendar.moonPhase}
