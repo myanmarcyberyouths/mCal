@@ -5,9 +5,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.cs{
-  background-color: hsl(222.2 47.4% 11.2%)
-}
+
 @layer base {
   :root {
     --destructive: 0 84.2% 60.2%;
