@@ -29,7 +29,7 @@ function Sidebar() {
       <section
         ref={sidebarRef}
         className={cn(
-          "absolute  h-[100vh] border-r border-gray-300 top-0 z-10 shadow-lg xl:shadow-none xl:static xl:h-[calc(100vh-theme(spacing.nav-h))] xl:border-none flex-shrink-0 transition-all duration-300 flex flex-col items-center overflow-hidden bg-white -translate-x-[100%] sm2:translate-x-0",
+          "absolute  h-[100vh] border-r border-cgray-300 top-0 z-10 shadow-lg xl:shadow-none xl:static xl:h-[calc(100vh-theme(spacing.nav-h))] xl:border-none flex-shrink-0 transition-all duration-300 flex flex-col items-center overflow-hidden bg-cgray-0 -translate-x-[100%] sm2:translate-x-0",
           enterMobileMode && `'w-[83%] max-w-[22rem]' ${sidebarOpen ? "translate-x-0" : ""}`,
           !enterMobileMode && `${sidebarOpen ? "w-[19rem] xl:w-sidebar-w" : "w-0"}`
         )}>
@@ -42,7 +42,7 @@ function Sidebar() {
         {/* w-[calc(theme(spacing.sidebar-w)-2.5rem)] */}
         <div className="space-y-6 w-full min-w-[19rem] xl:min-w-[theme(spacing.sidebar-w)] xl:w-sidebar-w flex-shrink-0 py-3 pt-4 h-[calc(100%-theme(spacing.nav-h))] xl:h-full px-5 __scrollbar-sm">
           <div className="">
-            <p className="text-[0.75rem] font-medium text-gray-500 mb-[0.4rem]">CALENDAR LANGUAGE</p>
+            <p className="text-[0.75rem] font-medium text-cgray-500 mb-[0.4rem]">CALENDAR LANGUAGE</p>
             <CalendarLanguageSelectBox />
           </div>
           {/* => SystemLanguageSelectBox */}

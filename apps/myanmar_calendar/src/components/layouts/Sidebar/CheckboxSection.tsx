@@ -16,13 +16,13 @@ interface CheckboxSectionInterface {
 function CheckboxSection({ title, checkList, handleCheck }: CheckboxSectionInterface) {
   return (
     <div className="">
-      <p className="text-[0.8rem] font-semibold text-gray-600 mb-[0.35rem]">{title}</p>
+      <p className="text-[0.8rem] font-semibold text-cgray-600 mb-[0.35rem]">{title}</p>
       <div>
         {Object.keys(checkList).map((ckListKey, index) => (
           <label
             htmlFor={"preferance_" + ckListKey}
             key={ckListKey}
-            className="flex items-center gap-3 h-[1.95rem] rounded[0.2rem] cursor-pointer hover:bg-gray-100 px-2">
+            className="flex items-center gap-3 h-[1.95rem] rounded[0.2rem] cursor-pointer hover:bg-cgray-100 px-2">
             <div className="relative flex items-center justify-center">
               <input
                 type="checkbox"
@@ -34,10 +34,10 @@ function CheckboxSection({ title, checkList, handleCheck }: CheckboxSectionInter
               />
               <IoMdCheckmark
                 size={17}
-                className="absolute text-white "
+                className="absolute text-cgray-0 "
               />
             </div>
-            <span className="text-[0.925rem] first-letter:capitalize tracking-[0.03rem] font-normal text-gray-600">{camelToSentenceCase(ckListKey)}</span>
+            <span className="text-[0.925rem] first-letter:capitalize tracking-[0.03rem] font-normal text-cgray-600">{camelToSentenceCase(ckListKey)}</span>
           </label>
         ))}
       </div>

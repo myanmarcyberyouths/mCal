@@ -15,39 +15,24 @@ module.exports = {
         sans: ["GeistSans", "sans-serif"],
       },
       colors: {
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-        },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-        },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
         },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
-        },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
-        },
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
-        },
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
-        },
+        cgray:{
+          0 : "hsl(var(--cgray-0))",
+          50 : "hsl(var(--cgray-50))",
+          100 : "hsl(var(--cgray-100))",
+          200 : "hsl(var(--cgray-200))",
+          300 : "hsl(var(--cgray-300))",
+          400 : "hsl(var(--cgray-400))",
+          500 : "hsl(var(--cgay-500))",
+          600 : "hsl(var(--cgray-600))",
+          700 : "hsl(var(--cgray-700))",
+          800 : "hsl(var(--cgray-800))",
+          900 : "hsl(var(--cgray-900))",
+          950 : "hsl(var(--cgray-950))",
+        }
       },
       spacing: {
         "nav-h": "4.2rem",

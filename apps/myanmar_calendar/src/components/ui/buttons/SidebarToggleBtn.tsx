@@ -11,7 +11,7 @@ function SidebarToggleBtn({ children }: { children: React.ReactNode }) {
 
   return (
     <button
-      className="text-gray-600 hover:text-red-500"
+      className="text-cgray-600 hover:text-red-500"
       onClick={toggleSidebarOpen}>
       {children}
     </button>

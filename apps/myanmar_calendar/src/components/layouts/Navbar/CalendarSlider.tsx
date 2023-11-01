@@ -40,15 +40,15 @@ function CalendarSlider() {
   useKeyPress("ArrowRight", () => handleCalendarSlide("next"), !!dayDialogTargetDay);
 
   return (
-    <div className="h-[2.5rem] flex-shrink-0 flex items-stretch overflow-hidden rounded-md border border-gray-300">
+    <div className="h-[2.5rem] flex-shrink-0 flex items-stretch overflow-hidden rounded-md border border-cgray-300">
       <button
-        className="flex justify-center items-center aspect-square hover:bg-gray-100 active:bg-gray-200 text-gray-600 "
+        className="flex justify-center items-center aspect-square hover:bg-cgray-100 active:bg-cgray-200 text-cgray-600 "
         onClick={() => handleCalendarSlide("prev")}>
         <BiChevronLeft size={24} />
       </button>
       <button
-        className={`flex items-center justify-center border-r border-l border-gray-300 hover:bg-gray-100 text-[0.95rem]  font-medium w-[6rem] active:bg-gray-200 ${
-          activeDateIsThisMonth ? "text-red-500 hover:text-red-500 " : "text-gray-700 hover:text-gray-800  "
+        className={`flex items-center justify-center border-r border-l border-cgray-300 hover:bg-cgray-100 text-[0.95rem]  font-medium w-[6rem] active:bg-cgray-200 ${
+          activeDateIsThisMonth ? "text-red-500 hover:text-red-500 " : "text-cgray-700 hover:text-cgray-800  "
         }`}
         onClick={() => {
           dispatch(setActiveDate(getLocalTime().toISOString()));
@@ -56,7 +56,7 @@ function CalendarSlider() {
         {enterMobileMode ? format(new Date(activeDate), "yyyy") : "Today"}
       </button>
       <button
-        className="flex justify-center items-center aspect-square hover:bg-gray-100 active:bg-gray-200 text-gray-600"
+        className="flex justify-center items-center aspect-square hover:bg-cgray-100 active:bg-cgray-200 text-cgray-600"
         onClick={() => handleCalendarSlide("next")}>
         <BiChevronRight size={24} />
       </button>

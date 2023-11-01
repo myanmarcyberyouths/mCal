@@ -64,18 +64,18 @@ const DayDialog = ({ onClose, selectedDay }: DayDialogProps) => {
         leaveTo={`${enterMobileMode ? "translate-y-[100%]" : "opacity-0  translate-y-5"}`}
         enter={`ease-out ${enterMobileMode ? "duration-200" : " duration-200"}`}
         leave={`ease-in ${enterMobileMode ? "duration-200" : " duration-150"}`}>
-        <Dialog.Panel className="fixed inset-0 mx-auto mt-auto sm2:my-auto w-full sm2:max-w-[27rem] h-[calc(100%-5rem)] sm2:h-[90%] sm2:max-h-[33rem] transform overflow-hidden rounded-tr-2xl rounded-tl-2xl sm2:rounded-[0.5rem] bg-white text-left align-middle transition-all flex flex-col sm2:border  sm2:border-gray-200 shadow-model">
+        <Dialog.Panel className="fixed inset-0 mx-auto mt-auto sm2:my-auto w-full sm2:max-w-[27rem] h-[calc(100%-5rem)] sm2:h-[90%] sm2:max-h-[33rem] transform overflow-hidden rounded-tr-2xl rounded-tl-2xl sm2:rounded-[0.5rem] bg-cgray-0 text-left align-middle transition-all flex flex-col sm2:border  sm2:border-cgray-200 shadow-model">
           {/* ------ Header ------ */}
-          <div className="h-[3.25rem] sm2:h-[3rem] flex items-center justify-between px-5 sm2:px-3 bg-gray-50 border-b">
+          <div className="h-[3.25rem] sm2:h-[3rem] flex items-center justify-between px-5 sm2:px-3 bg-cgray-50 border-b">
             <div className="flex items-center gap-1">
               <button
                 onClick={() => {
                   changeDay("prev");
                 }}
-                className="rounded-md w-[2.25rem] sm2:w-[2rem] aspect-square  border border-gray-300 hover:bg-gray-100 active:bg-gray-200 flex items-center justify-center">
+                className="rounded-md w-[2.25rem] sm2:w-[2rem] aspect-square  border border-cgray-300 hover:bg-cgray-100 active:bg-cgray-200 flex items-center justify-center">
                 <BiChevronLeft
                   size={23}
-                  className="text-gray-600"
+                  className="text-cgray-600"
                 />
               </button>
 
@@ -83,10 +83,10 @@ const DayDialog = ({ onClose, selectedDay }: DayDialogProps) => {
                 onClick={() => {
                   changeDay("next");
                 }}
-                className="rounded-md w-[2.25rem] sm2:w-[2rem] aspect-square border border-gray-300 hover:bg-gray-100 active:bg-gray-200 flex items-center justify-center">
+                className="rounded-md w-[2.25rem] sm2:w-[2rem] aspect-square border border-cgray-300 hover:bg-cgray-100 active:bg-cgray-200 flex items-center justify-center">
                 <BiChevronRight
                   size={23}
-                  className="text-gray-600"
+                  className="text-cgray-600"
                 />
               </button>
             </div>
@@ -96,11 +96,11 @@ const DayDialog = ({ onClose, selectedDay }: DayDialogProps) => {
               onClick={onClose}>
               <IoMdClose
                 size={19}
-                className="hidden sm2:inline-block text-gray-600 hover:text-rose-500"
+                className="hidden sm2:inline-block text-cgray-600 hover:text-rose-500"
               />
               <PiCaretDownBold
                 size={22}
-                className="sm2:hidden text-gray-500 hover:text-rose-500"
+                className="sm2:hidden text-cgray-500 hover:text-rose-500"
               />
             </button>
           </div>
@@ -112,9 +112,9 @@ const DayDialog = ({ onClose, selectedDay }: DayDialogProps) => {
               <time
                 dateTime={format(selectedDay, "yyyy-MM-dd")}
                 className="flex items-center gap-2 h-[2.5rem]">
-                <span className="text-[1.25rem] text-gray-500">{format(selectedDay, "iii,")}</span>
+                <span className="text-[1.25rem] text-cgray-500">{format(selectedDay, "iii,")}</span>
                 <span className="text-[1.25rem] font-semibold text-rose-500">{format(selectedDay, "d ")}</span>
-                <span className="text-[1.25rem] text-gray-500 ">{format(selectedDay, "MMMM yyyy")}</span>
+                <span className="text-[1.25rem] text-cgray-500 ">{format(selectedDay, "MMMM yyyy")}</span>
               </time>
               {dayIsToday && <span className=" text-[0.85rem]  text-green-600 border border-green-400 rounded-md px-[0.35rem] py-[0.15rem]">Today</span>}
             </div>
@@ -122,11 +122,11 @@ const DayDialog = ({ onClose, selectedDay }: DayDialogProps) => {
             <div className="flex justify-between px-3">
               <time
                 dateTime={format(selectedDay, "yyyy-MM-dd")}
-                className=" text-gray-700 flex flex-col">
+                className=" text-cgray-700 flex flex-col">
                 <span className="text-[3rem] leading-[4rem] mb-4 flex items-center text-rose-500 font-semibold pl-[0.1rem]">{engToMyanmarNumber(mmDate.date)}</span>
-                <span className="mb-1 font-semibold text-gray-500">{mmDate.day}</span>
+                <span className="mb-1 font-semibold text-cgray-500">{mmDate.day}</span>
                 <span>
-                  <span className="text-[1.175rem] text-gray-500">{engToMyanmarNumber(mmDate.year)}</span>
+                  <span className="text-[1.175rem] text-cgray-500">{engToMyanmarNumber(mmDate.year)}</span>
                   {" ခုနှစ်၊ "}
                   <span>
                     {mmDate.month}
@@ -140,9 +140,9 @@ const DayDialog = ({ onClose, selectedDay }: DayDialogProps) => {
                   className={cn(
                     "mt-[1.65rem] w-[2.5rem] h-[2.5rem] rounded-full  bg-none",
                     mmDate.moonPhase === "လပြည့်" && "bg-rose-500",
-                    mmDate.moonPhase === "လကွယ်" && "bg-gray-700"
-                    // mmDate.moonPhase === "လဆုတ်" && "from-gray-700 to-rose-500",
-                    // mmDate.moonPhase === "လဆန်း" && "from-rose-500 to-gray-700"
+                    mmDate.moonPhase === "လကွယ်" && "bg-cgray-700"
+                    // mmDate.moonPhase === "လဆုတ်" && "from-cgray-700 to-rose-500",
+                    // mmDate.moonPhase === "လဆန်း" && "from-rose-500 to-cgray-700"
                   )}
                 />
               </div>
@@ -169,8 +169,8 @@ const DayDialog = ({ onClose, selectedDay }: DayDialogProps) => {
                 </div>
               </div>
             )}
-            <div className="py-2 mt-5 border-t border-gray-200">
-              <h5 className="font-semibold text-[1.1rem] text-gray-500">Events</h5>
+            <div className="py-2 mt-5 border-t border-cgray-200">
+              <h5 className="font-semibold text-[1.1rem] text-cgray-500">Events</h5>
               <ul className="mt-2 space-y-[0.25rem]">
                 {checkedEvents.map((eventCalendar) => {
                   return (
@@ -189,7 +189,7 @@ const DayDialog = ({ onClose, selectedDay }: DayDialogProps) => {
                     </Fragment>
                   );
                 })}
-                {!hasEvents && <div className="flex justify-center items-center h-[4rem] text-gray-400 font-semibold">No events</div>}
+                {!hasEvents && <div className="flex justify-center items-center h-[4rem] text-cgray-400 font-semibold">No events</div>}
               </ul>
             </div>
           </div>
@@ -202,7 +202,7 @@ const DayDialog = ({ onClose, selectedDay }: DayDialogProps) => {
                 onClose();
                 dispatch(setNewEventDialongTargetDay(selectedDay.toISOString()));
               }}
-              className="ml-auto text-white"
+              className="ml-auto text-cgray-0"
               size="sm">
               Add New Event
             </Button>

@@ -21,17 +21,17 @@ function LanguageSelectBox({ value, onChange }: LanguageSelectBoxInterface) {
         config={{
           size: "lg",
         }}
-        className="h-input-md">
-        <span className="flex gap-2 w-full items-center text-[0.9rem] text-gray-600">
+        className="h-cgray-50-md">
+        <span className="flex gap-2 w-full items-center text-[0.9rem] text-cgray-600">
           <HiLanguage
             size={18}
-            className="text-gray-500"
+            className="text-cgray-500"
           />
           <SelectValue placeholder={value} />
         </span>
         <BiChevronDown
           size={27}
-          className="text-gray-400 "
+          className="text-cgray-400 "
         />
       </SelectTrigger>
       <SelectContent className="w-[15rem]">

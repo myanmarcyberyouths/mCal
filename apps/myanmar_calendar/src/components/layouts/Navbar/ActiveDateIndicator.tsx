@@ -17,14 +17,14 @@ function ActiveDateIndicator() {
     <div className="flex items-center gap-7">
       <h2 className="flex items-center gap-3">
         <time
-          className="hidden sm2:inline-block text-[1.5rem] text-gray-600"
+          className="hidden sm2:inline-block text-[1.5rem] text-cgray-600"
           dateTime={format(activeDateObj, "yyyy-MM-dd")}>
           {format(activeDateObj, `${calendarMode === CALENDAR_MODE_ENUM.YEAR ? "yyyy" : "MMMM yyyy"}`)}
         </time>
-        <span className="hidden sm2:inline-block self-center h-[1.7rem] w-[1px] bg-gray-300"></span>
+        <span className="hidden sm2:inline-block self-center h-[1.7rem] w-[1px] bg-cgray-300"></span>
         <time
           dateTime={format(activeDateObj, "yyyy-MM-dd")}
-          className="text-[1.1rem] text-gray-700">
+          className="text-[1.1rem] text-cgray-700">
           {i18n("Myanmar Year", "english", calendarLanguage as any)} {i18n(engToMyanmarNumber(englishToMyanmarDate(firstDayCurrentMonth).year), "myanmar", calendarLanguage as any)}{" "}
           {i18n("Ku", "english", calendarLanguage as any)}{" "}
           {calendarMode !== CALENDAR_MODE_ENUM.YEAR && (
