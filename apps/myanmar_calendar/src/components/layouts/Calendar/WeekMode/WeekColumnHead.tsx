@@ -25,7 +25,7 @@ function WeekColumnHead({ day, scrollReachedTop }: { day: Date; scrollReachedTop
           dateTime={format(day, "yyyy-MM-dd")}
           className={cn(
             " text-[1.15rem] font-semibold text-gray-450 flex items-center justify-center rounded-full w-[1.9rem] h-[1.9rem] cursor-pointer",
-            dayIsToday ? "bg-red-500 hover:bg-red-600 active:bg-red-700 text-gray-50" : " hover:bg-gray-200 active:bg-gray-300 hover:text-gray-600 "
+            dayIsToday ? "bg-red-500 hover:bg-red-600 active:bg-red-700 text-white" : " hover:bg-gray-200 active:bg-gray-300 hover:text-gray-600 "
           )}>
           {format(day, "d")}
         </time>

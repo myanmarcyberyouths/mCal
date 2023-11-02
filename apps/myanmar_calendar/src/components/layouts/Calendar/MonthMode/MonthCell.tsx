@@ -64,7 +64,7 @@ function MonthCell({ day, calendarState }: MonthCellT) {
           className={cn(
             "flex justify-center font-medium text-[1.025rem]  h-[1.6rem] leading-7",
             dayBelongsInActiveMonth ? "text-gray-600" : "text-gray-200",
-            dayIsToday ? "text-gray-50 bg-red-500" : " ",
+            dayIsToday ? "text-white bg-red-500" : " ",
             format(day, "d") == "1" ? "rounded-md px-[0.35rem]" : "rounded-full w-[1.6rem]"
           )}
           dateTime={format(day, "yyyy-MM-dd")}>

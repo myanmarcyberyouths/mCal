@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/buttons/Button";
 import React from "react";
 import { BiMoon, BiSun } from "react-icons/bi";
 
@@ -38,9 +39,9 @@ export function ThemeToggle({ darkMode, setDarkMode }) {
   };
 
   return (
-    <div className="p-[0.5rem] rounded-md hover:bg-gray-50 cursor-pointer" onClick={toggleTheme}>
+    <Button type="button" variant="ghost" onClick={toggleTheme}>
       {darkMode ? <BiMoon /> : <BiSun />}
-    </div>
+    </Button>
   );
 }
 export default DarkMode
