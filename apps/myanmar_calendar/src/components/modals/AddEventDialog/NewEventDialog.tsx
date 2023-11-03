@@ -31,9 +31,9 @@ function NewEventDialog({ isOpen, onClose, selectedDay }: AddEventDialogProps) {
           enter="ease-out duration-250"
           leave="ease-in duration-200">
           <Dialog.Panel
-            className="fixed inset-0 mx-2 ml-auto my-auto w-[27rem] h-[97%] transform overflow-hidden rounded-lg bg-white text-left align-middle shadow-lg transition-all flex flex-col border  border-gray-200 "
+            className="fixed inset-0 mx-2 ml-auto my-auto w-[27rem] h-[97%] transform overflow-hidden rounded-lg bg-gray-0 text-left align-middle shadow-lg transition-all flex flex-col border  border-gray-200 "
             style={{
-              boxShadow: "0 14px 18px 3px rgba(100,100,100,.14), 0 9px 16px 8px rgba(100,100,100,.07), 0 11px 15px -7px rgba(100,100,100,.2)",
+              boxShadow: "0 14px 18px 3px hsl(--gray-50), 0 9px 16px 8px hsl(--gray-100), 0 11px 15px -7px hsl(--gray-100)",
             }}>
             <div className="h-[3rem]  flex items-center justify-between px-3 bg-gray-50 border-b">
               <button

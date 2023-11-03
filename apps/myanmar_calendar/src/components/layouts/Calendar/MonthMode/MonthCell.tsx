@@ -47,7 +47,7 @@ function MonthCell({ day, calendarState }: MonthCellT) {
     // min-h-[8.5rem]
     <div
       className={cn(
-        "border-b border-r flex gap-1 flex-col items-stretch border-gray-300 p-2 py-[0.25rem] pb-[0.3rem]  min-h-[8.5rem] hover:bg-gray-50",
+        "border-b border-r flex gap-1 flex-col items-stretch border-gray-200 p-2 py-[0.25rem] pb-[0.3rem]  min-h-[8.5rem] hover:bg-gray-50",
         dayIsInEndWeek ? "min-h-[8.65rem] pb-[0.45rem]" : ""
       )}
       onClick={() => {
@@ -57,14 +57,14 @@ function MonthCell({ day, calendarState }: MonthCellT) {
       <div className=" flex justify-between items-start">
         <time
           dateTime={format(day, "yyyy-MM-dd")}
-          className={cn("flex justify-start -mt-[0.05rem] text-gray-500 flex-1 text-[0.875rem] leading-5", dayBelongsInActiveMonth ? "text-gray-500" : "text-gray-300")}>
+          className={cn("flex justify-start -mt-[0.05rem] flex-1 text-[0.875rem] leading-5", dayBelongsInActiveMonth ? "text-gray-400" : "text-gray-200")}>
           {mmDate}
         </time>
         <time
           className={cn(
             "flex justify-center font-medium text-[1.025rem]  h-[1.6rem] leading-7",
-            dayBelongsInActiveMonth ? "text-gray-600" : "text-gray-300",
-            dayIsToday ? "text-gray-50 bg-red-500" : " ",
+            dayBelongsInActiveMonth ? "text-gray-600" : "text-gray-200",
+            dayIsToday ? "text-white bg-red-500" : " ",
             format(day, "d") == "1" ? "rounded-md px-[0.35rem]" : "rounded-full w-[1.6rem]"
           )}
           dateTime={format(day, "yyyy-MM-dd")}>
@@ -96,7 +96,7 @@ function MonthCell({ day, calendarState }: MonthCellT) {
                 // h-[1.25rem]
                 <li
                   key={event}
-                  className="rounded-sm flex items-start py-[0.335rem]   px-1 gap-1 bg-gray-100"
+                  className="rounded-sm flex items-start py-[0.335rem] px-1 gap-1 bg-gray-100"
                   style={{
                     backgroundColor: modifyColorOpacity(eventCalendar.tagColor, 0.15),
                     // backgroundColor: brightenColor(eventCalendars[eventCalendar.eventType].tagColor, 85),
@@ -138,7 +138,7 @@ function MonthCell({ day, calendarState }: MonthCellT) {
                 {myanmarDate.moonPhase}
               </span>
             )}
-            {moonAlign && <span className={`w-[0.91rem] h-[0.91rem] flex-shrink-0  rounded-full ${myanmarDate.moonPhase === "လပြည့်" ? "bg-red-500" : "bg-gray-600"}`}></span>}
+            {moonAlign && <span className={`w-[0.91rem] h-[0.91rem] flex-shrink-0  rounded-full ${myanmarDate.moonPhase === "လပြည့်" ? "bg-red-500" : "bg-gray-700"}`}></span>}
           </div>
         </div>
       )}

@@ -21,7 +21,7 @@ function ActiveDateIndicator() {
           dateTime={format(activeDateObj, "yyyy-MM-dd")}>
           {format(activeDateObj, `${calendarMode === CALENDAR_MODE_ENUM.YEAR ? "yyyy" : "MMMM yyyy"}`)}
         </time>
-        <span className="hidden sm2:inline-block self-center h-[1.7rem] w-[1px] bg-gray-300"></span>
+        <span className="hidden sm2:inline-block self-center h-[1.7rem] w-[1px] bg-gray-200"></span>
         <time
           dateTime={format(activeDateObj, "yyyy-MM-dd")}
           className="text-[1.1rem] text-gray-700">

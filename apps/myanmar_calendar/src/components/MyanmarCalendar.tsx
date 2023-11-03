@@ -79,7 +79,7 @@ export default function MyanmarCalendar() {
             </div>
           </h1>
           <div className="flex items-center">
-            <div className="relative flex items-center rounded-md bg-white shadow-sm md:items-stretch">
+            <div className="relative flex items-center rounded-md bg-gray-0 shadow-sm md:items-stretch">
               <div
                 className="pointer-events-none absolute inset-0 rounded-md ring-1 ring-inset ring-gray-300"
                 aria-hidden="true"
@@ -132,25 +132,25 @@ export default function MyanmarCalendar() {
 
         <div className="shadow ring-1 ring-black ring-opacity-5 lg:flex lg:flex-auto lg:flex-col">
           <div className="grid grid-cols-7 gap-px border-b border-gray-300 bg-gray-200 text-center text-xs font-semibold leading-6 text-gray-700 lg:flex-none">
-            <div className="bg-white py-2 text-red-500">
+            <div className="bg-gray-0 py-2 text-red-500">
               S<span className="sr-only sm:not-sr-only">un</span>
             </div>
-            <div className="bg-white py-2">
+            <div className="bg-gray-0 py-2">
               M<span className="sr-only sm:not-sr-only">on</span>
             </div>
-            <div className="bg-white py-2">
+            <div className="bg-gray-0 py-2">
               T<span className="sr-only sm:not-sr-only">ue</span>
             </div>
-            <div className="bg-white py-2">
+            <div className="bg-gray-0 py-2">
               W<span className="sr-only sm:not-sr-only">ed</span>
             </div>
-            <div className="bg-white py-2">
+            <div className="bg-gray-0 py-2">
               T<span className="sr-only sm:not-sr-only">hu</span>
             </div>
-            <div className="bg-white py-2">
+            <div className="bg-gray-0 py-2">
               F<span className="sr-only sm:not-sr-only">ri</span>
             </div>
-            <div className="bg-white py-2 text-red-500">
+            <div className="bg-gray-0 py-2 text-red-500">
               S<span className="sr-only sm:not-sr-only">at</span>
             </div>
           </div>
@@ -162,7 +162,7 @@ export default function MyanmarCalendar() {
                     <div
                       key={day.toString()}
                       className={classNames(
-                        isSameMonth(day, firstDayCurrentMonth) ? "bg-white" : "bg-gray-50 text-gray-500",
+                        isSameMonth(day, firstDayCurrentMonth) ? "bg-gray-0" : "bg-gray-50 text-gray-500",
                         "relative px-3  py-[4.9rem]",
                         dayIdx === 0 ? colStartClasses[getDay(day)] : ""
                       )}
@@ -191,7 +191,7 @@ export default function MyanmarCalendar() {
                         <time
                           className={
                             isToday(getLocalTime(day)) && isSameMonth(getLocalTime(day), getLocalTime(firstDayCurrentMonth))
-                              ? "flex h-6 w-6 items-center justify-center rounded-full bg-indigo-600 font-semibold text-white"
+                              ? "flex h-6 w-6 items-center justify-center rounded-full bg-indigo-600 font-semibold text-gray-0"
                               : undefined
                           }
                           dateTime={format(day, "yyyy-MM-dd")}>
@@ -217,7 +217,7 @@ export default function MyanmarCalendar() {
                   key={day.toString()}
                   type="button"
                   className={classNames(
-                    isSameMonth(day, firstDayCurrentMonth) ? "bg-white" : "bg-gray-50",
+                    isSameMonth(day, firstDayCurrentMonth) ? "bg-gray-0" : "bg-gray-50",
                     isToday(day) && "font-semibold",
                     isToday(day) && "text-indigo-600",
                     "flex h-24 flex-col px-3 py-2 hover:bg-gray-100 focus:z-10"

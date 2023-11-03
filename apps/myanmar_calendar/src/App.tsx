@@ -5,7 +5,7 @@ import {store} from "@/store";
 import AppSetupProvider from "@/components/providers/AppSetupProvider";
 import {Analytics} from "@vercel/analytics/react";
 
-
+// document.documentElement.classList.add('dark')
 const Home = () => {
     return (
         <>
