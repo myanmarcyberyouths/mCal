@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { FaCheck } from "react-icons/fa";
 import { HiCheck } from "react-icons/hi2";
 import { IoMdCheckmark } from "react-icons/io";
-import { updateEventCalendars, updateCalendarPreferanceState } from "@/store/calendarState";
+import { updateEventCalendars, updateCalendarShowState } from "@/store/calendarState";
 
 interface CheckboxSectionInterface {
   title: string;
@@ -16,7 +16,7 @@ interface CheckboxSectionInterface {
 function CheckboxSection({ title, checkList, handleCheck }: CheckboxSectionInterface) {
   return (
     <div className="">
-      <p className="text-[0.8rem] font-semibold text-gray-600 mb-[0.35rem]">{title}</p>
+      <p className="text-[0.8rem] font-semibold text-red-600 mb-[0.35rem]">{title}</p>
       <div>
         {Object.keys(checkList).map((ckListKey, index) => (
           <label
@@ -34,7 +34,7 @@ function CheckboxSection({ title, checkList, handleCheck }: CheckboxSectionInter
               />
               <IoMdCheckmark
                 size={17}
-                className="absolute text-white "
+                className="absolute text-gray-0 "
               />
             </div>
             <span className="text-[0.925rem] first-letter:capitalize tracking-[0.03rem] font-normal text-gray-600">{camelToSentenceCase(ckListKey)}</span>
@@ -49,11 +49,11 @@ export default CheckboxSection;
 
 export function PreferanceList() {
   const dispatch = useDispatch();
-  const monthCellProps = useSelector((state: RootState) => state.calendarState.preferance);
+  const monthCellProps = useSelector((state: RootState) => state.calendarState.show);
 
   const handleCheck = ({ checked, name }: { checked: boolean; name: string }) => {
     dispatch(
-      updateCalendarPreferanceState({
+      updateCalendarShowState({
         cellProp: name,
         value: checked,
       })
@@ -71,13 +71,13 @@ export function PreferanceList() {
 
 export function CalendarEventList() {
   const dispatch = useDispatch();
-  const calendarEvents = useSelector((state: RootState) => state.calendarState.preferance);
+  const calendarEvents = useSelector((state: RootState) => state.calendarState.show);
 
   const handleCheck = ({ checked, name }: { checked: boolean; name: string }) => {
     dispatch(
       updateEventCalendars({
-        event: name,
-        value: checked,
+        id: name,
+        checked: checked,
       })
     );
   };

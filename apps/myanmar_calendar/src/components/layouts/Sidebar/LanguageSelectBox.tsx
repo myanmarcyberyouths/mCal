@@ -1,4 +1,4 @@
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/selectBoxes/PrimarySelect";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/selectBoxes/Select";
 import { RootState } from "@/store";
 import { setCalendarLanguage } from "@/store/calendarState";
 import { LANGUAGE_ENUM } from "@/type-models/calendarState.type";
@@ -22,10 +22,10 @@ function LanguageSelectBox({ value, onChange }: LanguageSelectBoxInterface) {
           size: "lg",
         }}
         className="h-input-md">
-        <span className="flex gap-2 w-full items-center">
+        <span className="flex gap-2 w-full items-center text-[0.9rem] text-gray-500">
           <HiLanguage
             size={18}
-            className="text-gray-500"
+            className="text-gray-600"
           />
           <SelectValue placeholder={value} />
         </span>

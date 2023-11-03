@@ -6,20 +6,37 @@ html {
   overflow-x: hidden;
 }
 
-.__scrollbar-xs {
+.__scrollbar-xxs {
   scrollbar-width: thin;
   scrollbar-width: none;
   overflow-y: scroll;
   overflow-x: hidden;
   overflow: overlay;
 }
-.__scrollbar-xs::-webkit-scrollbar {
+.__scrollbar-xxs::-webkit-scrollbar {
   width: 3px;
   height: 3.5px;
 }
-.__scrollbar-xs::-webkit-scrollbar-thumb {
+.__scrollbar-xxs::-webkit-scrollbar-thumb {
   border-radius: 1.2rem;
   background-color: #bfbfbf;
+}
+.__scrollbar-xxs::-webkit-scrollbar-thumb:hover {
+  background-color: #a8a8a8;
+}
+.__scrollbar-xs {
+  scrollbar-width: thin;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  overflow: overlay;
+}
+.__scrollbar-xs::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+.__scrollbar-xs::-webkit-scrollbar-thumb {
+  border-radius: 1.2rem;
+  background-color: #cacaca;
 }
 .__scrollbar-xs::-webkit-scrollbar-thumb:hover {
   background-color: #a8a8a8;
