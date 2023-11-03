@@ -7,8 +7,8 @@
     "withGlobalTauri": true
   },
   "package": {
-    "productName": "Myanmar Calendar",
-    "version": "1.0.0"
+    "productName": "mCal",
+    "version": "3.2.0"
   },
   "tauri": {
     "allowlist": {
@@ -27,7 +27,7 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "me.aungmyatmoe.myanmar-calendar",
+      "identifier": "me.aungmyatmoe.mcal",
       "targets": "all",
       "category": "Utilities",
       "copyright": "Aung Myat Moe"
@@ -42,7 +42,7 @@
       {
         "fullscreen": true,
         "resizable": true,
-        "title": "Myanmar Calendar",
+        "title": "mCal",
         "width": 800,
         "height": 600
       }
