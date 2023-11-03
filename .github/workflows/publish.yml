@@ -1,4 +1,4 @@
-name: 'Publish Myanmar Calendar'
+name: 'Publish mCal'
 
 on:
   push:
@@ -67,10 +67,28 @@ jobs:
         run: dir
 
 
-      - name: Publish build artifacts
-        if: success()
+      - name: Upload artifact to macOS
+        if: ${{ matrix.platform == 'macos-latest' }}
         uses: actions/upload-artifact@v3
         with:
-          name: Upload Artifact
+          name: MacOS (DMG)
           path: |
-            ./apps/myanmar_calendar/src-tauri/target/release/bundle
+            ./apps/myanmar_calendar/src-tauri/target/release/bundle/dmg/*.dmg
+
+      - name: Upload artifact to linux
+        if: ${{ matrix.platform == 'ubuntu-latest' }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: Linux (DEB & AppImage)
+          path: |
+            ./apps/myanmar_calendar/src-tauri/target/release/bundle/deb/*.deb
+            ./apps/myanmar_calendar/src-tauri/target/release/bundle/appimage/*.AppImage
+
+      - name: Upload artifact to Window
+        if: ${{ matrix.platform == 'windows-latest' }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: Windows (MSI & NSIS)
+          path: |
+            ./apps/myanmar_calendar/src-tauri/target/release/bundle/msi/*.msi
+            ./apps/myanmar_calendar/src-tauri/target/release/bundle/nsis/*.exe
