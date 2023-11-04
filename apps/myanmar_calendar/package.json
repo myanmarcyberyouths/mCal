@@ -6,7 +6,7 @@
     "tauri": "tauri",
     "dev": "vite dev",
     "build": "vite build",
-    "start": "vite start",
+    "start": "vite start"
   },
   "devDependencies": {
     "@tauri-apps/cli": "^1.4.0",
