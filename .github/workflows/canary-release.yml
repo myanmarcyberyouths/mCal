@@ -1,4 +1,5 @@
-name: 'Publish mCal'
+# this workflow is triggered on push to any push to any branch so that we can test the app on every canary release
+name: 'Canary Release'
 
 on:
   push:
@@ -54,6 +55,7 @@ jobs:
       - uses: tauri-apps/tauri-action@v0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 
       - name: Upload DMG artifact to macOS
         if: ${{ matrix.platform == 'macos-latest' }}

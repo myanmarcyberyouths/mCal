@@ -1,5 +1,5 @@
 {
-  "name": "myanmar_calendar",
+  "name": "mcal",
   "private": true,
   "version": "3.2.0",
   "scripts": {
@@ -7,7 +7,6 @@
     "dev": "vite dev",
     "build": "vite build",
     "start": "vite start",
-    "lint": "next lint"
   },
   "devDependencies": {
     "@tauri-apps/cli": "^1.4.0",
