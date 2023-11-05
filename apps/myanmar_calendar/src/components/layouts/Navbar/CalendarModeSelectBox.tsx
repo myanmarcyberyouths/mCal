@@ -37,15 +37,16 @@ function CalendarModeSelectBox() {
         </span>
       </SelectTrigger>
       <SelectContent
-        className="w-[12rem]"
+        className="w-[14rem] px-0 py-[0.35rem] rounded-sm"
         align="end">
         {Object.keys(CALENDAR_MODE).map((key) => (
           <SelectItem
             value={key}
-            key={key}>
-            <span className="w-[10rem] flex items-center justify-between">
+            key={key}
+            className="px-3 rounded-none h-[2.5rem] data-[state=checked]:bg-gray-200/75">
+            <span className="w-[12rem] flex items-center justify-between">
               <span className="capitalize">{CALENDAR_MODE[key]}</span>
-              <span className="capitalize ml-auto text-gray-500 text-[0.8rem]">{key}</span>
+              <span className="capitalize ml-auto text-gray-500/90 text-[0.8rem]">{key}</span>
             </span>
           </SelectItem>
         ))}

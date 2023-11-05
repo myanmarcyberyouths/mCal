@@ -41,12 +41,12 @@ const SelectContent = React.forwardRef<React.ElementRef<typeof SelectPrimitive.C
     <SelectPrimitive.Portal>
       <SelectPrimitive.Content
         ref={ref}
-        className={cn("bg-white rounded-md border border-gray-200 mt-1 shadow-lg z-[10]", className)}
+        className={cn("bg-white rounded-md border border-gray-200 mt-1 shadow-lg z-[10]")}
         position={position}
         align={align}
         {...props}>
-        <ScrollArea className="w-full h-fit p-[0.2rem]">
-          <ScrollViewport className="max-h-[17rem] w-full rounded-sm">
+        <ScrollArea className={cn("w-full h-fit p-[0.2rem]", className)}>
+          <ScrollViewport className="max-h-[17rem] w-full">
             <SelectPrimitive.Viewport>{children}</SelectPrimitive.Viewport>
             <ScrollBar />
           </ScrollViewport>

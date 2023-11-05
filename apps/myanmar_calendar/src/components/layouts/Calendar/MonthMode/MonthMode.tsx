@@ -2,7 +2,7 @@ import { RootState } from "@/store";
 import { WEEK_DAYS } from "@/utils/constants";
 import { getLocalTime } from "@/utils/helpers";
 import { eachDayOfInterval, endOfMonth, endOfWeek, startOfMonth, startOfWeek } from "date-fns";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import MonthCell from "./MonthCell";
 import { cn } from "@/lib/utils";
@@ -16,6 +16,8 @@ function MonthMode() {
     start: startOfWeek(startOfMonth(getLocalTime(activeDateObj))),
     end: endOfWeek(endOfMonth(getLocalTime(activeDateObj))),
   });
+
+  // useDayEndInterval(() => console.log("day end"));
 
   return (
     <div

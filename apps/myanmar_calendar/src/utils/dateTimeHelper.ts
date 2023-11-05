@@ -1,3 +1,5 @@
+import { endOfMinute } from "date-fns";
+
 export type TDate = string | Date;
 export const toDate = (dateString: TDate) => {
   const date = new Date(dateString);

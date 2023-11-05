@@ -32,9 +32,9 @@ export const EVENT_CALENDARS: EventCalendarItem[] = [
 export type CustomEventFnT = { (date: Date): string | string[] }[];
 
 type EventObjectT = {
-  gregorianBased: Record<string, string> | null;
-  mmBased: Record<string, string> | null;
-  custom: CustomEventFnT | null;
+  gregorianBased?: Record<string, string> | null;
+  mmBased?: Record<string, string> | null;
+  custom?: CustomEventFnT | null;
 };
 
 type EventsT = Record<string, EventObjectT>;

@@ -111,10 +111,10 @@ const DayDialog = ({ onClose, selectedDay }: DayDialogProps) => {
             <div className="flex justify-between items-center">
               <time
                 dateTime={format(selectedDay, "yyyy-MM-dd")}
-                className="flex items-center gap-2 h-[2.5rem]">
-                <span className="text-[1.25rem] text-gray-500">{format(selectedDay, "iii,")}</span>
-                <span className="text-[1.25rem] font-semibold text-rose-500">{format(selectedDay, "d ")}</span>
-                <span className="text-[1.25rem] text-gray-500 ">{format(selectedDay, "MMMM yyyy")}</span>
+                className="flex items-center gap-2 h-[2.5rem] text-[1.1rem]">
+                <span className=" text-gray-500">{format(selectedDay, "iii,")}</span>
+                <span className=" font-semibold text-rose-500">{format(selectedDay, "d ")}</span>
+                <span className=" text-gray-500 ">{format(selectedDay, "MMMM yyyy")}</span>
               </time>
               {dayIsToday && <span className=" text-[0.85rem]  text-green-600 border border-green-400 rounded-md px-[0.35rem] py-[0.15rem]">Today</span>}
             </div>
@@ -126,7 +126,7 @@ const DayDialog = ({ onClose, selectedDay }: DayDialogProps) => {
                 <span className="text-[3rem] leading-[4rem] mb-4 flex items-center text-rose-500 font-semibold pl-[0.1rem]">{engToMyanmarNumber(mmDate.date)}</span>
                 <span className="mb-1 font-semibold text-gray-500">{mmDate.day}</span>
                 <span>
-                  <span className="text-[1.175rem] text-gray-500">{engToMyanmarNumber(mmDate.year)}</span>
+                  <span className=" text-gray-500">{engToMyanmarNumber(mmDate.year)}</span>
                   {" ခုနှစ်၊ "}
                   <span>
                     {mmDate.month}
@@ -170,7 +170,7 @@ const DayDialog = ({ onClose, selectedDay }: DayDialogProps) => {
               </div>
             )}
             <div className="py-2 mt-5 border-t border-gray-200">
-              <h5 className="font-semibold text-[1.1rem] text-gray-500">Events</h5>
+              <h5 className="font-medium text-[1.05rem] text-gray-500">Events</h5>
               <ul className="mt-2 space-y-[0.25rem]">
                 {checkedEvents.map((eventCalendar) => {
                   return (
@@ -189,7 +189,7 @@ const DayDialog = ({ onClose, selectedDay }: DayDialogProps) => {
                     </Fragment>
                   );
                 })}
-                {!hasEvents && <div className="flex justify-center items-center h-[4rem] text-gray-400 font-semibold">No events</div>}
+                {!hasEvents && <div className="flex justify-center items-center h-[4rem] text-[0.975rem] text-gray-400 font-medium">No events</div>}
               </ul>
             </div>
           </div>
