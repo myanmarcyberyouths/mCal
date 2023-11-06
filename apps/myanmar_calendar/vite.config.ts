@@ -11,7 +11,7 @@ const manifestForPlugin: Partial<VitePWAOptions> = {
     manifest: {
         name: "mCal",
         short_name: "mCal",
-        description: "Myanmar calendar application",
+        description: "Myanmar's first digital calendar",
         icons: [
             {
                 src: "/android-chrome-192x192.png",
