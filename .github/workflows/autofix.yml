@@ -1,4 +1,4 @@
-name: autofix.ci
+name: 'Auto Fix'
 
 on:
   pull_request:
