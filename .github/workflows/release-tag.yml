@@ -1,10 +1,9 @@
-name: 'Create Release on specific version tag'
+name: "Release Tag"
 
 on:
   push:
     tags:
-      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
-
+      - "v*" # Push events to matching v*, i.e. v1.0, v20.15.10
 
 jobs:
   create-release:
@@ -59,6 +58,7 @@ jobs:
         with:
           node-version: 20
           cache: pnpm
+          cache-dependency-path: '**/pnpm-lock.json'
 
       - name: Install dependencies
         run: pnpm install
