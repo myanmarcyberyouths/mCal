@@ -62,7 +62,7 @@ jobs:
           cache-dependency-path: ${{github.workspace}}/apps/**/pnpm-lock.yaml
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm build --filter=mcal
 
       - name: Install Rust stable
         uses: actions-rs/toolchain@v1
