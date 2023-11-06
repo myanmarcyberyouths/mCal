@@ -22,7 +22,7 @@ function Calendar() {
     <section
       aria-label="Calendar"
       className={cn(
-        "flex-1 h-[calc(100vh-theme(spacing.nav-h))] supports-[height:100cqh]:h-[calc(100cqh-theme(spacing.nav-h))] supports-[height:100svh]:h-[calc(100svh-theme(spacing.nav-h))] border-l  border-gray-300 __scrollbar-md"
+        "flex-1 h-[calc(100vh-theme(spacing.nav-h))] supports-[height:100cqh]:h-[calc(100cqh-theme(spacing.nav-h))] supports-[height:100svh]:h-[calc(100svh-theme(spacing.nav-h))] border-l  border-gray-200 __scrollbar-md"
       )}>
       {calendar_modes[calendarMode]}
     </section>

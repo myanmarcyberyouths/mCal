@@ -41,7 +41,7 @@ function MonthCell({ day, calendarState }: MonthCellT) {
     // min-h-[8.5rem]
     <div
       className={cn(
-        "border-b border-r flex gap-1 flex-col items-stretch border-gray-300 p-2 py-[0.25rem] pb-[0.3rem]  min-h-[8.5rem] hover:bg-gray-50",
+        "border-b border-r flex gap-1 flex-col items-stretch border-gray-200 p-2 py-[0.25rem] pb-[0.3rem]  min-h-[8.5rem] hover:bg-gray-50",
         dayIsInEndWeek ? "min-h-[8.65rem] pb-[0.45rem]" : ""
       )}
       onClick={() => {
@@ -89,7 +89,7 @@ function MonthCell({ day, calendarState }: MonthCellT) {
                 // h-[1.25rem]
                 <li
                   key={event}
-                  className="rounded-sm flex items-start py-[0.335rem]   px-1 gap-1 bg-gray-100"
+                  className="rounded-sm flex items-start py-[0.335rem] px-1 gap-1 bg-gray-100"
                   style={{
                     backgroundColor: modifyColorOpacity(eventCalendar.tagColor, 0.15),
                     // backgroundColor: brightenColor(eventCalendars[eventCalendar.eventType].tagColor, 85),
@@ -121,17 +121,17 @@ function MonthCell({ day, calendarState }: MonthCellT) {
 
       {/* ------ CELL BOTTOM ------- */}
       {(mmDate == "၁" || moonAlign) && show.moonPhase && (
-        <div className="flex justify-between items-center h-[1.1rem] flex-shrink-0 overflow-hidden">
+        <div className="flex justify-between items-center h-[1.1rem] flex-shrink-0">
           <div aria-hidden="true"></div>
           {/* MOON PHASE */}
-          <div className={cn("flex gap-1 items-center overflow-hidden transition-all", show.moonPhase ? "opacity-100" : "opacity-0")}>
+          <div className={cn("flex gap-1 items-center transition-all", show.moonPhase ? "opacity-100" : "opacity-0")}>
             {(mmDate == "၁" || moonAlign) && (
-              <span className="text-[0.68rem] leading-[1.3rem] text-gray-600 whitespace-nowrap overflow-hidden text-ellipsis">
+              <span className="hidden md2:inline text-[0.68rem] leading-[1.3rem] text-gray-600 whitespace-nowrap overflow-x-hidden">
                 {myanmarDate.month}
-                <span className={`hidden md2:inline`}>{myanmarDate.moonPhase}</span>
+                {myanmarDate.moonPhase}
               </span>
             )}
-            {moonAlign && <span className={`w-[0.91rem] h-[0.91rem] flex-shrink-0  rounded-full ${myanmarDate.moonPhase === "လပြည့်" ? "bg-red-500" : "bg-gray-600"}`}></span>}
+            {moonAlign && <span className={`w-[0.91rem] h-[0.91rem] flex-shrink-0  rounded-full ${myanmarDate.moonPhase === "လပြည့်" ? "bg-red-500" : "bg-gray-700"}`}></span>}
           </div>
         </div>
       )}
