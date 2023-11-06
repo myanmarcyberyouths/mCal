@@ -48,6 +48,7 @@ jobs:
 
     runs-on: ${{ matrix.platform }}
     steps:
+      - uses: actions/checkout@v4
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
@@ -58,7 +59,7 @@ jobs:
         with:
           node-version: 20
           cache: pnpm
-          cache-dependency-path: '**/pnpm-lock.yaml'
+          cache-dependency-path: ${{github.workspace}}/apps/pnpm-lock.yaml
 
       - name: Install dependencies
         run: pnpm install
