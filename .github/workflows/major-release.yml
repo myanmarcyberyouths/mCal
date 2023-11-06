@@ -61,6 +61,7 @@ jobs:
         with:
           version: 8.x.x
 
+
       - name: Setup node
         uses: actions/setup-node@v4
         with:
@@ -68,7 +69,17 @@ jobs:
           cache: pnpm
           cache-dependency-path: ${{github.workspace}}/apps/**/pnpm-lock.yaml
 
-      - name: Install dependencies
+      - name: Install Turbo Globally
+        shell: bash
+        run: |
+          VERSION=$(npm view turbo --json | jq -r '.versions | last') || 'latest'
+          echo "Latest published version: $VERSION"
+          pnpm add -g turbo@$VERSION
+
+      - name: Install Node dependencies
+        run: pnpm install
+
+      - name: Build mCal frontend
         run: pnpm build --filter=mcal
 
       - name: Install Rust stable
@@ -81,9 +92,6 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y libgtk-3-dev webkit2gtk-4.0 libappindicator3-dev librsvg2-dev patchelf
-
-      - name: Build mCal frontend
-        run: pnpm build
 
         # build tauri app
       - uses: tauri-apps/tauri-action@v0
