@@ -36,7 +36,7 @@
     "@reduxjs/toolkit": "^1.9.7",
     "@tailwindcss/typography": "^0.5.10",
     "@vercel/analytics": "^1.0.1",
-    "@vitejs/plugin-react": "^4.1.0",
+    "@vitejs/plugin-react": "^4.1.1",
     "burma-calendar": "workspace:*",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
