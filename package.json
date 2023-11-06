@@ -15,6 +15,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "turbo": "^1.10.16"
+    "turbo": "latest"
   }
 }
