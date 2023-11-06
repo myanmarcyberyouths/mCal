@@ -3,6 +3,9 @@ name: 'Canary Release'
 
 on:
   push:
+    branches: [ 'main' ]
+  pull_request:
+    types: [ opened, synchronize ]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -10,6 +13,12 @@ concurrency:
 
 jobs:
   build-binaries:
+    name: Build Tauri Binaries
+    timeout-minutes: 15
+    env:
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      TURBO_TEAM: ${{ vars.TURBO_TEAM }}
+
     permissions:
       contents: write
     strategy:
@@ -18,8 +27,11 @@ jobs:
         platform: [ macos-latest, ubuntu-latest, windows-latest ]
 
     runs-on: ${{ matrix.platform }}
+
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Code
+        uses: actions/checkout@v4
         with:
           fetch-depth: 2
 

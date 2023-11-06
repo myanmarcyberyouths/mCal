@@ -1,4 +1,4 @@
-name: "Release Tag"
+name: "Release mCal App"
 
 on:
   push:
