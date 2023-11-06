@@ -1,6 +1,6 @@
 {
   "name": "calendar_app",
-  "version": "1.0.0",
+  "version": "3.3.0",
   "description": "The Myanmar Calendar App",
   "main": "index.js",
   "workspaces": [
