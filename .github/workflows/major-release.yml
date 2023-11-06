@@ -7,12 +7,19 @@ on:
 
 jobs:
   create-release:
+    name: Create Release for mCal App
+    timeout-minutes: 15
+
+    env:
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      TURBO_TEAM: ${{ vars.TURBO_TEAM }}
+
     permissions:
       contents: write
+
     runs-on: ubuntu-20.04
     outputs:
       release_id: ${{ steps.create-release.outputs.result }}
-
     steps:
       - uses: actions/checkout@v4
       - name: setup node

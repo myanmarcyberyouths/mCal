@@ -15,6 +15,7 @@ jobs:
   build-binaries:
     name: Build Tauri Binaries
     timeout-minutes: 15
+
     env:
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
       TURBO_TEAM: ${{ vars.TURBO_TEAM }}
@@ -27,8 +28,6 @@ jobs:
         platform: [ macos-latest, ubuntu-latest, windows-latest ]
 
     runs-on: ${{ matrix.platform }}
-
-
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
