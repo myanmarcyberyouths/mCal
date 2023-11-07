@@ -29,7 +29,7 @@ function CalendarModeSelectBox() {
     <Select
       value={calendarMode}
       onValueChange={selectHandler}>
-      <SelectTrigger className="h-10 rounded-md w-fit px-4">
+      <SelectTrigger className="h-input-md rounded-md w-fit px-4">
         <span className="flex items-center gap-3 -ml-[0.35rem] -mr-[0.6rem]">
           <FaCalendarAlt className="text-gray-400" />
           <span className="capitalize text-[0.95rem] font-medium  text-gray-600">{CALENDAR_MODE[calendarMode]}</span>
@@ -37,15 +37,16 @@ function CalendarModeSelectBox() {
         </span>
       </SelectTrigger>
       <SelectContent
-        className="w-[12rem]"
+        className="w-[14rem] px-0 py-[0.25rem] rounded-sm"
         align="end">
         {Object.keys(CALENDAR_MODE).map((key) => (
           <SelectItem
             value={key}
-            key={key}>
-            <span className="w-[10rem] flex items-center justify-between">
+            key={key}
+            className="px-3 rounded-none h-[2.5rem] hover:bg-gray-50 data-[state=checked]:bg-gray-200/50">
+            <span className="w-[12rem] flex items-center justify-between">
               <span className="capitalize">{CALENDAR_MODE[key]}</span>
-              <span className="capitalize ml-auto text-gray-500 text-[0.8rem]">{key}</span>
+              <span className="capitalize ml-auto text-gray-500/90 text-[0.8rem]">{key}</span>
             </span>
           </SelectItem>
         ))}

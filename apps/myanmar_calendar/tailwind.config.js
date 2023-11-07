@@ -19,21 +19,21 @@ module.exports = {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
         },
-        gray:{
-          0 : "hsl(var(--gray-0))",
-          50 : "hsl(var(--gray-50))",
-          100 : "hsl(var(--gray-100))",
-          200 : "hsl(var(--gray-200))",
-          300 : "hsl(var(--gray-300))",
-          450 : "hsl(var(--gray-450))",
-          400 : "hsl(var(--gray-400))",
-          500 : "hsl(var(--cgay-500))",
-          600 : "hsl(var(--gray-600))",
-          700 : "hsl(var(--gray-700))",
-          800 : "hsl(var(--gray-800))",
-          900 : "hsl(var(--gray-900))",
-          950 : "hsl(var(--gray-950))",
-        }
+        gray: {
+          0: "hsl(var(--gray-0))",
+          50: "hsl(var(--gray-50))",
+          100: "hsl(var(--gray-100))",
+          200: "hsl(var(--gray-200))",
+          300: "hsl(var(--gray-300))",
+          450: "hsl(var(--gray-450))",
+          400: "hsl(var(--gray-400))",
+          500: "hsl(var(--gray-500))",
+          600: "hsl(var(--gray-600))",
+          700: "hsl(var(--gray-700))",
+          800: "hsl(var(--gray-800))",
+          900: "hsl(var(--gray-900))",
+          950: "hsl(var(--gray-950))",
+        },
       },
       spacing: {
         "nav-h": "4.2rem",
@@ -66,7 +66,8 @@ module.exports = {
         sm: "calc(var(--radius) - 4px)",
       },
       boxShadow: {
-        model: "0 2px 5px 1px hsl(var(--gray-100))",
+        model: "0 10px 18px 3px rgba(100,100,100,.14), 0 9px 16px 8px rgba(100,100,100,.07), 0 11px 15px -7px rgba(100,100,100,.2)",
+        "model-dark": "0 2px 20px 10px rgba(20,20,20,0.8)",
       },
       keyframes: {
         "accordion-down": {

@@ -1,12 +1,14 @@
 import React, { Fragment, useEffect, useRef, useState } from "react";
-import DayDialog2 from "./DayDialog";
+import DayDialog from "./DayDialog";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store";
 import { setDayDialongTargetDay } from "@/store/modelControlState";
 import { Transition } from "@headlessui/react";
 import ModelBackdrop from "@/components/ui/backdrops/ModelBackdrop";
+import DayDialogDesktop from "./DayDialogDesktop";
+import DayDialogMobile from "./DayDialogMobile";
 
-function RenderDayDialog2() {
+function RenderDayDialog() {
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
   const dayDialogTargetDay = useSelector((state: RootState) => state.modelControlState.dayDialogTargetDay);
@@ -16,7 +18,7 @@ function RenderDayDialog2() {
     if (dayDialogTargetDay) setIsOpen(true);
   }, [dayDialogTargetDay]);
 
-  const handlClose = () => {
+  const handleClose = () => {
     setIsOpen(false);
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
@@ -26,23 +28,30 @@ function RenderDayDialog2() {
     }, 200);
   };
 
+  if (enterMobileMode)
+    return (
+      <DayDialogMobile
+        open={isOpen}
+        onClose={handleClose}
+        selectedDay={new Date(dayDialogTargetDay)}
+      />
+    );
   return (
     <Transition
       appear
       show={isOpen}>
-      {enterMobileMode && (
+      {/* {enterMobileMode && (
         <ModelBackdrop
           show={isOpen}
           opacity="0.4"
         />
-      )}
-
-      <DayDialog2
-        onClose={handlClose}
+      )} */}
+      <DayDialogDesktop
+        onClose={handleClose}
         selectedDay={new Date(dayDialogTargetDay)}
       />
     </Transition>
   );
 }
 
-export default RenderDayDialog2;
+export default RenderDayDialog;

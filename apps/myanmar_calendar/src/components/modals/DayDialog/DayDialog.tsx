@@ -18,7 +18,7 @@ import useKeyPress from "@/hooks/useKeyPress";
 import { modifyColorOpacity } from "@/utils/styleHelpers";
 import { getDayEvents } from "@/event_calendars/formatEvent";
 
-interface DayDialogProps {
+export interface DayDialogProps {
   onClose: () => void;
   selectedDay: Date;
 }
@@ -64,7 +64,7 @@ const DayDialog = ({ onClose, selectedDay }: DayDialogProps) => {
         leaveTo={`${enterMobileMode ? "translate-y-[100%]" : "opacity-0  translate-y-5"}`}
         enter={`ease-out ${enterMobileMode ? "duration-200" : " duration-200"}`}
         leave={`ease-in ${enterMobileMode ? "duration-200" : " duration-150"}`}>
-        <Dialog.Panel className="fixed inset-0 mx-auto mt-auto sm2:my-auto w-full sm2:max-w-[27rem] h-[calc(100%-5rem)] sm2:h-[90%] sm2:max-h-[33rem] transform overflow-hidden rounded-tr-2xl rounded-tl-2xl sm2:rounded-[0.5rem] bg-gray-0 text-left align-middle transition-all flex flex-col sm2:border  sm2:border-gray-200 shadow-model">
+        <Dialog.Panel className="fixed inset-0 mx-auto mt-auto sm2:my-auto w-full sm2:max-w-[27rem] h-[calc(100%-5rem)] sm2:h-[90%] sm2:max-h-[33rem] transform overflow-hidden rounded-tr-2xl rounded-tl-2xl sm2:rounded-[0.5rem] bg-gray-0 text-left align-middle transition-all flex flex-col sm2:border  sm2:border-gray-200 shadow-model dark:shadow-model-dark">
           {/* ------ Header ------ */}
           <div className="h-[3.25rem] sm2:h-[3rem] flex items-center justify-between px-5 sm2:px-3 bg-gray-50 border-b">
             <div className="flex items-center gap-1">
@@ -126,7 +126,7 @@ const DayDialog = ({ onClose, selectedDay }: DayDialogProps) => {
                 <span className="text-[3rem] leading-[4rem] mb-4 flex items-center text-rose-500 font-semibold pl-[0.1rem]">{engToMyanmarNumber(mmDate.date)}</span>
                 <span className="mb-1 font-semibold text-gray-500">{mmDate.day}</span>
                 <span>
-                  <span className="text-[1.175rem] text-gray-500">{engToMyanmarNumber(mmDate.year)}</span>
+                  <span className=" text-gray-500">{engToMyanmarNumber(mmDate.year)}</span>
                   {" ခုနှစ်၊ "}
                   <span>
                     {mmDate.month}
@@ -170,7 +170,7 @@ const DayDialog = ({ onClose, selectedDay }: DayDialogProps) => {
               </div>
             )}
             <div className="py-2 mt-5 border-t border-gray-200">
-              <h5 className="font-semibold text-[1.1rem] text-gray-500">Events</h5>
+              <h5 className="font-medium text-[1.05rem] text-gray-500">Events</h5>
               <ul className="mt-2 space-y-[0.25rem]">
                 {checkedEvents.map((eventCalendar) => {
                   return (
@@ -189,7 +189,7 @@ const DayDialog = ({ onClose, selectedDay }: DayDialogProps) => {
                     </Fragment>
                   );
                 })}
-                {!hasEvents && <div className="flex justify-center items-center h-[4rem] text-gray-400 font-semibold">No events</div>}
+                {!hasEvents && <div className="flex justify-center items-center h-[4rem] text-[0.975rem] text-gray-400 font-medium">No events</div>}
               </ul>
             </div>
           </div>

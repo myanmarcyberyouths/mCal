@@ -27,7 +27,7 @@ function WeekColumn({ day, calendarState }: WeekColumnPropsI) {
           <span
             className={cn(
               "h-[2.3rem] w-full px-2 flex items-center justify-center text-[0.825rem] font-semibold rounded-md bg-gray-50",
-              myanmar_calendar.pyathada ? "text-red-400 bg-red-50" : "text-blue-500 bg-blue-50"
+              myanmar_calendar.pyathada ? "text-red-400 bg-red-400/[0.15]" : "text-blue-500 bg-blue-500/[0.15]"
             )}>
             {myanmar_calendar.pyathada || myanmar_calendar.yatyaza}
           </span>

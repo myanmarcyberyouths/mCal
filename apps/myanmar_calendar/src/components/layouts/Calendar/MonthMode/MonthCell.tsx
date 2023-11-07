@@ -1,5 +1,6 @@
 import { ScrollArea, ScrollBar, ScrollViewport } from "@/components/ui/areas/ScrollArea";
 import { getDayEvents } from "@/event_calendars/formatEvent";
+import useDayEndInterval from "@/hooks/useDayEndInterval";
 import { cn } from "@/lib/utils";
 import { CalendarStateInterface } from "@/store/calendarState";
 import { setDayDialongTargetDay } from "@/store/modelControlState";
@@ -7,7 +8,7 @@ import { engToMyanmarNumber } from "@/utils/engToMyanmarNumber";
 import { modifyColorOpacity } from "@/utils/styleHelpers";
 import { englishToMyanmarDate, i18n } from "burma-calendar";
 import { format, isSameMonth, isSameWeek, isToday, lastDayOfMonth } from "date-fns";
-import React, { Fragment, useEffect, useRef, useState } from "react";
+import React, { Fragment, useEffect, useMemo, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 
 interface MonthCellT {
@@ -29,14 +30,7 @@ function MonthCell({ day, calendarState }: MonthCellT) {
   const myanmarDate = englishToMyanmarDate(day);
   const moonAlign = myanmarDate.moonPhase === "လပြည့်" || myanmarDate.moonPhase === "လကွယ်";
 
-  const dayUpdateIntervalRef = useRef<any>();
-  React.useEffect(() => {
-    dayUpdateIntervalRef.current = setInterval(() => {
-      setDayIsToday(isToday(day));
-    }, 1000 * 60 * 60 * 24);
-
-    return () => clearInterval(dayUpdateIntervalRef.current);
-  }, [day]);
+  useDayEndInterval(() => setDayIsToday(isToday(day)));
 
   const checkedEvents = getDayEvents(
     day,
@@ -57,15 +51,14 @@ function MonthCell({ day, calendarState }: MonthCellT) {
       <div className=" flex justify-between items-start">
         <time
           dateTime={format(day, "yyyy-MM-dd")}
-          className={cn("flex justify-start -mt-[0.05rem] flex-1 text-[0.875rem] leading-5", dayBelongsInActiveMonth ? "text-gray-400" : "text-gray-200")}>
+          className={cn("flex justify-start -mt-[0.05rem] text-gray-500 flex-1 text-[0.825rem] leading-5", dayBelongsInActiveMonth ? "text-gray-500" : "text-gray-300")}>
           {mmDate}
         </time>
         <time
           className={cn(
-            "flex justify-center font-medium text-[1.025rem]  h-[1.6rem] leading-7",
-            dayBelongsInActiveMonth ? "text-gray-600" : "text-gray-200",
-            dayIsToday ? "text-white bg-red-500" : " ",
-            format(day, "d") == "1" ? "rounded-md px-[0.35rem]" : "rounded-full w-[1.6rem]"
+            "flex justify-center font-medium text-[1.025rem]  h-[1.6rem] aspect-square leading-7",
+            dayBelongsInActiveMonth ? "text-gray-600" : "text-gray-300",
+            dayIsToday && "text-gray-50 bg-red-500 rounded-full"
           )}
           dateTime={format(day, "yyyy-MM-dd")}>
           {format(day, "d")}{" "}

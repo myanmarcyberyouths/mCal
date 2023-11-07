@@ -34,12 +34,12 @@ function WeekColumnHead({ day, scrollReachedTop }: { day: Date; scrollReachedTop
         <div className="p-1 px-[0.35rem] pb-[0.3rem]">
           <time
             dateTime={format(day, "yyyy-MM-dd")}
-            className="h-[2rem] w-full px-2 flex items-center justify-center text-[0.825rem] bg-gray-50 text-gray-450 font-semibold rounded-md hover:text-gray-500">
-            <span className="text-[0.825rem] font-semibold ">
+            className="h-[2rem] w-full px-2 flex items-center justify-center text-[0.825rem] bg-gray-100 text-gray-450 font-semibold rounded-md hover:text-gray-500">
+            <span className="text-[0.825rem] font-semibold text-gray-600">
               {myanmar_calendar.month}
               {myanmar_calendar.moonPhase}
             </span>
-            <span className="text-[0.9rem] mb-[0.1rem] ml-1 font-semibold">{mmDate}</span>
+            <span className="text-[0.9rem] mb-[0.1rem] ml-1 font-semibold text-gray-600">{mmDate}</span>
           </time>
         </div>
       </div>

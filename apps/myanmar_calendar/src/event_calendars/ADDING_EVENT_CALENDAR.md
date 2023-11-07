@@ -28,12 +28,12 @@ Adding an event calendar to this application is a straightforward process. This 
 - For `gregorianBased` events, keys must be in following formats:
 
   > - `"Jan 05 2024"` - January 5 2024 (no repeat)
-  > - `"Jan Mon 1 2024"` - First Monday of January 2024 (no repeat)
   > - `"Jan 05"` - January 5 (repeat annually)
+  > - `"Jan Mon 1 2024"` - First Monday of January 2024 (no repeat)
   > - `"Jan Sun 2"` - Second Sunday of January (repeat annually)
   > - `"5"` - 5th day of a month (repeat monthly)
-  > - `"Sun 2"` - Second Sunday of a month (repeat monthly)
   > - `"Mon"` - Monday (repeat weekly)
+  > - `"Sun 2"` - Second Sunday of a month (repeat monthly)
 
 - For 'mmBased' events, keys must be in following formats
 
