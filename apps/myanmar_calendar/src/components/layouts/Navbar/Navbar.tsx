@@ -14,7 +14,7 @@ import DarkMode from "./DarkMode";
 function Navbar() {
   return (
     <header className={`h-nav-h w-full bg-gray-0 border-b border-gray-200 flex items-stretch`}>
-      <div className="flex-shrink-0 flex items-center gap-6 pl-3 w-[2.75rem] sm2:w-[4rem] lg2:w-[17rem]">
+      <div className="flex-shrink-0 flex items-center gap-6 pl-3 w-[2.75rem] sm2:w-[4rem] lg2:w-[15rem] lg3:w-[17rem]">
         <SidebarToggleBtn>
           <IoMdMenu size={28} />
         </SidebarToggleBtn>
@@ -24,7 +24,7 @@ function Navbar() {
       </div>
       <div className="h-full flex-1 flex items-center justify-between px-3">
         <ActiveDateIndicator />
-        <div className="flex items-center gap-5 md:pr-4 ml-auto">
+        <div className="flex items-center gap-2 sm3:gap-5 md:pr-4 ml-auto">
           <CalendarSlider />
           <CalendarModeSelectBox />
           <DarkMode />

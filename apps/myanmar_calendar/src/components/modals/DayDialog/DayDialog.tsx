@@ -18,7 +18,7 @@ import useKeyPress from "@/hooks/useKeyPress";
 import { modifyColorOpacity } from "@/utils/styleHelpers";
 import { getDayEvents } from "@/event_calendars/formatEvent";
 
-interface DayDialogProps {
+export interface DayDialogProps {
   onClose: () => void;
   selectedDay: Date;
 }

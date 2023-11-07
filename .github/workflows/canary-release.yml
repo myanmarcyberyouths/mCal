@@ -3,6 +3,9 @@ name: 'Canary Release'
 
 on:
   push:
+    branches: [ 'main' ]
+  pull_request:
+    types: [ opened, synchronize ]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -10,6 +13,13 @@ concurrency:
 
 jobs:
   build-binaries:
+    name: Build Tauri Binaries
+    timeout-minutes: 15
+
+    env:
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      TURBO_TEAM: ${{ vars.TURBO_TEAM }}
+
     permissions:
       contents: write
     strategy:
@@ -19,7 +29,8 @@ jobs:
 
     runs-on: ${{ matrix.platform }}
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Code
+        uses: actions/checkout@v4
         with:
           fetch-depth: 2
 
@@ -49,7 +60,7 @@ jobs:
           sudo apt-get install -y libgtk-3-dev webkit2gtk-4.0 libappindicator3-dev librsvg2-dev patchelf
 
       - name: Build mCal frontend
-        run: pnpm build
+        run: pnpm build --filter=mcal
 
       # build tauri app
       - uses: tauri-apps/tauri-action@v0

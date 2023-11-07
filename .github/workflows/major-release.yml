@@ -1,19 +1,25 @@
-name: 'Create Release on specific version tag'
+name: "Release mCal App"
 
 on:
   push:
     tags:
-      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
-
+      - "v*" # Push events to matching v*, i.e. v1.0, v20.15.10
 
 jobs:
   create-release:
+    name: Create Release for mCal App
+    timeout-minutes: 15
+
+    env:
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      TURBO_TEAM: ${{ vars.TURBO_TEAM }}
+
     permissions:
       contents: write
+
     runs-on: ubuntu-20.04
     outputs:
       release_id: ${{ steps.create-release.outputs.result }}
-
     steps:
       - uses: actions/checkout@v4
       - name: setup node
@@ -49,19 +55,32 @@ jobs:
 
     runs-on: ${{ matrix.platform }}
     steps:
+      - uses: actions/checkout@v4
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
           version: 8.x.x
+
 
       - name: Setup node
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: pnpm
+          cache-dependency-path: ${{github.workspace}}/apps/**/pnpm-lock.yaml
 
-      - name: Install dependencies
+      - name: Install Turbo Globally
+        shell: bash
+        run: |
+          VERSION=$(npm view turbo --json | jq -r '.versions | last') || 'latest'
+          echo "Latest published version: $VERSION"
+          pnpm add -g turbo@$VERSION
+
+      - name: Install Node dependencies
         run: pnpm install
+
+      - name: Build mCal frontend
+        run: pnpm build --filter=mcal
 
       - name: Install Rust stable
         uses: actions-rs/toolchain@v1
@@ -73,9 +92,6 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y libgtk-3-dev webkit2gtk-4.0 libappindicator3-dev librsvg2-dev patchelf
-
-      - name: Build mCal frontend
-        run: pnpm build
 
         # build tauri app
       - uses: tauri-apps/tauri-action@v0
