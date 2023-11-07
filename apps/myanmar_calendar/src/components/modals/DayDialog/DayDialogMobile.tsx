@@ -13,7 +13,7 @@ function DayDialogMobile(
     <BottomSheetMobile
       isOpen={props.open}
       onClose={props.onClose}>
-      <div className="mx-auto mt-auto sm2:my-auto h-full w-full transform overflow-hidden  bg-gray-0 transition-all flex flex-col">
+      <div className="mx-auto mt-auto sm2:my-auto h-full w-full transform overflow-hidden bg-gray-0 dark:bg-gray-50 transition-all flex flex-col">
         <DayDialogContent {...props} />
       </div>
     </BottomSheetMobile>

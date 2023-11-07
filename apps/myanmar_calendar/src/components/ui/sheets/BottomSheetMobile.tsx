@@ -58,7 +58,7 @@ export default function BottomSheetMobile({ isOpen, onClose, children }: { isOpe
             className="fixed inset-0 z-10"
             style={{ backgroundColor: bg }}>
             <MotionDialogPanel
-              className="bg-white absolute bottom-0 w-full rounded-t-xl shadow-lg"
+              className="bg-gray-0 dark:bg-gray-50 absolute bottom-0 w-full rounded-t-xl shadow-lg"
               initial={{ y: h }}
               animate={{ y: 0 }}
               exit={{ y: h }}
