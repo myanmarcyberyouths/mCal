@@ -64,14 +64,20 @@ const reload = process.env.RELOAD_SW === 'true'
 const selfDestroying = process.env.SW_DESTROY === 'true'
 
 if (process.env.SW === 'true') {
+    // @ts-ignore
     pwaOptions.srcDir = 'src'
+    // @ts-ignore
     pwaOptions.filename = claims ? 'claims-sw.ts' : 'prompt-sw.ts'
+    // @ts-ignore
     pwaOptions.strategies = 'injectManifest'
+    // @ts-ignore
     ;(pwaOptions.manifest as Partial<ManifestOptions>).name = 'PWA Inject Manifest'
+    // @ts-ignore
     ;(pwaOptions.manifest as Partial<ManifestOptions>).short_name = 'PWA Inject'
 }
 
 if (claims)
+    // @ts-ignore
     pwaOptions.registerType = 'autoUpdate'
 
 if (reload) {
@@ -80,6 +86,7 @@ if (reload) {
 }
 
 if (selfDestroying)
+    // @ts-ignore
     pwaOptions.selfDestroying = selfDestroying
 
 
@@ -93,6 +100,7 @@ export default defineConfig({
     plugins: [
         react(),
         VitePWA(manifestForPlugin),
+        // @ts-ignore
         replace(replaceOptions),
     ],
     resolve: {

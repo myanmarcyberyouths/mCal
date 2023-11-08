@@ -8,7 +8,7 @@
     "dev-claims": "rimraf dev-dist && DEBUG=vite-plugin-pwa SW_DEV=true CLAIMS=true SW=true vite --force",
     "dev-destroy": "rimraf dev-dist && DEBUG=vite-plugin-pwa SW_DESTROY=true SW_DEV=true vite --force",
     "dev-claims-destroy": "rimraf dev-dist && DEBUG=vite-plugin-pwa SW_DESTROY=true SW_DEV=true CLAIMS=true SW=true vite --force",
-    "build": "DEBUG=vite-plugin-pwa BASE_URL=/ SOURCE_MAP=true vite build",
+    "build": "vite build",
     "start": "vite start"
   },
   "devDependencies": {
