@@ -14,10 +14,19 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
+    "types": [
+      "vite/client",
+      "vite-plugin-pwa/client",
+    ],
     "paths": {
       "@/*": ["src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/components/modals/AddEventDialog"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "src/components/modals/AddEventDialog"
+  ],
   "exclude": ["../../node_modules"]
 }
