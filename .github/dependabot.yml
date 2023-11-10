@@ -8,9 +8,29 @@ updates:
   - package-ecosystem: "npm" # See documentation for possible values
     directory: "/" # Location of package manifests
     schedule:
-      interval: "weekly"
+      interval: "daily"
+    open-pull-requests-limit: 10
+    labels:
+      - "npm dependencies"
+    commit-message:
+      prefix: "[dependabot] npm:"
       
   - package-ecosystem: "cargo" # See documentation for possible values
     directory: "/" # Location of package manifests
     schedule:
+      interval: "daily"
+    open-pull-requests-limit: 10
+    labels:
+      - "cargo dependencies"
+    commit-message:
+      prefix: "[dependabot] cargo:"
+  
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
       interval: "weekly"
+    open-pull-requests-limit: 10
+    labels:
+      - "integrated github actions"
+    commit-message:
+      prefix: "[dependabot] github actions:"
