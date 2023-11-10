@@ -22,9 +22,5 @@ jobs:
         run: gh pr edit "$PR_URL" --add-label "production"
         env:
           PR_URL: ${{github.event.pull_request.html_url}}
-      
-      - name: Add a label for dependencies name
-        run: gh pr edit "$PR_URL" --add-label "${{steps.metadata.outputs.dependency-names}}"
-        env:
-          PR_URL: ${{github.event.pull_request.html_url}}
+  
   
