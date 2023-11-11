@@ -44,14 +44,16 @@ export function CheckListItem({ tagColor, ...props }: React.DetailedHTMLProps<Re
   );
 }
 
-export function CheckListAddButton({ children, className }: { children: React.ReactNode; className?: string }) {
+export function CheckListAddButton({className, children, ...props}:React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>) {
   return (
     <button
-      disabled
+      
       className={cn(
-        "flex w-full items-center justify-center h-[2.25rem] sm2:h-[2rem]  xl:h-[1.85rem] rounded-[0.25rem] cursor-not-allowed text-gray-500 font-medium text-[0.825rem] bg-gray-200/80 hover:bg-gray-200 active:bg-gray-300/80",
+        "flex w-full items-center justify-center h-[2.25rem] sm2:h-[2rem] cursor-pointer xl:h-[1.85rem] rounded-[0.25rem] text-gray-600 font-medium text-[0.825rem] bg-gray-200/80 hover:bg-gray-200 active:bg-gray-300/80",
         className
-      )}>
+      )}
+      {...props}
+      >
       {children}
     </button>
   );

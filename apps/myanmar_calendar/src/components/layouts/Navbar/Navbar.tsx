@@ -10,6 +10,7 @@ import ActiveDateIndicator from "./ActiveDateIndicator";
 import SidebarToggleBtn from "@/components/ui/buttons/SidebarToggleBtn";
 import AppLogo from "@/components/ui/logos/AppLogo";
 import DarkMode from "./DarkMode";
+import SettingTrigger from "./SettingTrigger";
 
 function Navbar() {
   return (
@@ -27,7 +28,8 @@ function Navbar() {
         <div className="flex items-center gap-2 sm3:gap-5 md:pr-4 ml-auto">
           <CalendarSlider />
           <CalendarModeSelectBox />
-          <DarkMode />
+          <SettingTrigger />
+          {/* <DarkMode /> */}
         </div>
       </div>
     </header>

@@ -48,18 +48,18 @@ export const LANGUAGES = {
 } as const;
 
 export const MIN_WIDTHS = {
-  sm: 440, // ts default
+  sm: 440, // tw default
   sm1: 540,
   sm2: 640,
-  md: 768, // ts default
+  md: 768, // tw default
   md1: 800,
   md2: 920,
   md3: 980,
-  lg: 1024, // ts default
+  lg: 1024, // tw default
   lg1: 1064,
   lg2: 1165,
   lg3: 1220,
-  xl: 1280, // ts default
+  xl: 1280, // tw default
   xl1: 1380,
   xl2: 1450,
   xl3: 1536,

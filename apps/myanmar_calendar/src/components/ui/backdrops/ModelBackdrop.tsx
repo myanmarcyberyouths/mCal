@@ -17,7 +17,7 @@ function ModelBackdrop({ show, opacity = "0.4" }: { show?: boolean; opacity?: st
         enter="ease-out duration-150"
         leave="ease-in duration-200">
         <div
-          className={cn("fixed inset-0 bg-black")}
+          className={cn(" fixed z-[9] inset-0 bg-black")}
           style={{ backgroundColor: `rgba(0,0,0,${opacity})` }}
         />
       </Transition.Child>

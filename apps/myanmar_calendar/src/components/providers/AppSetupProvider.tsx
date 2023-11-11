@@ -7,11 +7,7 @@ function AppSetupProvider({ children }: { children: React.ReactNode }) {
   useSetupCalendarState();
   useSetupApp();
 
-  return (
-    <>
-      <ModalsProvider>{children}</ModalsProvider>
-    </>
-  );
+  return <ModalsProvider>{children}</ModalsProvider>;
 }
 
 export default AppSetupProvider;

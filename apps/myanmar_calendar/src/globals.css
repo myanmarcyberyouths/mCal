@@ -39,7 +39,7 @@
     --gray-700: 0 0% 83%;
     --gray-600: 0 0% 70%;
     --gray-500: 0 0% 60%;
-    --gray-450: 0 0% 51%;
+    --gray-450: 0 0% 52%;
     --gray-400: 0 0% 50%;
     --gray-300: 0 0% 40%;
     --gray-200: 0 0% 30%;
@@ -73,11 +73,11 @@
     overflow: hidden;
   }
 
-  button {
-    outline: none;
-  }
-
   li {
     list-style: none;
+  }
+
+  button {
+    outline: none;
   }
 }
