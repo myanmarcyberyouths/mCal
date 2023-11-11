@@ -6,7 +6,7 @@ Tai, and Karen, ensuring a user-friendly experience for individuals from diverse
 > We do provide npm package with the most curated interface for developers. Please
 > check [here](https://www.npmjs.com/package/burma-calendar).
 
-![Myanmar Calendar Demo Image](./exmaples/preview.png)
+![Myanmar Calendar Demo Image](./examples/preview.png)
 
 ## Features
 
@@ -28,7 +28,7 @@ Tai, and Karen, ensuring a user-friendly experience for individuals from diverse
 
 ### Day Detail View
 
-![Myanmar Calendar Demo Image](./exmaples/day_detail_view.png)
+![Myanmar Calendar Demo Image](./examples/day_detail_view.png)
 
 ## Getting Started
 
