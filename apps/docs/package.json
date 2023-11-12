@@ -7,7 +7,7 @@
     "build": "nuxt build",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "lint": "eslint . --fix"
+    "lint": "eslint . --ext .ts --fix"
   },
   "devDependencies": {
     "@nuxt-themes/docus": "latest",

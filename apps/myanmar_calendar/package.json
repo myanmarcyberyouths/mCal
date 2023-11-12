@@ -10,7 +10,7 @@
     "dev-claims-destroy": "rimraf dev-dist && DEBUG=vite-plugin-pwa SW_DESTROY=true SW_DEV=true CLAIMS=true SW=true vite --force",
     "build": "vite build",
     "start": "vite start",
-    "lint": "eslint ./src --fix"
+    "lint": "eslint . --ext .ts --fix"
   },
   "devDependencies": {
     "@rollup/plugin-replace": "^5.0.5",
