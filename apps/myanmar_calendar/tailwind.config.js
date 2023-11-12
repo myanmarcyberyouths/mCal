@@ -22,8 +22,11 @@ module.exports = {
         gray: {
           0: "hsl(var(--gray-0))",
           50: "hsl(var(--gray-50))",
+          75: "hsl(var(--gray-75))",
           100: "hsl(var(--gray-100))",
+          150: "hsl(var(--gray-150))",
           200: "hsl(var(--gray-200))",
+          250: "hsl(var(--gray-250))",
           300: "hsl(var(--gray-300))",
           450: "hsl(var(--gray-450))",
           400: "hsl(var(--gray-400))",
@@ -39,8 +42,8 @@ module.exports = {
         "nav-h": "4.2rem",
         "sidebar-w": "17rem",
         "input-sm": "2rem",
-        "input-md": "2.5rem",
-        "input-lg": "3rem",
+        "input-md": "2.35rem",
+        "input-lg": "2.75rem",
       },
       screens: {
         sm: "440px", // tw default
@@ -67,7 +70,9 @@ module.exports = {
       },
       boxShadow: {
         model: "0 10px 18px 3px rgba(100,100,100,.14), 0 9px 16px 8px rgba(100,100,100,.07), 0 11px 15px -7px rgba(100,100,100,.2)",
-        "model-dark": "0 2px 20px 10px rgba(20,20,20,0.8)",
+        "model-dark":
+          "0 10px 15px -3px rgba(0, 0, 0, 0.2),\
+    0 4px 6px -2px rgba(0, 0, 0, 0.2)",
       },
       keyframes: {
         "accordion-down": {

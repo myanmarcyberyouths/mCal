@@ -1,4 +1,11 @@
 import { endOfMinute } from "date-fns";
+import { utcToZonedTime } from "date-fns-tz";
+
+export function getLocalTime(date?: Date) {
+  const localTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+  return utcToZonedTime(date ? new Date(date) : new Date(), "Asia/Tokyo");
+}
 
 export type TDate = string | Date;
 export const toDate = (dateString: TDate) => {
@@ -29,4 +36,14 @@ export function calculateEasterDate(year) {
   const day = ((h + l - 7 * m + 114) % 31) + 1;
 
   return new Date(year, month - 1, day);
+}
+
+export function getWeekDayIndex(weekdayName: string): 0 | 1 | 2 | 3 | 4 | 5 | 6 {
+  const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  const index = weekdays.findIndex((day) => day.toLowerCase() === weekdayName.toLowerCase() || day.substring(0, 3).toLocaleLowerCase() === weekdayName.toLocaleLowerCase());
+
+  if (index === -1) {
+    throw new Error(`Invalid weekday name: ${weekdayName}`);
+  }
+  return index as 0 | 1 | 2 | 3 | 4 | 5 | 6;
 }

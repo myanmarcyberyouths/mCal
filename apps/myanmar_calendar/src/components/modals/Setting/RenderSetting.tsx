@@ -4,12 +4,19 @@ import { useSearchParams } from "react-router-dom";
 import { Dialog, Transition } from "@headlessui/react";
 import ModelBackdrop from "@/components/ui/backdrops/ModelBackdrop";
 import { PARAMS } from "@/type-models/utils.type";
+import useKeyPress from "@/hooks/useKeyPress";
 
 function RenderSetting() {
   const [searchParams, setSearchParams] = useSearchParams();
   const settingParam = searchParams.get(PARAMS.setting);
 
-  console.log(settingParam);
+  const handlCloseSetting = () => {
+    searchParams.delete(PARAMS.setting);
+    setSearchParams(searchParams);
+  };
+
+  useKeyPress("Escape", handlCloseSetting);
+
   return (
     <Transition
       appear
@@ -17,13 +24,11 @@ function RenderSetting() {
       <Dialog
         as="div"
         className={"relative z-10"}
-        onClose={() => {
-          searchParams.delete(PARAMS.setting);
-          setSearchParams(searchParams);
-        }}>
+        onClose={() => {}}>
         <ModelBackdrop
           show={settingParam ? true : false}
-          opacity="0.2"
+          opacity="opacity-20 dark:opacity-40"
+          onClick={handlCloseSetting}
         />
         <Transition.Child
           as={Fragment}
@@ -33,7 +38,7 @@ function RenderSetting() {
           leaveTo={"opacity-0  translate-y-5"}
           enter={" duration-200"}
           leave={"ease-in duration-150"}>
-          <Dialog.Panel className={"fixed z-10 inset-0 m-auto w-[90%] h-[90%] max-w-[55rem] max-h-[40rem] rounded-lg bg-gray-0 shadow-model dark:shadow-model-dark"}>
+          <Dialog.Panel className={"fixed z-10 inset-0 m-auto w-[90%] h-[90%] max-w-[55rem] max-h-[40rem] rounded-lg bg-gray-0 shadow-model dark:shadow-model-dark dark:bg-gray-100"}>
             <Setting />
           </Dialog.Panel>
         </Transition.Child>

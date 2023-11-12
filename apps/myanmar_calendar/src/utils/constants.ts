@@ -8,10 +8,14 @@ export const WEEK_DAYS = {
   sat: { long: "saturday", short: "sat" },
 };
 
-export const CALENDAR_MODE = {
-  W: "week",
-  M: "month",
-  Y: "year",
+export const WEEK_INDEX = {
+  sunday: 0,
+  monday: 1,
+  tuesday: 2,
+  wednesday: 3,
+  thursday: 4,
+  friday: 5,
+  saturday: 6,
 };
 
 export const LANGUAGES = {
@@ -84,3 +88,5 @@ export const ASTRO_EVENT_LIST = [
   "nakhat",
   "nagahle",
 ];
+
+export const TIME_ZONES = [];

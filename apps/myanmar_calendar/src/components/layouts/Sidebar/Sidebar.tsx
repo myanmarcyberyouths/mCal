@@ -55,7 +55,7 @@ function Sidebar() {
       {enterMobileMode && (
         <ModelBackdrop
           show={sidebarOpen}
-          opacity="0.3"
+          opacity="opacity-30"
         />
       )}
     </>

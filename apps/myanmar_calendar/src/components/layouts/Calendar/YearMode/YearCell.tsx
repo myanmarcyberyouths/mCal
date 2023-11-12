@@ -2,8 +2,8 @@ import { cn } from "@/lib/utils";
 import { RootState } from "@/store";
 import { setActiveDate, setCalendarMode } from "@/store/calendarState";
 import { setDayDialongTargetDay } from "@/store/modelControlState";
-import { CALENDAR_MODE_ENUM } from "@/type-models/calendarState.type";
-import { CALENDAR_MODE, MIN_WIDTHS, WEEK_DAYS } from "@/utils/constants";
+import { CALENDAR_MODE } from "@/type-models/calendarState.type";
+import { MIN_WIDTHS, WEEK_DAYS } from "@/utils/constants";
 import { eachDayOfInterval, endOfMonth, endOfWeek, format, isSameMonth, isThisMonth, isToday, nextDay, startOfMonth, startOfWeek } from "date-fns";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -23,7 +23,7 @@ function YearCell({ month }: { month: Date }) {
   // const monthIsThisMonth = isThisMonth(month);
 
   const handleViewMonth = () => {
-    dispatch(setCalendarMode(CALENDAR_MODE_ENUM.MONTH));
+    dispatch(setCalendarMode(CALENDAR_MODE.MONTH));
     dispatch(setActiveDate(month.toISOString()));
   };
 

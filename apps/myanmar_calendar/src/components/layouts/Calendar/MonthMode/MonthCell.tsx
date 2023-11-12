@@ -41,7 +41,7 @@ function MonthCell({ day, calendarState }: MonthCellT) {
     // min-h-[8.5rem]
     <div
       className={cn(
-        "border-b border-r flex gap-1 flex-col items-stretch border-gray-200 p-2 py-[0.25rem] pb-[0.3rem]  min-h-[8.5rem] hover:bg-gray-50",
+        "border-b border-r flex gap-1 flex-col items-stretch border-gray-200 dark:border-gray-100 p-2 py-[0.25rem] pb-[0.3rem]  min-h-[8.5rem] hover:bg-gray-50",
         dayIsInEndWeek ? "min-h-[8.65rem] pb-[0.45rem]" : ""
       )}
       onClick={() => {

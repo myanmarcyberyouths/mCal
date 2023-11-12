@@ -54,7 +54,7 @@ const DayDialogContent = ({ onClose, selectedDay }: DayDialogContentProps) => {
   return (
     <>
       {/* ------ Header ------ */}
-      <div className=" h-[3.25rem] sm2:h-[3rem] sm2:flex hidden items-center justify-between px-5 sm2:px-3 bg-gray-50 border-b">
+      <div className=" h-[3.25rem] sm2:h-[3rem] sm2:flex hidden items-center justify-between px-5 sm2:px-3 bg-gray-50 dark:bg-gray-100 border-b">
         <div className="flex items-center gap-1">
           <button
             onClick={() => {
@@ -100,9 +100,9 @@ const DayDialogContent = ({ onClose, selectedDay }: DayDialogContentProps) => {
           <time
             dateTime={format(selectedDay, "yyyy-MM-dd")}
             className="flex items-center gap-2 h-[2.5rem]">
-            <span className="text-[1.25rem] text-gray-500">{format(selectedDay, "iii,")}</span>
+            <span className="text-[1.25rem] text-gray-500 dark:text-gray-700">{format(selectedDay, "iii,")}</span>
             <span className="text-[1.25rem] font-semibold text-rose-500">{format(selectedDay, "d ")}</span>
-            <span className="text-[1.25rem] text-gray-500 ">{format(selectedDay, "MMMM yyyy")}</span>
+            <span className="text-[1.25rem] text-gray-500 dark:text-gray-700 ">{format(selectedDay, "MMMM yyyy")}</span>
           </time>
           {dayIsToday && <span className=" text-[0.85rem]  text-green-600 border border-green-400 rounded-md px-[0.35rem] py-[0.15rem]">Today</span>}
         </div>
@@ -112,9 +112,9 @@ const DayDialogContent = ({ onClose, selectedDay }: DayDialogContentProps) => {
             dateTime={format(selectedDay, "yyyy-MM-dd")}
             className=" text-gray-700 flex flex-col">
             <span className="text-[3rem] leading-[4rem] mb-4 flex items-center text-rose-500 font-semibold pl-[0.1rem]">{engToMyanmarNumber(mmDate.date)}</span>
-            <span className="mb-1 font-semibold text-gray-500">{mmDate.day}</span>
+            <span className="mb-1 font-semibold text-gray-500 dark:text-gray-700">{mmDate.day}</span>
             <span>
-              <span className=" text-gray-500">{engToMyanmarNumber(mmDate.year)}</span>
+              <span className=" text-gray-500 dark:text-gray-700">{engToMyanmarNumber(mmDate.year)}</span>
               {" ခုနှစ်၊ "}
               <span>
                 {mmDate.month}
@@ -141,7 +141,7 @@ const DayDialogContent = ({ onClose, selectedDay }: DayDialogContentProps) => {
                 return (
                   <span
                     key={event}
-                    className="flex-shrink-0 p-2 pb-[0.285rem] pt-[0.19rem] border border-rose-300 text-[0.95rem] sm2:text-sm text-rose-600 rounded-sm">
+                    className="flex-shrink-0 p-2 pb-[0.285rem] pt-[0.19rem] border border-rose-500/50 text-[0.95rem] sm2:text-sm text-rose-600 dark:text-rose-500 rounded-sm">
                     {readEvent}
                   </span>
                 );
@@ -151,7 +151,7 @@ const DayDialogContent = ({ onClose, selectedDay }: DayDialogContentProps) => {
         )}
         {/* Events */}
         <div className="flex-1 py-2 mt-5 border-t border-gray-200">
-          <h5 className="font-medium text-[1.05rem] text-gray-500">Events</h5>
+          <h5 className="font-medium text-[1.05rem] text-gray-500 dark:text-gray-700">Events</h5>
           <ul className="mt-2 space-y-[0.25rem]">
             {checkedEvents.map((eventCalendar) => {
               return (

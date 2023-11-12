@@ -9,17 +9,24 @@ import { cn } from "@/lib/utils";
 import { setDayDialongTargetDay } from "@/store/modelControlState";
 import WeekColumn from "./WeekColumn";
 import WeekColumnHead from "./WeekColumnHead";
+import { getWeekDayIndex } from "@/utils/dateTimeHelper";
 
 function WeekMode() {
   const dispatch = useDispatch();
   const calendarState = useSelector((state: RootState) => state.calendarState);
-  const { activeDate } = calendarState;
+  const { activeDate, weekStart } = calendarState;
+  let activeDateObj = new Date(activeDate);
 
-  const activeDateObj = new Date(activeDate);
+  const options: {
+    locale?: Locale;
+    weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
+  } = {
+    weekStartsOn: getWeekDayIndex(weekStart),
+  };
 
   const days = eachDayOfInterval({
-    start: startOfWeek(activeDateObj),
-    end: endOfWeek(activeDateObj),
+    start: startOfWeek(activeDateObj, options),
+    end: endOfWeek(activeDateObj, options),
   });
 
   // Scroll Events Handling

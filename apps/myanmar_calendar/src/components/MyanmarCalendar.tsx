@@ -7,10 +7,10 @@ import FullMoonIcon from "../assets/icons/FullMoonIcon";
 import { classNames } from "@/utils/classNames";
 import LanguageMenu, { Language } from "./LanguageMenu";
 // import DayDialog from "./modals/DayDialog(Depre)";
-import { getLocalTime } from "@/utils/helpers";
 import useKeyPress from "../hooks/useKeyPress";
 import { ContextMenu, ContextMenuContent, ContextMenuItem, ContextMenuShortcut, ContextMenuTrigger } from "@/components/ui/menus/context-menu";
 import RenderDayDialog2 from "./modals/DayDialog/RenderDayDialog";
+import { getLocalTime } from "@/utils/dateTimeHelper";
 
 const colStartClasses = ["", "col-start-2", "col-start-3", "col-start-4", "col-start-5", "col-start-6", "col-start-7"];
 

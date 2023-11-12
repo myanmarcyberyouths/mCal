@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 import { Transition } from "@headlessui/react";
 import React, { Fragment } from "react";
 
-function ModelBackdrop({ show, opacity = "0.4" }: { show?: boolean; opacity?: string }) {
+function ModelBackdrop({ show, opacity = "opacity-50", onClick }: { show?: boolean; opacity?: string; onClick?: () => void }) {
   return (
     <Transition
       as={Fragment}
@@ -17,8 +17,8 @@ function ModelBackdrop({ show, opacity = "0.4" }: { show?: boolean; opacity?: st
         enter="ease-out duration-150"
         leave="ease-in duration-200">
         <div
-          className={cn(" fixed z-[9] inset-0 bg-black")}
-          style={{ backgroundColor: `rgba(0,0,0,${opacity})` }}
+          className={cn(" fixed z-[9] inset-0 bg-black opacity-50", opacity)}
+          onClick={onClick}
         />
       </Transition.Child>
     </Transition>

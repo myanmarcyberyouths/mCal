@@ -8,9 +8,9 @@ import YearMode from "./YearMode/YearMode";
 import { cn } from "@/lib/utils";
 
 const calendar_modes = {
-  W: <WeekMode />,
-  M: <MonthMode />,
-  Y: <YearMode />,
+  week: <WeekMode />,
+  month: <MonthMode />,
+  year: <YearMode />,
 };
 
 function Calendar() {

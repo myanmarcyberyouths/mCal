@@ -1,7 +1,7 @@
-export enum CALENDAR_MODE_ENUM {
-  WEEK = "W",
-  MONTH = "M",
-  YEAR = "Y",
+export enum CALENDAR_MODE {
+  WEEK = "week",
+  MONTH = "month",
+  YEAR = "year",
 }
 
 export enum LANGUAGE_ENUM {

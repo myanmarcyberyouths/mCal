@@ -1,5 +1,5 @@
 import { RootState } from "@/store";
-import { CALENDAR_MODE_ENUM } from "@/type-models/calendarState.type";
+import { CALENDAR_MODE } from "@/type-models/calendarState.type";
 import { engToMyanmarNumber } from "@/utils/engToMyanmarNumber";
 import { englishToMyanmarDate, i18n } from "burma-calendar";
 import { add, format, startOfMonth } from "date-fns";
@@ -20,7 +20,7 @@ function ActiveDateIndicator() {
           <time
             className="hidden sm2:inline-block "
             dateTime={format(activeDateObj, "yyyy-MM-dd")}>
-            {format(activeDateObj, `${calendarMode === CALENDAR_MODE_ENUM.YEAR ? "yyyy" : "MMMM yyyy"}`)}
+            {format(activeDateObj, `${calendarMode === CALENDAR_MODE.YEAR ? "yyyy" : "MMMM yyyy"}`)}
           </time>
         </h2>
         <span
@@ -32,7 +32,7 @@ function ActiveDateIndicator() {
             className="">
             <span className="hidden md3:inline">{i18n("Myanmar Year", "english", calendarLanguage as any)}</span>{" "}
             {i18n(engToMyanmarNumber(englishToMyanmarDate(firstDayCurrentMonth).year), "myanmar", calendarLanguage as any)} {i18n("Ku", "english", calendarLanguage as any)}{" "}
-            {calendarMode !== CALENDAR_MODE_ENUM.YEAR && (
+            {calendarMode !== CALENDAR_MODE.YEAR && (
               <>
                 {i18n(englishToMyanmarDate(firstDayCurrentMonth).month, "myanmar", calendarLanguage as any)}
                 {" - "}
