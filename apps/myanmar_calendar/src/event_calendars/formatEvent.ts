@@ -7,7 +7,10 @@ export function getDayEvents(date: Date, eventCalendars: EventCalendarItem[]) {
   return eventCalendars.map((calendar) => {
     const currentEvent = EVENTS[calendar.id];
 
-    const gregorianEvents = readGregorianEvents(date, currentEvent?.gregorianBased);
+    const gregorianEvents = readGregorianEvents(
+      date,
+      currentEvent?.gregorianBased,
+    );
     const mmEvents = readMmEvents(date, currentEvent?.mmBased);
     const customEvents = readCustomEvents(date, currentEvent?.custom);
 
@@ -51,7 +54,8 @@ function readMmEvents(date: Date, eventObj?: Record<string, string>) {
   let mmDate = englishToMyanmarDate(date);
 
   const moonAlignedDay = mmDate.month + mmDate.moonPhase;
-  const noneMoonAlignedDay = mmDate.month + mmDate.moonPhase + " " + mmDate.date;
+  const noneMoonAlignedDay =
+    mmDate.month + mmDate.moonPhase + " " + mmDate.date;
 
   if (eventObj[moonAlignedDay]) events.push(eventObj[moonAlignedDay]);
   if (eventObj[noneMoonAlignedDay]) events.push(eventObj[noneMoonAlignedDay]);

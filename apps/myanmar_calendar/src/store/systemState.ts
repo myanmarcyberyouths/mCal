@@ -19,7 +19,10 @@ export const systemSlice = createSlice({
   name: "calendarSlice",
   initialState,
   reducers: {
-    setSidebarOpenState: (state, { payload }: PayloadAction<boolean | undefined>) => {
+    setSidebarOpenState: (
+      state,
+      { payload }: PayloadAction<boolean | undefined>,
+    ) => {
       state.sidebarOpen = payload === undefined ? !state.sidebarOpen : payload;
     },
     setSystemLanguage: (state, { payload }: PayloadAction<LANGUAGE_ENUM>) => {
@@ -31,6 +34,7 @@ export const systemSlice = createSlice({
   },
 });
 
-export const { setSidebarOpenState, setSystemLanguage, setEnterMobileMode } = systemSlice.actions;
+export const { setSidebarOpenState, setSystemLanguage, setEnterMobileMode } =
+  systemSlice.actions;
 
 export default systemSlice.reducer;

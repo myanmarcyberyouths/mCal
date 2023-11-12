@@ -5,7 +5,10 @@ import { useDispatch } from "react-redux";
 import { setEnterMobileMode, setSidebarOpenState } from "@/store/systemState";
 import { useReadLocalStorage } from "./useReadLocalStorage";
 import { LOCAL_STORAGE_KEYS } from "@/type-models/utils.type";
-import { CellPreferanceT, EventCalendarItem } from "@/type-models/calendarState.type";
+import {
+  CellPreferanceT,
+  EventCalendarItem,
+} from "@/type-models/calendarState.type";
 import { setCalendarShowState, setEventCalendars } from "@/store/calendarState";
 import { CALENDAR_SHOW_DEFAULT } from "@/utils/defaults";
 import { EVENT_CALENDARS } from "@/event_calendars/event_calendars";
@@ -28,18 +31,22 @@ function useSetupApp() {
       } else {
         dispatch(setSidebarOpenState(true));
       }
-    }, [dispatch])
+    }, [dispatch]),
   );
 
   // Setting event calendar state with LocalStorage data
-  const eventCalendars = useReadLocalStorage<EventCalendarItem[]>(LOCAL_STORAGE_KEYS.eventCalendars);
+  const eventCalendars = useReadLocalStorage<EventCalendarItem[]>(
+    LOCAL_STORAGE_KEYS.eventCalendars,
+  );
   useEffect(() => {
     console.log(eventCalendars);
     dispatch(setEventCalendars(eventCalendars || EVENT_CALENDARS));
   }, [dispatch, eventCalendars]);
 
   // Setting calendar show state with LocalStorage data
-  const calendarShow = useReadLocalStorage<CellPreferanceT>(LOCAL_STORAGE_KEYS.calendarShow);
+  const calendarShow = useReadLocalStorage<CellPreferanceT>(
+    LOCAL_STORAGE_KEYS.calendarShow,
+  );
   useEffect(() => {
     dispatch(setCalendarShowState(calendarShow || CALENDAR_SHOW_DEFAULT));
   }, [dispatch, calendarShow]);

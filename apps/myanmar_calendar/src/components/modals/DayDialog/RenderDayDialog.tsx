@@ -11,8 +11,12 @@ import DayDialogMobile from "./DayDialogMobile";
 function RenderDayDialog() {
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
-  const dayDialogTargetDay = useSelector((state: RootState) => state.modelControlState.dayDialogTargetDay);
-  const enterMobileMode = useSelector((state: RootState) => state.systemState.enterMobileMode);
+  const dayDialogTargetDay = useSelector(
+    (state: RootState) => state.modelControlState.dayDialogTargetDay,
+  );
+  const enterMobileMode = useSelector(
+    (state: RootState) => state.systemState.enterMobileMode,
+  );
   const timeoutRef = useRef<any>(null);
   useEffect(() => {
     if (dayDialogTargetDay) setIsOpen(true);
@@ -37,9 +41,7 @@ function RenderDayDialog() {
       />
     );
   return (
-    <Transition
-      appear
-      show={isOpen}>
+    <Transition appear show={isOpen}>
       {/* {enterMobileMode && (
         <ModelBackdrop
           show={isOpen}

@@ -7,12 +7,10 @@ import BottomSheetMobile from "@/components/ui/sheets/BottomSheetMobile";
 function DayDialogMobile(
   props: DayDialogProps & {
     open: boolean;
-  }
+  },
 ) {
   return (
-    <BottomSheetMobile
-      isOpen={props.open}
-      onClose={props.onClose}>
+    <BottomSheetMobile isOpen={props.open} onClose={props.onClose}>
       <div className="mx-auto mt-auto sm2:my-auto h-full w-full transform overflow-hidden bg-gray-0 dark:bg-gray-50 transition-all flex flex-col">
         <DayDialogContent {...props} />
       </div>

@@ -10,13 +10,15 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "format": "prettier --write \"**/*.{ts,tsx,md,html}\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "husky": "^8.0.3",
+    "prettier": "^3.0.3",
     "turbo": "latest"
   }
 }

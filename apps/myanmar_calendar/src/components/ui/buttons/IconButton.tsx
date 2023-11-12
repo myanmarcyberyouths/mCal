@@ -1,10 +1,13 @@
 import React from "react";
 
-function IconButton(props: React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>) {
+function IconButton(
+  props: React.DetailedHTMLProps<
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
+    HTMLButtonElement
+  >,
+) {
   return (
-    <button
-      {...props}
-      className="">
+    <button {...props} className="">
       IconButton
     </button>
   );

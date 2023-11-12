@@ -1,7 +1,13 @@
 import { RootState } from "@/store";
 import { WEEK_DAYS } from "@/utils/constants";
 import { getLocalTime } from "@/utils/helpers";
-import { eachDayOfInterval, endOfMonth, endOfWeek, startOfMonth, startOfWeek } from "date-fns";
+import {
+  eachDayOfInterval,
+  endOfMonth,
+  endOfWeek,
+  startOfMonth,
+  startOfWeek,
+} from "date-fns";
 import React, { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import MonthCell from "./MonthCell";
@@ -20,18 +26,21 @@ function MonthMode() {
   // useDayEndInterval(() => console.log("day end"));
 
   return (
-    <div
-      aria-label="Calendar month view"
-      className="h-full">
+    <div aria-label="Calendar month view" className="h-full">
       <div className="grid grid-cols-7 sticky top-0 h-[2.25rem] border-gray-200 bg-gray-0">
         {Object.values(WEEK_DAYS).map((weekday) => (
           <div
             key={weekday.short}
             className={cn(
               "flex justify-center items-stretch border-r border-gray-200 h-full capitalize font-medium text-[0.85rem] px-2 py-[0.35rem] pb-[0.25rem]",
-              weekday.short === "sun" || weekday.short === "sat" ? "text-red-500" : "text-gray-450"
-            )}>
-            <span className=" flex justify-center items-center rounded-md bg-gray-100 w-full h-full">{weekday.short}</span>
+              weekday.short === "sun" || weekday.short === "sat"
+                ? "text-red-500"
+                : "text-gray-450",
+            )}
+          >
+            <span className=" flex justify-center items-center rounded-md bg-gray-100 w-full h-full">
+              {weekday.short}
+            </span>
           </div>
         ))}
       </div>

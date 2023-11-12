@@ -12,7 +12,11 @@ interface WeekColumnPropsI {
 function WeekColumn({ day, calendarState }: WeekColumnPropsI) {
   const { show } = calendarState;
   const myanmar_calendar = englishToMyanmarDate(day);
-  const mmDate = i18n(engToMyanmarNumber(myanmar_calendar.date), "myanmar", "myanmar" as any);
+  const mmDate = i18n(
+    engToMyanmarNumber(myanmar_calendar.date),
+    "myanmar",
+    "myanmar" as any,
+  );
 
   return (
     <div className="min-h-[calc(100vh-calc(6.8rem+theme(spacing.nav-h)))] border-r border-gray-200 last:border-none last:pr-1">
@@ -23,15 +27,19 @@ function WeekColumn({ day, calendarState }: WeekColumnPropsI) {
         </span>
       </div> */}
       <div className="p-2">
-        {show.astroEvent && (myanmar_calendar.pyathada || myanmar_calendar.yatyaza) && (
-          <span
-            className={cn(
-              "h-[2.3rem] w-full px-2 flex items-center justify-center text-[0.825rem] font-semibold rounded-md bg-gray-50",
-              myanmar_calendar.pyathada ? "text-red-400 bg-red-400/[0.15]" : "text-blue-500 bg-blue-500/[0.15]"
-            )}>
-            {myanmar_calendar.pyathada || myanmar_calendar.yatyaza}
-          </span>
-        )}
+        {show.astroEvent &&
+          (myanmar_calendar.pyathada || myanmar_calendar.yatyaza) && (
+            <span
+              className={cn(
+                "h-[2.3rem] w-full px-2 flex items-center justify-center text-[0.825rem] font-semibold rounded-md bg-gray-50",
+                myanmar_calendar.pyathada
+                  ? "text-red-400 bg-red-400/[0.15]"
+                  : "text-blue-500 bg-blue-500/[0.15]",
+              )}
+            >
+              {myanmar_calendar.pyathada || myanmar_calendar.yatyaza}
+            </span>
+          )}
       </div>
     </div>
   );

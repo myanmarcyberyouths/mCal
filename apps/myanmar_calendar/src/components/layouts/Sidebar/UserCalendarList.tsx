@@ -1,4 +1,8 @@
-import { CheckList, CheckListAddButton, CheckListItem } from "@/components/ui/lists/CheckList";
+import {
+  CheckList,
+  CheckListAddButton,
+  CheckListItem,
+} from "@/components/ui/lists/CheckList";
 import { RootState } from "@/store";
 import { updateUserCalendars } from "@/store/calendarState";
 
@@ -9,14 +13,19 @@ import { useDispatch, useSelector } from "react-redux";
 
 function UserCalendarList() {
   const dispatch = useDispatch();
-  const userCalendars = useSelector((state: RootState) => state.calendarState.userCalendars);
+  const userCalendars = useSelector(
+    (state: RootState) => state.calendarState.userCalendars,
+  );
 
-  const handleCheck = (event: React.ChangeEvent<HTMLInputElement>, keyName: string) => {
+  const handleCheck = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    keyName: string,
+  ) => {
     dispatch(
       updateUserCalendars({
         id: keyName,
         checked: event.target.checked,
-      })
+      }),
     );
   };
 

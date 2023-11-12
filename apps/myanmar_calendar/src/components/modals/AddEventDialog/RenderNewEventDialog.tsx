@@ -7,7 +7,9 @@ import NewEventDialog from "./NewEventDialog";
 function RenderNewEventDialog() {
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
-  const newEventDialogTargetDay = useSelector((state: RootState) => state.modelControlState.newEventDialogTargetDay);
+  const newEventDialogTargetDay = useSelector(
+    (state: RootState) => state.modelControlState.newEventDialogTargetDay,
+  );
 
   const timeoutRef = useRef<any>(null);
   useEffect(() => {

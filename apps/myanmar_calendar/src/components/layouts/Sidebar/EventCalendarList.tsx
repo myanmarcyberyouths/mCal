@@ -1,4 +1,8 @@
-import { CheckList, CheckListAddButton, CheckListItem } from "@/components/ui/lists/CheckList";
+import {
+  CheckList,
+  CheckListAddButton,
+  CheckListItem,
+} from "@/components/ui/lists/CheckList";
 import { RootState } from "@/store";
 import { updateEventCalendars } from "@/store/calendarState";
 import { LOCAL_STORAGE_KEYS } from "@/type-models/utils.type";
@@ -12,14 +16,16 @@ import { useDispatch, useSelector } from "react-redux";
 
 function EventCalendarList() {
   const dispatch = useDispatch();
-  const eventCalendars = useSelector((state: RootState) => state.calendarState.eventCalendars);
+  const eventCalendars = useSelector(
+    (state: RootState) => state.calendarState.eventCalendars,
+  );
 
   const handleCheck = (checked, id: string) => {
     dispatch(
       updateEventCalendars({
         id,
         checked,
-      })
+      }),
     );
 
     setLocalStorage(
@@ -27,7 +33,7 @@ function EventCalendarList() {
       eventCalendars.map((calendar) => {
         if (calendar.id === id) return { ...calendar, checked };
         return calendar;
-      })
+      }),
     );
   };
 

@@ -1,15 +1,60 @@
 // @ts-nocheck
 
 // const data
-const monthsMM = ["ပဝါဆို", "တန်ခူး", "ကဆုန်", "နယုန်", "ဝါဆို", "ဝါခေါင်", "တော်သလင်း", "သီတင်းကျွတ်", "တန်ဆောင်မုန်း", "နတ်တော်", "ပြာသို", "တပို့တွဲ", "တပေါင်း"];
-const monthsEN = ["", "ဇန်နဝါရီ", "ဖေဖော်ဝါရီ", "မတ်", "ဧပြီ", "မေ", "ဇွန်", "ဇူလိုင်", "သြဂုတ်", "စက်တင်ဘာ", "အောက်တိုဘာ", "နိုဝင်ဘာ", "ဒီဇင်ဘာ"];
+const monthsMM = [
+  "ပဝါဆို",
+  "တန်ခူး",
+  "ကဆုန်",
+  "နယုန်",
+  "ဝါဆို",
+  "ဝါခေါင်",
+  "တော်သလင်း",
+  "သီတင်းကျွတ်",
+  "တန်ဆောင်မုန်း",
+  "နတ်တော်",
+  "ပြာသို",
+  "တပို့တွဲ",
+  "တပေါင်း",
+];
+const monthsEN = [
+  "",
+  "ဇန်နဝါရီ",
+  "ဖေဖော်ဝါရီ",
+  "မတ်",
+  "ဧပြီ",
+  "မေ",
+  "ဇွန်",
+  "ဇူလိုင်",
+  "သြဂုတ်",
+  "စက်တင်ဘာ",
+  "အောက်တိုဘာ",
+  "နိုဝင်ဘာ",
+  "ဒီဇင်ဘာ",
+];
 const mpDefinations = ["လဆန်း", "လပြည့်", "လဆုတ်", "လကွယ်"];
-const weekDay = ["စနေ", "တနင်္ဂ‌နွေ", "တနင်္လာ", "အင်္ဂါ", "ဗုဒ္ဓဟူး", "ကြာသာပတေး", "သောကြာ"];
+const weekDay = [
+  "စနေ",
+  "တနင်္ဂ‌နွေ",
+  "တနင်္လာ",
+  "အင်္ဂါ",
+  "ဗုဒ္ဓဟူး",
+  "ကြာသာပတေး",
+  "သောကြာ",
+];
 const nagahleDefination = ["အနောက်", "မြောက်", "အရှေ့", "တောင်"];
-const mahaboteDefination = ["ဘင်္ဂ", "အထွန်း", "ရာဇာ", "အဓိပတိ", "မရဏ", "သိုက်", "ပုတိ"];
+const mahaboteDefination = [
+  "ဘင်္ဂ",
+  "အထွန်း",
+  "ရာဇာ",
+  "အဓိပတိ",
+  "မရဏ",
+  "သိုက်",
+  "ပုတိ",
+];
 const nakhatDefination = ["ဘီလူး", "နတ်", "လူ"];
 const dayDefination = {
-  yatyaza: "ကိစ္စ အမျိုးမျိုး ကို ရက်ရာဇာမှာ ပြုလုပ် ဆောင်ရွက်ပါက အောင်မြင်နိုင်တယ် လို့ ဆိုပါတယ်။ မင်္ဂလာ ကိစ္စတွေ ကို ရက်ရာဇာမှာ အဓိက ထားပြီး ပြုလုပ်ကြပါတယ်။",
+  yatyaza:
+    "ကိစ္စ အမျိုးမျိုး ကို ရက်ရာဇာမှာ ပြုလုပ် ဆောင်ရွက်ပါက အောင်မြင်နိုင်တယ် လို့ ဆိုပါတယ်။ မင်္ဂလာ ကိစ္စတွေ ကို ရက်ရာဇာမှာ အဓိက ထားပြီး ပြုလုပ်ကြပါတယ်။",
   pyathada: "ပြဿဒါး နေ့က ပျက်စီးတတ်၏ လို့ ဆိုကြပါတယ်",
   thamanyo: "သမားညို နေ့မှာ ဆုံးရှုံးရတတ်၏ လို့ ဆိုပါတယ်",
   amyeittasote:
@@ -284,7 +329,11 @@ function m2j(my, mm, mmt, mp, fd) {
   m2 = Math.floor(mp / 2);
   md = m1 * (15 + m2 * (mml - 15)) + (1 - m1) * (fd + 15 * m2);
   mm += 4 - Math.floor((mm + 15) / 16) * 4 + Math.floor((mm + 12) / 16); //adjust month
-  dd = md + Math.floor(29.544 * mm - 29.26) - c * Math.floor((mm + 11) / 16) * 30 + b * Math.floor((mm + 12) / 16);
+  dd =
+    md +
+    Math.floor(29.544 * mm - 29.26) -
+    c * Math.floor((mm + 11) / 16) * 30 +
+    b * Math.floor((mm + 12) / 16);
   var myl = 354 + (1 - c) * 30 + b; //year length
   dd += mmt * myl; //adjust day count
   return dd + yo.tg1 - 1;
@@ -363,7 +412,8 @@ function w2j(y, m, d, ct, SG) {
   else {
     jd = jd - Math.floor(y / 100) + Math.floor(y / 400) - 32045;
     if (jd < SG) {
-      jd = d + Math.floor((153 * m + 2) / 5) + 365 * y + Math.floor(y / 4) - 32083;
+      jd =
+        d + Math.floor((153 * m + 2) / 5) + 365 * y + Math.floor(y / 4) - 32083;
       if (jd > SG) jd = SG;
     }
   }
@@ -443,7 +493,8 @@ function astro(mm, mml, md, wd, my) {
   if (md == wda[wd]) nagapor = 1;
   wda = [17, 19, 1, 0, 9, 0, 0];
   if (md == wda[wd]) nagapor = 1;
-  if ((md == 2 && wd == 1) || ((md == 12 || md == 4 || md == 18) && wd == 2)) nagapor = 1;
+  if ((md == 2 && wd == 1) || ((md == 12 || md == 4 || md == 18) && wd == 2))
+    nagapor = 1;
   yatyotema = 0;
   m1 = mm % 2 ? mm : (mm + 9) % 12;
   m1 = ((m1 + 4) % 12) + 1;
@@ -665,10 +716,16 @@ export function engToMm(year, month, date) {
   Object.keys(thingyan).forEach((thingyanDay) => {
     if (thingyanDay === "သင်္ကြန်အကြတ်နေ့") {
       thingyan[thingyanDay].forEach((akyat) => {
-        if (year === akyat.y && month === akyat.m && date === akyat.d) mmDate.thingyan = thingyanDay;
+        if (year === akyat.y && month === akyat.m && date === akyat.d)
+          mmDate.thingyan = thingyanDay;
       });
     } else {
-      if (year === thingyan[thingyanDay].y && month === thingyan[thingyanDay].m && date === thingyan[thingyanDay].d) mmDate.thingyan = thingyanDay;
+      if (
+        year === thingyan[thingyanDay].y &&
+        month === thingyan[thingyanDay].m &&
+        date === thingyan[thingyanDay].d
+      )
+        mmDate.thingyan = thingyanDay;
     }
   });
 

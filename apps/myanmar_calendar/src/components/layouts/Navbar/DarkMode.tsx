@@ -24,12 +24,7 @@ function DarkMode() {
       setDarkMode(false);
     }
   };
-  return (
-    <ThemeToggle
-      darkMode={darkMode}
-      setDarkMode={setDarkMode}
-    />
-  );
+  return <ThemeToggle darkMode={darkMode} setDarkMode={setDarkMode} />;
 }
 export function ThemeToggle({ darkMode, setDarkMode }) {
   // called when checkbox is checked or unchecked
@@ -44,21 +39,11 @@ export function ThemeToggle({ darkMode, setDarkMode }) {
   };
 
   return (
-    <Button
-      type="button"
-      size="icon"
-      variant="ghost"
-      onClick={toggleTheme}>
+    <Button type="button" size="icon" variant="ghost" onClick={toggleTheme}>
       {darkMode ? (
-        <BiMoon
-          size={18}
-          className="text-gray-600"
-        />
+        <BiMoon size={18} className="text-gray-600" />
       ) : (
-        <BiSun
-          size={18}
-          className="text-gray-600"
-        />
+        <BiSun size={18} className="text-gray-600" />
       )}
     </Button>
   );
