@@ -1,8 +1,13 @@
 import { endOfDay } from "date-fns";
 import React, { useEffect, useRef, useState } from "react";
 
-function useDayEndInterval(callback: () => void, triggerOnStart: boolean = true) {
-  const [timeRemains, setTimeRemains] = useState(endOfDay(new Date()).getTime() - Date.now());
+function useDayEndInterval(
+  callback: () => void,
+  triggerOnStart: boolean = true,
+) {
+  const [timeRemains, setTimeRemains] = useState(
+    endOfDay(new Date()).getTime() - Date.now(),
+  );
 
   useEffect(() => {
     if (!triggerOnStart) return;

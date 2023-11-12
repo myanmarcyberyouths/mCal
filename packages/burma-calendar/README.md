@@ -17,18 +17,17 @@ npm install burma-calendar
 # Usage
 
 ```ts
-import {englishToMyanmarDate} from 'burma-calendar'
+import { englishToMyanmarDate } from "burma-calendar";
 
-const today = new Date()
-const burmaToday = englishToMyanmarDate(today)
-console.log(burmaToday)
+const today = new Date();
+const burmaToday = englishToMyanmarDate(today);
+console.log(burmaToday);
 ```
 
 # i18n
 
 ```ts
-import {i18n} from 'burma-calendar'
+import { i18n } from "burma-calendar";
 
-const inMyanmar = i18n("လပြည့်", "myanmar", "english") // Full Moon
+const inMyanmar = i18n("လပြည့်", "myanmar", "english"); // Full Moon
 ```
-

@@ -26,7 +26,11 @@ export function brightenColor(hexColor, percent) {
   const newB = Math.min(255, b + (percent / 100) * (255 - b));
 
   // Convert the new RGB values back to a hexadecimal color
-  const newHexColor = `#${Math.round(newR).toString(16).padStart(2, "0")}${Math.round(newG).toString(16).padStart(2, "0")}${Math.round(newB).toString(16).padStart(2, "0")}`;
+  const newHexColor = `#${Math.round(newR)
+    .toString(16)
+    .padStart(2, "0")}${Math.round(newG)
+    .toString(16)
+    .padStart(2, "0")}${Math.round(newB).toString(16).padStart(2, "0")}`;
 
   return newHexColor;
 }

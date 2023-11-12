@@ -2,8 +2,18 @@ import React, { useEffect, useState } from "react";
 import CommingSoonBanner from "../CommingSoonBanner";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store";
-import { eachDayOfInterval, endOfWeek, format, isToday, startOfWeek } from "date-fns";
-import { ScrollArea, ScrollBar, ScrollViewport } from "@/components/ui/areas/ScrollArea";
+import {
+  eachDayOfInterval,
+  endOfWeek,
+  format,
+  isToday,
+  startOfWeek,
+} from "date-fns";
+import {
+  ScrollArea,
+  ScrollBar,
+  ScrollViewport,
+} from "@/components/ui/areas/ScrollArea";
 import useScrollEvent from "@/hooks/useScrollEvent";
 import { cn } from "@/lib/utils";
 import { setDayDialongTargetDay } from "@/store/modelControlState";
@@ -25,19 +35,26 @@ function WeekMode() {
   // Scroll Events Handling
   const [scrollReachedTop, setScrollReachedTop] = useState(true);
 
-  const scrollViewportRef = useScrollEvent(({ offsetHeight, scrollHeight, scrollTop }) => {
-    if (scrollTop < 7) {
-      setScrollReachedTop(true);
-    } else {
-      setScrollReachedTop(false);
-    }
-  });
+  const scrollViewportRef = useScrollEvent(
+    ({ offsetHeight, scrollHeight, scrollTop }) => {
+      if (scrollTop < 7) {
+        setScrollReachedTop(true);
+      } else {
+        setScrollReachedTop(false);
+      }
+    },
+  );
 
   // console.log("WeekMode render");
 
   return (
     <>
-      <div className={cn("grid grid-cols-7 h-[6.8rem]", !scrollReachedTop && "shadow")}>
+      <div
+        className={cn(
+          "grid grid-cols-7 h-[6.8rem]",
+          !scrollReachedTop && "shadow",
+        )}
+      >
         {days.map((day) => (
           <WeekColumnHead
             key={day.toString()}
@@ -47,9 +64,7 @@ function WeekMode() {
         ))}
       </div>
       <ScrollArea className="h-[calc(100%-6.8rem)] w-full">
-        <ScrollViewport
-          className="w-full h-full"
-          ref={scrollViewportRef}>
+        <ScrollViewport className="w-full h-full" ref={scrollViewportRef}>
           <div className="grid grid-cols-7 ">
             {days.map((day) => {
               return (

@@ -1,4 +1,11 @@
-import { AnimatePresence, motion, animate, useMotionTemplate, useMotionValue, useTransform } from "framer-motion";
+import {
+  AnimatePresence,
+  motion,
+  animate,
+  useMotionTemplate,
+  useMotionValue,
+  useTransform,
+} from "framer-motion";
 // import { Dialog, ModalOverlay, Modal, Button, Heading } from "react-aria-components";
 import { Dialog, Transition } from "@headlessui/react";
 
@@ -23,7 +30,11 @@ const staticTransition = {
 const SHEET_MARGIN = 50;
 const SHEET_RADIUS = 12;
 
-export default function BottomSheetMobile({ isOpen, onClose, children }: { isOpen: boolean; onClose: () => void } & PropsWithChildren) {
+export default function BottomSheetMobile({
+  isOpen,
+  onClose,
+  children,
+}: { isOpen: boolean; onClose: () => void } & PropsWithChildren) {
   // let [isOpen, setOpen] = useState(false);
   let h = window.innerHeight - SHEET_MARGIN;
   let y = useMotionValue(h);
@@ -31,7 +42,11 @@ export default function BottomSheetMobile({ isOpen, onClose, children }: { isOpe
   let bg = useMotionTemplate`rgba(0, 0, 0, ${bgOpacity})`;
 
   // Scale the background down and adjust the border radius when the sheet is open.
-  let bodyScale = useTransform(y, [0, h], [(window.innerWidth - SHEET_MARGIN) / window.innerWidth, 1]);
+  let bodyScale = useTransform(
+    y,
+    [0, h],
+    [(window.innerWidth - SHEET_MARGIN) / window.innerWidth, 1],
+  );
   let bodyTranslate = useTransform(y, [0, h], [SHEET_MARGIN - SHEET_RADIUS, 0]);
   let bodyBorderRadius = useTransform(y, [0, h], [SHEET_RADIUS, 0]);
 
@@ -43,7 +58,8 @@ export default function BottomSheetMobile({ isOpen, onClose, children }: { isOpe
         borderRadius: bodyBorderRadius,
         y: bodyTranslate,
         transformOrigin: "center 0",
-      }}>
+      }}
+    >
       {/* <Button
         className="text-blue-600 text-lg font-semibold my-8 outline-none rounded data-[pressed]:text-blue-700 data-[focus-visible]:ring"
         onPress={() => setOpen(true)}>
@@ -56,7 +72,8 @@ export default function BottomSheetMobile({ isOpen, onClose, children }: { isOpe
             open={isOpen}
             onClose={onClose}
             className="fixed inset-0 z-10"
-            style={{ backgroundColor: bg }}>
+            style={{ backgroundColor: bg }}
+          >
             <MotionDialogPanel
               className="bg-gray-0 dark:bg-gray-50 absolute bottom-0 w-full rounded-t-xl shadow-lg"
               initial={{ y: h }}
@@ -78,7 +95,8 @@ export default function BottomSheetMobile({ isOpen, onClose, children }: { isOpe
                   // @ts-ignore
                   animate(y, 0, { ...inertiaTransition, min: 0, max: 0 });
                 }
-              }}>
+              }}
+            >
               {/* drag affordance */}
               <div className="mx-auto w-12 mt-2 h-[0.3rem] rounded-full bg-gray-300" />
               <div className="outline-none">
@@ -89,7 +107,9 @@ export default function BottomSheetMobile({ isOpen, onClose, children }: { isOpe
                     Done
                   </button> */}
                 </div>
-                <div className="__scrollbar-sm h-[calc(100vh-5rem)] supports-[height:100cqh]:h-[calc(100cqh-5rem)] supports-[height:100svh]:h-[calc(100svh-5rem)]">{children}</div>
+                <div className="__scrollbar-sm h-[calc(100vh-5rem)] supports-[height:100cqh]:h-[calc(100cqh-5rem)] supports-[height:100svh]:h-[calc(100svh-5rem)]">
+                  {children}
+                </div>
               </div>
               {/* <div className="h-[3rem]"></div> */}
             </MotionDialogPanel>

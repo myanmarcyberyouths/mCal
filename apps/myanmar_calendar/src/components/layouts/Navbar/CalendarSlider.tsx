@@ -10,9 +10,15 @@ import { useDispatch, useSelector } from "react-redux";
 
 function CalendarSlider() {
   const dispatch = useDispatch();
-  const calendarMode = useSelector((state: RootState) => state.calendarState.calendarMode);
-  const activeDate = useSelector((state: RootState) => state.calendarState.activeDate);
-  const enterMobileMode = useSelector((state: RootState) => state.systemState.enterMobileMode);
+  const calendarMode = useSelector(
+    (state: RootState) => state.calendarState.calendarMode,
+  );
+  const activeDate = useSelector(
+    (state: RootState) => state.calendarState.activeDate,
+  );
+  const enterMobileMode = useSelector(
+    (state: RootState) => state.systemState.enterMobileMode,
+  );
 
   const [activeDateIsThisMonth, setActiveDateIsThisMonth] = useState(false);
 
@@ -34,30 +40,45 @@ function CalendarSlider() {
     setActiveDateIsThisMonth(isThisMonth(new Date(activeDate)));
   }, [activeDate]);
 
-  const dayDialogTargetDay = useSelector((state: RootState) => state.modelControlState.dayDialogTargetDay);
+  const dayDialogTargetDay = useSelector(
+    (state: RootState) => state.modelControlState.dayDialogTargetDay,
+  );
 
-  useKeyPress("ArrowLeft", () => handleCalendarSlide("prev"), !!dayDialogTargetDay);
-  useKeyPress("ArrowRight", () => handleCalendarSlide("next"), !!dayDialogTargetDay);
+  useKeyPress(
+    "ArrowLeft",
+    () => handleCalendarSlide("prev"),
+    !!dayDialogTargetDay,
+  );
+  useKeyPress(
+    "ArrowRight",
+    () => handleCalendarSlide("next"),
+    !!dayDialogTargetDay,
+  );
 
   return (
     <div className="h-[2.5rem] flex-shrink-0 flex items-stretch overflow-hidden rounded-md border border-gray-200">
       <button
         className="flex justify-center items-center aspect-square hover:bg-gray-100 active:bg-gray-200 text-gray-600 "
-        onClick={() => handleCalendarSlide("prev")}>
+        onClick={() => handleCalendarSlide("prev")}
+      >
         <BiChevronLeft size={24} />
       </button>
       <button
         className={`flex items-center justify-center border-r border-l border-gray-200 hover:bg-gray-100 text-[0.95rem]  font-medium w-[6rem] active:bg-gray-200 ${
-          activeDateIsThisMonth ? "text-red-500 hover:text-red-500 " : "text-gray-700 hover:text-gray-800  "
+          activeDateIsThisMonth
+            ? "text-red-500 hover:text-red-500 "
+            : "text-gray-700 hover:text-gray-800  "
         }`}
         onClick={() => {
           dispatch(setActiveDate(getLocalTime().toISOString()));
-        }}>
+        }}
+      >
         {enterMobileMode ? format(new Date(activeDate), "yyyy") : "Today"}
       </button>
       <button
         className="flex justify-center items-center aspect-square hover:bg-gray-100 active:bg-gray-200 text-gray-600"
-        onClick={() => handleCalendarSlide("next")}>
+        onClick={() => handleCalendarSlide("next")}
+      >
         <BiChevronRight size={24} />
       </button>
     </div>

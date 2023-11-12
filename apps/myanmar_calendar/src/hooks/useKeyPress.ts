@@ -1,6 +1,13 @@
 import { useEffect } from "react";
 
-type Key = "ArrowUp" | "ArrowDown" | "ArrowLeft" | "ArrowRight" | "Enter" | "Escape" | "Tab";
+type Key =
+  | "ArrowUp"
+  | "ArrowDown"
+  | "ArrowLeft"
+  | "ArrowRight"
+  | "Enter"
+  | "Escape"
+  | "Tab";
 
 const useKeyPress = (key: Key, callback: () => void, disabled = false) => {
   useEffect(() => {
