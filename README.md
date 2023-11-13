@@ -3,32 +3,33 @@
 **Myanmar Calendar** is a feature-rich calendar app that seamlessly combines the functionality of Gregorian and Myanmar
 calendars, catering to users who follow both systems. It supports multiple languages, including Myanmar, Mon, English,
 Tai, and Karen, ensuring a user-friendly experience for individuals from diverse linguistic backgrounds.
+
 > We do provide npm package with the most curated interface for developers. Please
 > check [here](https://www.npmjs.com/package/burma-calendar).
 
-![Myanmar Calendar Demo Image](./exmaples/preview.png)
+![Myanmar Calendar Demo Image](./examples/preview.png)
 
 ## Features
 
 - Support Gregorian and Myanmar Calendar
 - Support multiple languages
-    - Mon
-    - Tai
-    - Karen
-    - Burmese
-    - English
+  - Mon
+  - Tai
+  - Karen
+  - Burmese
+  - English
 - Displays Myanmar Day, Month, Year and Moon phase
 - Easy-to-use interface, similar to Google Calendar and macOS Calendar
 - SupportCross-platform
-    - MacOS
-    - Windows
-    - Linux (Debian based distros)
+  - MacOS
+  - Windows
+  - Linux (Debian based distros)
 
 ## Demo
 
 ### Day Detail View
 
-![Myanmar Calendar Demo Image](./exmaples/day_detail_view.png)
+![Myanmar Calendar Demo Image](./examples/day_detail_view.png)
 
 ## Getting Started
 
@@ -55,5 +56,3 @@ details.
 
 If you have any questions or feedback about the Myanmar Calendar software, please open issue
 at [here](https://github.com/cybermm/myanmar_calendar/issues).
-
-

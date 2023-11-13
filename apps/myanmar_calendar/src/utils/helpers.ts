@@ -16,7 +16,9 @@ export function parseJSON<T>(value: string | null): T | undefined {
 
 export function setLocalStorage(key: string, value: any) {
   if (typeof window === "undefined") {
-    console.warn(`Tried setting localStorage key “${key}” even though environment is not a client`);
+    console.warn(
+      `Tried setting localStorage key “${key}” even though environment is not a client`,
+    );
     return;
   }
 

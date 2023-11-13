@@ -1,4 +1,10 @@
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/selectBoxes/Select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/selectBoxes/Select";
 import { RootState } from "@/store";
 import { setCalendarMode } from "@/store/calendarState";
 import { CALENDAR_MODE } from "@/type-models/calendarState.type";
@@ -10,14 +16,18 @@ import { useDispatch, useSelector } from "react-redux";
 
 function CalendarModeSelectBox() {
   const dispatch = useDispatch();
-  const enterMobileMode = useSelector((state: RootState) => state.systemState.enterMobileMode);
-  const calendarMode = useSelector((state: RootState) => state.calendarState.calendarMode);
+  const enterMobileMode = useSelector(
+    (state: RootState) => state.systemState.enterMobileMode,
+  );
+  const calendarMode = useSelector(
+    (state: RootState) => state.calendarState.calendarMode,
+  );
 
   const selectHandler = useCallback(
     (value: CALENDAR_MODE) => {
       dispatch(setCalendarMode(value));
     },
-    [dispatch]
+    [dispatch],
   );
 
   useEffect(() => {
@@ -26,9 +36,7 @@ function CalendarModeSelectBox() {
 
   if (enterMobileMode) return <></>;
   return (
-    <Select
-      value={calendarMode}
-      onValueChange={selectHandler}>
+    <Select value={calendarMode} onValueChange={selectHandler}>
       <SelectTrigger className="h-input-md rounded-md w-fit px-4">
         <span className="flex items-center gap-3 -ml-[0.35rem] -mr-[0.6rem]">
           <FaCalendarAlt className="text-gray-400" />

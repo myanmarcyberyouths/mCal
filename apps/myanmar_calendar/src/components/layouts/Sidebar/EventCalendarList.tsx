@@ -1,4 +1,8 @@
-import { CheckList, CheckListAddButton, CheckListItem } from "@/components/ui/lists/CheckList";
+import {
+  CheckList,
+  CheckListAddButton,
+  CheckListItem,
+} from "@/components/ui/lists/CheckList";
 import { RootState } from "@/store";
 import { updateEventCalendars } from "@/store/calendarState";
 import { LOCAL_STORAGE_KEYS, PARAMS, SETTING_PARAMS } from "@/type-models/utils.type";
@@ -21,7 +25,7 @@ function EventCalendarList() {
       updateEventCalendars({
         id,
         checked,
-      })
+      }),
     );
 
     setLocalStorage(
@@ -29,7 +33,7 @@ function EventCalendarList() {
       eventCalendars.map((calendar) => {
         if (calendar.id === id) return { ...calendar, checked };
         return calendar;
-      })
+      }),
     );
   };
 

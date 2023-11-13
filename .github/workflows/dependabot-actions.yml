@@ -15,12 +15,20 @@ jobs:
         id: metadata
         uses: dependabot/fetch-metadata@v1
         with:
-          github-token: "${{ secrets.GITHUB_TOKEN }}"
+          github-token: "${{ github.token }}"
       
       - name: Add a label for all production dependencies
         if: steps.metadata.outputs.dependency-type == 'direct:production'
         run: gh pr edit "$PR_URL" --add-label "production"
         env:
           PR_URL: ${{github.event.pull_request.html_url}}
+          GH_TOKEN: ${{ github.token }}
+      
+      - name: Add a label for all production dependencies
+        if: steps.metadata.outputs.dependency-type != 'direct:production'
+        run: gh pr edit "$PR_URL" --add-label "patch"
+        env:
+          PR_URL: ${{github.event.pull_request.html_url}}
+          GH_TOKEN: ${{ github.token }}
   
   

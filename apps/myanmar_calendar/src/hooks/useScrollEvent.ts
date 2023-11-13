@@ -12,7 +12,7 @@ function useScrollEvent(
     untilOverflow: () => void;
     reachedTop: () => void;
     reachedBottom: () => void;
-  }
+  },
 ) {
   const scrollRef = useRef<any>();
 
@@ -34,7 +34,8 @@ function useScrollEvent(
     let scrollRefCurrent = scrollRef.current;
 
     const scrollHandler = () => {
-      const { offsetHeight, scrollHeight, scrollTop } = scrollRef.current as HTMLDivElement;
+      const { offsetHeight, scrollHeight, scrollTop } =
+        scrollRef.current as HTMLDivElement;
       // console.log(offsetHeight, scrollHeight, scrollTop);
 
       customCallback({

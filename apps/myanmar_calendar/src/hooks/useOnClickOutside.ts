@@ -1,6 +1,10 @@
 import { useEffect, useRef } from "react";
 
-function useOnClickOutside(handler: () => void, disabled = false, event: "mouseup" | "mousedown" = "mouseup") {
+function useOnClickOutside(
+  handler: () => void,
+  disabled = false,
+  event: "mouseup" | "mousedown" = "mouseup",
+) {
   const ref = useRef<any>();
 
   useEffect(() => {

@@ -7,7 +7,9 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 function ActiveDateIndicator() {
-  const { activeDate, calendarLanguage, calendarMode } = useSelector((state: RootState) => state.calendarState);
+  const { activeDate, calendarLanguage, calendarMode } = useSelector(
+    (state: RootState) => state.calendarState,
+  );
 
   const activeDateObj = new Date(activeDate);
 
@@ -25,7 +27,8 @@ function ActiveDateIndicator() {
         </h2>
         <span
           aria-hidden="true"
-          className="hidden md2:inline-block self-center h-[1.7rem] w-[1px] bg-gray-300"></span>
+          className="hidden md2:inline-block self-center h-[1.7rem] w-[1px] bg-gray-300"
+        ></span>
         <h2 className="text-[1.1rem] sm2:text-[1rem] md2:text-[1.1rem] text-gray-700">
           <time
             dateTime={format(activeDateObj, "yyyy-MM-dd")}
@@ -34,9 +37,18 @@ function ActiveDateIndicator() {
             {i18n(engToMyanmarNumber(englishToMyanmarDate(firstDayCurrentMonth).year), "myanmar", calendarLanguage as any)} {i18n("Ku", "english", calendarLanguage as any)}{" "}
             {calendarMode !== CALENDAR_MODE.YEAR && (
               <>
-                {i18n(englishToMyanmarDate(firstDayCurrentMonth).month, "myanmar", calendarLanguage as any)}
+                {i18n(
+                  englishToMyanmarDate(firstDayCurrentMonth).month,
+                  "myanmar",
+                  calendarLanguage as any,
+                )}
                 {" - "}
-                {i18n(englishToMyanmarDate(add(firstDayCurrentMonth, { months: 1 })).month, "myanmar", calendarLanguage as any)}
+                {i18n(
+                  englishToMyanmarDate(add(firstDayCurrentMonth, { months: 1 }))
+                    .month,
+                  "myanmar",
+                  calendarLanguage as any,
+                )}
               </>
             )}
           </time>

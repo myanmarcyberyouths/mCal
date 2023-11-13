@@ -16,12 +16,7 @@ function YearMode() {
   return (
     <div className="min-h-full w-full grid lg1:grid-cols-4 md1:grid-cols-3 sm1:grid-cols-2 grid-flow-row-dense gap-2  pb-4">
       {months.map((month) => {
-        return (
-          <YearCell
-            key={month.toString()}
-            month={month}
-          />
-        );
+        return <YearCell key={month.toString()} month={month} />;
       })}
     </div>
   );

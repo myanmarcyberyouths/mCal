@@ -30,9 +30,7 @@ function MonthMode() {
   });
 
   return (
-    <div
-      aria-label="Calendar month view"
-      className="h-full">
+    <div aria-label="Calendar month view" className="h-full">
       <div className="grid grid-cols-7 sticky top-0 h-[2.25rem] border-gray-200 bg-gray-0">
         {firstWeek.map((day) => {
           const weekDayName = format(day, "ccc");

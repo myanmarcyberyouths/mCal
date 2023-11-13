@@ -9,8 +9,12 @@ import BottomSheetMobile from "@/components/ui/sheets/BottomSheetMobile";
 function RenderDayDialog() {
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
-  const dayDialogTargetDay = useSelector((state: RootState) => state.modelControlState.dayDialogTargetDay);
-  const enterMobileMode = useSelector((state: RootState) => state.systemState.enterMobileMode);
+  const dayDialogTargetDay = useSelector(
+    (state: RootState) => state.modelControlState.dayDialogTargetDay,
+  );
+  const enterMobileMode = useSelector(
+    (state: RootState) => state.systemState.enterMobileMode,
+  );
   const timeoutRef = useRef<any>(null);
   useEffect(() => {
     if (dayDialogTargetDay) setIsOpen(true);

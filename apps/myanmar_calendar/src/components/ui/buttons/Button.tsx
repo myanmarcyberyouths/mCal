@@ -9,9 +9,12 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-rose-500 text-gray-0 hover:bg-rose-500/90 active:bg-rose-500",
-        destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-        outline: "border border-gray-50 bg-gray-0 hover:bg-gray-50 hover:text-gray-900",
+        default:
+          "bg-rose-500 text-gray-0 hover:bg-rose-500/90 active:bg-rose-500",
+        destructive:
+          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+        outline:
+          "border border-gray-50 bg-gray-0 hover:bg-gray-50 hover:text-gray-900",
         secondary: "bg-secondary text-gray-900 hover:bg-secondary/80",
         ghost: "bg-gray-0 hover:bg-gray-50 hover:text-gray-900",
         link: "text-primary underline-offset-4 hover:underline",
@@ -27,24 +30,29 @@ const buttonVariants = cva(
       variant: "default",
       size: "default",
     },
-  }
+  },
 );
 
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariants> {
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
   asChild?: boolean;
 }
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({ className, children, variant, size, asChild = false, ...props }, ref) => {
-  const Comp = asChild ? Slot : "button";
-  return (
-    <Comp
-      className={cn(buttonVariants({ variant, size, className }))}
-      ref={ref}
-      {...props}>
-      {children}
-    </Comp>
-  );
-});
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, children, variant, size, asChild = false, ...props }, ref) => {
+    const Comp = asChild ? Slot : "button";
+    return (
+      <Comp
+        className={cn(buttonVariants({ variant, size, className }))}
+        ref={ref}
+        {...props}
+      >
+        {children}
+      </Comp>
+    );
+  },
+);
 Button.displayName = "Button";
 
 export { Button, buttonVariants };

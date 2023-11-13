@@ -1,6 +1,17 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/20/solid";
-import { add, eachDayOfInterval, endOfMonth, format, getDay, isSameMonth, isToday, parse, startOfToday, startOfWeek } from "date-fns";
+import {
+  add,
+  eachDayOfInterval,
+  endOfMonth,
+  format,
+  getDay,
+  isSameMonth,
+  isToday,
+  parse,
+  startOfToday,
+  startOfWeek,
+} from "date-fns";
 import { englishToMyanmarDate, i18n } from "burma-calendar";
 import { engToMyanmarNumber } from "@/utils/engToMyanmarNumber";
 import FullMoonIcon from "../assets/icons/FullMoonIcon";
@@ -8,11 +19,25 @@ import { classNames } from "@/utils/classNames";
 import LanguageMenu, { Language } from "./LanguageMenu";
 // import DayDialog from "./modals/DayDialog(Depre)";
 import useKeyPress from "../hooks/useKeyPress";
-import { ContextMenu, ContextMenuContent, ContextMenuItem, ContextMenuShortcut, ContextMenuTrigger } from "@/components/ui/menus/context-menu";
+import {
+  ContextMenu,
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuShortcut,
+  ContextMenuTrigger,
+} from "@/components/ui/menus/context-menu";
 import RenderDayDialog2 from "./modals/DayDialog/RenderDayDialog";
 import { getLocalTime } from "@/utils/dateTimeHelper";
 
-const colStartClasses = ["", "col-start-2", "col-start-3", "col-start-4", "col-start-5", "col-start-6", "col-start-7"];
+const colStartClasses = [
+  "",
+  "col-start-2",
+  "col-start-3",
+  "col-start-4",
+  "col-start-5",
+  "col-start-6",
+  "col-start-7",
+];
 
 export default function MyanmarCalendar() {
   let today = startOfToday();
@@ -33,9 +58,12 @@ export default function MyanmarCalendar() {
   }
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentMonth(format(today, "MMM-yyyy"));
-    }, 60 * 60 * 60); // 1 hour
+    const interval = setInterval(
+      () => {
+        setCurrentMonth(format(today, "MMM-yyyy"));
+      },
+      60 * 60 * 60,
+    ); // 1 hour
 
     return () => clearInterval(interval);
   }, [today]);
@@ -70,12 +98,31 @@ export default function MyanmarCalendar() {
       <div className="lg:flex lg:h-full lg:flex-col">
         <header className="flex items-center justify-between border-b border-gray-200 px-6 py-4 lg:flex-none">
           <h1 className="text-base font-semibold leading-6 text-gray-900">
-            <time dateTime={format(firstDayCurrentMonth, "yyyy-MM-dd")}>{format(firstDayCurrentMonth, "MMMM yyyy")}</time>
+            <time dateTime={format(firstDayCurrentMonth, "yyyy-MM-dd")}>
+              {format(firstDayCurrentMonth, "MMMM yyyy")}
+            </time>
             <div className="font-normal text-sm">
-              {i18n("Myanmar Year", "english", language as any)} {i18n(engToMyanmarNumber(englishToMyanmarDate(firstDayCurrentMonth).year), "myanmar", language as any)}{" "}
-              {i18n("Ku", "english", language as any)} {i18n(englishToMyanmarDate(firstDayCurrentMonth).month, "myanmar", language as any)}
+              {i18n("Myanmar Year", "english", language as any)}{" "}
+              {i18n(
+                engToMyanmarNumber(
+                  englishToMyanmarDate(firstDayCurrentMonth).year,
+                ),
+                "myanmar",
+                language as any,
+              )}{" "}
+              {i18n("Ku", "english", language as any)}{" "}
+              {i18n(
+                englishToMyanmarDate(firstDayCurrentMonth).month,
+                "myanmar",
+                language as any,
+              )}
               {" - "}
-              {i18n(englishToMyanmarDate(add(firstDayCurrentMonth, { months: 1 })).month, "myanmar", language as any)}
+              {i18n(
+                englishToMyanmarDate(add(firstDayCurrentMonth, { months: 1 }))
+                  .month,
+                "myanmar",
+                language as any,
+              )}
             </div>
           </h1>
           <div className="flex items-center">
@@ -87,29 +134,26 @@ export default function MyanmarCalendar() {
               <button
                 type="button"
                 className="flex items-center justify-center rounded-l-md py-2 pl-3 pr-4 text-gray-400 hover:text-gray-500 focus:relative md:w-9 md:px-2 md:hover:bg-gray-50 md:hover:ring-1"
-                onClick={previousMonth}>
+                onClick={previousMonth}
+              >
                 <span className="sr-only">Previous month</span>
-                <ChevronLeftIcon
-                  className="h-5 w-5"
-                  aria-hidden="true"
-                />
+                <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
               </button>
               <button
                 type="button"
                 className="hidden px-3.5 text-sm font-semibold text-gray-900 hover:bg-gray-50 focus:relative md:block md:hover:bg-gray-50 md:hover:ring-1"
-                onClick={() => setCurrentMonth(format(today, "MMM-yyyy"))}>
+                onClick={() => setCurrentMonth(format(today, "MMM-yyyy"))}
+              >
                 Today
               </button>
               <span className="relative -mx-px h-5 w-px bg-gray-300 md:hidden" />
               <button
                 type="button"
                 className="flex items-center justify-center rounded-r-md py-2 pl-4 pr-3 text-gray-400 hover:text-gray-500 focus:relative md:w-9 md:px-2  md:hover:bg-gray-50 md:hover:ring-1"
-                onClick={nextMonth}>
+                onClick={nextMonth}
+              >
                 <span className="sr-only">Next month</span>
-                <ChevronRightIcon
-                  className="h-5 w-5"
-                  aria-hidden="true"
-                />
+                <ChevronRightIcon className="h-5 w-5" aria-hidden="true" />
               </button>
             </div>
 
@@ -122,8 +166,11 @@ export default function MyanmarCalendar() {
 
             <div className="py-1 sm:hidden">
               <button
-                className={classNames("block px-4 py-2 text-sm text-indigo-500")}
-                onClick={() => setCurrentMonth(format(today, "MMM-yyyy"))}>
+                className={classNames(
+                  "block px-4 py-2 text-sm text-indigo-500",
+                )}
+                onClick={() => setCurrentMonth(format(today, "MMM-yyyy"))}
+              >
                 Today
               </button>
             </div>
@@ -162,15 +209,24 @@ export default function MyanmarCalendar() {
                     <div
                       key={day.toString()}
                       className={classNames(
-                        isSameMonth(day, firstDayCurrentMonth) ? "bg-gray-0" : "bg-gray-50 text-gray-500",
+                        isSameMonth(day, firstDayCurrentMonth)
+                          ? "bg-gray-0"
+                          : "bg-gray-50 text-gray-500",
                         "relative px-3  py-[4.9rem]",
-                        dayIdx === 0 ? colStartClasses[getDay(day)] : ""
+                        dayIdx === 0 ? colStartClasses[getDay(day)] : "",
                       )}
                       onClick={() => {
                         openModal();
                         setSelectedDay(day);
-                      }}>
-                      <div className="absolute top-3 left-3 text-sm">{i18n(engToMyanmarNumber(englishToMyanmarDate(day).date), "myanmar", language as any)}</div>
+                      }}
+                    >
+                      <div className="absolute top-3 left-3 text-sm">
+                        {i18n(
+                          engToMyanmarNumber(englishToMyanmarDate(day).date),
+                          "myanmar",
+                          language as any,
+                        )}
+                      </div>
 
                       <div className="absolute top-3 right-3 text-xs font-light">
                         <div>
@@ -178,8 +234,16 @@ export default function MyanmarCalendar() {
                             <>
                               <div className="mb-2">
                                 {language !== "karen"
-                                  ? i18n(englishToMyanmarDate(day).moonPhase, "myanmar", language as any)
-                                  : i18n(englishToMyanmarDate(day).moonPhase, "myanmar", language as any) === "လါ၁ ှဲၤ" && "လါပှဲၤ"}
+                                  ? i18n(
+                                      englishToMyanmarDate(day).moonPhase,
+                                      "myanmar",
+                                      language as any,
+                                    )
+                                  : i18n(
+                                      englishToMyanmarDate(day).moonPhase,
+                                      "myanmar",
+                                      language as any,
+                                    ) === "လါ၁ ှဲၤ" && "လါပှဲၤ"}
                               </div>
                               <FullMoonIcon className="ml-3.5 w-6 h-6" />
                             </>
@@ -190,11 +254,16 @@ export default function MyanmarCalendar() {
                       <div className="absolute bottom-3 right-3 text-sm">
                         <time
                           className={
-                            isToday(getLocalTime(day)) && isSameMonth(getLocalTime(day), getLocalTime(firstDayCurrentMonth))
+                            isToday(getLocalTime(day)) &&
+                            isSameMonth(
+                              getLocalTime(day),
+                              getLocalTime(firstDayCurrentMonth),
+                            )
                               ? "flex h-6 w-6 items-center justify-center rounded-full bg-indigo-600 font-semibold text-gray-0"
                               : undefined
                           }
-                          dateTime={format(day, "yyyy-MM-dd")}>
+                          dateTime={format(day, "yyyy-MM-dd")}
+                        >
                           {format(day, "d")}
                         </time>
                       </div>
@@ -217,14 +286,18 @@ export default function MyanmarCalendar() {
                   key={day.toString()}
                   type="button"
                   className={classNames(
-                    isSameMonth(day, firstDayCurrentMonth) ? "bg-gray-0" : "bg-gray-50",
+                    isSameMonth(day, firstDayCurrentMonth)
+                      ? "bg-gray-0"
+                      : "bg-gray-50",
                     isToday(day) && "font-semibold",
                     isToday(day) && "text-indigo-600",
-                    "flex h-24 flex-col px-3 py-2 hover:bg-gray-100 focus:z-10"
-                  )}>
+                    "flex h-24 flex-col px-3 py-2 hover:bg-gray-100 focus:z-10",
+                  )}
+                >
                   <time
                     dateTime={format(day, "yyyy-MM-dd")}
-                    className={classNames("ml-auto")}>
+                    className={classNames("ml-auto")}
+                  >
                     {format(getLocalTime(day), "d")}
                   </time>
                 </button>
