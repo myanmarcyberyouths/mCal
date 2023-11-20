@@ -24,6 +24,6 @@
   "author": "Aung Myat Moe",
   "license": "MIT",
   "devDependencies": {
-    "tsup": "^7.2.0"
+    "tsup": "^8.0.0"
   }
 }
