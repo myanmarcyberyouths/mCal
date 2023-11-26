@@ -13,7 +13,7 @@ import CalendarModeDropDown from "./CalendarModeDropDown";
 import ActiveDateIndicator from "./ActiveDateIndicator";
 import SideMenuTogglerButton from "@/components/ui/buttons/SidebarToggleBtn";
 import AppLogo from "@/components/ui/logos/AppLogo";
-import DarkMode from "./DarkMode";
+import DarkMode, { ThemeToggleButton } from "./DarkMode";
 
 function Navbar() {
   return (
@@ -53,7 +53,7 @@ function Navbar() {
         <div className="sm3:gap-5 ml-auto flex items-center gap-2 md:pr-4">
           <CalendarSlider />
           <CalendarModeDropDown />
-          <DarkMode />
+          <ThemeToggleButton />
         </div>
       </div>
     </header>
