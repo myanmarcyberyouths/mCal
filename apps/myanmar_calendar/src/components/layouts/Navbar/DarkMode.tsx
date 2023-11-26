@@ -1,50 +1,44 @@
 import { Button } from "@/components/ui/buttons/Button";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BiMoon, BiSun } from "react-icons/bi";
 
-function DarkMode() {
-  const [darkMode, setDarkMode] = React.useState(false);
+type ThemeSchema = "light" | "dark";
 
-  // check and reset theme when `darkMode` changes
-  React.useEffect(() => {
-    themeCheck();
-  }, [darkMode]);
+export function ThemeToggleButton() {
+  const [defaultTheme] = useState<ThemeSchema>("light");
 
-  // check theme on component mount
-  React.useEffect(() => {
-    themeCheck();
-  }, []);
+  //  detect system theme
+  const darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
+  const darkModeOn = darkQuery.matches;
+  const [darkMode, setDarkMode] = useState(darkModeOn);
+  darkQuery.addEventListener("change", (e) => {
+    setDarkMode(e.matches);
+  });
 
-  // check and reset theme
-  const themeCheck = () => {
-    if (localStorage.darkMode === "dark") {
+  function onToggleTheme() {
+    setDarkMode((prevMode) => !prevMode);
+  }
+
+  //  set theme
+  useEffect(() => {
+    if (darkMode) {
       document.documentElement.classList.add("dark");
     } else {
       document.documentElement.classList.remove("dark");
-      setDarkMode(false);
     }
-  };
-  return <ThemeToggle darkMode={darkMode} setDarkMode={setDarkMode} />;
-}
+  }, [defaultTheme, darkMode]);
 
-export function ThemeToggle({ darkMode, setDarkMode }) {
-  // called when checkbox is checked or unchecked
-  const toggleTheme = () => {
-    const theme = localStorage.getItem("darkMode");
-    if (theme) {
-      localStorage.setItem("darkMode", theme === "dark" ? "light" : "dark");
-    } else {
-      localStorage.setItem("darkMode", "dark");
-    }
-    setDarkMode(!darkMode);
-  };
+  //  set localStorage
+  useEffect(() => {
+    localStorage.setItem("theme", defaultTheme);
+  }, [defaultTheme]);
 
   return (
     <Button
       type="button"
       size="icon"
       variant="ghost"
-      onClick={toggleTheme}
+      onClick={onToggleTheme}
       className="focus-visible:ring-ring hover:bg-accent hover:text-accent-foreground inline-flex h-10 w-10 items-center justify-center rounded-lg border border-gray-200 text-sm font-medium transition-colors hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50 "
     >
       {darkMode ? (
@@ -56,4 +50,4 @@ export function ThemeToggle({ darkMode, setDarkMode }) {
   );
 }
 
-export default DarkMode;
+export default ThemeToggleButton;
