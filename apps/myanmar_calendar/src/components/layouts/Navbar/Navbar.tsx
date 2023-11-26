@@ -11,24 +11,21 @@ import { IoMdMenu } from "react-icons/io";
 import CalendarSlider from "./CalendarSlider";
 import CalendarModeDropDown from "./CalendarModeDropDown";
 import ActiveDateIndicator from "./ActiveDateIndicator";
-import SidebarToggleBtn from "@/components/ui/buttons/SidebarToggleBtn";
+import SideMenuTogglerButton from "@/components/ui/buttons/SidebarToggleBtn";
 import AppLogo from "@/components/ui/logos/AppLogo";
 import DarkMode from "./DarkMode";
 
 function Navbar() {
   return (
-    <header
-      className={`flex h-nav-h w-full items-stretch border-b border-gray-200 bg-gray-0`}
-    >
+    <header className="flex h-nav-h w-full items-stretch border-b border-gray-200 bg-gray-0">
       <div className="flex w-[2.75rem] flex-shrink-0 items-center gap-6 pl-3 sm2:w-[3rem] md:w-[4rem] lg2:w-[15rem] lg3:w-[17rem]">
-        <SidebarToggleBtn>
+        <SideMenuTogglerButton>
           <button
             type="button"
-            id="radix-:R19lla:"
             aria-haspopup="menu"
             aria-expanded="false"
             data-state="closed"
-            className="focus-visible:ring-ring hover:bg-accent hover:text-accent-foreground inline-flex h-8 w-8 items-center justify-center rounded-lg border border-gray-200 text-sm font-medium transition-colors hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50 "
+            className="focus-visible:ring-ring hover:bg-accent hover:text-accent-foreground inline-flex h-10 w-10 items-center justify-center rounded-lg border border-gray-200 text-sm font-medium transition-colors hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50 "
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -46,7 +43,7 @@ function Navbar() {
             </svg>
             <span className="sr-only">Toggle Menu</span>
           </button>
-        </SidebarToggleBtn>
+        </SideMenuTogglerButton>
         <div className="hidden lg2:block">
           <AppLogo />
         </div>

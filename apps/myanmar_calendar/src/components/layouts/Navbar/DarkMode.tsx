@@ -26,6 +26,7 @@ function DarkMode() {
   };
   return <ThemeToggle darkMode={darkMode} setDarkMode={setDarkMode} />;
 }
+
 export function ThemeToggle({ darkMode, setDarkMode }) {
   // called when checkbox is checked or unchecked
   const toggleTheme = () => {
@@ -39,7 +40,13 @@ export function ThemeToggle({ darkMode, setDarkMode }) {
   };
 
   return (
-    <Button type="button" size="icon" variant="ghost" onClick={toggleTheme}>
+    <Button
+      type="button"
+      size="icon"
+      variant="ghost"
+      onClick={toggleTheme}
+      className="focus-visible:ring-ring hover:bg-accent hover:text-accent-foreground inline-flex h-10 w-10 items-center justify-center rounded-lg border border-gray-200 text-sm font-medium transition-colors hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50 "
+    >
       {darkMode ? (
         <BiMoon size={18} className="text-gray-600" />
       ) : (
@@ -48,4 +55,5 @@ export function ThemeToggle({ darkMode, setDarkMode }) {
     </Button>
   );
 }
+
 export default DarkMode;
