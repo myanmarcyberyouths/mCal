@@ -8,7 +8,7 @@ export const WEEK_DAYS = {
   sat: { long: "saturday", short: "sat" },
 };
 
-export const CALENDAR_MODE = {
+export const CALENDAR_MODES = {
   W: "week",
   M: "month",
   Y: "year",

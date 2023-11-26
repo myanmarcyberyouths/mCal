@@ -1,7 +1,7 @@
 import useKeyPress from "@/hooks/useKeyPress";
 import { RootState } from "@/store";
 import { setActiveDate, updateActiveDate } from "@/store/calendarState";
-import { CALENDAR_MODE_ENUM } from "@/type-models/calendarState.type";
+import { CalendarMode } from "@/type-models/calendarState.type";
 import { getLocalTime } from "@/utils/helpers";
 import { format, isSameDay, isThisMonth, isToday } from "date-fns";
 import { useEffect, useState } from "react";
@@ -25,13 +25,13 @@ function CalendarSlider() {
   const handleCalendarSlide = (direction: "next" | "prev") => {
     const slideValue = direction === "next" ? 1 : -1;
 
-    if (calendarMode === CALENDAR_MODE_ENUM.WEEK) {
+    if (calendarMode === CalendarMode.WEEK) {
       dispatch(updateActiveDate({ weeks: slideValue }));
     }
-    if (calendarMode === CALENDAR_MODE_ENUM.MONTH) {
+    if (calendarMode === CalendarMode.MONTH) {
       dispatch(updateActiveDate({ months: slideValue }));
     }
-    if (calendarMode === CALENDAR_MODE_ENUM.YEAR) {
+    if (calendarMode === CalendarMode.YEAR) {
       dispatch(updateActiveDate({ years: slideValue }));
     }
   };
@@ -56,15 +56,15 @@ function CalendarSlider() {
   );
 
   return (
-    <div className="h-[2.5rem] flex-shrink-0 flex items-stretch overflow-hidden rounded-md border border-gray-200">
+    <div className="flex h-[2.5rem] flex-shrink-0 items-stretch overflow-hidden rounded-md border border-gray-200">
       <button
-        className="flex justify-center items-center aspect-square hover:bg-gray-100 active:bg-gray-200 text-gray-600 "
+        className="flex aspect-square items-center justify-center text-gray-600 hover:bg-gray-100 active:bg-gray-200 "
         onClick={() => handleCalendarSlide("prev")}
       >
         <BiChevronLeft size={24} />
       </button>
       <button
-        className={`flex items-center justify-center border-r border-l border-gray-200 hover:bg-gray-100 text-[0.95rem]  font-medium w-[6rem] active:bg-gray-200 ${
+        className={`flex w-[6rem] items-center justify-center border-l border-r border-gray-200 text-[0.95rem]  font-medium hover:bg-gray-100 active:bg-gray-200 ${
           activeDateIsThisMonth
             ? "text-red-500 hover:text-red-500 "
             : "text-gray-700 hover:text-gray-800  "
@@ -76,7 +76,7 @@ function CalendarSlider() {
         {enterMobileMode ? format(new Date(activeDate), "yyyy") : "Today"}
       </button>
       <button
-        className="flex justify-center items-center aspect-square hover:bg-gray-100 active:bg-gray-200 text-gray-600"
+        className="flex aspect-square items-center justify-center text-gray-600 hover:bg-gray-100 active:bg-gray-200"
         onClick={() => handleCalendarSlide("next")}
       >
         <BiChevronRight size={24} />

@@ -2,8 +2,8 @@ import { cn } from "@/lib/utils";
 import { RootState } from "@/store";
 import { setActiveDate, setCalendarMode } from "@/store/calendarState";
 import { setDayDialongTargetDay } from "@/store/modelControlState";
-import { CALENDAR_MODE_ENUM } from "@/type-models/calendarState.type";
-import { CALENDAR_MODE, MIN_WIDTHS, WEEK_DAYS } from "@/utils/constants";
+import { CalendarMode } from "@/type-models/calendarState.type";
+import { CALENDAR_MODES, MIN_WIDTHS, WEEK_DAYS } from "@/utils/constants";
 import {
   eachDayOfInterval,
   endOfMonth,
@@ -36,16 +36,16 @@ function YearCell({ month }: { month: Date }) {
   // const monthIsThisMonth = isThisMonth(month);
 
   const handleViewMonth = () => {
-    dispatch(setCalendarMode(CALENDAR_MODE_ENUM.MONTH));
+    dispatch(setCalendarMode(CalendarMode.MONTH));
     dispatch(setActiveDate(month.toISOString()));
   };
 
   return (
-    <div className="flex justify-center items-start py-2 pt-3 px-2 sm:px-0">
-      <div className="w-full px-[0.4rem] sm1:px-0 sm1:w-auto h-full sm2:h-auto">
+    <div className="flex items-start justify-center px-2 py-2 pt-3 sm:px-0">
+      <div className="h-full w-full px-[0.4rem] sm1:w-auto sm1:px-0 sm2:h-auto">
         <a
           className={cn(
-            "pl-3 sm1:pl-2 py-1 block text-[1.05rem] sm1:text-[0.925rem] font-medium sm2:hover:bg-gray-100  rounded-md sm2:cursor-pointer sm2:hover:underline mb-2 sm1:mb-[0.1rem]  text-red-500 sm1:text-gray-600 sm1:hover:text-gray-700  decoration-gray-500",
+            "mb-2 block rounded-md py-1 pl-3 text-[1.05rem] font-medium text-red-500  decoration-gray-500 sm1:mb-[0.1rem] sm1:pl-2 sm1:text-[0.925rem] sm1:text-gray-600  sm1:hover:text-gray-700 sm2:cursor-pointer sm2:hover:bg-gray-100  sm2:hover:underline",
           )}
           onClick={(e) => {
             e.preventDefault();
@@ -61,13 +61,13 @@ function YearCell({ month }: { month: Date }) {
           {Object.values(WEEK_DAYS).map((weekDay) => (
             <span
               key={weekDay.short}
-              className=" capitalize text-red-400 text-[0.9rem] sm1:text-[0.85rem] font-medium text-center w-[1.75rem] h-[1.75rem] mx-auto"
+              className=" mx-auto h-[1.75rem] w-[1.75rem] text-center text-[0.9rem] font-medium capitalize text-red-400 sm1:text-[0.85rem]"
             >
               {weekDay.long[0]}
             </span>
           ))}
         </div>
-        <div className="grid grid-cols-7 grid-flow-row-dense gap-x-[0.5rem] gap-y-2 sm1:gap-y-[0.35rem]">
+        <div className="grid grid-flow-row-dense grid-cols-7 gap-x-[0.5rem] gap-y-2 sm1:gap-y-[0.35rem]">
           {days.splice(0, 42).map((day) => {
             const dayIsToday = isToday(day);
             const isDayInCurrentMonth = isSameMonth(day, month);
@@ -76,12 +76,12 @@ function YearCell({ month }: { month: Date }) {
                 key={day.toString()}
                 dateTime={format(day, "yyyy-MM-dd")}
                 className={cn(
-                  "flex justify-center items-center rounded-full text-sm sm1:text-xs font-semibold sm2:font-medium w-[1.65rem] h-[1.65rem] cursor-pointer mx-auto",
+                  "mx-auto flex h-[1.65rem] w-[1.65rem] cursor-pointer items-center justify-center rounded-full text-sm font-semibold sm1:text-xs sm2:font-medium",
                   isDayInCurrentMonth
-                    ? "text-gray-600  hover:text-gray-800 hover:bg-gray-200"
+                    ? "text-gray-600  hover:bg-gray-200 hover:text-gray-800"
                     : " text-gray-200 hover:bg-gray-100",
                   dayIsToday && isDayInCurrentMonth
-                    ? "bg-red-500 hover:bg-red-600 text-white hover:text-white"
+                    ? "bg-red-500 text-white hover:bg-red-600 hover:text-white"
                     : "",
                 )}
                 onClick={() => {
