@@ -1,9 +1,9 @@
 import { EVENT_CALENDARS } from "@/event_calendars/event_calendars";
 import {
-  CALENDAR_MODE_ENUM,
+  CalendarMode,
   CellPreferanceT,
   EventCalendarItem,
-  LANGUAGE_ENUM,
+  Language,
   UserCalendarItem,
 } from "@/type-models/calendarState.type";
 import { CALENDAR_SHOW_DEFAULT } from "@/utils/defaults";
@@ -11,18 +11,18 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Duration, add } from "date-fns";
 
 export interface CalendarStateInterface {
-  calendarMode: CALENDAR_MODE_ENUM;
+  calendarMode: CalendarMode;
   activeDate: string;
-  calendarLanguage: LANGUAGE_ENUM;
+  calendarLanguage: Language;
   show: CellPreferanceT;
   eventCalendars: EventCalendarItem[];
   userCalendars: UserCalendarItem[];
 }
 
 const initialState: CalendarStateInterface = {
-  calendarMode: CALENDAR_MODE_ENUM.MONTH,
+  calendarMode: CalendarMode.MONTH,
   activeDate: new Date().toISOString(),
-  calendarLanguage: LANGUAGE_ENUM.MYANMAR,
+  calendarLanguage: Language.MYANMAR,
   show: CALENDAR_SHOW_DEFAULT,
   eventCalendars: EVENT_CALENDARS,
   userCalendars: [],
@@ -31,7 +31,7 @@ export const calendarSlice = createSlice({
   name: "calendarSlice",
   initialState,
   reducers: {
-    setCalendarMode: (state, action: PayloadAction<CALENDAR_MODE_ENUM>) => {
+    setCalendarMode: (state, action: PayloadAction<CalendarMode>) => {
       state.calendarMode = action.payload;
     },
     setActiveDate: (state, { payload }: PayloadAction<string>) => {
@@ -40,7 +40,7 @@ export const calendarSlice = createSlice({
     updateActiveDate: (state, { payload }: PayloadAction<Duration>) => {
       state.activeDate = add(new Date(state.activeDate), payload).toISOString();
     },
-    setCalendarLanguage: (state, action: PayloadAction<LANGUAGE_ENUM>) => {
+    setCalendarLanguage: (state, action: PayloadAction<Language>) => {
       state.calendarLanguage = action.payload;
     },
 

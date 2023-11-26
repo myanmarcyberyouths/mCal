@@ -1,10 +1,10 @@
-export enum CALENDAR_MODE_ENUM {
+export enum CalendarMode {
   WEEK = "W",
   MONTH = "M",
   YEAR = "Y",
 }
 
-export enum LANGUAGE_ENUM {
+export enum Language {
   MYANMAR = "myanmar",
   ENGLISH = "english",
   MON = "mon",

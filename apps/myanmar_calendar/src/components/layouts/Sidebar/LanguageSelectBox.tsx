@@ -7,15 +7,15 @@ import {
 } from "@/components/ui/selectBoxes/Select";
 import { RootState } from "@/store";
 import { setCalendarLanguage } from "@/store/calendarState";
-import { LANGUAGE_ENUM } from "@/type-models/calendarState.type";
+import { Language } from "@/type-models/calendarState.type";
 import { LANGUAGES } from "@/utils/constants";
 import { BiChevronDown } from "react-icons/bi";
 import { HiLanguage } from "react-icons/hi2";
 import { useDispatch, useSelector } from "react-redux";
 
 interface LanguageSelectBoxInterface {
-  value: LANGUAGE_ENUM;
-  onChange: (value: LANGUAGE_ENUM) => void;
+  value: Language;
+  onChange: (value: Language) => void;
 }
 
 function LanguageSelectBox({ value, onChange }: LanguageSelectBoxInterface) {
@@ -27,7 +27,7 @@ function LanguageSelectBox({ value, onChange }: LanguageSelectBoxInterface) {
         }}
         className="h-input-md"
       >
-        <span className="flex gap-2 w-full items-center text-[0.9rem] text-gray-500">
+        <span className="flex w-full items-center gap-2 text-[0.9rem] text-gray-500">
           <HiLanguage size={18} className="text-gray-600" />
           <SelectValue placeholder={value} />
         </span>
