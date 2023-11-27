@@ -1,12 +1,12 @@
-export const WEEK_DAYS = {
-  sun: { long: "sunday", short: "sun" },
-  mon: { long: "monday", short: "mon" },
-  tue: { long: "tuesday", short: "tue" },
-  wed: { long: "wednesday", short: "wed" },
-  thu: { long: "thurday", short: "thu" },
-  fri: { long: "friday", short: "fri" },
-  sat: { long: "saturday", short: "sat" },
-};
+// export const WEEK_DAYS = {
+//   sun: { long: "sunday", short: "sun" },
+//   mon: { long: "monday", short: "mon" },
+//   tue: { long: "tuesday", short: "tue" },
+//   wed: { long: "wednesday", short: "wed" },
+//   thu: { long: "thurday", short: "thu" },
+//   fri: { long: "friday", short: "fri" },
+//   sat: { long: "saturday", short: "sat" },
+// };
 
 export const WEEK_INDEX = {
   sunday: 0,

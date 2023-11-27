@@ -8,7 +8,6 @@ export function useSystemColorScheme(callback: (theme: THEME_MODE) => THEME_MODE
     if (disabled) return;
     const handleSysThemeChange = (event: MediaQueryListEvent) => {
       const newColorScheme = event.matches ? THEME_MODE.dark : THEME_MODE.light;
-      console.log("System theme changed");
       callback(newColorScheme);
     };
 

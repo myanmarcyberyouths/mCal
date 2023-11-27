@@ -1,22 +1,22 @@
 import { useRef, useEffect } from "react";
 
-type ScrollCusomCallbackType = {
+type ScrollCustomCallbackType={
   offsetHeight: number;
   scrollHeight: number;
   scrollTop: number;
 };
 
-function useScrollEvent(
-  customCallback: (props: ScrollCusomCallbackType) => void,
+function useScrollEvent (
   callBacks?: {
-    untilOverflow: () => void;
-    reachedTop: () => void;
-    reachedBottom: () => void;
+    untilOverflow?: () => void;
+    onReachedTop?: () => void;
+    onReachedBottom?: () => void;
+    customCallback?: (props: ScrollCustomCallbackType) => void,
   },
 ) {
-  const scrollRef = useRef<any>();
+  const scrollRef=useRef<HTMLElement>();
 
-  // Fire CustomCallback untill overflow
+  // Fire callback untill overflow
   useEffect(() => {
     if (!scrollRef.current) return;
     if (!callBacks?.untilOverflow) return;
@@ -26,55 +26,58 @@ function useScrollEvent(
       console.log(offsetHeight, scrollHeight);
       callBacks?.untilOverflow();
     }
-  }, [scrollRef, customCallback, callBacks]);
+  }, [scrollRef, callBacks?.untilOverflow, callBacks]);
 
   let scrollTimeout = useRef<any>();
 
   useEffect(() => {
-    let scrollRefCurrent = scrollRef.current;
+    if(!scrollRef.current) return;
 
     const scrollHandler = () => {
       const { offsetHeight, scrollHeight, scrollTop } =
         scrollRef.current as HTMLDivElement;
-      // console.log(offsetHeight, scrollHeight, scrollTop);
 
-      customCallback({
-        offsetHeight,
-        scrollHeight,
-        scrollTop,
-      });
+      if(callBacks?.customCallback) {
+        callBacks.customCallback({
+          offsetHeight,
+          scrollHeight,
+          scrollTop,
+        });
+      }
 
       // Fire Callback fn on scroll reached bottom
-      if (callBacks?.reachedBottom) {
+      if(callBacks?.onReachedBottom) {
         if (Math.floor(scrollHeight - scrollTop) === offsetHeight) {
           if (scrollTimeout.current !== null) {
             clearTimeout(scrollTimeout.current);
           }
           scrollTimeout.current = setTimeout(() => {
-            callBacks?.reachedBottom();
-          }, 200);
+            callBacks?.onReachedBottom();
+          }, 50);
         }
       }
 
       // Fire Callback fn on scroll reached top
-      if (callBacks?.reachedTop) {
+      if(callBacks?.onReachedTop) {
         if (scrollTop === 0) {
           if (scrollTimeout.current !== null) {
             clearTimeout(scrollTimeout.current);
           }
           scrollTimeout.current = setTimeout(() => {
-            callBacks?.reachedTop();
+            callBacks?.onReachedTop();
           }, 50);
         }
       }
     };
 
+    scrollHandler()
+
     scrollRef.current?.addEventListener("scroll", scrollHandler);
 
     return () => {
-      scrollRefCurrent.removeEventListener("scroll", scrollHandler);
+      scrollRef.current?.removeEventListener("scroll", scrollHandler);
     };
-  }, [customCallback, scrollRef, callBacks]);
+  }, [scrollRef, callBacks]);
 
   return scrollRef;
 }

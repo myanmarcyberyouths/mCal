@@ -72,7 +72,7 @@ module.exports = {
         model: "0 10px 18px 3px rgba(100,100,100,.14), 0 9px 16px 8px rgba(100,100,100,.07), 0 11px 15px -7px rgba(100,100,100,.2)",
         "model-dark":
           "0 10px 15px -3px rgba(0, 0, 0, 0.2),\
-    0 4px 6px -2px rgba(0, 0, 0, 0.2)",
+        0 4px 6px -2px rgba(0, 0, 0, 0.2)",
       },
       keyframes: {
         "accordion-down": {

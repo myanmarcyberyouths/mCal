@@ -17,13 +17,12 @@ function DateTimeSetting() {
   const [timeFormat, setTimeFormat] = useState("13:00");
 
   const localTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-  console.log(localTimeZone);
 
   return (
     <SettingSectionContainer
       label="Date & Time"
       bottomBorder={false}>
-      <li className="flex justify-between max-w-[28rem] items-center p-2 px-2 border-b border-gray-200">
+      <li className="flex justify-between sm2:min-w-[22rem] md:max-w-[28rem]  items-center p-2 px-2 border-b border-gray-200">
         <div>
           <span className="text-[0.925rem] text-gray-600">Time zone</span>
         </div>
@@ -33,8 +32,7 @@ function DateTimeSetting() {
             id="mySelect"
             value={timeZone}
             onChange={(e) => dispatch(setTimeZone(e.target.value))}
-            className="w-[14rem] h-input-md px-2 rounded-sm bg-gray-100 dark:bg-gray-200 group-hover/select:bg-gray-150 dark:group-hover/select:bg-gray-250 cursor-pointer text-[0.9rem] text-gray-800 font-light outline-none">
-            <option value="">-- Select --</option>
+            className="max-w-[12rem] md:max-w-[14rem] min-w-[7.5rem] h-input-md px-2 rounded-sm bg-gray-100 dark:bg-gray-200 group-hover/select:bg-gray-150 dark:group-hover/select:bg-gray-250 cursor-pointer text-[0.9rem] text-gray-800 font-light outline-none">
             {timeZones.map((zone) => (
               <option
                 key={zone}
@@ -88,7 +86,7 @@ function SettingSelectBox<T>({
   selectHandler: (value: string) => void;
 }) {
   return (
-    <li className="flex justify-between max-w-[28rem] items-center p-2 px-2 border-b border-gray-200">
+    <li className="flex justify-between  sm2:min-w-[22rem] md:max-w-[28rem] items-center p-2 px-2 border-b border-gray-200">
       <div>
         <span className="text-[0.925rem] text-gray-600">{label}</span>
       </div>

@@ -11,8 +11,8 @@ function DarkMode() {
 
   const toggleTheme = (themeMode: THEME_MODE) => {
     setThemeMode(themeMode);
-    localStorage.setItem(LOCAL_STORAGE_KEYS.darkMode, themeMode);
-    setAppTheme(themeMode);
+          setAppTheme(themeMode);
+        localStorage.setItem(LOCAL_STORAGE_KEYS.darkMode, themeMode);
   };
 
   useSystemColorScheme(setAppTheme, themeMode !== THEME_MODE.system);
@@ -25,18 +25,18 @@ function DarkMode() {
         defaultValue={themeMode}
         className="space-y-1">
         <label
-          htmlFor={THEME_MODE.system}
-          className="group/darkMode flex items-center space-x-2 cursor-pointer">
-          <RadioGroupItem
-            value={THEME_MODE.system}
-            id={THEME_MODE.system}
+               htmlFor={THEME_MODE.system}
+              className="group/darkMode flex items-center space-x-2 cursor-pointer w-fit">
+              <RadioGroupItem
+                value={THEME_MODE.system}
+                id={THEME_MODE.system}
             className={cn(themeMode === THEME_MODE.system && "border-rose-500")}
           />
           <span className="text-[0.9rem] text-gray-600 font-light capitalize group-hover/darkMode:text-rose-500">{THEME_MODE.system}</span>
         </label>
 
-        <div className="flex gap-10">
-          <label
+        <div className="flex flex-col items-start md:flex-row gap-4 md:gap-10 ">
+           <label
             htmlFor={THEME_MODE.light}
             className="group/darkMode">
             <div className="flex items-center space-x-2 cursor-pointer mb-1">
@@ -104,12 +104,13 @@ function AppThemePreview({ theme = "light" }: { theme?: "light" | "dark" }) {
 }
 
 export function useDarkMode() {
-  const [themeMode, setThemeMode] = useState<THEME_MODE>();
+  // const [themeMode, setThemeMode] = useState<THEME_MODE>();
 
-  useEffect(() => {
-    const initialThemeMode = setAppTheme();
-    setThemeMode(initialThemeMode);
-  }, []);
+  // useEffect(() => {
+  //   const initialThemeMode = setAppTheme();
+  //   setThemeMode(initialThemeMode);
+  // }, []);
+  const themeMode = setAppTheme()
 
   useSystemColorScheme(setAppTheme, themeMode !== THEME_MODE.system);
 }

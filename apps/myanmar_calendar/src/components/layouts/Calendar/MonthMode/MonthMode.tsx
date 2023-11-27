@@ -1,21 +1,18 @@
 import { RootState } from "@/store";
-import { WEEK_DAYS, WEEK_INDEX } from "@/utils/constants";
 import { eachDayOfInterval, endOfMonth, endOfWeek, format, startOfMonth, startOfWeek } from "date-fns";
 import React, { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import MonthCell from "./MonthCell";
 import { cn } from "@/lib/utils";
 import { getLocalTime, getWeekDayIndex } from "@/utils/dateTimeHelper";
+import {OptionsWithTZ} from "date-fns-tz";
 
 function MonthMode() {
   const calendarState = useSelector((state: RootState) => state.calendarState);
   const { activeDate, weekStart } = calendarState;
   let activeDateObj = new Date(activeDate);
 
-  const options: {
-    locale?: Locale;
-    weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
-  } = {
+  const options: OptionsWithTZ  = {
     weekStartsOn: getWeekDayIndex(weekStart),
   };
 
@@ -24,10 +21,11 @@ function MonthMode() {
     end: endOfWeek(endOfMonth(getLocalTime(activeDateObj)), options),
   });
 
-  let firstWeek = eachDayOfInterval({
-    start: startOfWeek(startOfMonth(getLocalTime(activeDateObj)), options),
-    end: endOfWeek(startOfMonth(getLocalTime(activeDateObj)), options),
-  });
+  // let firstWeek = eachDayOfInterval({
+  //   start: startOfWeek(startOfMonth(getLocalTime(activeDateObj)), options),
+  //   end: endOfWeek(startOfMonth(getLocalTime(activeDateObj)), options),
+  // });
+  const  firstWeek = days.slice(0,7) 
 
   return (
     <div aria-label="Calendar month view" className="h-full">

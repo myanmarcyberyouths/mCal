@@ -25,15 +25,9 @@ function CalendarSlider() {
   const handleCalendarSlide = (direction: "next" | "prev") => {
     const slideValue = direction === "next" ? 1 : -1;
 
-    if (calendarMode === CALENDAR_MODE.WEEK) {
-      dispatch(updateActiveDate({ weeks: slideValue }));
-    }
-    if (calendarMode === CALENDAR_MODE.MONTH) {
-      dispatch(updateActiveDate({ months: slideValue }));
-    }
-    if (calendarMode === CALENDAR_MODE.YEAR) {
-      dispatch(updateActiveDate({ years: slideValue }));
-    }
+    dispatch(updateActiveDate({
+      [calendarMode + 's']: slideValue
+    }))
   };
 
   useEffect(() => {

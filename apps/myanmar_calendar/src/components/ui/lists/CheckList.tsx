@@ -38,11 +38,11 @@ export function CheckListItem({
             type="checkbox"
             className=" w-[1.25rem] h-[1.25rem] sm2:w-[1.1rem] sm2:h-[1.1rem] appearance-none checked:bg-red-400 border-[1.8px] border-red-400 rounded-[0.15rem] cursor-pointer outline-none"
             style={{
-              backgroundColor: props.checked ? tagColor : "white",
+              backgroundColor: props.checked ? tagColor : "transparent",
               borderColor: tagColor,
             }}
           />
-          <IoMdCheckmark size={17} className="absolute text-gray-0 " />
+          <IoMdCheckmark size={17} className={cn("absolute", props.checked ? "text-gray-50" : "text-gray-100/0")} />
         </div>
         <span className=" text-[1.1rem] sm2:text-[0.875rem] first-letter:capitalize font-normal text-gray-600 whitespace-nowrap">
           {props.name}

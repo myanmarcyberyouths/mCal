@@ -1,14 +1,21 @@
 import { Button } from "@/components/ui/buttons/Button";
+import {RootState} from "@/store";
 import { PARAMS, SETTING_PARAMS } from "@/type-models/utils.type";
 import React from "react";
 import { IoSettingsOutline } from "react-icons/io5";
+import {useSelector} from "react-redux";
 import { useSearchParams } from "react-router-dom";
 
 function SettingTrigger() {
+  const enterMobileMode =  useSelector((state: RootState) => state.systemState.enterMobileMode)
   const [searchParam, setSearchParams] = useSearchParams();
 
   const handleTrigger = () => {
-    setSearchParams(`?${PARAMS.setting}=${SETTING_PARAMS.general}`);
+    if(enterMobileMode) {
+      setSearchParams(`?${PARAMS.setting}=open`);
+    } else {
+      setSearchParams(`?${PARAMS.setting}=${SETTING_PARAMS.general}`);
+    }
   };
 
   return (

@@ -1,11 +1,13 @@
 import { RootState } from "@/store";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 
 import WeekMode from "./WeekMode/WeekMode";
 import MonthMode from "./MonthMode/MonthMode";
 import YearMode from "./YearMode/YearMode";
 import { cn } from "@/lib/utils";
+import { useMotionValueEvent, useScroll } from "framer-motion";
+import useScrollEvent from "@/hooks/useScrollEvent";
 
 const calendar_modes = {
   week: <WeekMode />,
@@ -17,8 +19,21 @@ function Calendar() {
   const calendarMode = useSelector(
     (state: RootState) => state.calendarState.calendarMode,
   );
-  // const sidebarOpen = useSelector((state: RootState) => state.systemState.sidebarOpen);
-  // const sidebarOpen = useSelector((state: RootState) => state.systemState.sidebarOpen);
+
+  // const [showOverflowInset, setShowOverflowInset] = useState(false)
+
+  // const calendarRef = useScrollEvent({
+  //   customCallback: ({offsetHeight,scrollHeight,scrollTop}) => {
+  //     if(offsetHeight === scrollHeight) return
+
+  //     setShowOverflowInset(true)
+      
+  //     if((scrollHeight - offsetHeight) === scrollTop) {
+  //       setShowOverflowInset(false)
+  //     }
+  //   }
+  // })
+
 
   return (
     <section

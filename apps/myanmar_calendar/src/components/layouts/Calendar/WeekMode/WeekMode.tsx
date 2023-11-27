@@ -20,6 +20,7 @@ import { setDayDialongTargetDay } from "@/store/modelControlState";
 import WeekColumn from "./WeekColumn";
 import WeekColumnHead from "./WeekColumnHead";
 import { getWeekDayIndex } from "@/utils/dateTimeHelper";
+import {OptionsWithTZ} from "date-fns-tz";
 
 function WeekMode() {
   const dispatch = useDispatch();
@@ -27,10 +28,7 @@ function WeekMode() {
   const { activeDate, weekStart } = calendarState;
   let activeDateObj = new Date(activeDate);
 
-  const options: {
-    locale?: Locale;
-    weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
-  } = {
+  const options: OptionsWithTZ = {
     weekStartsOn: getWeekDayIndex(weekStart),
   };
 
@@ -42,14 +40,16 @@ function WeekMode() {
   // Scroll Events Handling
   const [scrollReachedTop, setScrollReachedTop] = useState(true);
 
-  const scrollViewportRef = useScrollEvent(
-    ({ offsetHeight, scrollHeight, scrollTop }) => {
+  const scrollViewportRef = useScrollEvent( 
+ {
+  customCallback:   ({ offsetHeight, scrollHeight, scrollTop }) => {
       if (scrollTop < 7) {
         setScrollReachedTop(true);
       } else {
         setScrollReachedTop(false);
       }
     },
+ }
   );
 
   // console.log("WeekMode render");
