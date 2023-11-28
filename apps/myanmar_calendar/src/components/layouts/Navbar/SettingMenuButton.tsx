@@ -6,7 +6,7 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 
-function SettingTrigger() {
+function SettingMenuButton() {
   const enterMobileMode = useSelector(
     (state: RootState) => state.systemState.enterMobileMode,
   );
@@ -25,11 +25,11 @@ function SettingTrigger() {
       onClick={handleTrigger}
       variant="ghost"
       size="icon"
-      className="ml-2"
+      className="focus-visible:ring-ring hover:bg-accent hover:text-accent-foreground inline-flex items-center justify-center rounded-lg border border-gray-200 px-2 py-1 text-sm font-medium transition-colors hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50"
     >
-      <IoSettingsOutline size={22} className="text-gray-600" />
+      <IoSettingsOutline size={16} className="text-gray-600" />
     </Button>
   );
 }
 
-export default SettingTrigger;
+export default SettingMenuButton;

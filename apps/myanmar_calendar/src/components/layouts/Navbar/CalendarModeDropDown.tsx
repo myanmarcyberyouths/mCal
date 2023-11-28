@@ -63,7 +63,7 @@ function CalendarModeDropDown() {
                     <button
                       className={`${
                         active ? "bg-gray-100 text-gray-600" : "text-gray-700"
-                      }  group flex w-full items-center rounded-md px-2 py-2 text-sm capitalize`}
+                      }  group flex w-full items-center rounded-md px-2 py-2.5 text-sm capitalize`}
                       onClick={() => onCalendarModeChange(key as CalendarMode)}
                     >
                       {CALENDAR_MODES[key]}
