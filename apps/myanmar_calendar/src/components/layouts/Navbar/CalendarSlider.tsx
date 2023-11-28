@@ -1,13 +1,12 @@
 import useKeyPress from "@/hooks/useKeyPress";
 import { RootState } from "@/store";
 import { setActiveDate, updateActiveDate } from "@/store/calendarState";
-import { CalendarMode } from "@/type-models/calendarState.type";
 import { CALENDAR_MODES } from "@/utils/constants";
 import { getLocalTime } from "@/utils/helpers";
-import { format, isSameDay, isThisMonth, isToday } from "date-fns";
+import { format, isThisMonth } from "date-fns";
 import { useEffect, useState } from "react";
-import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/20/solid";
 
 function CalendarSlider() {
   const dispatch = useDispatch();
@@ -53,15 +52,15 @@ function CalendarSlider() {
   );
 
   return (
-    <div className="flex h-[2.5rem] flex-shrink-0 items-stretch overflow-hidden rounded-md border border-gray-200">
+    <div className="flex  flex-shrink-0 items-stretch overflow-hidden rounded-md border border-gray-200">
       <button
-        className="flex aspect-square items-center justify-center text-gray-600 hover:bg-gray-100 active:bg-gray-200 "
+        className="flex items-center justify-center px-2 py-1.5 text-gray-600 hover:bg-gray-50 active:bg-gray-200"
         onClick={() => handleCalendarSlide("prev")}
       >
-        <BiChevronLeft size={24} />
+        <ChevronLeftIcon className="h-5 w-5" />
       </button>
       <button
-        className={`flex w-[6rem] items-center justify-center border-l border-r border-gray-250 text-[0.95rem]  font-medium hover:bg-gray-100 active:bg-gray-200 ${
+        className={`flex items-center justify-center border-gray-250 px-2  py-1.5 font-medium hover:bg-gray-50 active:bg-gray-50 ${
           activeDateIsThisMonth
             ? "text-red-500 hover:text-red-500 "
             : "text-gray-700 hover:text-gray-800  "
@@ -73,10 +72,10 @@ function CalendarSlider() {
         {enterMobileMode ? format(new Date(activeDate), "yyyy") : "Today"}
       </button>
       <button
-        className="flex aspect-square items-center justify-center text-gray-600 hover:bg-gray-100 active:bg-gray-200"
+        className="flex aspect-square  items-center justify-center px-2 py-1.5 text-gray-600 hover:bg-gray-50 active:bg-gray-100"
         onClick={() => handleCalendarSlide("next")}
       >
-        <BiChevronRight size={24} />
+        <ChevronRightIcon className="h-5 w-5" />
       </button>
     </div>
   );

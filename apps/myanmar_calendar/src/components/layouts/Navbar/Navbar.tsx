@@ -42,7 +42,7 @@ function Navbar() {
       </div>
       <div className="flex h-full flex-1 items-center justify-between px-3">
         <ActiveDateIndicator />
-        <div className="ml-auto flex items-center gap-2 sm:gap-5 md:pr-4">
+        <div className="ml-auto flex items-center gap-1 sm:gap-5 md:pr-4">
           <CalendarSlider />
           <CalendarModeDropDown />
           <SettingMenuButton />
