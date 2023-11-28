@@ -1,21 +1,21 @@
 import { utcToZonedTime } from "date-fns-tz";
 import { THEME_MODE } from "@/type-models/utils.type";
 
-export function getLocalTime (date?: Date) {
-  return utcToZonedTime(date? new Date(date):new Date(), "Asia/Rangoon");
+export function getLocalTime(date?: Date) {
+  return utcToZonedTime(date ? new Date(date) : new Date(), "Asia/Rangoon");
 }
 
-export function parseJSON<T> (value: string|null): T|undefined {
+export function parseJSON<T>(value: string | null): T | undefined {
   try {
-    return value==="undefined"? undefined:JSON.parse(value??"");
+    return value === "undefined" ? undefined : JSON.parse(value ?? "");
   } catch {
-    console.log("parsing error on", {value});
+    console.log("parsing error on", { value });
     return undefined;
   }
 }
 
-export function setLocalStorage (key: string, value: any) {
-  if(typeof window==="undefined") {
+export function setLocalStorage(key: string, value: any) {
+  if (typeof window === "undefined") {
     console.warn(
       `Tried setting localStorage key “${key}” even though environment is not a client`,
     );
@@ -24,22 +24,27 @@ export function setLocalStorage (key: string, value: any) {
 
   try {
     window.localStorage.setItem(key, JSON.stringify(value));
-  } catch(error) {
+  } catch (error) {
     console.warn(`Error setting localStorage key “${key}”:`, error);
   }
 }
 
-export const setAppTheme=(theme?: THEME_MODE) => {
-  theme=theme||localStorage.dark_mode||THEME_MODE.light;
+export const setAppTheme = (theme?: THEME_MODE) => {
+  theme = theme || localStorage.dark_mode || THEME_MODE.light;
 
-  switch(theme) {
-    case THEME_MODE.system: {
-      if(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches) {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
+  switch (theme) {
+    case THEME_MODE.system:
+      {
+        if (
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches
+        ) {
+          document.documentElement.classList.add("dark");
+        } else {
+          document.documentElement.classList.remove("dark");
+        }
       }
-    } break;
+      break;
     case THEME_MODE.dark:
       document.documentElement.classList.add("dark");
       break;

@@ -27,19 +27,18 @@ function Calendar() {
   //     if(offsetHeight === scrollHeight) return
 
   //     setShowOverflowInset(true)
-      
+
   //     if((scrollHeight - offsetHeight) === scrollTop) {
   //       setShowOverflowInset(false)
   //     }
   //   }
   // })
 
-
   return (
     <section
       aria-label="Calendar"
       className={cn(
-        "flex-1 h-[calc(100vh-theme(spacing.nav-h))] supports-[height:100cqh]:h-[calc(100cqh-theme(spacing.nav-h))] supports-[height:100svh]:h-[calc(100svh-theme(spacing.nav-h))] xl:border-l  xl:border-gray-200 __scrollbar-md",
+        "__scrollbar-md h-[calc(100vh-theme(spacing.nav-h))] flex-1 supports-[height:100cqh]:h-[calc(100cqh-theme(spacing.nav-h))] supports-[height:100svh]:h-[calc(100svh-theme(spacing.nav-h))]  xl:border-l xl:border-gray-200",
       )}
     >
       {calendar_modes[calendarMode]}

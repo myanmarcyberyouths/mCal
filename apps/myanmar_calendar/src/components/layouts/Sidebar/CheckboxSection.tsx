@@ -23,7 +23,7 @@ function CheckboxSection({
 }: CheckboxSectionInterface) {
   return (
     <div className="">
-      <p className="text-[0.8rem] font-semibold text-red-600 mb-[0.35rem]">
+      <p className="mb-[0.35rem] text-[0.8rem] font-semibold text-red-600">
         {title}
       </p>
       <div>
@@ -31,7 +31,7 @@ function CheckboxSection({
           <label
             htmlFor={"preferance_" + ckListKey}
             key={ckListKey}
-            className="flex items-center gap-3 h-[1.95rem] rounded[0.2rem] cursor-pointer hover:bg-gray-100 px-2"
+            className="rounded[0.2rem] flex h-[1.95rem] cursor-pointer items-center gap-3 px-2 hover:bg-gray-100"
           >
             <div className="relative flex items-center justify-center">
               <input
@@ -45,11 +45,11 @@ function CheckboxSection({
                     name: e.target.name,
                   })
                 }
-                className="w-[1.1rem] h-[1.1rem] appearance-none checked:bg-red-400 border-[1.8px] border-red-400 rounded-[0.15rem] cursor-pointer outline-none"
+                className="h-[1.1rem] w-[1.1rem] cursor-pointer appearance-none rounded-[0.15rem] border-[1.8px] border-red-400 outline-none checked:bg-red-400"
               />
               <IoMdCheckmark size={17} className="absolute text-gray-0 " />
             </div>
-            <span className="text-[0.925rem] first-letter:capitalize tracking-[0.03rem] font-normal text-gray-600">
+            <span className="text-[0.925rem] font-normal tracking-[0.03rem] text-gray-600 first-letter:capitalize">
               {camelToSentenceCase(ckListKey)}
             </span>
           </label>

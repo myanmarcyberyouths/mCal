@@ -17,8 +17,8 @@ const SelectTrigger = React.forwardRef<
     <SelectPrimitive.Trigger
       ref={ref}
       className={cn(
-        "border flex-shrink-0 border-gray-250 rounded-sm flex justify-stretch items-center w-full px-2 outline-0 hover:bg-gray-100 hover:border-gray-300 active:border-gray-500 h-input-md",
-        className
+        "flex h-input-md w-full flex-shrink-0 items-center justify-stretch rounded-sm border border-gray-250 px-2 outline-0 hover:border-gray-300 hover:bg-gray-100 active:border-gray-500",
+        className,
       )}
       {...props}
     >
@@ -34,7 +34,7 @@ const SelectValue = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Value>
 >(({ className, ...props }, ref) => (
   <SelectPrimitive.Value
-    className={cn("capitalize text-[1.05rem]", className)}
+    className={cn("text-[1.05rem] capitalize", className)}
     {...props}
   />
 ));
@@ -51,12 +51,15 @@ const SelectContent = React.forwardRef<
     <SelectPrimitive.Portal>
       <SelectPrimitive.Content
         ref={ref}
-        className={cn("bg-gray-0 dark:bg-gray-75 rounded-md border border-gray-200 mt-1 shadow-lg z-[10]", className)}
+        className={cn(
+          "z-[10] mt-1 rounded-md border border-gray-200 bg-gray-0 shadow-lg dark:bg-gray-75",
+          className,
+        )}
         position={position}
         align={align}
         {...props}
       >
-        <ScrollArea className={cn("w-full h-fit p-[0.2rem]", className)}>
+        <ScrollArea className={cn("h-fit w-full p-[0.2rem]", className)}>
           <ScrollViewport className="max-h-[17rem] w-full">
             <SelectPrimitive.Viewport>{children}</SelectPrimitive.Viewport>
             <ScrollBar />
@@ -85,7 +88,7 @@ const SelectItem = React.forwardRef<
   <SelectPrimitive.Item
     ref={ref}
     className={cn(
-      "flex items-center h-[2.2rem] rounded cursor-pointer hover:bg-gray-50 focus:bg-gray-100 active:bg-gray-100 px-2 first-letter:capitalize outline-0 data-[state=checked]:bg-gray-200/70 w-full text-[0.9rem] text-gray-600",
+      "flex h-[2.2rem] w-full cursor-pointer items-center rounded px-2 text-[0.9rem] text-gray-600 outline-0 first-letter:capitalize hover:bg-gray-50 focus:bg-gray-100 active:bg-gray-100 data-[state=checked]:bg-gray-200/70",
       showIndicator ? "pl-8" : "pl-2",
       className,
     )}

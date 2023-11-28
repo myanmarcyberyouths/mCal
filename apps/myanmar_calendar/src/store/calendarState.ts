@@ -6,7 +6,7 @@ import {
   Language,
   UserCalendarItem,
 } from "@/type-models/calendarState.type";
-import {WEEK_DAYS} from "@/type-models/utils.type";
+import { WEEK_DAYS } from "@/type-models/utils.type";
 import { CALENDAR_SHOW_DEFAULT } from "@/utils/defaults";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Duration, add } from "date-fns";

@@ -1,7 +1,7 @@
 export enum LOCAL_STORAGE_KEYS {
-  eventCalendars="event_calendars",
-  calendarShow="calendar_show",
-  darkMode="dark_mode",
+  eventCalendars = "event_calendars",
+  calendarShow = "calendar_show",
+  darkMode = "dark_mode",
 }
 
 export enum SETTING_PARAMS {
@@ -29,4 +29,4 @@ export enum WEEK_DAYS {
   sat = "saturday",
 }
 
-export type WEEKDAY_INDEX=0|1|2|3|4|5|6
+export type WEEKDAY_INDEX = 0 | 1 | 2 | 3 | 4 | 5 | 6;

@@ -1,20 +1,18 @@
 import { useRef, useEffect } from "react";
 
-type ScrollCustomCallbackType={
+type ScrollCustomCallbackType = {
   offsetHeight: number;
   scrollHeight: number;
   scrollTop: number;
 };
 
-function useScrollEvent (
-  callBacks?: {
-    untilOverflow?: () => void;
-    onReachedTop?: () => void;
-    onReachedBottom?: () => void;
-    customCallback?: (props: ScrollCustomCallbackType) => void,
-  },
-) {
-  const scrollRef=useRef<HTMLElement>();
+function useScrollEvent(callBacks?: {
+  untilOverflow?: () => void;
+  onReachedTop?: () => void;
+  onReachedBottom?: () => void;
+  customCallback?: (props: ScrollCustomCallbackType) => void;
+}) {
+  const scrollRef = useRef<HTMLElement>();
 
   // Fire callback untill overflow
   useEffect(() => {
@@ -31,13 +29,13 @@ function useScrollEvent (
   let scrollTimeout = useRef<any>();
 
   useEffect(() => {
-    if(!scrollRef.current) return;
+    if (!scrollRef.current) return;
 
     const scrollHandler = () => {
       const { offsetHeight, scrollHeight, scrollTop } =
         scrollRef.current as HTMLDivElement;
 
-      if(callBacks?.customCallback) {
+      if (callBacks?.customCallback) {
         callBacks.customCallback({
           offsetHeight,
           scrollHeight,
@@ -46,7 +44,7 @@ function useScrollEvent (
       }
 
       // Fire Callback fn on scroll reached bottom
-      if(callBacks?.onReachedBottom) {
+      if (callBacks?.onReachedBottom) {
         if (Math.floor(scrollHeight - scrollTop) === offsetHeight) {
           if (scrollTimeout.current !== null) {
             clearTimeout(scrollTimeout.current);
@@ -58,7 +56,7 @@ function useScrollEvent (
       }
 
       // Fire Callback fn on scroll reached top
-      if(callBacks?.onReachedTop) {
+      if (callBacks?.onReachedTop) {
         if (scrollTop === 0) {
           if (scrollTimeout.current !== null) {
             clearTimeout(scrollTimeout.current);
@@ -70,7 +68,7 @@ function useScrollEvent (
       }
     };
 
-    scrollHandler()
+    scrollHandler();
 
     scrollRef.current?.addEventListener("scroll", scrollHandler);
 

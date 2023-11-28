@@ -1,7 +1,10 @@
 import { THEME_MODE } from "@/type-models/utils.type";
 import { useEffect, useRef } from "react";
 
-export function useSystemColorScheme(callback: (theme: THEME_MODE) => THEME_MODE, disabled = false) {
+export function useSystemColorScheme(
+  callback: (theme: THEME_MODE) => THEME_MODE,
+  disabled = false,
+) {
   const sysColorSchemeRef = useRef<MediaQueryList>();
 
   useEffect(() => {
@@ -11,12 +14,17 @@ export function useSystemColorScheme(callback: (theme: THEME_MODE) => THEME_MODE
       callback(newColorScheme);
     };
 
-    sysColorSchemeRef.current = window.matchMedia("(prefers-color-scheme: dark)");
+    sysColorSchemeRef.current = window.matchMedia(
+      "(prefers-color-scheme: dark)",
+    );
 
     sysColorSchemeRef.current.addEventListener("change", handleSysThemeChange);
 
     return () => {
-      sysColorSchemeRef.current.removeEventListener("change", handleSysThemeChange);
+      sysColorSchemeRef.current.removeEventListener(
+        "change",
+        handleSysThemeChange,
+      );
     };
   }, [disabled]);
 }

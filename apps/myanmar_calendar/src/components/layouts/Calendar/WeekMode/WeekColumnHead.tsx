@@ -30,10 +30,10 @@ function WeekColumnHead({
         !scrollReachedTop && " border-b-gray-100",
       )}
     >
-      <div className="flex flex-col items-center pt-2 gap-[0.1rem]">
+      <div className="flex flex-col items-center gap-[0.1rem] pt-2">
         <div
           className={cn(
-            "font-medium text-gray-450 text-sm",
+            "text-sm font-medium text-gray-450",
             isWeekend(day) && "text-red-500",
           )}
         >
@@ -45,26 +45,26 @@ function WeekColumnHead({
           }}
           dateTime={format(day, "yyyy-MM-dd")}
           className={cn(
-            " text-[1.15rem] font-semibold text-gray-450 flex items-center justify-center rounded-full w-[1.9rem] h-[1.9rem] cursor-pointer",
+            " flex h-[1.9rem] w-[1.9rem] cursor-pointer items-center justify-center rounded-full text-[1.15rem] font-semibold text-gray-450",
             dayIsToday
-              ? "bg-red-500 hover:bg-red-600 active:bg-red-700 text-white"
-              : " hover:bg-gray-200 active:bg-gray-300 hover:text-gray-600 ",
+              ? "bg-red-500 text-white hover:bg-red-600 active:bg-red-700"
+              : " hover:bg-gray-200 hover:text-gray-600 active:bg-gray-300 ",
           )}
         >
           {format(day, "d")}
         </time>
       </div>
-      <div className=" justify-self-end border-r group-last/weekHeader:border-r-0 border-gray-200 w-full ">
+      <div className=" w-full justify-self-end border-r border-gray-200 group-last/weekHeader:border-r-0 ">
         <div className="p-1 px-[0.35rem] pb-[0.3rem]">
           <time
             dateTime={format(day, "yyyy-MM-dd")}
-            className="h-[2rem] w-full px-2 flex items-center justify-center text-[0.825rem] bg-gray-100 text-gray-450 font-semibold rounded-md hover:text-gray-500"
+            className="flex h-[2rem] w-full items-center justify-center rounded-md bg-gray-100 px-2 text-[0.825rem] font-semibold text-gray-450 hover:text-gray-500"
           >
             <span className="text-[0.825rem] font-semibold text-gray-600">
               {myanmar_calendar.month}
               {myanmar_calendar.moonPhase}
             </span>
-            <span className="text-[0.9rem] mb-[0.1rem] ml-1 font-semibold text-gray-600">
+            <span className="mb-[0.1rem] ml-1 text-[0.9rem] font-semibold text-gray-600">
               {mmDate}
             </span>
           </time>

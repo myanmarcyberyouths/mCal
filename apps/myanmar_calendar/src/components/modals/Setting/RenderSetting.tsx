@@ -5,14 +5,16 @@ import { Dialog, Transition } from "@headlessui/react";
 import ModelBackdrop from "@/components/ui/backdrops/ModelBackdrop";
 import { PARAMS, SETTING_PARAMS } from "@/type-models/utils.type";
 import useKeyPress from "@/hooks/useKeyPress";
-import {useSelector} from "react-redux";
-import {RootState} from "@/store";
+import { useSelector } from "react-redux";
+import { RootState } from "@/store";
 import BottomSheetMobile from "@/components/ui/sheets/BottomSheetMobile";
 
 function RenderSetting() {
-  const enterMobileMode =  useSelector((state: RootState) => state.systemState.enterMobileMode)
+  const enterMobileMode = useSelector(
+    (state: RootState) => state.systemState.enterMobileMode,
+  );
   const [searchParams, setSearchParams] = useSearchParams();
-  const settingParam = searchParams.get(PARAMS.setting)
+  const settingParam = searchParams.get(PARAMS.setting);
 
   const handlCloseSetting = () => {
     searchParams.delete(PARAMS.setting);
@@ -21,37 +23,44 @@ function RenderSetting() {
 
   useKeyPress("Escape", handlCloseSetting);
 
-if(enterMobileMode) return <SettingMobile isOpen={!!settingParam} onClose={handlCloseSetting} />
+  if (enterMobileMode)
+    return (
+      <SettingMobile isOpen={!!settingParam} onClose={handlCloseSetting} />
+    );
 
-  return (
-      <SettingDesktop show={!!settingParam} onClose={handlCloseSetting} />
-  );
+  return <SettingDesktop show={!!settingParam} onClose={handlCloseSetting} />;
 }
 
 export default RenderSetting;
 
-
-function SettingMobile({isOpen, onClose}: {isOpen: boolean,onClose: () => void}) {
+function SettingMobile({
+  isOpen,
+  onClose,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+}) {
   // const [searchParams, setSearchParams] = useSearchParams()
   // const settingParam = searchParams.get(PARAMS.setting) as SETTING_PARAMS;
-  
- return (
-  <BottomSheetMobile isOpen={isOpen} onClose={onClose} >
-    <Setting />
-  </BottomSheetMobile>
- )
+
+  return (
+    <BottomSheetMobile isOpen={isOpen} onClose={onClose}>
+      <Setting />
+    </BottomSheetMobile>
+  );
 }
 
-function  SettingDesktop({show, onClose}: {show: boolean, onClose: () => void}) {
-   return (
-     <Transition
-     appear
-     show={show}>
+function SettingDesktop({
+  show,
+  onClose,
+}: {
+  show: boolean;
+  onClose: () => void;
+}) {
+  return (
+    <Transition appear show={show}>
       {/* show={settingParam && SETTING_PARAMS[settingParam] ? true : false}> */}
-      <Dialog
-        as="div"
-        className={"relative z-10"}
-        onClose={() => {}}>
+      <Dialog as="div" className={"relative z-10"} onClose={() => {}}>
         <ModelBackdrop
           show={show}
           opacity="opacity-20 dark:opacity-40"
@@ -64,12 +73,17 @@ function  SettingDesktop({show, onClose}: {show: boolean, onClose: () => void}) 
           leaveFrom="opacity-100 translate-y-0"
           leaveTo={"opacity-0  translate-y-5"}
           enter={" duration-200"}
-          leave={"ease-in duration-150"}>
-          <Dialog.Panel className={"fixed z-10 inset-0 m-auto w-[90%] h-[90%] max-w-[55rem] max-h-[40rem] rounded-lg overflow-hidden"}>
+          leave={"ease-in duration-150"}
+        >
+          <Dialog.Panel
+            className={
+              "fixed inset-0 z-10 m-auto h-[90%] max-h-[40rem] w-[90%] max-w-[55rem] overflow-hidden rounded-lg"
+            }
+          >
             <Setting />
           </Dialog.Panel>
         </Transition.Child>
       </Dialog>
-      </Transition>
-      )
+    </Transition>
+  );
 }

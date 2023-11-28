@@ -5,7 +5,11 @@ import {
 } from "@/components/ui/lists/CheckList";
 import { RootState } from "@/store";
 import { updateEventCalendars } from "@/store/calendarState";
-import { LOCAL_STORAGE_KEYS, PARAMS, SETTING_PARAMS } from "@/type-models/utils.type";
+import {
+  LOCAL_STORAGE_KEYS,
+  PARAMS,
+  SETTING_PARAMS,
+} from "@/type-models/utils.type";
 import { setLocalStorage } from "@/utils/helpers";
 import React from "react";
 import { useSearchParams } from "react-router-dom";
@@ -17,7 +21,9 @@ import { useDispatch, useSelector } from "react-redux";
 
 function EventCalendarList() {
   const dispatch = useDispatch();
-  const eventCalendars = useSelector((state: RootState) => state.calendarState.eventCalendars);
+  const eventCalendars = useSelector(
+    (state: RootState) => state.calendarState.eventCalendars,
+  );
   const [searchParams, setSearchParams] = useSearchParams();
 
   const handleCheck = (checked, id: string) => {
@@ -51,8 +57,11 @@ function EventCalendarList() {
       ))}
       <div className="mt-1">
         <CheckListAddButton
-          onClick={() => setSearchParams(`?${PARAMS.setting}=${SETTING_PARAMS.sidebar}`)}
-          className="gap-0">
+          onClick={() =>
+            setSearchParams(`?${PARAMS.setting}=${SETTING_PARAMS.sidebar}`)
+          }
+          className="gap-0"
+        >
           More
         </CheckListAddButton>
       </div>

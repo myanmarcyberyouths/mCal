@@ -1,4 +1,4 @@
-import {WEEKDAY_INDEX} from "@/type-models/utils.type";
+import { WEEKDAY_INDEX } from "@/type-models/utils.type";
 import { endOfMinute } from "date-fns";
 import { utcToZonedTime } from "date-fns-tz";
 
@@ -39,9 +39,22 @@ export function calculateEasterDate(year) {
   return new Date(year, month - 1, day);
 }
 
-export function getWeekDayIndex (weekdayName: string): WEEKDAY_INDEX {
-  const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-  const index = weekdays.findIndex((day) => day.toLowerCase() === weekdayName.toLowerCase() || day.substring(0, 3).toLocaleLowerCase() === weekdayName.toLocaleLowerCase());
+export function getWeekDayIndex(weekdayName: string): WEEKDAY_INDEX {
+  const weekdays = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  const index = weekdays.findIndex(
+    (day) =>
+      day.toLowerCase() === weekdayName.toLowerCase() ||
+      day.substring(0, 3).toLocaleLowerCase() ===
+        weekdayName.toLocaleLowerCase(),
+  );
 
   if (index === -1) {
     throw new Error(`Invalid weekday name: ${weekdayName}`);

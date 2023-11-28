@@ -3,27 +3,38 @@ import { RootState } from "@/store";
 import { setActiveDate, setCalendarMode } from "@/store/calendarState";
 import { setDayDialongTargetDay } from "@/store/modelControlState";
 import { CalendarMode } from "@/type-models/calendarState.type";
-import {WEEK_DAYS} from "@/type-models/utils.type";
+import { WEEK_DAYS } from "@/type-models/utils.type";
 import { MIN_WIDTHS } from "@/utils/constants";
-import {getWeekDayIndex} from "@/utils/dateTimeHelper";
-import { eachDayOfInterval, endOfMonth, endOfWeek, format, isSameMonth, isThisMonth, isToday, nextDay, startOfMonth, startOfWeek } from "date-fns";
-import {OptionsWithTZ} from "date-fns-tz";
+import { getWeekDayIndex } from "@/utils/dateTimeHelper";
+import {
+  eachDayOfInterval,
+  endOfMonth,
+  endOfWeek,
+  format,
+  isSameMonth,
+  isThisMonth,
+  isToday,
+  nextDay,
+  startOfMonth,
+  startOfWeek,
+} from "date-fns";
+import { OptionsWithTZ } from "date-fns-tz";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 interface YearCellInterface {
-  month: Date,
-  weekStart: WEEK_DAYS
+  month: Date;
+  weekStart: WEEK_DAYS;
 }
 
 function YearCell({ month, weekStart }: YearCellInterface) {
   const enterMobileMode = useSelector(
     (state: RootState) => state.systemState.enterMobileMode,
-    );
-    const dispatch = useDispatch();
-    const endOfTheMonth = endOfMonth(month);    
+  );
+  const dispatch = useDispatch();
+  const endOfTheMonth = endOfMonth(month);
 
-  const options: OptionsWithTZ  = {
+  const options: OptionsWithTZ = {
     weekStartsOn: getWeekDayIndex(weekStart),
   };
 
@@ -32,7 +43,7 @@ function YearCell({ month, weekStart }: YearCellInterface) {
     end: endOfWeek(nextDay(endOfTheMonth, 0), options),
   });
 
-  const  firstWeek = days.slice(0,7) 
+  const firstWeek = days.slice(0, 7);
 
   const handleViewMonth = () => {
     dispatch(setCalendarMode(CalendarMode.MONTH));
@@ -44,7 +55,7 @@ function YearCell({ month, weekStart }: YearCellInterface) {
       <div className="h-full w-full px-[0.4rem] sm1:w-auto sm1:px-0 sm2:h-auto">
         <a
           className={cn(
-            "pl-3 sm1:pl-2 py-1 block text-[1.05rem] sm1:text-[0.925rem] font-medium sm2:hover:bg-gray-100  rounded-md sm2:cursor-pointer sm2:hover:underline sm1:mb-[0.1rem]  text-red-500 sm1:text-gray-600 sm1:hover:text-gray-700  decoration-gray-500",
+            "block rounded-md py-1 pl-3 text-[1.05rem] font-medium text-red-500 decoration-gray-500  sm1:mb-[0.1rem] sm1:pl-2 sm1:text-[0.925rem] sm1:text-gray-600  sm1:hover:text-gray-700 sm2:cursor-pointer sm2:hover:bg-gray-100  sm2:hover:underline",
           )}
           onClick={(e) => {
             e.preventDefault();
@@ -56,11 +67,11 @@ function YearCell({ month, weekStart }: YearCellInterface) {
             {format(month, "MMMM")}
           </span>
         </a>
-        <div className="grid grid-cols-7 gap-[0.4rem] mt-2">
+        <div className="mt-2 grid grid-cols-7 gap-[0.4rem]">
           {firstWeek.map((weekDay) => (
             <span
               key={weekDay.toString()}
-              className=" capitalize text-red-400 dark:text-red-500 text-[0.9rem] sm1:text-[0.75rem] font-medium text-center w-[1.75rem] h-[1.75rem] mx-auto"
+              className=" mx-auto h-[1.75rem] w-[1.75rem] text-center text-[0.9rem] font-medium capitalize text-red-400 dark:text-red-500 sm1:text-[0.75rem]"
             >
               {format(weekDay, "ccc")[0]}
             </span>

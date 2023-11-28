@@ -31,23 +31,23 @@ function Sidebar() {
       <section
         ref={sidebarRef}
         className={cn(
-          "absolute h-[100vh] border-r border-gray-200 top-0 z-10 shadow-lg xl:shadow-none xl:static xl:h-[calc(100vh-theme(spacing.nav-h))] xl:border-none flex-shrink-0 transition-all duration-300 flex flex-col items-center overflow-hidden bg-gray-0 -translate-x-[100%] sm2:translate-x-0",
+          "absolute top-0 z-10 flex h-[100vh] flex-shrink-0 -translate-x-[100%] flex-col items-center overflow-hidden border-r border-gray-200 bg-gray-0 shadow-lg transition-all duration-300 sm2:translate-x-0 xl:static xl:h-[calc(100vh-theme(spacing.nav-h))] xl:border-none xl:shadow-none",
           enterMobileMode &&
             `'w-[83%] max-w-[22rem]' ${sidebarOpen ? "translate-x-0" : ""}`,
           !enterMobileMode &&
             `${sidebarOpen ? "w-[19rem] xl:w-sidebar-w" : "w-0"}`,
         )}
       >
-        <div className="xl:hidden h-nav-h w-[90%] xl:w-[16rem] flex justify-between items-center flex-shrink-0 pl-1">
+        <div className="flex h-nav-h w-[90%] flex-shrink-0 items-center justify-between pl-1 xl:hidden xl:w-[16rem]">
           <AppLogo />
           <SidebarToggleBtn>
             <BsArrowLeftShort size={30} />
           </SidebarToggleBtn>
         </div>
         {/* w-[calc(theme(spacing.sidebar-w)-2.5rem)] */}
-        <div className="space-y-6 bg-gray-0 w-full min-w-[19rem] xl:min-w-[theme(spacing.sidebar-w)] xl:w-sidebar-w flex-shrink-0 py-3 pt-4 h-[calc(100%-theme(spacing.nav-h))] xl:h-full px-5 __scrollbar-sm">
+        <div className="__scrollbar-sm h-[calc(100%-theme(spacing.nav-h))] w-full min-w-[19rem] flex-shrink-0 space-y-6 bg-gray-0 px-5 py-3 pt-4 xl:h-full xl:w-sidebar-w xl:min-w-[theme(spacing.sidebar-w)]">
           <div className="">
-            <p className="text-[0.75rem] font-medium text-gray-450 mb-[0.4rem]">
+            <p className="mb-[0.4rem] text-[0.75rem] font-medium text-gray-450">
               CALENDAR LANGUAGE
             </p>
             <CalendarLanguageSelectBox />
@@ -60,10 +60,7 @@ function Sidebar() {
         </div>
       </section>
       {enterMobileMode && (
-        <ModelBackdrop
-          show={sidebarOpen}
-          opacity="opacity-30"
-        />
+        <ModelBackdrop show={sidebarOpen} opacity="opacity-30" />
       )}
     </>
   );

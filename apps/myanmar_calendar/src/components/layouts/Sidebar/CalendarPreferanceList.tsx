@@ -34,9 +34,9 @@ function CalendarPreferanceList() {
         <li key={propKey}>
           <label
             htmlFor={"show_" + propKey}
-            className="flex justify-between items-center h-[2.5rem] sm2:h-[2rem] rounded-[0.25rem] cursor-pointer hover:bg-gray-100 px-2 pl-3"
+            className="flex h-[2.5rem] cursor-pointer items-center justify-between rounded-[0.25rem] px-2 pl-3 hover:bg-gray-100 sm2:h-[2rem]"
           >
-            <span className="text-[1.1rem] sm2:text-[0.875rem] first-letter:capitalize font-normal text-gray-700 whitespace-nowrap">
+            <span className="whitespace-nowrap text-[1.1rem] font-normal text-gray-700 first-letter:capitalize sm2:text-[0.875rem]">
               {camelToSentenceCase(propKey)}
             </span>
             <Switch

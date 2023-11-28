@@ -37,24 +37,30 @@ function CalendarModeSelectBox() {
   if (enterMobileMode) return <></>;
   return (
     <Select value={calendarMode} onValueChange={selectHandler}>
-      <SelectTrigger className="h-input-md rounded-md w-fit px-4">
-        <span className="flex items-center gap-3 -ml-[0.35rem] -mr-[0.6rem]">
+      <SelectTrigger className="h-input-md w-fit rounded-md px-4">
+        <span className="-ml-[0.35rem] -mr-[0.6rem] flex items-center gap-3">
           <FaCalendarAlt className="text-gray-400" />
-          <span className="capitalize text-[0.95rem] font-medium  text-gray-600">{calendarMode}</span>
+          <span className="text-[0.95rem] font-medium capitalize  text-gray-600">
+            {calendarMode}
+          </span>
           <BiCaretDown className="text-gray-500" />
         </span>
       </SelectTrigger>
       <SelectContent
-        className="w-[14rem] px-0 py-[0.25rem] rounded-sm"
-        align="end">
+        className="w-[14rem] rounded-sm px-0 py-[0.25rem]"
+        align="end"
+      >
         {Object.values(CALENDAR_MODE).map((mode) => (
           <SelectItem
             value={mode}
             key={mode}
-            className="px-3 rounded-none h-[2.5rem] hover:bg-gray-50 data-[state=checked]:bg-gray-200/50">
-            <span className="w-[12rem] flex items-center justify-between">
+            className="h-[2.5rem] rounded-none px-3 hover:bg-gray-50 data-[state=checked]:bg-gray-200/50"
+          >
+            <span className="flex w-[12rem] items-center justify-between">
               <span className="capitalize">{mode}</span>
-              <span className="capitalize ml-auto text-gray-500/90 text-[0.8rem]">{mode.substring(0, 1)}</span>
+              <span className="ml-auto text-[0.8rem] capitalize text-gray-500/90">
+                {mode.substring(0, 1)}
+              </span>
             </span>
           </SelectItem>
         ))}

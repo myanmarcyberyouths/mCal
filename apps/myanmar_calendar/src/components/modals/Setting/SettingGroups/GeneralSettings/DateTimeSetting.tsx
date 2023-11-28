@@ -1,6 +1,12 @@
 import React, { useMemo, useState } from "react";
 import SettingSectionContainer from "../SettingSectionContainer";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/selectBoxes/Select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/selectBoxes/Select";
 import { BiCaretDown, BiChevronDown } from "react-icons/bi";
 import { WEEK_DAYS } from "@/type-models/utils.type";
 import { cn } from "@/lib/utils";
@@ -13,41 +19,38 @@ const timeZones = Intl.supportedValuesOf("timeZone");
 
 function DateTimeSetting() {
   const dispatch = useDispatch();
-  const { timeZone, weekStart } = useSelector((state: RootState) => state.calendarState);
+  const { timeZone, weekStart } = useSelector(
+    (state: RootState) => state.calendarState,
+  );
   const [timeFormat, setTimeFormat] = useState("13:00");
 
   const localTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
   return (
-    <SettingSectionContainer
-      label="Date & Time"
-      bottomBorder={false}>
-      <li className="flex justify-between sm2:min-w-[22rem] md:max-w-[28rem]  items-center p-2 px-2 border-b border-gray-200">
+    <SettingSectionContainer label="Date & Time" bottomBorder={false}>
+      <li className="flex items-center justify-between border-b  border-gray-200 p-2 px-2 sm2:min-w-[22rem] md:max-w-[28rem]">
         <div>
           <span className="text-[0.925rem] text-gray-600">Time zone</span>
         </div>
         {/* Using defaut <select> instead of Radix's select as Radix has performance issue when mapping big arrays  */}
-        <div className="group/select relative flex items-center overflow-hidden rounded-sm cursor-pointer">
+        <div className="group/select relative flex cursor-pointer items-center overflow-hidden rounded-sm">
           <select
             id="mySelect"
             value={timeZone}
             onChange={(e) => dispatch(setTimeZone(e.target.value))}
-            className="max-w-[12rem] md:max-w-[14rem] min-w-[7.5rem] h-input-md px-2 rounded-sm bg-gray-100 dark:bg-gray-200 group-hover/select:bg-gray-150 dark:group-hover/select:bg-gray-250 cursor-pointer text-[0.9rem] text-gray-800 font-light outline-none">
+            className="h-input-md min-w-[7.5rem] max-w-[12rem] cursor-pointer rounded-sm bg-gray-100 px-2 text-[0.9rem] font-light text-gray-800 outline-none group-hover/select:bg-gray-150 dark:bg-gray-200 dark:group-hover/select:bg-gray-250 md:max-w-[14rem]"
+          >
             {timeZones.map((zone) => (
-              <option
-                key={zone}
-                value={zone}>
+              <option key={zone} value={zone}>
                 {zone}
               </option>
             ))}
           </select>
           <div
             aria-hidden="true"
-            className="absolute right-0 w-[1.15rem] bg-gray-100 dark:bg-gray-200 group-hover/select:bg-gray-150 dark:group-hover/select:bg-gray-250 flex items-center self-stretch h-full pointer-events-none">
-            <BiCaretDown
-              size={13}
-              className="text-gray-500"
-            />
+            className="pointer-events-none absolute right-0 flex h-full w-[1.15rem] items-center self-stretch bg-gray-100 group-hover/select:bg-gray-150 dark:bg-gray-200 dark:group-hover/select:bg-gray-250"
+          >
+            <BiCaretDown size={13} className="text-gray-500" />
           </div>
         </div>
       </li>
@@ -86,32 +89,36 @@ function SettingSelectBox<T>({
   selectHandler: (value: string) => void;
 }) {
   return (
-    <li className="flex justify-between  sm2:min-w-[22rem] md:max-w-[28rem] items-center p-2 px-2 border-b border-gray-200">
+    <li className="flex items-center  justify-between border-b border-gray-200 p-2 px-2 sm2:min-w-[22rem] md:max-w-[28rem]">
       <div>
         <span className="text-[0.925rem] text-gray-600">{label}</span>
       </div>
-      <Select
-        value={value}
-        onValueChange={selectHandler}>
+      <Select value={value} onValueChange={selectHandler}>
         <SelectTrigger
           config={{
             size: "lg",
           }}
-          className="h-input-md min-w-[7.5rem] w-fit gap-1  border-none bg-gray-100 dark:bg-gray-200 hover:bg-gray-150 dark:hover:bg-gray-250 pl-2.5 pr-1.5">
-          <span className="flex gap-2 w-full items-center text-[0.9rem] text-gray-800 font-light">
+          className="h-input-md w-fit min-w-[7.5rem] gap-1  border-none bg-gray-100 pl-2.5 pr-1.5 hover:bg-gray-150 dark:bg-gray-200 dark:hover:bg-gray-250"
+        >
+          <span className="flex w-full items-center gap-2 text-[0.9rem] font-light text-gray-800">
             <SelectValue placeholder={label} />
           </span>
 
           <BiCaretDown className="text-gray-500" />
         </SelectTrigger>
         <SelectContent
-          className={cn("w-[8rem] mt-[0.1rem] pl-0 pr-[0.1rem]", selectContentWidth)}
-          align="end">
+          className={cn(
+            "mt-[0.1rem] w-[8rem] pl-0 pr-[0.1rem]",
+            selectContentWidth,
+          )}
+          align="end"
+        >
           {options.map((option) => (
             <SelectItem
               key={option}
               value={option}
-              className="pl-2 rounded-none">
+              className="rounded-none pl-2"
+            >
               <p className=" first-letter:capitalize">{option}</p>
             </SelectItem>
           ))}
