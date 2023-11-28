@@ -40,7 +40,7 @@ function CalendarModeDropDown() {
         }}
       >
         <div>
-          <Menu.Button className="inline-flex w-full justify-center  rounded-md px-4 py-2 text-sm font-medium capitalize text-gray-500  ring-1 ring-black/20 hover:bg-gray-50 focus:outline-none">
+          <Menu.Button className="inline-flex  w-full justify-center  rounded-md px-4 py-2 text-sm font-medium capitalize text-gray-500  ring-1 ring-gray-250 hover:bg-gray-50 focus:outline-none">
             {/* Selected Calendar Mode */}
             {CALENDAR_MODES[calendarMode]}
             <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5 text-gray-400" />
@@ -55,7 +55,7 @@ function CalendarModeDropDown() {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none">
+          <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-gray-0 shadow-lg ring-1 ring-black/5 focus:outline-none dark:bg-gray-75">
             <div className="px-1 py-1">
               {Object.keys(CALENDAR_MODES).map((key) => (
                 <Menu.Item key={key}>

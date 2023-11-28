@@ -56,7 +56,7 @@ function MonthCell({ day, calendarState }: MonthCellT) {
     // min-h-[8.5rem]
     <div
       className={cn(
-        "border-b border-r flex gap-1 flex-col items-stretch border-gray-200 p-2 py-[0.25rem] pb-[0.3rem]  min-h-[8.5rem] hover:bg-gray-50",
+        "flex min-h-[8.5rem] flex-col items-stretch gap-1 border-b border-r border-gray-200 p-2 py-[0.25rem] pb-[0.3rem]  hover:bg-gray-50 dark:border-gray-100",
         dayIsInEndWeek ? "min-h-[8.65rem] pb-[0.45rem]" : "",
       )}
       onClick={() => {
@@ -64,11 +64,11 @@ function MonthCell({ day, calendarState }: MonthCellT) {
       }}
     >
       {/* ------ CELL TOP ------- */}
-      <div className=" flex justify-between items-start">
+      <div className=" flex items-start justify-between">
         <time
           dateTime={format(day, "yyyy-MM-dd")}
           className={cn(
-            "flex justify-start -mt-[0.05rem] text-gray-500 flex-1 text-[0.825rem] leading-5",
+            "-mt-[0.05rem] flex flex-1 justify-start text-[0.825rem] leading-5 text-gray-500",
             dayBelongsInActiveMonth ? "text-gray-500" : "text-gray-300",
           )}
         >
@@ -76,9 +76,9 @@ function MonthCell({ day, calendarState }: MonthCellT) {
         </time>
         <time
           className={cn(
-            "flex justify-center font-medium text-[1.025rem]  h-[1.6rem] aspect-square leading-7",
+            "flex aspect-square h-[1.6rem] justify-center  text-[1.025rem] font-medium leading-7",
             dayBelongsInActiveMonth ? "text-gray-600" : "text-gray-300",
-            dayIsToday && "text-gray-50 bg-red-500 rounded-full",
+            dayIsToday && "rounded-full bg-red-500 text-gray-50",
           )}
           dateTime={format(day, "yyyy-MM-dd")}
         >
@@ -90,13 +90,13 @@ function MonthCell({ day, calendarState }: MonthCellT) {
         {/* ASTRO */}
         <div
           className={cn(
-            "flex flex-1 self-stretch min-w-[1.5rem] justify-end items-center gap-1 transition-all",
+            "flex min-w-[1.5rem] flex-1 items-center justify-end gap-1 self-stretch transition-all",
             show.astroEvent ? "opacity-100" : "opacity-0",
           )}
         >
           {/* long text on large screen */}
           <span
-            className={`hidden md3:inline text-[0.65rem] whitespace-nowrap ${
+            className={`hidden whitespace-nowrap text-[0.65rem] md3:inline ${
               myanmarDate.pyathada ? "text-red-500" : "text-blue-500"
             }`}
           >
@@ -104,7 +104,7 @@ function MonthCell({ day, calendarState }: MonthCellT) {
           </span>
           {/* short text on small screen */}
           <span
-            className={`inline md3:hidden text-[0.65rem] ${
+            className={`inline text-[0.65rem] md3:hidden ${
               myanmarDate.pyathada ? "text-red-400" : "text-blue-500"
             }`}
           >
@@ -119,7 +119,7 @@ function MonthCell({ day, calendarState }: MonthCellT) {
         type="hover"
         scrollHideDelay={100}>
       <ScrollViewport className="max-h-full w-full"> */}
-      <div className="flex-1 __scrollbar-xxs">
+      <div className="__scrollbar-xxs flex-1">
         <ul className=" space-y-[0.15rem] ">
           {checkedEvents.map((eventCalendar) => (
             <Fragment key={eventCalendar.id}>
@@ -127,7 +127,7 @@ function MonthCell({ day, calendarState }: MonthCellT) {
                 // h-[1.25rem]
                 <li
                   key={event}
-                  className="rounded-sm flex items-start py-[0.335rem] px-1 gap-1 bg-gray-100"
+                  className="flex items-start gap-1 rounded-sm bg-gray-100 px-1 py-[0.335rem]"
                   style={{
                     backgroundColor: modifyColorOpacity(
                       eventCalendar.tagColor,
@@ -137,13 +137,13 @@ function MonthCell({ day, calendarState }: MonthCellT) {
                   }}
                 >
                   <span
-                    className="inline-block w-[0.35rem] h-[0.35rem] rounded-full bg-gray-500 mt-[0.15rem] flex-shrink-0"
+                    className="mt-[0.15rem] inline-block h-[0.35rem] w-[0.35rem] flex-shrink-0 rounded-full bg-gray-500"
                     style={{
                       backgroundColor: eventCalendar.tagColor,
                     }}
                   ></span>
                   <span
-                    className="text-[0.7rem] text-gray-600 -mt-[0.025rem] font-semibold leading-[0.7rem]"
+                    className="-mt-[0.025rem] text-[0.7rem] font-semibold leading-[0.7rem] text-gray-600"
                     style={{
                       color: eventCalendar.tagColor,
                     }}
@@ -165,24 +165,24 @@ function MonthCell({ day, calendarState }: MonthCellT) {
 
       {/* ------ CELL BOTTOM ------- */}
       {(mmDate == "၁" || moonAlign) && show.moonPhase && (
-        <div className="flex justify-between items-center h-[1.1rem] flex-shrink-0">
+        <div className="flex h-[1.1rem] flex-shrink-0 items-center justify-between">
           <div aria-hidden="true"></div>
           {/* MOON PHASE */}
           <div
             className={cn(
-              "flex gap-1 items-center transition-all",
+              "flex items-center gap-1 transition-all",
               show.moonPhase ? "opacity-100" : "opacity-0",
             )}
           >
             {(mmDate == "၁" || moonAlign) && (
-              <span className="hidden md2:inline text-[0.68rem] leading-[1.3rem] text-gray-600 whitespace-nowrap overflow-x-hidden">
+              <span className="hidden overflow-x-hidden whitespace-nowrap text-[0.68rem] leading-[1.3rem] text-gray-600 md2:inline">
                 {myanmarDate.month}
                 {myanmarDate.moonPhase}
               </span>
             )}
             {moonAlign && (
               <span
-                className={`w-[0.91rem] h-[0.91rem] flex-shrink-0  rounded-full ${
+                className={`h-[0.91rem] w-[0.91rem] flex-shrink-0  rounded-full ${
                   myanmarDate.moonPhase === "လပြည့်"
                     ? "bg-red-500"
                     : "bg-gray-700"

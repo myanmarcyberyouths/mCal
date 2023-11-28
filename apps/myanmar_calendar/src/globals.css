@@ -12,20 +12,23 @@
 
         --radius: 0.5rem;
 
-        --gray-0: 0 0% 100%;
-        --gray-50: 0 0% 98%;
-        --gray-100: 0 0% 95%;
-        --gray-200: 0 0% 86%;
-        --gray-300: 0 0% 76%;
-        --gray-400: 0 0% 58%;
-        --gray-450: 0 0% 51%;
-        --gray-500: 0 0% 50%;
-        --gray-600: 0 0% 40%;
-        --gray-700: 0 0% 30%;
-        --gray-800: 0 0% 20%;
-        --gray-900: 0 0% 10%;
-        --gray-950: 0 0% 5%;
-    }
+    --gray-0: 0 0% 100%;
+    --gray-50: 0 0% 97%;
+    --gray-75: 0 0% 95.5%;
+    --gray-100: 0 0% 94%;
+    --gray-150: 0 0% 90%;
+    --gray-200: 0 0% 86%;
+    --gray-250: 0 0% 81%;
+    --gray-300: 0 0% 76%;
+    --gray-400: 0 0% 58%;
+    --gray-450: 0 0% 51%;
+    --gray-500: 0 0% 50%;
+    --gray-600: 0 0% 40%;
+    --gray-700: 0 0% 30%;
+    --gray-800: 0 0% 20%;
+    --gray-900: 0 0% 10%;
+    --gray-950: 0 0% 5%;
+  }
 
     .dark {
         --destructive: 0 84.2% 60.2%;
@@ -33,26 +36,59 @@
 
         --radius: 0.5rem;
 
-        --gray-900: 0 0% 96%;
-        --gray-800: 0 0% 90%;
-        --gray-700: 0 0% 83%;
-        --gray-600: 0 0% 70%;
-        --gray-500: 0 0% 60%;
-        --gray-450: 0 0% 51%;
-        --gray-400: 0 0% 50%;
-        --gray-300: 0 0% 40%;
-        --gray-200: 0 0% 30%;
-        --gray-100: 0 0% 20%;
-        --gray-50: 0 0% 10%;
-        --gray-0: 0 0% 5%;
-    }
+    --gray-950: 0 0% 100%;
+    --gray-900: 0 0% 97%;
+    --gray-800: 0 0% 94%;
+    --gray-700: 0 0% 86%;
+    --gray-600: 0 0% 76%;
+    --gray-500: 0 0% 60%;
+    --gray-450: 0 0% 52%;
+    --gray-400: 0 0% 44%;
+    --gray-300: 0 0% 35%;
+    --gray-250: 0 0% 30%;
+    --gray-200: 0 0% 26%;
+    --gray-150: 0 0% 23%;
+    --gray-100: 0 0% 20%;
+    --gray-75: 0 0% 15%;
+    --gray-50: 0 0% 10%;
+    --gray-0: 0 0% 5%;
+  }
+}
 
+@layer base {
+  * {
+    /* outline: 1px solid violet; */
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    /* font-family: GeistSans, sans-serif; */
+    @apply border-gray-100;
+    /* transition: background-color 150ms ease; */
+  }
 
+  html {
+    font-size: 15.5px;
+    overflow: hidden;
+  }
+
+  @media (max-width: 1370px) {
     html {
-        font-size: 16px;
-        overflow: hidden;
+      font-size: 15px;
     }
+  }
 
+  @media (max-width: 639px) {
+    html {
+      font-size: 16px;
+    }
+  }
+
+  body {
+    @apply bg-gray-0 text-gray-950;
+    overflow: hidden;
+  }
+
+  button {
+    outline: none;
+  }
 
     body {
         font-family: GeistSans, sans-serif;

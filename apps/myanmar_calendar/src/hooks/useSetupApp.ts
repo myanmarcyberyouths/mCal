@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import useWindowResize from "./useWindowResize";
 import { MIN_WIDTHS } from "@/utils/constants";
 import { useDispatch } from "react-redux";
@@ -12,6 +12,7 @@ import {
 import { setCalendarShowState, setEventCalendars } from "@/store/calendarState";
 import { CALENDAR_SHOW_DEFAULT } from "@/utils/defaults";
 import { EVENT_CALENDARS } from "@/event_calendars/event_calendars";
+import { useDarkMode } from "@/components/modals/Setting/SettingGroups/GeneralSettings/DarkMode";
 
 function useSetupApp() {
   const dispatch = useDispatch();
@@ -26,7 +27,6 @@ function useSetupApp() {
       }
 
       if (window.innerWidth < MIN_WIDTHS.xl) {
-        console.log("mid screen");
         dispatch(setSidebarOpenState(false));
       } else {
         dispatch(setSidebarOpenState(true));
@@ -39,7 +39,6 @@ function useSetupApp() {
     LOCAL_STORAGE_KEYS.eventCalendars,
   );
   useEffect(() => {
-    console.log(eventCalendars);
     dispatch(setEventCalendars(eventCalendars || EVENT_CALENDARS));
   }, [dispatch, eventCalendars]);
 
@@ -50,6 +49,9 @@ function useSetupApp() {
   useEffect(() => {
     dispatch(setCalendarShowState(calendarShow || CALENDAR_SHOW_DEFAULT));
   }, [dispatch, calendarShow]);
+
+  // Setting up initial app theme
+  useDarkMode();
 }
 // eslint-disable-next-line react-hooks/exhaustive-deps
 

@@ -9,7 +9,16 @@ import {
 // import { Dialog, ModalOverlay, Modal, Button, Heading } from "react-aria-components";
 import { Dialog, Transition } from "@headlessui/react";
 
-import { PropsWithChildren, useState } from "react";
+import React, {
+  Children,
+  PropsWithChildren,
+  ReactNode,
+  cloneElement,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
+import useScrollEvent from "@/hooks/useScrollEvent";
 
 // Wrap React Aria modal components so they support framer-motion values.
 const MotionDialog = motion(Dialog);
@@ -33,8 +42,13 @@ const SHEET_RADIUS = 12;
 export default function BottomSheetMobile({
   isOpen,
   onClose,
+  remountScrollRefOn,
   children,
-}: { isOpen: boolean; onClose: () => void } & PropsWithChildren) {
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+  remountScrollRefOn?: any;
+} & PropsWithChildren) {
   // let [isOpen, setOpen] = useState(false);
   let h = window.innerHeight - SHEET_MARGIN;
   let y = useMotionValue(h);
@@ -50,9 +64,41 @@ export default function BottomSheetMobile({
   let bodyTranslate = useTransform(y, [0, h], [SHEET_MARGIN - SHEET_RADIUS, 0]);
   let bodyBorderRadius = useTransform(y, [0, h], [SHEET_RADIUS, 0]);
 
+  // Disabling drag if content has scroll
+
+  const [draggable, setDraggable] = useState<
+    "top" | "bottom" | "float" | "neutral"
+  >("neutral");
+
+  const scrollRef = useScrollEvent({
+    onReachedTop: () => setDraggable("top"),
+    onReachedBottom: () => setDraggable("bottom"),
+    customCallback: ({ offsetHeight, scrollHeight, scrollTop }) => {
+      console.log(offsetHeight, scrollHeight, scrollTop);
+
+      if (
+        scrollTop !== 0 &&
+        Math.floor(scrollHeight - scrollTop) > offsetHeight
+      )
+        setDraggable("float");
+    },
+  });
+
+  useEffect(() => {
+    console.log(draggable);
+  }, [draggable]);
+
+  const childrenWithProps = React.Children.map(
+    children,
+    (child: React.DetailedReactHTMLElement<any, HTMLElement>) =>
+      React.cloneElement(child, {
+        ref: scrollRef,
+      }),
+  );
+
   return (
     <motion.div
-      className="bg-white h-full overflow-auto"
+      className="h-full overflow-auto bg-white"
       style={{
         scale: bodyScale,
         borderRadius: bodyBorderRadius,
@@ -75,7 +121,7 @@ export default function BottomSheetMobile({
             style={{ backgroundColor: bg }}
           >
             <MotionDialogPanel
-              className="bg-gray-0 dark:bg-gray-50 absolute bottom-0 w-full rounded-t-xl shadow-lg"
+              className="absolute bottom-0 w-full rounded-t-xl bg-gray-0 shadow-lg dark:bg-gray-50"
               initial={{ y: h }}
               animate={{ y: 0 }}
               exit={{ y: h }}
@@ -86,8 +132,12 @@ export default function BottomSheetMobile({
                 // Extra padding at the bottom to account for rubber band scrolling.
                 paddingBottom: window.screen.height,
               }}
-              drag="y"
+              drag={draggable === "float" ? "" : "y"}
               dragConstraints={{ top: 0 }}
+              dragElastic={{
+                top: draggable === "top" ? 0 : 0.3,
+                bottom: draggable === "bottom" ? 0 : 0.3,
+              }}
               onDragEnd={(e, { offset, velocity }) => {
                 if (offset.y > window.innerHeight * 0.75 || velocity.y > 10) {
                   onClose();
@@ -98,9 +148,9 @@ export default function BottomSheetMobile({
               }}
             >
               {/* drag affordance */}
-              <div className="mx-auto w-12 mt-2 h-[0.3rem] rounded-full bg-gray-300" />
+              <div className="mx-auto mt-2 h-[0.3rem] w-12 rounded-full bg-gray-300" />
               <div className="outline-none">
-                <div className="px-4 flex justify-end mb-2 ">
+                <div className="mb-2 flex justify-end px-4 ">
                   {/* <button
                     className="text-blue-600 text-lg font-semibold outline-none rounded data-[pressed]:text-blue-700 data-[focus-visible]:ring"
                     onClick={onClose}>
@@ -108,7 +158,7 @@ export default function BottomSheetMobile({
                   </button> */}
                 </div>
                 <div className="__scrollbar-sm h-[calc(100vh-5rem)] supports-[height:100cqh]:h-[calc(100cqh-5rem)] supports-[height:100svh]:h-[calc(100svh-5rem)]">
-                  {children}
+                  {childrenWithProps}
                 </div>
               </div>
               {/* <div className="h-[3rem]"></div> */}

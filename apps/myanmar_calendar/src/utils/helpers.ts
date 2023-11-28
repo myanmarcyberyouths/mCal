@@ -1,4 +1,5 @@
 import { utcToZonedTime } from "date-fns-tz";
+import { THEME_MODE } from "@/type-models/utils.type";
 
 export function getLocalTime(date?: Date) {
   return utcToZonedTime(date ? new Date(date) : new Date(), "Asia/Rangoon");
@@ -27,3 +28,29 @@ export function setLocalStorage(key: string, value: any) {
     console.warn(`Error setting localStorage key “${key}”:`, error);
   }
 }
+
+export const setAppTheme = (theme?: THEME_MODE) => {
+  theme = theme || localStorage.dark_mode || THEME_MODE.light;
+
+  switch (theme) {
+    case THEME_MODE.system:
+      {
+        if (
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches
+        ) {
+          document.documentElement.classList.add("dark");
+        } else {
+          document.documentElement.classList.remove("dark");
+        }
+      }
+      break;
+    case THEME_MODE.dark:
+      document.documentElement.classList.add("dark");
+      break;
+    default:
+      document.documentElement.classList.remove("dark");
+  }
+
+  return theme;
+};

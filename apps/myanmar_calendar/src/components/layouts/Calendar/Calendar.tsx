@@ -1,11 +1,13 @@
 import { RootState } from "@/store";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 
 import WeekMode from "./WeekMode/WeekMode";
 import MonthMode from "./MonthMode/MonthMode";
 import YearMode from "./YearMode/YearMode";
 import { cn } from "@/lib/utils";
+import { useMotionValueEvent, useScroll } from "framer-motion";
+import useScrollEvent from "@/hooks/useScrollEvent";
 
 const calendar_modes = {
   W: <WeekMode />,
@@ -17,14 +19,26 @@ function Calendar() {
   const calendarMode = useSelector(
     (state: RootState) => state.calendarState.calendarMode,
   );
-  // const sidebarOpen = useSelector((state: RootState) => state.systemState.sidebarOpen);
-  // const sidebarOpen = useSelector((state: RootState) => state.systemState.sidebarOpen);
+
+  // const [showOverflowInset, setShowOverflowInset] = useState(false)
+
+  // const calendarRef = useScrollEvent({
+  //   customCallback: ({offsetHeight,scrollHeight,scrollTop}) => {
+  //     if(offsetHeight === scrollHeight) return
+
+  //     setShowOverflowInset(true)
+
+  //     if((scrollHeight - offsetHeight) === scrollTop) {
+  //       setShowOverflowInset(false)
+  //     }
+  //   }
+  // })
 
   return (
     <section
       aria-label="Calendar"
       className={cn(
-        "flex-1 h-[calc(100vh-theme(spacing.nav-h))] supports-[height:100cqh]:h-[calc(100cqh-theme(spacing.nav-h))] supports-[height:100svh]:h-[calc(100svh-theme(spacing.nav-h))] xl:border-l  xl:border-gray-200 __scrollbar-md",
+        "__scrollbar-md h-[calc(100vh-theme(spacing.nav-h))] flex-1 supports-[height:100cqh]:h-[calc(100cqh-theme(spacing.nav-h))] supports-[height:100svh]:h-[calc(100svh-theme(spacing.nav-h))]  xl:border-l xl:border-gray-200",
       )}
     >
       {calendar_modes[calendarMode]}

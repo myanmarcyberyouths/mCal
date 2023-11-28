@@ -26,13 +26,13 @@ function NewEventDialog({ isOpen, onClose, selectedDay }: AddEventDialogProps) {
           leave="ease-in duration-200"
         >
           <Dialog.Panel
-            className="fixed inset-0 mx-2 ml-auto my-auto w-[27rem] h-[97%] transform overflow-hidden rounded-lg bg-gray-0 text-left align-middle shadow-lg transition-all flex flex-col border  border-gray-200 "
+            className="fixed inset-0 mx-2 my-auto ml-auto flex h-[97%] w-[27rem] transform flex-col overflow-hidden rounded-lg border border-gray-200 bg-gray-0 text-left align-middle shadow-lg  transition-all "
             style={{
               boxShadow:
                 "0 14px 18px 3px hsl(--gray-50), 0 9px 16px 8px hsl(--gray-100), 0 11px 15px -7px hsl(--gray-100)",
             }}
           >
-            <div className="h-[3rem]  flex items-center justify-between px-3 bg-gray-50 border-b">
+            <div className="flex  h-[3rem] items-center justify-between border-b bg-gray-50 px-3">
               <button
                 onClick={() => {
                   onClose();
@@ -45,7 +45,7 @@ function NewEventDialog({ isOpen, onClose, selectedDay }: AddEventDialogProps) {
               </button>
             </div>
             <div className="px-3">
-              <time className="flex items-center gap-2 h-[3rem]">
+              <time className="flex h-[3rem] items-center gap-2">
                 <span className="text-[1.3rem] text-gray-500">
                   {format(selectedDay, "iii, d MMMM")}
                 </span>

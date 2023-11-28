@@ -18,7 +18,6 @@ import FullMoonIcon from "../assets/icons/FullMoonIcon";
 import { classNames } from "@/utils/classNames";
 import LanguageMenu, { Language } from "./LanguageMenu";
 // import DayDialog from "./modals/DayDialog(Depre)";
-import { getLocalTime } from "@/utils/helpers";
 import useKeyPress from "../hooks/useKeyPress";
 import {
   ContextMenu,
@@ -28,6 +27,7 @@ import {
   ContextMenuTrigger,
 } from "@/components/ui/menus/context-menu";
 import RenderDayDialog2 from "./modals/DayDialog/RenderDayDialog";
+import { getLocalTime } from "@/utils/dateTimeHelper";
 
 const colStartClasses = [
   "",
@@ -101,7 +101,7 @@ export default function MyanmarCalendar() {
             <time dateTime={format(firstDayCurrentMonth, "yyyy-MM-dd")}>
               {format(firstDayCurrentMonth, "MMMM yyyy")}
             </time>
-            <div className="font-normal text-sm">
+            <div className="text-sm font-normal">
               {i18n("Myanmar Year", "english", language as any)}{" "}
               {i18n(
                 engToMyanmarNumber(
@@ -220,7 +220,7 @@ export default function MyanmarCalendar() {
                         setSelectedDay(day);
                       }}
                     >
-                      <div className="absolute top-3 left-3 text-sm">
+                      <div className="absolute left-3 top-3 text-sm">
                         {i18n(
                           engToMyanmarNumber(englishToMyanmarDate(day).date),
                           "myanmar",
@@ -228,7 +228,7 @@ export default function MyanmarCalendar() {
                         )}
                       </div>
 
-                      <div className="absolute top-3 right-3 text-xs font-light">
+                      <div className="absolute right-3 top-3 text-xs font-light">
                         <div>
                           {englishToMyanmarDate(day).moonPhase === "လပြည့်" && (
                             <>
@@ -245,7 +245,7 @@ export default function MyanmarCalendar() {
                                       language as any,
                                     ) === "လါ၁ ှဲၤ" && "လါပှဲၤ"}
                               </div>
-                              <FullMoonIcon className="ml-3.5 w-6 h-6" />
+                              <FullMoonIcon className="ml-3.5 h-6 w-6" />
                             </>
                           )}
                         </div>

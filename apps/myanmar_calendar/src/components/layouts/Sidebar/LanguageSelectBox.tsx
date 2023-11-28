@@ -56,7 +56,6 @@ export function CalendarLanguageSelectBox() {
     (state: RootState) => state.calendarState.calendarLanguage,
   );
 
-  console.log(calendarLanguage);
   return (
     <LanguageSelectBox
       value={calendarLanguage}

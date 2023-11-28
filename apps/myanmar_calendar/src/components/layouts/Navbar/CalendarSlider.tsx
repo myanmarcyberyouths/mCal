@@ -2,6 +2,7 @@ import useKeyPress from "@/hooks/useKeyPress";
 import { RootState } from "@/store";
 import { setActiveDate, updateActiveDate } from "@/store/calendarState";
 import { CalendarMode } from "@/type-models/calendarState.type";
+import { CALENDAR_MODES } from "@/utils/constants";
 import { getLocalTime } from "@/utils/helpers";
 import { format, isSameDay, isThisMonth, isToday } from "date-fns";
 import { useEffect, useState } from "react";
@@ -25,15 +26,11 @@ function CalendarSlider() {
   const handleCalendarSlide = (direction: "next" | "prev") => {
     const slideValue = direction === "next" ? 1 : -1;
 
-    if (calendarMode === CalendarMode.WEEK) {
-      dispatch(updateActiveDate({ weeks: slideValue }));
-    }
-    if (calendarMode === CalendarMode.MONTH) {
-      dispatch(updateActiveDate({ months: slideValue }));
-    }
-    if (calendarMode === CalendarMode.YEAR) {
-      dispatch(updateActiveDate({ years: slideValue }));
-    }
+    dispatch(
+      updateActiveDate({
+        [CALENDAR_MODES[calendarMode] + "s"]: slideValue,
+      }),
+    );
   };
 
   useEffect(() => {
@@ -64,7 +61,7 @@ function CalendarSlider() {
         <BiChevronLeft size={24} />
       </button>
       <button
-        className={`flex w-[6rem] items-center justify-center border-l border-r border-gray-200 text-[0.95rem]  font-medium hover:bg-gray-100 active:bg-gray-200 ${
+        className={`flex w-[6rem] items-center justify-center border-l border-r border-gray-250 text-[0.95rem]  font-medium hover:bg-gray-100 active:bg-gray-200 ${
           activeDateIsThisMonth
             ? "text-red-500 hover:text-red-500 "
             : "text-gray-700 hover:text-gray-800  "

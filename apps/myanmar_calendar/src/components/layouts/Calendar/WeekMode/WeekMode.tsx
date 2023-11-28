@@ -19,31 +19,36 @@ import { cn } from "@/lib/utils";
 import { setDayDialongTargetDay } from "@/store/modelControlState";
 import WeekColumn from "./WeekColumn";
 import WeekColumnHead from "./WeekColumnHead";
+import { getWeekDayIndex } from "@/utils/dateTimeHelper";
+import { OptionsWithTZ } from "date-fns-tz";
 
 function WeekMode() {
   const dispatch = useDispatch();
   const calendarState = useSelector((state: RootState) => state.calendarState);
-  const { activeDate } = calendarState;
+  const { activeDate, weekStart } = calendarState;
+  let activeDateObj = new Date(activeDate);
 
-  const activeDateObj = new Date(activeDate);
+  const options: OptionsWithTZ = {
+    weekStartsOn: getWeekDayIndex(weekStart),
+  };
 
   const days = eachDayOfInterval({
-    start: startOfWeek(activeDateObj),
-    end: endOfWeek(activeDateObj),
+    start: startOfWeek(activeDateObj, options),
+    end: endOfWeek(activeDateObj, options),
   });
 
   // Scroll Events Handling
   const [scrollReachedTop, setScrollReachedTop] = useState(true);
 
-  const scrollViewportRef = useScrollEvent(
-    ({ offsetHeight, scrollHeight, scrollTop }) => {
+  const scrollViewportRef = useScrollEvent({
+    customCallback: ({ offsetHeight, scrollHeight, scrollTop }) => {
       if (scrollTop < 7) {
         setScrollReachedTop(true);
       } else {
         setScrollReachedTop(false);
       }
     },
-  );
+  });
 
   // console.log("WeekMode render");
 
@@ -51,7 +56,7 @@ function WeekMode() {
     <>
       <div
         className={cn(
-          "grid grid-cols-7 h-[6.8rem]",
+          "grid h-[6.8rem] grid-cols-7",
           !scrollReachedTop && "shadow",
         )}
       >
@@ -64,7 +69,7 @@ function WeekMode() {
         ))}
       </div>
       <ScrollArea className="h-[calc(100%-6.8rem)] w-full">
-        <ScrollViewport className="w-full h-full" ref={scrollViewportRef}>
+        <ScrollViewport className="h-full w-full" ref={scrollViewportRef}>
           <div className="grid grid-cols-7 ">
             {days.map((day) => {
               return (

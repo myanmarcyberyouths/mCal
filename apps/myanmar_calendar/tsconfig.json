@@ -27,6 +27,6 @@
     "**/*.ts",
     "**/*.tsx",
     "src/components/modals/AddEventDialog"
-  ],
+, "src/components/modals/Setting/SettingGroups/GeneralSettings/test.jsx"  ],
   "exclude": ["../../node_modules"]
 }

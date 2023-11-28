@@ -14,7 +14,7 @@ import {
 } from "date-fns";
 import { useDispatch } from "react-redux";
 import { setActiveDate } from "@/store/calendarState";
-import { getLocalTime } from "@/utils/helpers";
+import { getLocalTime } from "@/utils/dateTimeHelper";
 
 function useSetupCalendarState() {
   let today = getLocalTime(new Date());

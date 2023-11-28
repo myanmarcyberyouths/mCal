@@ -6,6 +6,7 @@ import {
   Language,
   UserCalendarItem,
 } from "@/type-models/calendarState.type";
+import { WEEK_DAYS } from "@/type-models/utils.type";
 import { CALENDAR_SHOW_DEFAULT } from "@/utils/defaults";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Duration, add } from "date-fns";
@@ -17,6 +18,8 @@ export interface CalendarStateInterface {
   show: CellPreferanceT;
   eventCalendars: EventCalendarItem[];
   userCalendars: UserCalendarItem[];
+  timeZone: string;
+  weekStart: WEEK_DAYS;
 }
 
 const initialState: CalendarStateInterface = {
@@ -26,6 +29,8 @@ const initialState: CalendarStateInterface = {
   show: CALENDAR_SHOW_DEFAULT,
   eventCalendars: EVENT_CALENDARS,
   userCalendars: [],
+  timeZone: "Asia/Rangoon",
+  weekStart: WEEK_DAYS.sun,
 };
 export const calendarSlice = createSlice({
   name: "calendarSlice",
@@ -108,6 +113,12 @@ export const calendarSlice = createSlice({
         state.userCalendars[calendarIndex].checked = payload.showOnList;
       }
     },
+    setTimeZone: (state, { payload }: PayloadAction<string>) => {
+      state.timeZone = payload;
+    },
+    setWeekStart: (state, { payload }: PayloadAction<WEEK_DAYS>) => {
+      state.weekStart = payload;
+    },
   },
 });
 
@@ -122,6 +133,8 @@ export const {
   updateEventCalendars,
   setUserCalendars,
   updateUserCalendars,
+  setTimeZone,
+  setWeekStart,
 } = calendarSlice.actions;
 
 export default calendarSlice.reducer;

@@ -4,10 +4,12 @@ import React, { Fragment } from "react";
 
 function ModelBackdrop({
   show,
-  opacity = "0.4",
+  opacity = "opacity-50",
+  onClick,
 }: {
   show?: boolean;
   opacity?: string;
+  onClick?: () => void;
 }) {
   return (
     <Transition as={Fragment} appear show={show}>
@@ -21,8 +23,8 @@ function ModelBackdrop({
         leave="ease-in duration-200"
       >
         <div
-          className={cn("fixed inset-0 bg-black")}
-          style={{ backgroundColor: `rgba(0,0,0,${opacity})` }}
+          className={cn(" fixed inset-0 z-[9] bg-black opacity-50", opacity)}
+          onClick={onClick}
         />
       </Transition.Child>
     </Transition>
