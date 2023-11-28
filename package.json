@@ -11,13 +11,15 @@
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
     "prepare": "husky install",
-    "format": "prettier --write \"**/*.{ts,tsx,md,html}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md,html}\"",
+    "preinstall": "npx only-allow pnpm"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "husky": "^8.0.3",
+    "only-allow": "^1.2.1",
     "prettier": "^3.1.0",
     "turbo": "latest"
   }
