@@ -1,20 +1,11 @@
-import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons";
 import React from "react";
-
-import { BiChevronLeft, BiChevronRight, BiCaretDown } from "react-icons/bi";
-import {
-  BsCalendar2Check,
-  BsCalendar2Event,
-  BsCalendar2Week,
-} from "react-icons/bs";
-import { IoMdMenu } from "react-icons/io";
 import CalendarSlider from "./CalendarSlider";
 import CalendarModeDropDown from "./CalendarModeDropDown";
 import ActiveDateIndicator from "./ActiveDateIndicator";
 import SideMenuTogglerButton from "@/components/ui/buttons/SidebarToggleBtn";
 import AppLogo from "@/components/ui/logos/AppLogo";
-import DarkMode from "./DarkMode";
-import SettingTrigger from "./SettingTrigger";
+import SettingMenuButton from "./SettingMenuButton";
+import ThemeToggleButton from "@/components/layouts/Navbar/DarkMode";
 
 function Navbar() {
   return (
@@ -51,11 +42,10 @@ function Navbar() {
       </div>
       <div className="flex h-full flex-1 items-center justify-between px-3">
         <ActiveDateIndicator />
-        <div className="sm3:gap-5 ml-auto flex items-center gap-2 md:pr-4">
+        <div className="ml-auto flex items-center gap-1 sm:gap-5 md:pr-4">
           <CalendarSlider />
           <CalendarModeDropDown />
-          <SettingTrigger />
-          {/* <ThemeToggleButton /> */}
+          <SettingMenuButton />
         </div>
       </div>
     </header>
