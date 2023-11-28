@@ -6,11 +6,11 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    :root {
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 210 40% 98%;
 
-    --radius: 0.5rem;
+        --radius: 0.5rem;
 
     --gray-0: 0 0% 100%;
     --gray-50: 0 0% 97%;
@@ -30,11 +30,11 @@
     --gray-950: 0 0% 5%;
   }
 
-  .dark {
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    .dark {
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 210 40% 98%;
 
-    --radius: 0.5rem;
+        --radius: 0.5rem;
 
     --gray-950: 0 0% 100%;
     --gray-900: 0 0% 97%;
@@ -86,11 +86,17 @@
     overflow: hidden;
   }
 
-  li {
-    list-style: none;
-  }
-
   button {
     outline: none;
   }
+
+    body {
+        font-family: GeistSans, sans-serif;
+        font-weight: 400;
+        line-height: 1.5;
+        color: hsl(var(--gray-600));
+        background-color: hsl(var(--gray-50));
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
 }

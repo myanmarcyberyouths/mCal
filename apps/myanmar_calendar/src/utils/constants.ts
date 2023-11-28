@@ -8,14 +8,10 @@
 //   sat: { long: "saturday", short: "sat" },
 // };
 
-export const WEEK_INDEX = {
-  sunday: 0,
-  monday: 1,
-  tuesday: 2,
-  wednesday: 3,
-  thursday: 4,
-  friday: 5,
-  saturday: 6,
+export const CALENDAR_MODES = {
+  W: "week",
+  M: "month",
+  Y: "year",
 };
 
 export const LANGUAGES = {

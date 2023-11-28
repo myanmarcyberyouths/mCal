@@ -1,18 +1,18 @@
-import { LANGUAGE_ENUM } from "@/type-models/calendarState.type";
+import { Language } from "@/type-models/calendarState.type";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface SystemStateInterface {
   sidebarOpen: boolean;
   darkModeOn: boolean;
   enterMobileMode: boolean;
-  systemLanguage: LANGUAGE_ENUM;
+  systemLanguage: Language;
 }
 
 const initialState: SystemStateInterface = {
   sidebarOpen: false,
   darkModeOn: false,
   enterMobileMode: false,
-  systemLanguage: LANGUAGE_ENUM.ENGLISH,
+  systemLanguage: Language.ENGLISH,
 };
 
 export const systemSlice = createSlice({
@@ -25,7 +25,7 @@ export const systemSlice = createSlice({
     ) => {
       state.sidebarOpen = payload === undefined ? !state.sidebarOpen : payload;
     },
-    setSystemLanguage: (state, { payload }: PayloadAction<LANGUAGE_ENUM>) => {
+    setSystemLanguage: (state, { payload }: PayloadAction<Language>) => {
       state.systemLanguage = payload;
     },
     setEnterMobileMode: (state, { payload }: PayloadAction<boolean>) => {

@@ -38,7 +38,7 @@ const Setting = React.forwardRef((props, ref: React.MutableRefObject<HTMLElement
           <div className="flex items-center pl-4 h-[3rem] mb-2">
           <h2 className="text-[1.1rem] text-gray-400 dark:text-gray-500 font-semibold">Setting</h2>
         </div>
-        <ul className=" sm2:space-y-[0.1rem] rounded-lg bg-gray-50 sm2:bg-gray-0 mx-4 sm2:mx-0 overflow-hidden">
+        <ul className=" sm2:space-y-[0.1rem] rounded-lg bg-gray-50 sm2:dark:bg-gray-100 mx-4 sm2:mx-0 overflow-hidden">
           {Object.values(SETTING_PARAMS).map((param) => {
             const isActive = settingParam === param;
             // searchParam.set(PARAMS.setting, param);

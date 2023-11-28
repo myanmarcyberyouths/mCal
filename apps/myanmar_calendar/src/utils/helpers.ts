@@ -1,9 +1,9 @@
 import { utcToZonedTime } from "date-fns-tz";
 import { THEME_MODE } from "@/type-models/utils.type";
 
-// export function getLocalTime(date?: Date) {
-//   return utcToZonedTime(date ? new Date(date) : new Date(), "Asia/Rangoon");
-// }
+export function getLocalTime (date?: Date) {
+  return utcToZonedTime(date? new Date(date):new Date(), "Asia/Rangoon");
+}
 
 export function parseJSON<T> (value: string|null): T|undefined {
   try {

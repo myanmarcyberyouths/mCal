@@ -1,8 +1,9 @@
 import useKeyPress from "@/hooks/useKeyPress";
 import { RootState } from "@/store";
 import { setActiveDate, updateActiveDate } from "@/store/calendarState";
-import { CALENDAR_MODE } from "@/type-models/calendarState.type";
-import { getLocalTime } from "@/utils/dateTimeHelper";
+import { CalendarMode } from "@/type-models/calendarState.type";
+import {CALENDAR_MODES} from "@/utils/constants";
+import { getLocalTime } from "@/utils/helpers";
 import { format, isSameDay, isThisMonth, isToday } from "date-fns";
 import { useEffect, useState } from "react";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
@@ -26,7 +27,7 @@ function CalendarSlider() {
     const slideValue = direction === "next" ? 1 : -1;
 
     dispatch(updateActiveDate({
-      [calendarMode + 's']: slideValue
+      [CALENDAR_MODES[calendarMode] + 's']: slideValue
     }))
   };
 
@@ -50,9 +51,9 @@ function CalendarSlider() {
   );
 
   return (
-    <div className="h-[2.5rem] flex-shrink-0 flex items-stretch overflow-hidden rounded-md border border-gray-250">
+    <div className="flex h-[2.5rem] flex-shrink-0 items-stretch overflow-hidden rounded-md border border-gray-200">
       <button
-        className="flex justify-center items-center aspect-square hover:bg-gray-100 active:bg-gray-200 text-gray-600 "
+        className="flex aspect-square items-center justify-center text-gray-600 hover:bg-gray-100 active:bg-gray-200 "
         onClick={() => handleCalendarSlide("prev")}
       >
         <BiChevronLeft size={24} />
@@ -68,7 +69,7 @@ function CalendarSlider() {
         {enterMobileMode ? format(new Date(activeDate), "yyyy") : "Today"}
       </button>
       <button
-        className="flex justify-center items-center aspect-square hover:bg-gray-100 active:bg-gray-200 text-gray-600"
+        className="flex aspect-square items-center justify-center text-gray-600 hover:bg-gray-100 active:bg-gray-200"
         onClick={() => handleCalendarSlide("next")}
       >
         <BiChevronRight size={24} />

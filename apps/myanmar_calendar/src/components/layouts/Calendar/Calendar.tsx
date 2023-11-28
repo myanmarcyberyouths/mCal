@@ -10,9 +10,9 @@ import { useMotionValueEvent, useScroll } from "framer-motion";
 import useScrollEvent from "@/hooks/useScrollEvent";
 
 const calendar_modes = {
-  week: <WeekMode />,
-  month: <MonthMode />,
-  year: <YearMode />,
+  W: <WeekMode />,
+  M: <MonthMode />,
+  Y: <YearMode />,
 };
 
 function Calendar() {

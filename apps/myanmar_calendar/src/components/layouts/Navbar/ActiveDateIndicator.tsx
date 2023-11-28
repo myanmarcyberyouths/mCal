@@ -1,5 +1,5 @@
 import { RootState } from "@/store";
-import { CALENDAR_MODE } from "@/type-models/calendarState.type";
+import { CalendarMode } from "@/type-models/calendarState.type";
 import { engToMyanmarNumber } from "@/utils/engToMyanmarNumber";
 import { englishToMyanmarDate, i18n } from "burma-calendar";
 import { add, format, startOfMonth } from "date-fns";
@@ -18,24 +18,35 @@ function ActiveDateIndicator() {
   return (
     <div className="flex items-center gap-7">
       <div className="flex flex-col md2:flex-row md2:items-center md2:gap-3">
-        <h2 className="text-[1.1rem] md2:text-[1.5rem] text-gray-600">
+        <h2 className="text-[1.1rem] text-gray-600 md2:text-[1.5rem]">
           <time
             className="hidden sm2:inline-block "
-            dateTime={format(activeDateObj, "yyyy-MM-dd")}>
-            {format(activeDateObj, `${calendarMode === CALENDAR_MODE.YEAR ? "yyyy" : "MMMM yyyy"}`)}
+            dateTime={format(activeDateObj, "yyyy-MM-dd")}
+          >
+            {format(
+              activeDateObj,
+              `${calendarMode === CalendarMode.YEAR ? "yyyy" : "MMMM yyyy"}`,
+            )}
           </time>
         </h2>
         <span
           aria-hidden="true"
-          className="hidden md2:inline-block self-center h-[1.7rem] w-[1px] bg-gray-300"
+          className="hidden h-[1.7rem] w-[1px] self-center bg-gray-300 md2:inline-block"
         ></span>
-        <h2 className="text-[1.1rem] sm2:text-[1rem] md2:text-[1.1rem] text-gray-700">
-          <time
-            dateTime={format(activeDateObj, "yyyy-MM-dd")}
-            className="">
-            <span className="hidden md3:inline">{i18n("Myanmar Year", "english", calendarLanguage as any)}</span>{" "}
-            {i18n(engToMyanmarNumber(englishToMyanmarDate(firstDayCurrentMonth).year), "myanmar", calendarLanguage as any)} {i18n("Ku", "english", calendarLanguage as any)}{" "}
-            {calendarMode !== CALENDAR_MODE.YEAR && (
+        <h2 className="text-[1.1rem] text-gray-700 sm2:text-[1rem] md2:text-[1.1rem]">
+          <time dateTime={format(activeDateObj, "yyyy-MM-dd")} className="">
+            <span className="hidden md3:inline">
+              {i18n("Myanmar Year", "english", calendarLanguage as any)}
+            </span>{" "}
+            {i18n(
+              engToMyanmarNumber(
+                englishToMyanmarDate(firstDayCurrentMonth).year,
+              ),
+              "myanmar",
+              calendarLanguage as any,
+            )}{" "}
+            {i18n("Ku", "english", calendarLanguage as any)}{" "}
+            {calendarMode !== CalendarMode.YEAR && (
               <>
                 {i18n(
                   englishToMyanmarDate(firstDayCurrentMonth).month,
