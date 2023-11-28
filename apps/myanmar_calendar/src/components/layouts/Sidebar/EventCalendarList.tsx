@@ -13,10 +13,6 @@ import {
 import { setLocalStorage } from "@/utils/helpers";
 import React from "react";
 import { useSearchParams } from "react-router-dom";
-import { BiDotsHorizontalRounded } from "react-icons/bi";
-import { GoChevronRight } from "react-icons/go";
-import { HiMiniChevronRight } from "react-icons/hi2";
-import { CgChevronRight } from "react-icons/cg";
 import { useDispatch, useSelector } from "react-redux";
 
 function EventCalendarList() {
@@ -44,7 +40,7 @@ function EventCalendarList() {
   };
 
   return (
-    <CheckList title="EVENT CALENDARS">
+    <CheckList title="My Calendars">
       {eventCalendars.map(({ id, name, checked, tagColor }) => (
         <CheckListItem
           key={id}
@@ -65,14 +61,6 @@ function EventCalendarList() {
           More
         </CheckListAddButton>
       </div>
-      {/* <BiDotsHorizontalRounded
-            size={16}
-            className="mt-2"
-          /> */}
-      {/* <CgChevronRight
-            size={17}
-            className="mt-[0.125rem]"
-          /> */}
     </CheckList>
   );
 }

@@ -15,6 +15,7 @@ import UserCalendarList from "./UserCalendarList";
 
 function Sidebar() {
   const dispatch = useDispatch();
+
   const { sidebarOpen, enterMobileMode } = useSelector(
     (state: RootState) => state.systemState,
   );
@@ -47,7 +48,7 @@ function Sidebar() {
         <div className="__scrollbar-sm h-[calc(100%-theme(spacing.nav-h))] w-full min-w-[19rem] flex-shrink-0 space-y-6 bg-gray-0 px-5 py-3 pt-4 xl:h-full xl:w-sidebar-w xl:min-w-[theme(spacing.sidebar-w)]">
           <div className="">
             <p className="mb-[0.4rem] text-[0.75rem] font-medium text-gray-450">
-              CALENDAR LANGUAGE
+              Calendar Language
             </p>
             <CalendarLanguageMenu />
           </div>
