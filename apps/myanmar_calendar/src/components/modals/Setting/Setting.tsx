@@ -120,7 +120,7 @@ const Setting = React.forwardRef(
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
-              exit={{ x: "100%" }}
+              exit={{ x: enterMobileMode ? "100%" : 0 }}
               transition={{ bounce: false }}
               className="absolute flex h-full w-full flex-1  flex-col items-stretch border-l border-gray-200 bg-gray-0 dark:border-gray-250 dark:bg-gray-100 sm2:static  sm2:w-auto"
             >
