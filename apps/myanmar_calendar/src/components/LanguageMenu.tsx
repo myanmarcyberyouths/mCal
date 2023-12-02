@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon, LanguageIcon } from "@heroicons/react/20/solid";
-import { classNames } from "../utils/classNames";
+import { classNames } from "@/utils/classNames";
 import { i18n } from "burma-calendar";
 
 export type Language = Parameters<typeof i18n>[1];

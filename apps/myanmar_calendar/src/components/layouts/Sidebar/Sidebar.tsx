@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect } from "react";
 import { cn } from "@/lib/utils";
-import { CalendarLanguageSelectBox } from "./LanguageSelectBox";
+import { CalendarLanguageMenu } from "./LanguageSelectBox";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store";
 import AppLogo from "@/components/ui/logos/AppLogo";
@@ -15,10 +15,10 @@ import UserCalendarList from "./UserCalendarList";
 
 function Sidebar() {
   const dispatch = useDispatch();
+
   const { sidebarOpen, enterMobileMode } = useSelector(
     (state: RootState) => state.systemState,
   );
-  // const [hideSidebar, setHi]
 
   const sidebarRef = useOnClickOutside(() => {
     if (window.innerWidth >= 1280 || !sidebarOpen) return;
@@ -48,9 +48,9 @@ function Sidebar() {
         <div className="__scrollbar-sm h-[calc(100%-theme(spacing.nav-h))] w-full min-w-[19rem] flex-shrink-0 space-y-6 bg-gray-0 px-5 py-3 pt-4 xl:h-full xl:w-sidebar-w xl:min-w-[theme(spacing.sidebar-w)]">
           <div className="">
             <p className="mb-[0.4rem] text-[0.75rem] font-medium text-gray-450">
-              CALENDAR LANGUAGE
+              Calendar Language
             </p>
-            <CalendarLanguageSelectBox />
+            <CalendarLanguageMenu />
           </div>
           {/* => SystemLanguageSelectBox */}
           {/* => DateJumper */}
