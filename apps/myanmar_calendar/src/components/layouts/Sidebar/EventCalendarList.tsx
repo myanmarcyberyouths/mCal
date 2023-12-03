@@ -12,15 +12,21 @@ import {
 } from "@/type-models/utils.type";
 import { setLocalStorage } from "@/utils/helpers";
 import React from "react";
-import { useSearchParams } from "react-router-dom";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { setSidebarOpenState } from "@/store/systemState";
 
 function EventCalendarList() {
   const dispatch = useDispatch();
   const eventCalendars = useSelector(
     (state: RootState) => state.calendarState.eventCalendars,
   );
+  const enterMobileMode = useSelector(
+    (state: RootState) => state.systemState.enterMobileMode,
+  );
   const [searchParams, setSearchParams] = useSearchParams();
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const handleCheck = (checked, id: string) => {
     dispatch(
@@ -53,9 +59,18 @@ function EventCalendarList() {
       ))}
       <div className="mt-1">
         <CheckListAddButton
-          onClick={() =>
-            setSearchParams(`?${PARAMS.setting}=${SETTING_PARAMS.sidebar}`)
-          }
+          onClick={() => {
+            if (enterMobileMode) {
+              console.log(location.pathname);
+              navigate(location.pathname, {
+                state: { animate: "none" },
+              });
+              dispatch(setSidebarOpenState(false));
+            }
+            setSearchParams(
+              `?${PARAMS.setting}=${SETTING_PARAMS.sidebar}&${PARAMS.transition}=0`,
+            );
+          }}
           className="gap-0"
         >
           More

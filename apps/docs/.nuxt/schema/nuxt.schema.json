@@ -1,0 +1,927 @@
+{
+  "id": "#",
+  "properties": {
+    "appConfig": {
+      "id": "#appConfig",
+      "properties": {
+        "nuxtIcon": {
+          "title": "Nuxt Icon",
+          "description": "Configure the defaults of Nuxt Icon",
+          "id": "#appConfig/nuxtIcon",
+          "properties": {
+            "size": {
+              "title": "Icon Size",
+              "description": "Set the default icon size. Set to false to disable the sizing of icon in style.",
+              "tags": [
+                "@studioIcon material-symbols:format-size-rounded"
+              ],
+              "tsType": "string | false",
+              "id": "#appConfig/nuxtIcon/size",
+              "default": "1em",
+              "type": "string"
+            },
+            "class": {
+              "title": "CSS Class",
+              "description": "Set the default CSS class",
+              "tags": [
+                "@studioIcon material-symbols:css"
+              ],
+              "id": "#appConfig/nuxtIcon/class",
+              "default": "",
+              "type": "string"
+            },
+            "aliases": {
+              "title": "Icon aliases",
+              "description": "Define Icon aliases to update them easily without code changes.",
+              "tags": [
+                "@studioIcon material-symbols:star-rounded",
+                "@studioInputObjectValueType icon"
+              ],
+              "tsType": "{ [alias: string]: string }",
+              "id": "#appConfig/nuxtIcon/aliases",
+              "default": {},
+              "type": "object"
+            }
+          },
+          "type": "object",
+          "default": {
+            "size": "1em",
+            "class": "",
+            "aliases": {}
+          }
+        },
+        "prose": {
+          "title": "",
+          "description": "",
+          "tags": [],
+          "id": "#appConfig/prose",
+          "properties": {
+            "copyButton": {
+              "title": "",
+              "description": "",
+              "tags": [],
+              "id": "#appConfig/prose/copyButton",
+              "properties": {
+                "iconCopy": {
+                  "title": "",
+                  "description": "",
+                  "tags": [],
+                  "id": "#appConfig/prose/copyButton/iconCopy",
+                  "default": "ph:copy",
+                  "type": "string"
+                },
+                "iconCopied": {
+                  "title": "",
+                  "description": "",
+                  "tags": [],
+                  "id": "#appConfig/prose/copyButton/iconCopied",
+                  "default": "ph:check",
+                  "type": "string"
+                }
+              },
+              "type": "object",
+              "default": {
+                "iconCopy": "ph:copy",
+                "iconCopied": "ph:check"
+              }
+            },
+            "headings": {
+              "title": "",
+              "description": "",
+              "tags": [],
+              "id": "#appConfig/prose/headings",
+              "properties": {
+                "icon": {
+                  "title": "",
+                  "description": "",
+                  "tags": [],
+                  "tsType": "string|false",
+                  "id": "#appConfig/prose/headings/icon",
+                  "default": "ph:link",
+                  "type": "string"
+                }
+              },
+              "type": "object",
+              "default": {
+                "icon": "ph:link"
+              }
+            },
+            "h1": {
+              "title": "",
+              "description": "",
+              "tags": [],
+              "id": "#appConfig/prose/h1",
+              "properties": {
+                "icon": {
+                  "title": "",
+                  "description": "",
+                  "tags": [],
+                  "tsType": "string|false",
+                  "id": "#appConfig/prose/h1/icon",
+                  "default": "",
+                  "type": "string"
+                }
+              },
+              "type": "object",
+              "default": {
+                "icon": ""
+              }
+            },
+            "h2": {
+              "title": "",
+              "description": "",
+              "tags": [],
+              "id": "#appConfig/prose/h2",
+              "properties": {
+                "icon": {
+                  "title": "",
+                  "description": "",
+                  "tags": [],
+                  "tsType": "string|false",
+                  "id": "#appConfig/prose/h2/icon",
+                  "default": "",
+                  "type": "string"
+                }
+              },
+              "type": "object",
+              "default": {
+                "icon": ""
+              }
+            },
+            "h3": {
+              "title": "",
+              "description": "",
+              "tags": [],
+              "id": "#appConfig/prose/h3",
+              "properties": {
+                "icon": {
+                  "title": "",
+                  "description": "",
+                  "tags": [],
+                  "tsType": "string|false",
+                  "id": "#appConfig/prose/h3/icon",
+                  "default": "",
+                  "type": "string"
+                }
+              },
+              "type": "object",
+              "default": {
+                "icon": ""
+              }
+            },
+            "h4": {
+              "title": "",
+              "description": "",
+              "tags": [],
+              "id": "#appConfig/prose/h4",
+              "properties": {
+                "icon": {
+                  "title": "",
+                  "description": "",
+                  "tags": [],
+                  "tsType": "string|false",
+                  "id": "#appConfig/prose/h4/icon",
+                  "default": "",
+                  "type": "string"
+                }
+              },
+              "type": "object",
+              "default": {
+                "icon": ""
+              }
+            },
+            "h5": {
+              "title": "",
+              "description": "",
+              "tags": [],
+              "id": "#appConfig/prose/h5",
+              "properties": {
+                "icon": {
+                  "title": "",
+                  "description": "",
+                  "tags": [],
+                  "tsType": "string|false",
+                  "id": "#appConfig/prose/h5/icon",
+                  "default": "",
+                  "type": "string"
+                }
+              },
+              "type": "object",
+              "default": {
+                "icon": ""
+              }
+            },
+            "h6": {
+              "title": "",
+              "description": "",
+              "tags": [],
+              "id": "#appConfig/prose/h6",
+              "properties": {
+                "icon": {
+                  "title": "",
+                  "description": "",
+                  "tags": [],
+                  "tsType": "string|false",
+                  "id": "#appConfig/prose/h6/icon",
+                  "default": "",
+                  "type": "string"
+                }
+              },
+              "type": "object",
+              "default": {
+                "icon": ""
+              }
+            }
+          },
+          "type": "object",
+          "default": {
+            "copyButton": {
+              "iconCopy": "ph:copy",
+              "iconCopied": "ph:check"
+            },
+            "headings": {
+              "icon": "ph:link"
+            },
+            "h1": {
+              "icon": ""
+            },
+            "h2": {
+              "icon": ""
+            },
+            "h3": {
+              "icon": ""
+            },
+            "h4": {
+              "icon": ""
+            },
+            "h5": {
+              "icon": ""
+            },
+            "h6": {
+              "icon": ""
+            }
+          }
+        },
+        "docus": {
+          "title": "",
+          "description": "",
+          "tags": [],
+          "id": "#appConfig/docus",
+          "properties": {
+            "title": {
+              "title": "",
+              "description": "",
+              "tags": [],
+              "id": "#appConfig/docus/title",
+              "default": "Docus",
+              "type": "string"
+            },
+            "titleTemplate": {
+              "title": "",
+              "description": "",
+              "tags": [],
+              "id": "#appConfig/docus/titleTemplate",
+              "default": "%s · Docus",
+              "type": "string"
+            },
+            "description": {
+              "title": "",
+              "description": "",
+              "tags": [],
+              "id": "#appConfig/docus/description",
+              "default": "The best place to start your documentation.",
+              "type": "string"
+            },
+            "image": {
+              "title": "",
+              "description": "",
+              "tags": [],
+              "id": "#appConfig/docus/image",
+              "default": "https://user-images.githubusercontent.com/904724/185365452-87b7ca7b-6030-4813-a2db-5e65c785bf88.png",
+              "type": "string"
+            },
+            "socials": {
+              "title": "",
+              "description": "",
+              "tags": [],
+              "id": "#appConfig/docus/socials",
+              "properties": {
+                "twitter": {
+                  "title": "",
+                  "description": "",
+                  "tags": [],
+                  "id": "#appConfig/docus/socials/twitter",
+                  "default": "",
+                  "type": "string"
+                },
+                "github": {
+                  "title": "",
+                  "description": "",
+                  "tags": [],
+                  "id": "#appConfig/docus/socials/github",
+                  "default": "",
+                  "type": "string"
+                },
+                "facebook": {
+                  "title": "",
+                  "description": "",
+                  "tags": [],
+                  "id": "#appConfig/docus/socials/facebook",
+                  "default": "",
+                  "type": "string"
+                },
+                "instagram": {
+                  "title": "",
+                  "description": "",
+                  "tags": [],
+                  "id": "#appConfig/docus/socials/instagram",
+                  "default": "",
+                  "type": "string"
+                },
+                "tiktok": {
+                  "title": "",
+                  "description": "",
+                  "tags": [],
+                  "id": "#appConfig/docus/socials/tiktok",
+                  "default": "",
+                  "type": "string"
+                },
+                "youtube": {
+                  "title": "",
+                  "description": "",
+                  "tags": [],
+                  "id": "#appConfig/docus/socials/youtube",
+                  "default": "",
+                  "type": "string"
+                },
+                "medium": {
+                  "title": "",
+                  "description": "",
+                  "tags": [],
+                  "id": "#appConfig/docus/socials/medium",
+                  "default": "",
+                  "type": "string"
+                }
+              },
+              "type": "object",
+              "default": {
+                "twitter": "",
+                "github": "",
+                "facebook": "",
+                "instagram": "",
+                "tiktok": "",
+                "youtube": "",
+                "medium": ""
+              }
+            },
+            "layout": {
+              "title": "",
+              "description": "",
+              "tags": [],
+              "tsType": "'default'|'page'",
+              "id": "#appConfig/docus/layout",
+              "default": "default",
+              "type": "string"
+            },
+            "aside": {
+              "title": "",
+              "description": "",
+              "tags": [],
+              "id": "#appConfig/docus/aside",
+              "properties": {
+                "level": {
+                  "title": "",
+                  "description": "",
+                  "tags": [],
+                  "id": "#appConfig/docus/aside/level",
+                  "default": 0,
+                  "type": "number"
+                },
+                "collapsed": {
+                  "title": "",
+                  "description": "",
+                  "tags": [],
+                  "id": "#appConfig/docus/aside/collapsed",
+                  "default": false,
+                  "type": "boolean"
+                },
+                "exclude": {
+                  "title": "",
+                  "description": "",
+                  "tags": [],
+                  "tsType": "string[]",
+                  "id": "#appConfig/docus/aside/exclude",
+                  "default": [],
+                  "type": "array",
+                  "items": {
+                    "type": "any"
+                  }
+                }
+              },
+              "type": "object",
+              "default": {
+                "level": 0,
+                "collapsed": false,
+                "exclude": []
+              }
+            },
+            "header": {
+              "title": "",
+              "description": "",
+              "tags": [],
+              "id": "#appConfig/docus/header",
+              "properties": {
+                "title": {
+                  "title": "",
+                  "description": "",
+                  "tags": [],
+                  "id": "#appConfig/docus/header/title",
+                  "default": "",
+                  "type": "string"
+                },
+                "logo": {
+                  "title": "",
+                  "description": "",
+                  "tags": [],
+                  "tsType": "boolean|string|{dark: string, light: string}",
+                  "id": "#appConfig/docus/header/logo",
+                  "default": false,
+                  "type": "boolean"
+                },
+                "showLinkIcon": {
+                  "title": "",
+                  "description": "",
+                  "tags": [],
+                  "id": "#appConfig/docus/header/showLinkIcon",
+                  "default": false,
+                  "type": "boolean"
+                },
+                "exclude": {
+                  "title": "",
+                  "description": "",
+                  "tags": [],
+                  "tsType": "string[]",
+                  "id": "#appConfig/docus/header/exclude",
+                  "default": [],
+                  "type": "array",
+                  "items": {
+                    "type": "any"
+                  }
+                },
+                "fluid": {
+                  "title": "",
+                  "description": "",
+                  "tags": [],
+                  "id": "#appConfig/docus/header/fluid",
+                  "default": false,
+                  "type": "boolean"
+                }
+              },
+              "type": "object",
+              "default": {
+                "title": "",
+                "logo": false,
+                "showLinkIcon": false,
+                "exclude": [],
+                "fluid": false
+              }
+            },
+            "main": {
+              "title": "",
+              "description": "",
+              "tags": [],
+              "id": "#appConfig/docus/main",
+              "properties": {
+                "fluid": {
+                  "title": "",
+                  "description": "",
+                  "tags": [],
+                  "id": "#appConfig/docus/main/fluid",
+                  "default": false,
+                  "type": "boolean"
+                },
+                "padded": {
+                  "title": "",
+                  "description": "",
+                  "tags": [],
+                  "id": "#appConfig/docus/main/padded",
+                  "default": true,
+                  "type": "boolean"
+                }
+              },
+              "type": "object",
+              "default": {
+                "fluid": false,
+                "padded": true
+              }
+            },
+            "footer": {
+              "title": "",
+              "description": "",
+              "tags": [],
+              "id": "#appConfig/docus/footer",
+              "properties": {
+                "credits": {
+                  "title": "",
+                  "description": "",
+                  "tags": [],
+                  "tsType": "false|{icon: string, text: string, href: string}",
+                  "id": "#appConfig/docus/footer/credits",
+                  "properties": {
+                    "icon": {
+                      "title": "",
+                      "description": "",
+                      "tags": [],
+                      "id": "#appConfig/docus/footer/credits/icon",
+                      "default": "IconDocus",
+                      "type": "string"
+                    },
+                    "text": {
+                      "type": "string",
+                      "id": "#appConfig/docus/footer/credits/text",
+                      "default": "Powered by Docus"
+                    },
+                    "href": {
+                      "type": "string",
+                      "id": "#appConfig/docus/footer/credits/href",
+                      "default": "https://docus.dev"
+                    }
+                  },
+                  "type": "object",
+                  "default": {
+                    "icon": "IconDocus",
+                    "text": "Powered by Docus",
+                    "href": "https://docus.dev"
+                  }
+                },
+                "textLinks": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "text",
+                      "href"
+                    ],
+                    "properties": {
+                      "href": {
+                        "type": "string",
+                        "description": "URL when clicking the link"
+                      },
+                      "text": {
+                        "type": "string",
+                        "description": "Text of the link"
+                      },
+                      "target": {
+                        "type": "string",
+                        "description": "Target attribute of the link"
+                      },
+                      "rel": {
+                        "type": "string",
+                        "description": "Rel attribute of the link"
+                      }
+                    }
+                  },
+                  "title": "",
+                  "description": "",
+                  "tags": [],
+                  "id": "#appConfig/docus/footer/textLinks"
+                },
+                "iconLinks": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "icon",
+                      "href"
+                    ],
+                    "properties": {
+                      "icon": {
+                        "type": "string",
+                        "description": "Icon name"
+                      },
+                      "href": {
+                        "type": "string",
+                        "description": "Link when clicking on the icon"
+                      },
+                      "label": {
+                        "type": "string",
+                        "description": "Label of the icon"
+                      },
+                      "rel": {
+                        "type": "string",
+                        "description": "Rel attribute of the link"
+                      }
+                    }
+                  },
+                  "title": "",
+                  "description": "",
+                  "tags": [],
+                  "id": "#appConfig/docus/footer/iconLinks"
+                },
+                "fluid": {
+                  "title": "",
+                  "description": "",
+                  "tags": [],
+                  "id": "#appConfig/docus/footer/fluid",
+                  "default": true,
+                  "type": "boolean"
+                }
+              },
+              "type": "object",
+              "default": {
+                "credits": {
+                  "icon": "IconDocus",
+                  "text": "Powered by Docus",
+                  "href": "https://docus.dev"
+                },
+                "fluid": true
+              }
+            },
+            "github": {
+              "title": "",
+              "description": "",
+              "tags": [],
+              "id": "#appConfig/docus/github",
+              "properties": {
+                "baseUrl": {
+                  "title": "",
+                  "description": "",
+                  "tags": [],
+                  "id": "#appConfig/docus/github/baseUrl",
+                  "default": "https://github.com",
+                  "type": "string"
+                },
+                "dir": {
+                  "title": "",
+                  "description": "",
+                  "tags": [],
+                  "id": "#appConfig/docus/github/dir",
+                  "default": "",
+                  "type": "string"
+                },
+                "branch": {
+                  "title": "",
+                  "description": "",
+                  "tags": [],
+                  "id": "#appConfig/docus/github/branch",
+                  "default": "",
+                  "type": "string"
+                },
+                "repo": {
+                  "title": "",
+                  "description": "",
+                  "tags": [],
+                  "id": "#appConfig/docus/github/repo",
+                  "default": "",
+                  "type": "string"
+                },
+                "owner": {
+                  "title": "",
+                  "description": "",
+                  "tags": [],
+                  "id": "#appConfig/docus/github/owner",
+                  "default": "",
+                  "type": "string"
+                },
+                "edit": {
+                  "title": "",
+                  "description": "",
+                  "tags": [],
+                  "id": "#appConfig/docus/github/edit",
+                  "default": false,
+                  "type": "boolean"
+                }
+              },
+              "type": "object",
+              "default": {
+                "baseUrl": "https://github.com",
+                "dir": "",
+                "branch": "",
+                "repo": "",
+                "owner": "",
+                "edit": false
+              }
+            }
+          },
+          "type": "object",
+          "default": {
+            "title": "Docus",
+            "titleTemplate": "%s · Docus",
+            "description": "The best place to start your documentation.",
+            "image": "https://user-images.githubusercontent.com/904724/185365452-87b7ca7b-6030-4813-a2db-5e65c785bf88.png",
+            "socials": {
+              "twitter": "",
+              "github": "",
+              "facebook": "",
+              "instagram": "",
+              "tiktok": "",
+              "youtube": "",
+              "medium": ""
+            },
+            "layout": "default",
+            "aside": {
+              "level": 0,
+              "collapsed": false,
+              "exclude": []
+            },
+            "header": {
+              "title": "",
+              "logo": false,
+              "showLinkIcon": false,
+              "exclude": [],
+              "fluid": false
+            },
+            "main": {
+              "fluid": false,
+              "padded": true
+            },
+            "footer": {
+              "credits": {
+                "icon": "IconDocus",
+                "text": "Powered by Docus",
+                "href": "https://docus.dev"
+              },
+              "fluid": true
+            },
+            "github": {
+              "baseUrl": "https://github.com",
+              "dir": "",
+              "branch": "",
+              "repo": "",
+              "owner": "",
+              "edit": false
+            }
+          }
+        }
+      },
+      "type": "object",
+      "default": {
+        "nuxtIcon": {
+          "size": "1em",
+          "class": "",
+          "aliases": {}
+        },
+        "prose": {
+          "copyButton": {
+            "iconCopy": "ph:copy",
+            "iconCopied": "ph:check"
+          },
+          "headings": {
+            "icon": "ph:link"
+          },
+          "h1": {
+            "icon": ""
+          },
+          "h2": {
+            "icon": ""
+          },
+          "h3": {
+            "icon": ""
+          },
+          "h4": {
+            "icon": ""
+          },
+          "h5": {
+            "icon": ""
+          },
+          "h6": {
+            "icon": ""
+          }
+        },
+        "docus": {
+          "title": "Docus",
+          "titleTemplate": "%s · Docus",
+          "description": "The best place to start your documentation.",
+          "image": "https://user-images.githubusercontent.com/904724/185365452-87b7ca7b-6030-4813-a2db-5e65c785bf88.png",
+          "socials": {
+            "twitter": "",
+            "github": "",
+            "facebook": "",
+            "instagram": "",
+            "tiktok": "",
+            "youtube": "",
+            "medium": ""
+          },
+          "layout": "default",
+          "aside": {
+            "level": 0,
+            "collapsed": false,
+            "exclude": []
+          },
+          "header": {
+            "title": "",
+            "logo": false,
+            "showLinkIcon": false,
+            "exclude": [],
+            "fluid": false
+          },
+          "main": {
+            "fluid": false,
+            "padded": true
+          },
+          "footer": {
+            "credits": {
+              "icon": "IconDocus",
+              "text": "Powered by Docus",
+              "href": "https://docus.dev"
+            },
+            "fluid": true
+          },
+          "github": {
+            "baseUrl": "https://github.com",
+            "dir": "",
+            "branch": "",
+            "repo": "",
+            "owner": "",
+            "edit": false
+          }
+        }
+      }
+    }
+  },
+  "type": "object",
+  "default": {
+    "appConfig": {
+      "nuxtIcon": {
+        "size": "1em",
+        "class": "",
+        "aliases": {}
+      },
+      "prose": {
+        "copyButton": {
+          "iconCopy": "ph:copy",
+          "iconCopied": "ph:check"
+        },
+        "headings": {
+          "icon": "ph:link"
+        },
+        "h1": {
+          "icon": ""
+        },
+        "h2": {
+          "icon": ""
+        },
+        "h3": {
+          "icon": ""
+        },
+        "h4": {
+          "icon": ""
+        },
+        "h5": {
+          "icon": ""
+        },
+        "h6": {
+          "icon": ""
+        }
+      },
+      "docus": {
+        "title": "Docus",
+        "titleTemplate": "%s · Docus",
+        "description": "The best place to start your documentation.",
+        "image": "https://user-images.githubusercontent.com/904724/185365452-87b7ca7b-6030-4813-a2db-5e65c785bf88.png",
+        "socials": {
+          "twitter": "",
+          "github": "",
+          "facebook": "",
+          "instagram": "",
+          "tiktok": "",
+          "youtube": "",
+          "medium": ""
+        },
+        "layout": "default",
+        "aside": {
+          "level": 0,
+          "collapsed": false,
+          "exclude": []
+        },
+        "header": {
+          "title": "",
+          "logo": false,
+          "showLinkIcon": false,
+          "exclude": [],
+          "fluid": false
+        },
+        "main": {
+          "fluid": false,
+          "padded": true
+        },
+        "footer": {
+          "credits": {
+            "icon": "IconDocus",
+            "text": "Powered by Docus",
+            "href": "https://docus.dev"
+          },
+          "fluid": true
+        },
+        "github": {
+          "baseUrl": "https://github.com",
+          "dir": "",
+          "branch": "",
+          "repo": "",
+          "owner": "",
+          "edit": false
+        }
+      }
+    }
+  }
+}
