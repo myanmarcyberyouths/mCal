@@ -74,8 +74,6 @@ export default function BottomSheetMobile({
     onReachedTop: () => setDraggable("top"),
     onReachedBottom: () => setDraggable("bottom"),
     customCallback: ({ offsetHeight, scrollHeight, scrollTop }) => {
-      console.log(offsetHeight, scrollHeight, scrollTop);
-
       if (
         scrollTop !== 0 &&
         Math.floor(scrollHeight - scrollTop) > offsetHeight
@@ -84,9 +82,6 @@ export default function BottomSheetMobile({
     },
   });
 
-  useEffect(() => {
-    console.log(draggable);
-  }, [draggable]);
 
   const childrenWithProps = React.Children.map(
     children,

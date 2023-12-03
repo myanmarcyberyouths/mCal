@@ -4,7 +4,12 @@ import React, { Fragment, useEffect, useRef } from "react";
 import { VscSettings } from "react-icons/vsc";
 import { BsLayoutSidebar } from "react-icons/bs";
 import RenderIcon from "@/components/ui/render/RenderIcon";
-import { Link, useParams, useSearchParams } from "react-router-dom";
+import {
+  Link,
+  useLocation,
+  useParams,
+  useSearchParams,
+} from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { IoMdClose } from "react-icons/io";
 import GeneralSettings from "./SettingGroups/GeneralSettings";
@@ -33,6 +38,7 @@ const Setting = React.forwardRef(
     );
     const [searchParam, setSearchParams] = useSearchParams();
     const settingParam = searchParam.get(PARAMS.setting) as SETTING_PARAMS;
+    const transitionParam = searchParam.get(PARAMS.transition);
 
     console.log(settingParam);
     return (
@@ -43,7 +49,7 @@ const Setting = React.forwardRef(
               Setting
             </h2>
           </div>
-          <ul className=" mx-4 overflow-hidden rounded-lg bg-gray-50 sm2:mx-0 sm2:space-y-[0.1rem] sm2:dark:bg-gray-100">
+          <ul className=" mx-4 overflow-hidden rounded-lg bg-gray-50 sm2:mx-0  sm2:space-y-[0.1rem] sm2:bg-gray-0 sm2:dark:bg-gray-100">
             {Object.values(SETTING_PARAMS).map((param) => {
               const isActive = settingParam === param;
               // searchParam.set(PARAMS.setting, param);
@@ -85,40 +91,15 @@ const Setting = React.forwardRef(
                       className="text-gray-500 sm2:hidden"
                     />
                   </a>
-                  {/* <Link
-                  to={{ search: `${searchParam.toString()}` }}
-                  key={param}
-                  className={cn(
-                    "flex justify-between items-center h-[3rem] sm2:h-[2.1rem] px-2 rounded-sm hover:bg-gray-100 dark:hover:bg-gray-200 cursor-pointer capitalize border-b border-gray-150/80 sm2:border-none",
-                    isActive && "bg-gray-200/70 dark:bg-gray-250 hover:bg-gray-200/70 dark:hover:bg-gray-250"
-                  )}>
-                    <span className="flex gap-3 ms2:gap-2 items-center">
-                      <RenderIcon className={cn("text-[1.2rem] sm2:text-[1rem] text-gray-500", isActive && "text-gray-800")}>{SETTING_ICONS[param]}</RenderIcon>
-                      <span className={cn("text-[1.05rem] sm2:text-[0.85rem] text-gray-700/90 dark:text-gray-700 mt-[0.125rem]", isActive && "text-gray-800 dark:text-gray-900")}>{param}</span>
-                    </span>
-                    <HiOutlineChevronRight size={18} className="sm2:hidden text-gray-500" />
-                </Link> */}
                 </li>
               );
             })}
           </ul>
         </div>
-        {/* <Transition as={Fragment} appear={enterMobileMode}
-        show={SETTING_PARAMS[settingParam] ? true : false }
-      >
-        <Transition.Child as="div"
-         enterFrom={" translate-x-[100%]"}
-          enterTo="translate-x-0"
-          leaveFrom="translate-x-0"
-          leaveTo={" translate-x-[100%]"}
-          enter={" duration-300"}
-          leave={"duration-300"}
-        className="absolute w-full h-full sm2:w-auto sm2:static  border-l border-gray-200 dark:border-gray-250 flex-1 flex flex-col items-stretch bg-gray-0  dark:bg-gray-100"
-        > */}
         <AnimatePresence initial={enterMobileMode}>
           {!!SETTING_PARAMS[settingParam] && (
             <motion.div
-              initial={{ x: "100%" }}
+              initial={{ x: transitionParam == "0" ? 0 : "100%" }}
               animate={{ x: 0 }}
               exit={{ x: enterMobileMode ? "100%" : 0 }}
               transition={{ bounce: false }}
@@ -131,11 +112,11 @@ const Setting = React.forwardRef(
                       variant="secondary"
                       onClick={() => {
                         searchParam.set(PARAMS.setting, "open");
+                        searchParam.delete(PARAMS.transition);
                         setSearchParams(searchParam);
                       }}
                       className="flex items-center gap-[0.15rem] px-2 pl-1 text-rose-500 hover:text-rose-600 "
                     >
-                      {/* <FaArrowLeft size={20} /> */}
                       <FaChevronLeft size={20} />
                     </Button>
                   </div>
@@ -166,9 +147,6 @@ const Setting = React.forwardRef(
             </motion.div>
           )}
         </AnimatePresence>
-
-        {/* </Transition.Child>
-      </Transition> */}
       </div>
     );
   },

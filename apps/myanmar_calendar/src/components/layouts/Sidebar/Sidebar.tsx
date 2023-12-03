@@ -52,10 +52,10 @@ function Sidebar() {
             </p>
             <CalendarLanguageMenu />
           </div>
-          {/* => SystemLanguageSelectBox */}
-          {/* => DateJumper */}
           <CalendarPreferanceList />
           <EventCalendarList />
+          {/* => SystemLanguageSelectBox */}
+          {/* => DateJumper */}
           {/* <UserCalendarList /> */}
         </div>
       </section>
