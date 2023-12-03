@@ -82,7 +82,6 @@ export default function BottomSheetMobile({
     },
   });
 
-
   const childrenWithProps = React.Children.map(
     children,
     (child: React.DetailedReactHTMLElement<any, HTMLElement>) =>

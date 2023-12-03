@@ -11,7 +11,7 @@ export enum SETTING_PARAMS {
 
 export enum PARAMS {
   setting = "setting",
-  transition='transition'
+  transition = "transition",
 }
 
 export enum THEME_MODE {
