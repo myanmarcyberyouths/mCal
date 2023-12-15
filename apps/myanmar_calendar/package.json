@@ -65,7 +65,7 @@
     "sonner": "^1.2.4",
     "tailwind-merge": "^2.0.0",
     "tailwindcss-animate": "^1.0.6",
-    "vite": "^5.0.2",
+    "vite": "^5.0.7",
     "workbox-precaching": "^7.0.0",
     "workbox-routing": "^7.0.0"
   }
