@@ -53,7 +53,7 @@
     "date-fns": "^2.30.0",
     "date-fns-tz": "^2.0.0",
     "framer-motion": "^10.16.5",
-    "geist": "^1.0.0",
+    "geist": "^1.2.0",
     "next": "^14.0.3",
     "pwa-asset-generator": "^6.3.1",
     "react": "^18.2.0",
