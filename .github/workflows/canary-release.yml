@@ -70,7 +70,7 @@ jobs:
 
       - name: Upload DMG artifact to macOS
         if: ${{ matrix.platform == 'macos-latest' }}
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: MacOS (DMG)
           path: |
@@ -78,7 +78,7 @@ jobs:
 
       - name: Upload Deb artifact to linux
         if: ${{ matrix.platform == 'ubuntu-latest' }}
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Linux Deb
           path: |
@@ -86,7 +86,7 @@ jobs:
 
       - name: Upload AppImage artifact to linux
         if: ${{ matrix.platform == 'ubuntu-latest' }}
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Linux AppImage
           path: |
@@ -94,7 +94,7 @@ jobs:
 
       - name: Upload MSI artifact to Window
         if: ${{ matrix.platform == 'windows-latest' }}
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Windows MSI
           path: |
@@ -104,7 +104,7 @@ jobs:
 
       - name: Upload NSIS artifact to Window
         if: ${{ matrix.platform == 'windows-latest' }}
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Windows NSIS
           path: |
