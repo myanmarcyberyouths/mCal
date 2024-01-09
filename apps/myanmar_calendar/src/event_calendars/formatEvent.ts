@@ -3,7 +3,7 @@ import { format, getDate, getWeekOfMonth } from "date-fns";
 import { EVENTS, CustomEventFnT } from "./event_calendars";
 import { englishToMyanmarDate } from "burma-calendar";
 
-export function getDayEvents(date: Date, eventCalendars: EventCalendarItem[]) {
+export function getAllEventsOfDay (date: Date, eventCalendars: EventCalendarItem[]) {
   return eventCalendars.map((calendar) => {
     const currentEvent = EVENTS[calendar.id];
 
