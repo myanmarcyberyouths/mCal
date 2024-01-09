@@ -3,7 +3,7 @@ import {
   ScrollBar,
   ScrollViewport,
 } from "@/components/ui/areas/ScrollArea";
-import { getDayEvents } from "@/event_calendars/formatEvent";
+import {getAllEventsOfDay} from "@/event_calendars/formatEvent";
 import useDayEndInterval from "@/hooks/useDayEndInterval";
 import { cn } from "@/lib/utils";
 import { CalendarStateInterface } from "@/store/calendarState";
@@ -47,7 +47,7 @@ function MonthCell({ day, calendarState }: MonthCellT) {
 
   useDayEndInterval(() => setDayIsToday(isToday(day)));
 
-  const checkedEvents = getDayEvents(
+  const checkedEvents = getAllEventsOfDay(
     day,
     eventCalendars.filter((calendar) => calendar.checked === true),
   );

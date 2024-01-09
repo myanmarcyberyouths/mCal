@@ -19,7 +19,7 @@ import { PiCaretDownBold } from "react-icons/pi";
 import { GrDown } from "react-icons/gr";
 import useKeyPress from "@/hooks/useKeyPress";
 import { modifyColorOpacity } from "@/utils/styleHelpers";
-import { getDayEvents } from "@/event_calendars/formatEvent";
+import {getAllEventsOfDay} from "@/event_calendars/formatEvent";
 
 export interface DayDialogContentProps {
   onClose: () => void;
@@ -37,7 +37,7 @@ const DayDialogContent = ({ onClose, selectedDay }: DayDialogContentProps) => {
   );
   let dayIsToday = isToday(selectedDay);
 
-  const checkedEvents = getDayEvents(
+  const checkedEvents = getAllEventsOfDay(
     selectedDay,
     eventCalendars.filter((calendar) => calendar.checked === true),
   );

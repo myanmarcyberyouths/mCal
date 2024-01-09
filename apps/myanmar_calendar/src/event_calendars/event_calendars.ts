@@ -32,8 +32,8 @@ export const EVENT_CALENDARS: EventCalendarItem[] = [
 export type CustomEventFnT = { (date: Date): string | string[] }[];
 
 type EventObjectT = {
-  gregorianBased: Record<string, string> | null;
-  mmBased: Record<string, string> | null;
+  gregorianBased: Record<string, string | string[]> | null;
+  mmBased: Record<string, string | string[]> | null;
   custom: CustomEventFnT | null;
 };
 
@@ -71,6 +71,7 @@ export const EVENTS: EventsT = {
       "Dec 25": "ခရစ္စမတ်နေ့",
     },
     mmBased: {
+      "ပြာသိုလဆန်း 1": "ကရင်နှစ်သစ်ကူးနေ့",
       သီတင်းကျွတ်လပြည့်: "သီတင်းကျွတ်ရုံးပိတ်ရက်",
       "သီတင်းကျွတ်လဆန်း 14": "သီတင်းကျွတ်ရုံးပိတ်ရက်",
       "သီတင်းကျွတ်လဆုတ် 1": "သီတင်းကျွတ်ရုံးပိတ်ရက်",

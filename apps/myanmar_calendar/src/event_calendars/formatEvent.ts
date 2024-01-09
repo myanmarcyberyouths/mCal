@@ -3,7 +3,7 @@ import { format, getDate, getWeekOfMonth } from "date-fns";
 import { EVENTS, CustomEventFnT } from "./event_calendars";
 import { englishToMyanmarDate } from "burma-calendar";
 
-export function getDayEvents(date: Date, eventCalendars: EventCalendarItem[]) {
+export function getAllEventsOfDay (date: Date, eventCalendars: EventCalendarItem[]) {
   return eventCalendars.map((calendar) => {
     const currentEvent = EVENTS[calendar.id];
 
@@ -21,8 +21,8 @@ export function getDayEvents(date: Date, eventCalendars: EventCalendarItem[]) {
   });
 }
 
-function readGregorianEvents(date: Date, eventObj?: Record<string, string>) {
-  let events: string[] = [];
+function readGregorianEvents (date: Date, eventObj?: Record<string, string | string[]>) {
+  let events: (string | string[])[] = [];
   if (!eventObj) return events;
 
   const day = format(date, "MMM dd yyyy");
@@ -43,11 +43,11 @@ function readGregorianEvents(date: Date, eventObj?: Record<string, string>) {
   eventObj[weekdayMonthly] && events.push(eventObj[weekdayMonthly]);
   eventObj[weekdayWeekly] && events.push(eventObj[weekdayWeekly]);
 
-  return events;
+  return events.flat();
 }
 
-function readMmEvents(date: Date, eventObj?: Record<string, string>) {
-  let events: string[] = [];
+function readMmEvents (date: Date, eventObj?: Record<string, string | string[]>) {
+  let events: (string | string[])[] = [];
 
   if (!eventObj) return events;
 
@@ -61,7 +61,7 @@ function readMmEvents(date: Date, eventObj?: Record<string, string>) {
   if (eventObj[noneMoonAlignedDay]) events.push(eventObj[noneMoonAlignedDay]);
   if (eventObj[mmDate.thingyan]) events.push(eventObj[mmDate.thingyan]);
 
-  return events;
+  return events.flat();
 }
 
 function readCustomEvents(date: Date, eventFns?: CustomEventFnT) {
