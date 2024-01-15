@@ -175,8 +175,8 @@ importers:
         specifier: ^5.3.2
         version: 5.3.2
       vite-plugin-pwa:
-        specifier: ^0.17.0
-        version: 0.17.2(vite@5.0.11)(workbox-build@7.0.0)(workbox-window@7.0.0)
+        specifier: ^0.17.4
+        version: 0.17.4(vite@5.0.11)(workbox-build@7.0.0)(workbox-window@7.0.0)
       workbox-window:
         specifier: ^7.0.0
         version: 7.0.0
@@ -7408,8 +7408,8 @@ packages:
       spdx-expression-parse: 3.0.1
     dev: false
 
-  /vite-plugin-pwa@0.17.2(vite@5.0.11)(workbox-build@7.0.0)(workbox-window@7.0.0):
-    resolution: {integrity: sha512-aVH9sxcTDumiWYiNcLrFqu+FdL79I2cT5EhlVe5V6nGcC64yQNGT1jamMytwi+OdfXl4VYic0LtoJ6JHMkM3ZQ==}
+  /vite-plugin-pwa@0.17.4(vite@5.0.11)(workbox-build@7.0.0)(workbox-window@7.0.0):
+    resolution: {integrity: sha512-j9iiyinFOYyof4Zk3Q+DtmYyDVBDAi6PuMGNGq6uGI0pw7E+LNm9e+nQ2ep9obMP/kjdWwzilqUrlfVRj9OobA==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       vite: ^3.1.0 || ^4.0.0 || ^5.0.0
