@@ -3,7 +3,10 @@ import { format, getDate, getWeekOfMonth } from "date-fns";
 import { EVENTS, CustomEventFnT } from "./event_calendars";
 import { englishToMyanmarDate } from "burma-calendar";
 
-export function getAllEventsOfDay (date: Date, eventCalendars: EventCalendarItem[]) {
+export function getAllEventsOfDay(
+  date: Date,
+  eventCalendars: EventCalendarItem[],
+) {
   return eventCalendars.map((calendar) => {
     const currentEvent = EVENTS[calendar.id];
 
@@ -21,7 +24,10 @@ export function getAllEventsOfDay (date: Date, eventCalendars: EventCalendarItem
   });
 }
 
-function readGregorianEvents (date: Date, eventObj?: Record<string, string | string[]>) {
+function readGregorianEvents(
+  date: Date,
+  eventObj?: Record<string, string | string[]>,
+) {
   let events: (string | string[])[] = [];
   if (!eventObj) return events;
 
@@ -46,7 +52,10 @@ function readGregorianEvents (date: Date, eventObj?: Record<string, string | str
   return events.flat();
 }
 
-function readMmEvents (date: Date, eventObj?: Record<string, string | string[]>) {
+function readMmEvents(
+  date: Date,
+  eventObj?: Record<string, string | string[]>,
+) {
   let events: (string | string[])[] = [];
 
   if (!eventObj) return events;
