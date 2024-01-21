@@ -22,5 +22,10 @@
     "only-allow": "^1.2.1",
     "prettier": "^3.2.4",
     "turbo": "latest"
+  },
+  "pnpm": {
+    "overrides": {
+      "vite@>=5.0.0 <=5.0.11": ">=5.0.12"
+    }
   }
 }
