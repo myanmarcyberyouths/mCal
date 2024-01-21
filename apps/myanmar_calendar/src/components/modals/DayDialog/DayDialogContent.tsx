@@ -19,7 +19,7 @@ import { PiCaretDownBold } from "react-icons/pi";
 import { GrDown } from "react-icons/gr";
 import useKeyPress from "@/hooks/useKeyPress";
 import { modifyColorOpacity } from "@/utils/styleHelpers";
-import {getAllEventsOfDay} from "@/event_calendars/formatEvent";
+import { getAllEventsOfDay } from "@/event_calendars/formatEvent";
 
 export interface DayDialogContentProps {
   onClose: () => void;

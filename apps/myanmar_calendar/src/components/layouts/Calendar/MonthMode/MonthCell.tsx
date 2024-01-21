@@ -3,7 +3,7 @@ import {
   ScrollBar,
   ScrollViewport,
 } from "@/components/ui/areas/ScrollArea";
-import {getAllEventsOfDay} from "@/event_calendars/formatEvent";
+import { getAllEventsOfDay } from "@/event_calendars/formatEvent";
 import useDayEndInterval from "@/hooks/useDayEndInterval";
 import { cn } from "@/lib/utils";
 import { CalendarStateInterface } from "@/store/calendarState";
