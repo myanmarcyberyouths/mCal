@@ -1341,7 +1341,8 @@ class ceMmDateTime extends ceDateTime {
       SE3 = 1312; //start of Thingyan and third era
     var akn, atn, ja, jk;
     ja = SY * (my + mmt) + MO; // atat time
-    if (my >= SE3) jk = ja - 2.169918982; // akya time
+    if (my >= SE3)
+      jk = ja - 2.169918982; // akya time
     else jk = ja - 2.1675;
     akn = Math.round(jk);
     atn = Math.round(ja);
