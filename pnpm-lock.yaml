@@ -114,8 +114,8 @@ importers:
         specifier: ^6.21.3
         version: 6.21.3(react@18.2.0)
       react-router-dom:
-        specifier: ^6.20.1
-        version: 6.21.1(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^6.21.3
+        version: 6.21.3(react-dom@18.2.0)(react@18.2.0)
       sonner:
         specifier: ^1.2.4
         version: 1.3.1(react-dom@18.2.0)(react@18.2.0)
@@ -6514,17 +6514,17 @@ packages:
       use-sidecar: 1.1.2(@types/react@18.2.47)(react@18.2.0)
     dev: false
 
-  /react-router-dom@6.21.1(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-QCNrtjtDPwHDO+AO21MJd7yIcr41UetYt5jzaB9Y1UYaPTCnVuJq6S748g1dE11OQlCFIQg+RtAA1SEZIyiBeA==}
+  /react-router-dom@6.21.3(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-kNzubk7n4YHSrErzjLK72j0B5i969GsuCGazRl3G6j1zqZBLjuSlYBdVdkDOgzGdPIffUOc9nmgiadTEVoq91g==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       react: '>=16.8'
       react-dom: '>=16.8'
     dependencies:
-      '@remix-run/router': 1.14.1
+      '@remix-run/router': 1.14.2
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-      react-router: 6.21.1(react@18.2.0)
+      react-router: 6.21.3(react@18.2.0)
     dev: false
 
   /react-router@6.21.1(react@18.2.0):
