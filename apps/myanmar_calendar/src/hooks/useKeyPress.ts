@@ -9,18 +9,22 @@ type Key =
   | "Escape"
   | "Tab";
 
-const useKeyPress = (key: Key, callback: () => void, disabled = false) => {
+const useKeyPress = (key: Key, focusRef, callback: () => void, disabled = false) => {
+  const element = focusRef.current || window
+
   useEffect(() => {
     if (disabled) return;
     const onKeyDown = (event: KeyboardEvent) => {
-      // event.preventDefault();
+      if(event.key !== key) return
       event.stopPropagation();
-      if (event.key === key) callback();
+      callback();
     };
+
     window.addEventListener("keydown", onKeyDown);
 
     return () => {
       window.removeEventListener("keydown", onKeyDown);
+
     };
   }, [callback, key, disabled]);
 };

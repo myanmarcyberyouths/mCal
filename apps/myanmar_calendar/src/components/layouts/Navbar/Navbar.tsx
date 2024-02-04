@@ -5,7 +5,6 @@ import ActiveDateIndicator from "./ActiveDateIndicator";
 import SideMenuTogglerButton from "@/components/ui/buttons/SidebarToggleBtn";
 import AppLogo from "@/components/ui/logos/AppLogo";
 import SettingMenuButton from "./SettingMenuButton";
-import ThemeToggleButton from "@/components/layouts/Navbar/DarkMode";
 
 function Navbar() {
   return (

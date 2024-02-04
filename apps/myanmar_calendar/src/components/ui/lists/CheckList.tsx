@@ -36,7 +36,7 @@ export function CheckListItem({
           <input
             {...props}
             type="checkbox"
-            className=" h-[1.25rem] w-[1.25rem] cursor-pointer appearance-none rounded-[0.15rem] border-[1.8px] border-red-400 outline-none checked:bg-red-400 sm2:h-[1.1rem] sm2:w-[1.1rem]"
+            className=" h-[1.25rem] w-[1.25rem] cursor-pointer appearance-none rounded-[0.15rem] border-[1.8px] border-red-400 checked:bg-red-400 sm2:h-[1.1rem] sm2:w-[1.1rem] "
             style={{
               backgroundColor: props.checked ? tagColor : "transparent",
               borderColor: tagColor,

@@ -30,7 +30,7 @@ export type EventCalendarItem = {
 export type UserCalendarItem = {
   id: string;
   name: string;
-  description: string;
+  description?: string;
   tagColor: string;
   checked: boolean;
   showOnList: boolean;

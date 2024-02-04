@@ -1,7 +1,7 @@
 import useKeyPress from "@/hooks/useKeyPress";
 import { RootState } from "@/store";
 import { setActiveDate, updateActiveDate } from "@/store/calendarState";
-import { CALENDAR_MODES } from "@/utils/constants";
+import {CALENDAR_MODES, SLIDE_DIRECTION} from "@/utils/constants";
 import { getLocalTime } from "@/utils/helpers";
 import { format, isThisMonth } from "date-fns";
 import { useEffect, useState } from "react";
@@ -22,12 +22,11 @@ function CalendarSlider() {
 
   const [activeDateIsThisMonth, setActiveDateIsThisMonth] = useState(false);
 
-  const handleCalendarSlide = (direction: "next" | "prev") => {
-    const slideValue = direction === "next" ? 1 : -1;
+  const handleCalendarSlide = (direction: SLIDE_DIRECTION) => {
 
     dispatch(
       updateActiveDate({
-        [CALENDAR_MODES[calendarMode] + "s"]: slideValue,
+        [CALENDAR_MODES[calendarMode] + "s"]: direction,
       }),
     );
   };
@@ -42,25 +41,27 @@ function CalendarSlider() {
 
   useKeyPress(
     "ArrowLeft",
-    () => handleCalendarSlide("prev"),
-    !!dayDialogTargetDay,
+    window,
+    () => handleCalendarSlide(SLIDE_DIRECTION.PREVIOUS),
+    !!dayDialogTargetDay
   );
   useKeyPress(
     "ArrowRight",
-    () => handleCalendarSlide("next"),
-    !!dayDialogTargetDay,
+    window,
+    () => handleCalendarSlide(SLIDE_DIRECTION.NEXT),
+    !!dayDialogTargetDay
   );
 
   return (
-    <div className="flex  flex-shrink-0 items-stretch overflow-hidden rounded-md border border-gray-200">
+    <div className="flex  flex-shrink-0 items-stretch rounded-md border border-gray-200">
       <button
-        className="flex items-center justify-center px-2 py-1.5 text-gray-600 hover:bg-gray-50 active:bg-gray-200"
-        onClick={() => handleCalendarSlide("prev")}
+        className="flex items-center justify-center px-2 py-1.5 text-gray-600 hover:bg-gray-50 active:bg-gray-200 rounded-l-md"
+        onClick={() => handleCalendarSlide(SLIDE_DIRECTION.PREVIOUS)}
       >
         <ChevronLeftIcon className="h-5 w-5" />
       </button>
       <button
-        className={`flex items-center justify-center border-gray-250 px-2  py-1.5 font-medium hover:bg-gray-50 active:bg-gray-50 ${
+        className={`text-sm text-gray-600 flex items-center justify-center border-gray-250 px-2  py-1.5 font-medium hover:bg-gray-50 active:bg-gray-50 ${
           activeDateIsThisMonth
             ? "text-red-500 hover:text-red-500 "
             : "text-gray-700 hover:text-gray-800  "
@@ -72,8 +73,8 @@ function CalendarSlider() {
         {enterMobileMode ? format(new Date(activeDate), "yyyy") : "Today"}
       </button>
       <button
-        className="flex aspect-square  items-center justify-center px-2 py-1.5 text-gray-600 hover:bg-gray-50 active:bg-gray-100"
-        onClick={() => handleCalendarSlide("next")}
+        className="flex aspect-square  items-center justify-center px-2 py-1.5 text-gray-600 hover:bg-gray-50 active:bg-gray-100 rounded-r-md"
+        onClick={() => handleCalendarSlide(SLIDE_DIRECTION.NEXT)}
       >
         <ChevronRightIcon className="h-5 w-5" />
       </button>

@@ -54,9 +54,10 @@ function MonthCell({ day, calendarState }: MonthCellT) {
 
   return (
     // min-h-[8.5rem]
-    <div
+    <td
+      tabIndex={'-1'}
       className={cn(
-        "flex min-h-[8.5rem] flex-col items-stretch gap-1 border-b border-r border-gray-200 p-2 py-[0.25rem] pb-[0.3rem]  hover:bg-gray-50 dark:border-gray-100",
+        "aria-col inline-flex min-h-[8.5rem] flex-col items-stretch gap-1 border-r border-b border-gray-200 p-2 py-[0.25rem] pb-[0.3rem] dark:border-gray-100 focus-visible:bg-blue-50 focus-visible:outline-blue-400 -outline-offset-1",
         dayIsInEndWeek ? "min-h-[8.65rem] pb-[0.45rem]" : "",
       )}
       onClick={() => {
@@ -192,7 +193,7 @@ function MonthCell({ day, calendarState }: MonthCellT) {
           </div>
         </div>
       )}
-    </div>
+    </td>
   );
 }
 

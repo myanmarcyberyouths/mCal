@@ -86,3 +86,8 @@ export const ASTRO_EVENT_LIST = [
 ];
 
 export const TIME_ZONES = [];
+
+export enum SLIDE_DIRECTION {
+  NEXT = 1,
+  PREVIOUS = -1
+}

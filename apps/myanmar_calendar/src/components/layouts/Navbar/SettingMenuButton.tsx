@@ -25,9 +25,9 @@ function SettingMenuButton() {
       onClick={handleTrigger}
       variant="ghost"
       size="icon"
-      className="focus-visible:ring-ring hover:bg-accent hover:text-accent-foreground inline-flex items-center justify-center rounded-lg border border-gray-200 px-2 py-1 text-sm font-medium transition-colors hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50"
+      className="hover:bg-accent hover:text-accent-foreground inline-flex items-center justify-center rounded-lg border border-gray-300 px-2 py-1 text-sm font-medium transition-colors hover:bg-gray-100 disabled:pointer-events-none disabled:opacity-50"
     >
-      <IoSettingsOutline size={16} className="text-gray-600" />
+      <IoSettingsOutline size={16} className="text-gray-700" />
     </Button>
   );
 }

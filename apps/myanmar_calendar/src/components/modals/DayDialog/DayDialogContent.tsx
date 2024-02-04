@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, {Fragment, forwardRef, useEffect, useRef, useState} from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { IoMdClose } from "react-icons/io";
 import { FiMaximize2 } from "react-icons/fi";
@@ -26,7 +26,7 @@ export interface DayDialogContentProps {
   selectedDay: Date;
 }
 
-const DayDialogContent = ({ onClose, selectedDay }: DayDialogContentProps) => {
+const DayDialogContent = forwardRef(({onClose, selectedDay}: DayDialogContentProps, ref) => {
   const dispatch = useDispatch();
   const mmDate = englishToMyanmarDate(selectedDay);
   const { eventCalendars, show } = useSelector(
@@ -55,8 +55,8 @@ const DayDialogContent = ({ onClose, selectedDay }: DayDialogContentProps) => {
     dispatch(updateDayDialongTargetDay({ days: addValue }));
   };
 
-  useKeyPress("ArrowLeft", () => changeDay("prev"));
-  useKeyPress("ArrowRight", () => changeDay("next"));
+  useKeyPress("ArrowLeft", window, () => changeDay("prev"));
+  useKeyPress("ArrowRight", window, () => changeDay("next"));
 
   return (
     <>
@@ -82,7 +82,7 @@ const DayDialogContent = ({ onClose, selectedDay }: DayDialogContentProps) => {
           </button>
         </div>
 
-        <button className="hidden items-center sm2:flex" onClick={onClose}>
+        <button className="hidden items-center sm2:flex" onClick={onClose} ref={ref}>
           <IoMdClose
             size={19}
             className="hidden text-gray-600 hover:text-rose-500 sm2:inline-block"
@@ -247,6 +247,6 @@ const DayDialogContent = ({ onClose, selectedDay }: DayDialogContentProps) => {
       </div>
     </>
   );
-};
+});
 
 export default DayDialogContent;
