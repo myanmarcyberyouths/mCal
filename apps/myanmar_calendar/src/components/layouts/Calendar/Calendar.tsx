@@ -35,14 +35,14 @@ function Calendar() {
   // })
 
   return (
-    <section
+    <div
       aria-label="Calendar"
       className={cn(
         "__scrollbar-md h-[calc(100vh-theme(spacing.nav-h))] flex-1 supports-[height:100cqh]:h-[calc(100cqh-theme(spacing.nav-h))] supports-[height:100svh]:h-[calc(100svh-theme(spacing.nav-h))]  xl:border-l xl:border-gray-200",
       )}
     >
       {calendar_modes[calendarMode]}
-    </section>
+    </div>
   );
 }
 

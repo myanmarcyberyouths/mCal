@@ -104,9 +104,10 @@ export const EVENTS: EventsT = {
       (date: Date) => {
         const events: string[] = [];
         const easterDate = calculateEasterDate(new Date(date).getFullYear());
+        const isEasterDay = isSameDay(date, easterDate)
         const isGoodFriday = isSameDay(add(easterDate, { days: -2 }), date);
 
-        if (isSameDay(date, easterDate)) events.push("အီစတာပွဲတော်နေ့");
+        if(isEasterDay) events.push("အီစတာပွဲတော်နေ့");
         if (isGoodFriday) events.push("သောကြာနေ့ကြီး");
 
         return events;
