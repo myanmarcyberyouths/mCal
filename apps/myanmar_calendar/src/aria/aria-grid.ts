@@ -374,6 +374,7 @@ class Grid extends AriaRoot {
 
   public clearEvents = () => {
     this.containerNode?.removeEventListener("keydown", this.checkFocusChange);
+    this.containerNode?.removeEventListener("keydown", this.handleClickCell);
     this.containerNode?.removeEventListener("click", this.focusClickedCell);
   };
 

@@ -1,6 +1,6 @@
 import { EventCalendarItem } from "@/type-models/calendarState.type";
 import { calculateEasterDate } from "@/utils/dateTimeHelper";
-import { add, isSameDay } from "date-fns";
+import {add, getYear, isSameDay} from "date-fns";
 
 export const EVENT_CALENDARS: EventCalendarItem[] = [
   {
@@ -55,7 +55,9 @@ export const EVENTS: EventsT = {
       သင်္ကြန်အတက်နေ့: "သင်္ကြန်အတက်နေ့",
       နှစ်ဆန်းတစ်ရက်နေ့: "နှစ်ဆန်းတစ်ရက်နေ့",
     },
-    custom: [],
+    custom: [
+
+    ],
   },
 
   "2": {
@@ -81,7 +83,53 @@ export const EVENTS: EventsT = {
       သင်္ကြန်အတက်နေ့: "နှစ်သစ်ကူးရုံးပိတ်ရက်",
       နှစ်ဆန်းတစ်ရက်နေ့: "နှစ်သစ်ကူးရုံးပိတ်ရက်",
     },
-    custom: [],
+    custom: [
+      // ** source: https://stackoverflow.com/questions/55023376/how-can-i-calculate-the-date-of-chinese-new-year-in-javascript
+      (date: Date) => {
+        function get_new_moons (date: Date) {
+          const LUNAR_MONTH = 29.5305888531  // https://en.wikipedia.org/wiki/Lunar_month
+          let y = date.getFullYear()
+          let m = date.getMonth() + 1  // https://stackoverflow.com/questions/15799514/why-does-javascript-getmonth-count-from-0-and-getdate-count-from-1
+          let d = date.getDate()
+          // https://www.subsystems.us/uploads/9/8/9/4/98948044/moonphase.pdf
+          if(m <= 2) {
+            y -= 1
+            m += 12
+          }
+          let a = Math.floor(y / 100)
+          let b = Math.floor(a / 4)
+          let c = 2 - a + b
+          let e = Math.floor(365.25 * (y + 4716))
+          let f = Math.floor(30.6001 * (m + 1))
+          let julian_day = c + d + e + f - 1524.5
+          let days_since_last_new_moon = julian_day - 2451549.5
+          let new_moons = days_since_last_new_moon / LUNAR_MONTH
+          let days_into_cycle = (new_moons % 1) * LUNAR_MONTH
+          return new_moons
+        }
+
+        function in_chinese_new_year (date: Date) {
+          /* The date is decided by the Chinese Lunar Calendar, which is based on the
+          cycles of the moon and sun and is generally 21–51 days behind the Gregorian
+          (internationally-used) calendar. The date of Chinese New Year changes every
+          year, but it always falls between January 21st and February 20th. */
+          return Math.floor(get_new_moons(date)) > Math.floor(get_new_moons(new Date(date.getFullYear(), 0, 20))) ? 1 : 0
+        }
+
+        function get_chinese_new_year (gregorian_year) {
+          for(let i = 0; i <= 30; ++i) {
+            let start = new Date(gregorian_year, 0, 1)
+            start.setDate(21 + i)
+            if(in_chinese_new_year(start)) return start
+          }
+        }
+
+        const isChineseNewYearDay = isSameDay(get_chinese_new_year(getYear(date)), date)
+
+        if(isChineseNewYearDay) return 'တရုတ်နှစ်သစ်ကူးနေ့'
+
+      }
+    ],
   },
 
   "3": {
