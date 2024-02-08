@@ -51,7 +51,7 @@ function YearCell({ month, weekStart }: YearCellInterface) {
   };
 
   return (
-    <div className="flex items-start justify-center px-2 py-2 pt-3 sm:px-0">
+    <div className="flex items-center justify-center px-2 py-2 pt-3 sm:px-0">
       <div className="h-full w-full px-[0.4rem] sm1:w-auto sm1:px-0 sm2:h-auto">
         <a
           className={cn(
