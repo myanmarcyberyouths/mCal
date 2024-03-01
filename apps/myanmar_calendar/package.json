@@ -63,7 +63,7 @@
     "react-router": "^6.21.3",
     "react-router-dom": "^6.20.1",
     "sonner": "^1.2.4",
-    "tailwind-merge": "^2.0.0",
+    "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.6",
     "vite": "^5.0.9",
     "workbox-precaching": "^7.0.0",
