@@ -3,6 +3,7 @@
   "version": "3.3.0",
   "description": "The Myanmar Calendar App",
   "main": "index.js",
+  "packageManager": "pnpm@9.9.0",
   "workspaces": [
     "packages/*",
     "apps/*"
