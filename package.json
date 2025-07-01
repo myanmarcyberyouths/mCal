@@ -19,7 +19,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "husky": "^8.0.3",
+    "husky": "^9.1.7",
     "only-allow": "^1.2.1",
     "prettier": "^3.2.4",
     "turbo": "latest"
